@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: OnCollisionExitGameObjectTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: c2aeba50-df0d-4433-b378-67adb0bc0ac0
+    actionName: OnCollisionExit
+    actionVariantName: GameObject
+    description: 
+    variables:
+    - type:
+        typeDef: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      udonName: gameObject
+      displayName: GameObject
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 19
+    baseEventName: Event_OnCollisionExit
+    eventEntry: _onCollisionExit
+  udonProgramAsset: {fileID: 11400000, guid: 7443917f830735a4ab5cc92d878a88fb, type: 2}
+  assetGuid: 7443917f830735a4ab5cc92d878a88fb

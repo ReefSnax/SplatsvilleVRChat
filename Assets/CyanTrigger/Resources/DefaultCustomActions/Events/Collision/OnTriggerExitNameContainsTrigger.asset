@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: OnTriggerExitNameContainsTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: dd139216-f007-418d-b9b6-e95d57a6e586
+    actionName: OnTriggerExit
+    actionVariantName: NameContains
+    description: 
+    variables:
+    - type:
+        typeDef: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      udonName: searchText
+      displayName: Search Text
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 19
+    baseEventName: Event_OnTriggerExit
+    eventEntry: _onTriggerExit
+  udonProgramAsset: {fileID: 11400000, guid: ff5bb7b0c957aca4a813b0209497c8dd, type: 2}
+  assetGuid: ff5bb7b0c957aca4a813b0209497c8dd

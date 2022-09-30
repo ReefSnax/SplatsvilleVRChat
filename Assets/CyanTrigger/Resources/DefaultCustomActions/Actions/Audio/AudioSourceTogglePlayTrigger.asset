@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: AudioSourceTogglePlayTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: 09bb1814-102a-404b-9f13-eab0d49592d0
+    actionName: AudioSource
+    actionVariantName: TogglePlay
+    description: 
+    variables:
+    - type:
+        typeDef: UnityEngine.AudioSource, UnityEngine.AudioModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      udonName: AudioSource
+      displayName: AudioSource
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 19
+    baseEventName: Event_Custom
+    eventEntry: AudioSourceTogglePlay
+  udonProgramAsset: {fileID: 11400000, guid: 8153be1bf0730e8419aeff8125f9252f, type: 2}
+  assetGuid: 8153be1bf0730e8419aeff8125f9252f

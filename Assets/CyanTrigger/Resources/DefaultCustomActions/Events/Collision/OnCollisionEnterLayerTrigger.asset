@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: OnCollisionEnterLayerTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: f7d96138-87ff-420d-ba37-a3dddc4ff8d3
+    actionName: OnCollisionEnter
+    actionVariantName: LayerMask
+    description: 
+    variables:
+    - type:
+        typeDef: UnityEngine.LayerMask, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+      udonName: CollisionMask
+      displayName: LayerMask
+      description: 
+      defaultValue:
+        objEncoded: Ai8AAAAAAS0AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBMAGEAeQBlAHIATQBhAHMAawAsACAAVQBuAGkAdAB5AEUAbgBnAGkAbgBlAC4AQwBvAHIAZQBNAG8AZAB1AGwAZQAAAAAAGAAAAAAF
+        unityObjects: []
+      variableType: 3
+    baseEventName: Event_OnCollisionEnter
+    eventEntry: _onCollisionEnter
+  udonProgramAsset: {fileID: 11400000, guid: a65dec49d9ce5004fa8afdab73087ff0, type: 2}
+  assetGuid: a65dec49d9ce5004fa8afdab73087ff0

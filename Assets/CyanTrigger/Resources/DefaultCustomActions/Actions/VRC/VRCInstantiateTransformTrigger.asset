@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: VRCInstantiateTransformTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: 345ae564-84fa-4234-b63d-295000c492a6
+    actionName: VRCInstantiate
+    actionVariantName: Instantiate
+    description: 
+    variables:
+    - type:
+        typeDef: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+      udonName: transform
+      displayName: Locations
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 19
+    - type:
+        typeDef: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      udonName: gameObject
+      displayName: GameObject
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 3
+    - type:
+        typeDef: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      udonName: outGameObject
+      displayName: Out GameObject
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 6
+    baseEventName: Event_Custom
+    eventEntry: Spawn
+  udonProgramAsset: {fileID: 11400000, guid: 02d32705492d4e94bb90cd435a854e6a, type: 2}
+  assetGuid: 02d32705492d4e94bb90cd435a854e6a

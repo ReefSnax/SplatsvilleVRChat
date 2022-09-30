@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: fly stick
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: dcb355b61127044499a9da030edc29a6,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 515885afa4368284682c642437e6cffb,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export forwardDirection\r\n    .export speed\r\n   
     .export gravityDissable\r\n    .export pickup\r\n    \r\n    __Boolean_0: %SystemBoolean,

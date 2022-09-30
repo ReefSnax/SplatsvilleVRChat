@@ -1,0 +1,237 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4908870306480925820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4908870306480925817}
+  - component: {fileID: 4908870306480925822}
+  - component: {fileID: 4908870306480925823}
+  m_Layer: 0
+  m_Name: PlayerBoneTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4908870306480925817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908870306480925820}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4908870306480925822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908870306480925820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd4a7956009f7d429a09b8371329c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerInstance:
+    proximity: 2
+    interactText: Use
+    triggerDataInstance:
+      version: 3
+      updateOrder: 0
+      programSyncMode: 0
+      events:
+      - name: 
+        eventInstance:
+          actionType:
+            directEvent: Event_PostLateUpdate
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Every frame, place this object at the specified bone location
+              of the local player. To change which bone is tracked, select a different
+              bone from the drop down next to the variable.
+        actionInstances:
+        - actionType:
+            directEvent: CyanTriggerVariable_UnityEngineVector3
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: dd67191a-ac8f-4f6b-86ef-837483307165
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBCAAAAFAAbwBzAGkAdABpAG8AbgAF
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAASsAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBWAGUAYwB0AG8AcgAzACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAAAAAAAgAAAAACAAAAAAIAAAAAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Create a local variable to store the player's bone position.
+        - actionType:
+            directEvent: CyanTriggerVariable_UnityEngineQuaternion
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 719e52fe-03e2-4e44-87f3-9e456d4dc1da
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBCAAAAFIAbwB0AGEAdABpAG8AbgAF
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAAS4AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBRAHUAYQB0AGUAcgBuAGkAbwBuACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAAAAAAAgAAAAACAAAAAAIAAAAAAgAAAAAAU=
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Create a local variable to store the player's bone rotation.
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__GetBonePosition__UnityEngineHumanBodyBones__UnityEngineVector3
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: humanBodyBones
+            variableID: 025af21a-f600-45a5-b620-a7c9f7f2ed2f
+            data:
+              objEncoded: Ai8AAAAAATcAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBIAHUAbQBhAG4AQgBvAGQAeQBCAG8AbgBlAHMALAAgAFUAbgBpAHQAeQBFAG4AZwBpAG4AZQAuAEEAbgBpAG0AYQB0AGkAbwBuAE0AbwBkAHUAbABlAAAAAAAeAAAAAAAAAAAF
+              unityObjects: []
+          - isVariable: 1
+            name: Position
+            variableID: dd67191a-ac8f-4f6b-86ef-837483307165
+            data:
+              objEncoded: Ai8AAAAAASsAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBWAGUAYwB0AG8AcgAzACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAAAAAAAgAAAAACAAAAAAIAAAAAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Get the specified player bone's position.
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__GetBoneRotation__UnityEngineHumanBodyBones__UnityEngineQuaternion
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: humanBodyBones
+            variableID: 025af21a-f600-45a5-b620-a7c9f7f2ed2f
+            data:
+              objEncoded: Ai8AAAAAATcAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBIAHUAbQBhAG4AQgBvAGQAeQBCAG8AbgBlAHMALAAgAFUAbgBpAHQAeQBFAG4AZwBpAG4AZQAuAEEAbgBpAG0AYQB0AGkAbwBuAE0AbwBkAHUAbABlAAAAAAAeAAAAAAAAAAAF
+              unityObjects: []
+          - isVariable: 1
+            name: Rotation
+            variableID: 719e52fe-03e2-4e44-87f3-9e456d4dc1da
+            data:
+              objEncoded: Ai8AAAAAAS4AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBRAHUAYQB0AGUAcgBuAGkAbwBuACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAAAAAAAgAAAAACAAAAAAIAAAAAAgAAAAAAU=
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Get the specified player bone's rotation.
+        - actionType:
+            directEvent: UnityEngineTransform.__SetPositionAndRotation__UnityEngineVector3_UnityEngineQuaternion__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: Position
+            variableID: dd67191a-ac8f-4f6b-86ef-837483307165
+            data:
+              objEncoded: Ai8AAAAAASsAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBWAGUAYwB0AG8AcgAzACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAAAAAAAgAAAAACAAAAAAIAAAAAAF
+              unityObjects: []
+          - isVariable: 1
+            name: Rotation
+            variableID: 719e52fe-03e2-4e44-87f3-9e456d4dc1da
+            data:
+              objEncoded: Ai8AAAAAAS4AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBRAHUAYQB0AGUAcgBuAGkAbwBuACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAAAAAAAgAAAAACAAAAAAIAAAAAAgAAAAAAU=
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: This Transform
+            variableID: _this_transform
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: Set the transform of this object to the position and rotation
+              of the player bone.
+        eventOptions:
+          userGate: 0
+          userGateExtraData: []
+          broadcast: 0
+          delay: 0
+        expanded: 1
+      variables:
+      - isVariable: 0
+        name: humanBodyBones
+        variableID: 025af21a-f600-45a5-b620-a7c9f7f2ed2f
+        data:
+          objEncoded: Ai8AAAAAATcAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBIAHUAbQBhAG4AQgBvAGQAeQBCAG8AbgBlAHMALAAgAFUAbgBpAHQAeQBFAG4AZwBpAG4AZQAuAEEAbgBpAG0AYQB0AGkAbwBuAE0AbwBkAHUAbABlAAAAAAAeAAAAAAAAAAAF
+          unityObjects: []
+        type:
+          typeDef: UnityEngine.HumanBodyBones, UnityEngine.AnimationModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        sync: 0
+      comment:
+        comment: 
+    udonBehaviour: {fileID: 4908870306480925823}
+--- !u!114 &4908870306480925823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908870306480925820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45115577ef41a5b4ca741ed302693907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactTextPlacement: {fileID: 0}
+  interactText: Use
+  interactTextGO: {fileID: 0}
+  proximity: 2
+  SynchronizePosition: 0
+  AllowCollisionOwnershipTransfer: 0
+  Reliable: 0
+  serializedProgramAsset: {fileID: 11400000, guid: 9c3fe766e23cdaf44ab47a294c1fd584,
+    type: 2}
+  programSource: {fileID: 11400000, guid: aaa95946b38d3474e986547f2220617c, type: 2}
+  serializedPublicVariablesBytesString: Ai8AAAAAATIAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAFQAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AAAAAAAYBAAAAAAAAACcBBAAAAHQAeQBwAGUAAWgAAABTAHkAcwB0AGUAbQAuAEMAbwBsAGwAZQBjAHQAaQBvAG4AcwAuAEcAZQBuAGUAcgBpAGMALgBMAGkAcwB0AGAAMQBbAFsAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4ALgBJAG4AdABlAHIAZgBhAGMAZQBzAC4ASQBVAGQAbwBuAFYAYQByAGkAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AXQBdACwAIABtAHMAYwBvAHIAbABpAGIAAQEJAAAAVgBhAHIAaQBhAGIAbABlAHMALwEAAAABaAAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAEkAbgB0AGUAcgBmAGEAYwBlAHMALgBJAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlACwAIABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgBdAF0ALAAgAG0AcwBjAG8AcgBsAGkAYgABAAAABgAAAAAAAAAABwUHBQ==
+  publicVariablesUnityEngineObjects: []
+  publicVariablesSerializationDataFormat: 0

@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: Double jump
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 3430a22835fde6741a579637e77cf768,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 1d427a6779fed0f478abc270e003cf27,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export secondJumpMultiplier\r\n    .export
     enable\r\n    \r\n    __Boolean_0: %SystemBoolean, null\r\n    __Boolean_1: %SystemBoolean,
     null\r\n    __Boolean_2: %SystemBoolean, null\r\n    inputJumpBoolValue: %SystemBoolean,
     null\r\n    __Boolean_3: %SystemBoolean, null\r\n    __instance_0: %VRCSDKBaseVRCPlayerApi,
     null\r\n    __Boolean_4: %SystemBoolean, null\r\n    __Boolean_5: %SystemBoolean,
-    null\r\n    __instance_1: %VRCSDKBaseVRCPlayerApi, null\r\n    __Vector3_0: %UnityEngineVector3,
-    null\r\n    __Single_0: %SystemSingle, null\r\n    __Single_1: %SystemSingle,
-    null\r\n    __Single_2: %SystemSingle, null\r\n    __instance_2: %VRCSDKBaseVRCPlayerApi,
-    null\r\n    __instance_3: %VRCSDKBaseVRCPlayerApi, null\r\n    __velocity_0:
-    %UnityEngineVector3, null\r\n    secondJumpMultiplier: %SystemSingle, null\r\n   
-    doublejump: %SystemBoolean, null\r\n    enable: %SystemBoolean, null\r\n    velocity:
-    %UnityEngineVector3, null\r\n\r\n.data_end\r\n\r\n.code_start\r\n\r\n    .export
-    _inputJump\r\n    \r\n    _inputJump:\r\n    \r\n        PUSH, inputJumpBoolValue\r\n       
+    null\r\n    __instance_1: %VRCSDKBaseVRCPlayerApi, null\r\n    __instance_2:
+    %UnityEngineVector3, null\r\n    __value_0: %SystemSingle, null\r\n    __Single_0:
+    %SystemSingle, null\r\n    __Single_1: %SystemSingle, null\r\n    __instance_3:
+    %VRCSDKBaseVRCPlayerApi, null\r\n    __instance_4: %VRCSDKBaseVRCPlayerApi, null\r\n   
+    __velocity_0: %UnityEngineVector3, null\r\n    secondJumpMultiplier: %SystemSingle,
+    null\r\n    doublejump: %SystemBoolean, null\r\n    enable: %SystemBoolean, null\r\n   
+    velocity: %UnityEngineVector3, null\r\n\r\n.data_end\r\n\r\n.code_start\r\n\r\n   
+    .export _inputJump\r\n    \r\n    _inputJump:\r\n    \r\n        PUSH, inputJumpBoolValue\r\n       
     PUSH, __Boolean_1\r\n        COPY\r\n        PUSH, __Boolean_1\r\n        PUSH,
     enable\r\n        PUSH, __Boolean_0\r\n        EXTERN, \"SystemBoolean.__op_ConditionalAnd__SystemBoolean_SystemBoolean__SystemBoolean\"\r\n       
     PUSH, __Boolean_0\r\n        JUMP_IF_FALSE, 0x00000170\r\n        PUSH, __instance_0\r\n       
@@ -37,12 +37,12 @@ MonoBehaviour:
     doublejump\r\n        JUMP_IF_FALSE, 0x00000168\r\n        PUSH, __instance_1\r\n       
     EXTERN, \"VRCSDKBaseNetworking.__get_LocalPlayer__VRCSDKBaseVRCPlayerApi\"\r\n       
     PUSH, __instance_1\r\n        PUSH, velocity\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__GetVelocity__UnityEngineVector3\"\r\n       
-    PUSH, __instance_1\r\n        PUSH, __instance_2\r\n        COPY\r\n        PUSH,
-    __instance_1\r\n        PUSH, __Single_1\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__GetJumpImpulse__SystemSingle\"\r\n       
-    PUSH, __Single_1\r\n        PUSH, secondJumpMultiplier\r\n        PUSH, __Single_0\r\n       
-    EXTERN, \"SystemSingle.__op_Multiplication__SystemSingle_SystemSingle__SystemSingle\"\r\n       
-    PUSH, velocity\r\n        PUSH, __Single_0\r\n        EXTERN, \"UnityEngineVector3.__set_y__SystemSingle\"\r\n       
     PUSH, __instance_1\r\n        PUSH, __instance_3\r\n        COPY\r\n        PUSH,
+    __instance_1\r\n        PUSH, __Single_0\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__GetJumpImpulse__SystemSingle\"\r\n       
+    PUSH, __Single_0\r\n        PUSH, secondJumpMultiplier\r\n        PUSH, __value_0\r\n       
+    EXTERN, \"SystemSingle.__op_Multiplication__SystemSingle_SystemSingle__SystemSingle\"\r\n       
+    PUSH, velocity\r\n        PUSH, __value_0\r\n        EXTERN, \"UnityEngineVector3.__set_y__SystemSingle\"\r\n       
+    PUSH, __instance_1\r\n        PUSH, __instance_4\r\n        COPY\r\n        PUSH,
     __instance_1\r\n        PUSH, velocity\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__SetVelocity__UnityEngineVector3__SystemVoid\"\r\n       
     JUMP, 0x00000168\r\n        JUMP, 0x00000170\r\n        JUMP, 0xFFFFFFFC\r\n   
     \r\n\r\n.code_end\r\n"

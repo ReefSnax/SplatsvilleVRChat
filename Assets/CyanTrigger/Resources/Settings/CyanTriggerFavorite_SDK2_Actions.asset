@@ -1,0 +1,376 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16dd9cac1b03a34aa0d966f341cbb24, type: 3}
+  m_Name: CyanTriggerFavorite_SDK2_Actions
+  m_EditorClassIdentifier: Assembly-CSharp-Editor:CyanTrigger:CyanTriggerSettingsFavoriteList
+  FavoriteType: 3
+  FavoriteItems:
+  - item: CyanTrigger.SendCustomEvent
+    data:
+      directEvent: CyanTrigger.__SendCustomEvent__CyanTrigger__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: ReturnIfDisabled
+    data:
+      directEvent: CyanTriggerSpecial_ReturnIfDisabled
+      guid: 
+    scopeDelta: 0
+  - item: GameObject
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: GameObject.SetActive
+    data:
+      directEvent: UnityEngineGameObject.__SetActive__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.ToggleActive
+    data:
+      directEvent: 
+      guid: 653c3be4-2bad-4ad8-bf02-fd32dc735be0
+    scopeDelta: 0
+  - item: GameObject.SetComponentActive
+    data:
+      directEvent: UnityEngineGameObject.__SetComponentActive__UnityEngineGameObject__SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.Set layer
+    data:
+      directEvent: UnityEngineGameObject.__set_layer__SystemInt32__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Teleport
+    data:
+      directEvent: 
+      guid: 3173f9c0-ff01-4c13-9541-8203e2b7f21d
+    scopeDelta: 0
+  - item: VRCInstantiate.Instantiate
+    data:
+      directEvent: VRCInstantiate.__Instantiate__UnityEngineGameObject__UnityEngineGameObject
+      guid: 
+    scopeDelta: 0
+  - item: Object.Destroy
+    data:
+      directEvent: UnityEngineObject.__Destroy__UnityEngineObject__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Players
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCPlayerApi.TeleportTo
+    data:
+      directEvent: 
+      guid: b54c86e7-4ffc-4c82-8f04-f216c7dc7a2f
+    scopeDelta: 0
+  - item: VRCPlayerApi.PlayHapticEventInHand
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__PlayHapticEventInHand__VRCSDKBaseVRC_PickupPickupHand_SystemSingle_SystemSingle_SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetWalkSpeed
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetWalkSpeed__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetStrafeSpeed
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetStrafeSpeed__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetRunSpeed
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetRunSpeed__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetJumpImpulse
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetJumpImpulse__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.DamagePlayer
+    data:
+      directEvent: 
+      guid: 9cfe9ed9-dba6-4a1b-824e-d6d89668527f
+    scopeDelta: 0
+  - item: VRCPlayerApi.HealPlayer
+    data:
+      directEvent: 
+      guid: 87ea8003-6eec-4432-bb8f-29ccdb2eb304
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: VRC
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCPickup.Drop
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__Drop__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.UseStation
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__UseStation__VRCSDKBaseVRCPlayerApi__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.ExitStation
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__ExitStation__VRCSDKBaseVRCPlayerApi__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCAvatarPedestal.SetAvatarUse
+    data:
+      directEvent: VRCSDK3ComponentsVRCAvatarPedestal.__SetAvatarUse__VRCSDKBaseVRCPlayerApi__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCAvatarPedestal.SwitchAvatar
+    data:
+      directEvent: VRCSDK3ComponentsVRCAvatarPedestal.__SwitchAvatar__SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Animations
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Animator.SetTrigger
+    data:
+      directEvent: UnityEngineAnimator.__SetTrigger__SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Animator.SetBool
+    data:
+      directEvent: UnityEngineAnimator.__SetBool__SystemString_SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Animator.BoolToggle
+    data:
+      directEvent: 
+      guid: 4d341da3-b2f3-4607-8c27-5426906fc8f5
+    scopeDelta: 0
+  - item: Animator.SetInteger
+    data:
+      directEvent: UnityEngineAnimator.__SetInteger__SystemString_SystemInt32__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Animator.IntAdd
+    data:
+      directEvent: 
+      guid: 2f608dd1-b833-467c-8208-404c7486ce8c
+    scopeDelta: 0
+  - item: Animator.IntSubtract
+    data:
+      directEvent: 
+      guid: 6fa78d94-7239-4fec-8473-2dc8564473a8
+    scopeDelta: 0
+  - item: Animator.IntMultiply
+    data:
+      directEvent: 
+      guid: e41b0b6a-0382-480b-ac67-33042a54b709
+    scopeDelta: 0
+  - item: Animator.IntDivide
+    data:
+      directEvent: 
+      guid: 01aedc29-ba91-4a89-8fa3-368a90f1101e
+    scopeDelta: 0
+  - item: Animator.IntRemainder
+    data:
+      directEvent: 
+      guid: 3c3fd026-1e9c-4930-b8ec-92b3775739f7
+    scopeDelta: 0
+  - item: Animator.SetFloat
+    data:
+      directEvent: UnityEngineAnimator.__SetFloat__SystemString_SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Animator.FloatAdd
+    data:
+      directEvent: 
+      guid: 98cea39e-2b2b-4380-b471-ae01be1e9465
+    scopeDelta: 0
+  - item: Animator.FloatSubtract
+    data:
+      directEvent: 
+      guid: 2c2793e2-9798-453f-803f-c4cfde2659ac
+    scopeDelta: 0
+  - item: Animator.FloatMultiply
+    data:
+      directEvent: 
+      guid: fc11ae15-ef01-41fa-a722-8408e8a9b242
+    scopeDelta: 0
+  - item: Animator.FloatDivide
+    data:
+      directEvent: 
+      guid: a80a6a62-0fbd-4626-a364-325d9560bb3f
+    scopeDelta: 0
+  - item: Animator.FloatRemainder
+    data:
+      directEvent: 
+      guid: 3ac46420-641b-46f6-a6e1-9c9700cc5cbd
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Physics
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Rigidbody.AddForce
+    data:
+      directEvent: UnityEngineRigidbody.__AddForce__SystemSingle_SystemSingle_SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Rigidbody.Set velocity
+    data:
+      directEvent: UnityEngineRigidbody.__set_velocity__UnityEngineVector3__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Rigidbody.AddVelocity
+    data:
+      directEvent: 
+      guid: 03b84c10-8db6-4c63-9342-6bedce1d5e1d
+    scopeDelta: 0
+  - item: Rigidbody.Set angularVelocity
+    data:
+      directEvent: UnityEngineRigidbody.__set_angularVelocity__UnityEngineVector3__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Rigidbody.AddAngularVelocity
+    data:
+      directEvent: 
+      guid: 74ffa323-114e-4bbd-ae44-f8d83cce82e0
+    scopeDelta: 0
+  - item: Rigidbody.Set isKinematic
+    data:
+      directEvent: UnityEngineRigidbody.__set_isKinematic__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Rigidbody.ToggleKinematic
+    data:
+      directEvent: 
+      guid: 2ff7d161-db4f-4dc2-9760-319bc811f402
+    scopeDelta: 0
+  - item: Rigidbody.Set useGravity
+    data:
+      directEvent: UnityEngineRigidbody.__set_useGravity__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Rigidbody.ToggleGravity
+    data:
+      directEvent: 
+      guid: 2f0aae44-90e1-406d-852a-b69e7cf814cb
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Particles
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: ParticleSystem.Play
+    data:
+      directEvent: UnityEngineParticleSystem.__Play__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem.Stop
+    data:
+      directEvent: UnityEngineParticleSystem.__Stop__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem.TogglePlay
+    data:
+      directEvent: 
+      guid: d6be2859-0f0f-444e-9319-06f8806db3f3
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Audio
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: AudioSource.Play
+    data:
+      directEvent: UnityEngineAudioSource.__Play__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Stop
+    data:
+      directEvent: UnityEngineAudioSource.__Stop__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.TogglePlay
+    data:
+      directEvent: 
+      guid: 09bb1814-102a-404b-9f13-eab0d49592d0
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Materials
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Renderer.SetMaterial
+    data:
+      directEvent: 
+      guid: e6d96c0a-9591-4e6c-9144-336d5dca47bf
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: UI
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Text.Set text
+    data:
+      directEvent: UnityEngineUIText.__set_text__SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1

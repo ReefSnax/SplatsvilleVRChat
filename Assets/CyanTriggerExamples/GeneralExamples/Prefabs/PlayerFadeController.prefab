@@ -1,0 +1,1867 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1092451041071494892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1092451041071494883}
+  - component: {fileID: 1092451041071494882}
+  - component: {fileID: 1092451041071494893}
+  m_Layer: 0
+  m_Name: PlayerFadeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1092451041071494883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092451041071494892}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5419771978764138048}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1092451041071494882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092451041071494892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd4a7956009f7d429a09b8371329c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerInstance:
+    proximity: 2
+    interactText: Use
+    triggerDataInstance:
+      version: 3
+      updateOrder: 0
+      programSyncMode: 2
+      events:
+      - name: _Unnamed
+        eventInstance:
+          actionType:
+            directEvent: Event_Start
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        actionInstances:
+        - actionType:
+            directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__set_enabled__SystemBoolean__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: This UdonBehaviour
+            variableID: _this_udonbehaviour
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: Disable self at start
+        - actionType:
+            directEvent: UnityEngineMaterialPropertyBlock.__ctor____UnityEngineMaterialPropertyBlock
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: _fadePropertyBlock
+            variableID: 9954828c-72b1-4c61-841f-86a5ec7c84a4
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Create a new property block
+        - actionType:
+            directEvent: UnityEngineRenderer.__GetPropertyBlock__UnityEngineMaterialPropertyBlock__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: _fadePropertyBlock
+            variableID: 9954828c-72b1-4c61-841f-86a5ec7c84a4
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: _fadeRenderer
+            variableID: 37fccccf-a919-4e39-acec-fe43acd387ca
+            data:
+              objEncoded: DAAAAAA=
+              unityObjects:
+              - {fileID: 1092451042485306627}
+          expanded: 0
+          comment:
+            comment: Copy the data from fade renderer into the property block.
+        eventOptions:
+          userGate: 0
+          userGateExtraData: []
+          broadcast: 0
+          delay: 0
+        expanded: 1
+      - name: _StartFade
+        eventInstance:
+          actionType:
+            directEvent: Event_Custom
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        actionInstances:
+        - actionType:
+            directEvent: CyanTriggerSpecial_If
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: If currently fading, ignore fade start request.
+        - actionType:
+            directEvent: CyanTriggerSpecial_Condition
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: f1ccb98f-5978-4caa-8c20-0d4549ad727a
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBCgAAAEYAYQBkAGUAQQBjAHQAaQB2AGUABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__get_enabled__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: This UdonBehaviour
+            variableID: _this_udonbehaviour
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: FadeActive
+            variableID: f1ccb98f-5978-4caa-8c20-0d4549ad727a
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionBody
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_Return
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: UnityEngineTime.__get_time__SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: _fadeStartTime
+            variableID: 9878e4c4-b26e-40a0-8f48-b7b6d5b9c365
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Time of fade start
+        - actionType:
+            directEvent: SystemBoolean__.Set__SystemBoolean__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAEF
+              unityObjects: []
+          - isVariable: 1
+            name: _fadeIn
+            variableID: b52d9727-3509-4132-82bf-467f2ea0ad13
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Start fade in
+        - actionType:
+            directEvent: UnityEngineGameObject.__SetActive__SystemBoolean__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAEF
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: _playerTracker
+            variableID: ecd80ff9-67b6-4747-8ce1-1c9ffb6f6f07
+            data:
+              objEncoded: DAAAAAA=
+              unityObjects:
+              - {fileID: 5419771978764138053}
+          expanded: 0
+          comment:
+            comment: Enable the player tracker so the fade will follow the player's
+              vision.
+        - actionType:
+            directEvent: UnityEngineMaterialPropertyBlock.__SetFloat__SystemString_SystemSingle__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBBgAAAF8AQQBsAHAAaABhAAU=
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: _fadePropertyBlock
+            variableID: 9954828c-72b1-4c61-841f-86a5ec7c84a4
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: Set initial alpha to 0 to ensure always off.
+        - actionType:
+            directEvent: UnityEngineMaterialPropertyBlock.__SetColor__SystemString_UnityEngineColor__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBBgAAAF8AQwBvAGwAbwByAAU=
+              unityObjects: []
+          - isVariable: 1
+            name: fadeColor
+            variableID: 5da373a8-a810-42ef-9aa4-619eb3c34933
+            data:
+              objEncoded: Ai8AAAAAASkAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AbABvAHIALAAgAFUAbgBpAHQAeQBFAG4AZwBpAG4AZQAuAEMAbwByAGUATQBvAGQAdQBsAGUAAAAAACAAAAAAIAAAAAAgAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: _fadePropertyBlock
+            variableID: 9954828c-72b1-4c61-841f-86a5ec7c84a4
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: Set the fade color
+        - actionType:
+            directEvent: UnityEngineRenderer.__SetPropertyBlock__UnityEngineMaterialPropertyBlock__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: _fadePropertyBlock
+            variableID: 9954828c-72b1-4c61-841f-86a5ec7c84a4
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: _fadeRenderer
+            variableID: 37fccccf-a919-4e39-acec-fe43acd387ca
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: Set the propertyblock to ensure fade is off.
+        - actionType:
+            directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__set_enabled__SystemBoolean__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAEF
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: This UdonBehaviour
+            variableID: _this_udonbehaviour
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: Enable self to start fade
+        - actionType:
+            directEvent: CyanTriggerSpecial_If
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: If the player should be immobilized during fade, set them immobile.
+        - actionType:
+            directEvent: CyanTriggerSpecial_Condition
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: ab96a2b6-a93e-4ede-b650-fea78939a59d
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBFgAAAFMAaABvAHUAbABkAEkAbQBtAG8AYgBpAGwAaQB6AGUAUABsAGEAeQBlAHIABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: SystemBoolean__.Set__SystemBoolean__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: immobilizePlayer
+            variableID: 041d35f7-1271-4462-856b-4b2ecb602566
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAEF
+              unityObjects: []
+          - isVariable: 1
+            name: ShouldImmobilizePlayer
+            variableID: ab96a2b6-a93e-4ede-b650-fea78939a59d
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionBody
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__Immobilize__SystemBoolean__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: immobilizePlayer
+            variableID: 041d35f7-1271-4462-856b-4b2ecb602566
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAEF
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        eventOptions:
+          userGate: 0
+          userGateExtraData: []
+          broadcast: 0
+          delay: 0
+        expanded: 1
+      - name: _Unnamed
+        eventInstance:
+          actionType:
+            directEvent: Event_Update
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        actionInstances:
+        - actionType:
+            directEvent: CyanTriggerSpecial_ReturnIfDisabled
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: Do nothing if this object is disabled.
+        - actionType:
+            directEvent: CyanTriggerVariable_SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 724d5944-12bc-4451-a505-512a50ad5678
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBCAAAAHQAZQBtAHAAVABpAG0AZQAF
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Create a local variable to get the current time.
+        - actionType:
+            directEvent: CyanTriggerVariable_SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: ec3b82e7-f82d-49ad-8b50-6bd8012b5698
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBCQAAAHQAaQBtAGUARABlAGwAdABhAAU=
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Create a local variable to get the time delta from fade start
+              until now.
+        - actionType:
+            directEvent: UnityEngineTime.__get_time__SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: tempTime
+            variableID: 724d5944-12bc-4451-a505-512a50ad5678
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Get the current time.
+        - actionType:
+            directEvent: SystemSingle.__op_Subtraction__SystemSingle_SystemSingle__SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: tempTime
+            variableID: 724d5944-12bc-4451-a505-512a50ad5678
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          - isVariable: 1
+            name: _fadeStartTime
+            variableID: 9878e4c4-b26e-40a0-8f48-b7b6d5b9c365
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          - isVariable: 1
+            name: timeDelta
+            variableID: ec3b82e7-f82d-49ad-8b50-6bd8012b5698
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Calculate how long has passed since fade start.
+        - actionType:
+            directEvent: CyanTriggerVariable_SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 24df0e40-47d4-4661-be83-b133b1e8d5dd
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBCQAAAGYAYQBkAGUAUgBhAG4AZwBlAAU=
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Create a local variable for setting the percentage of fade that
+              will be used to set the alpha on the overlay cube.
+        - actionType:
+            directEvent: CyanTriggerSpecial_If
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: If we are currently fading in to the color, calculate percentage
+              based on fade in time.
+        - actionType:
+            directEvent: CyanTriggerSpecial_Condition
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: b896cb35-16f6-4a7d-8ee7-91ab2e3b3dbb
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBCAAAAGkAcwBGAGEAZABlAEkAbgAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: SystemBoolean__.Set__SystemBoolean__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: _fadeIn
+            variableID: b52d9727-3509-4132-82bf-467f2ea0ad13
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAEF
+              unityObjects: []
+          - isVariable: 1
+            name: isFadeIn
+            variableID: b896cb35-16f6-4a7d-8ee7-91ab2e3b3dbb
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionBody
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: SystemSingle.__op_Division__SystemSingle_SystemSingle__SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: timeDelta
+            variableID: ec3b82e7-f82d-49ad-8b50-6bd8012b5698
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          - isVariable: 1
+            name: fadeInTime
+            variableID: 5522add4-6114-4ca3-95a2-3fe33082bfde
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          - isVariable: 1
+            name: fadeRange
+            variableID: 24df0e40-47d4-4661-be83-b133b1e8d5dd
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_If
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: Check if our range is past 1 to start fade out.
+        - actionType:
+            directEvent: CyanTriggerSpecial_Condition
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: cf252a6b-45f4-4ac1-9992-2a7adafb1e57
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBDgAAAEcAcgBlAGEAdABlAHIAVABoAGEAbgBPAG4AZQAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: SystemSingle.__op_GreaterThanOrEqual__SystemSingle_SystemSingle__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: fadeRange
+            variableID: 24df0e40-47d4-4661-be83-b133b1e8d5dd
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAIA/BQ==
+              unityObjects: []
+          - isVariable: 1
+            name: GreaterThanOne
+            variableID: cf252a6b-45f4-4ac1-9992-2a7adafb1e57
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionBody
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTrigger.__SendCustomEvent__CyanTrigger__SystemString
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBDwAAAF8ARgBhAGQAZQBJAG4ARgBpAG4AaQBzAGgAZQBkAAU=
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: This CyanTrigger
+            variableID: _this_cyantrigger
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_Else
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: If we are currently fading out of the color, calculate percentage
+              based on fade out time.
+        - actionType:
+            directEvent: SystemSingle.__op_Division__SystemSingle_SystemSingle__SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: timeDelta
+            variableID: ec3b82e7-f82d-49ad-8b50-6bd8012b5698
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          - isVariable: 1
+            name: fadeOutTime
+            variableID: 96375d19-1fcf-402e-9f17-ebd0ab191526
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          - isVariable: 1
+            name: fadeRange
+            variableID: 24df0e40-47d4-4661-be83-b133b1e8d5dd
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: SystemSingle.__op_Subtraction__SystemSingle_SystemSingle__SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAIA/BQ==
+              unityObjects: []
+          - isVariable: 1
+            name: fadeRange
+            variableID: 24df0e40-47d4-4661-be83-b133b1e8d5dd
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          - isVariable: 1
+            name: fadeRange
+            variableID: 24df0e40-47d4-4661-be83-b133b1e8d5dd
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_If
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: Check if our range is less than 0 to stop fading completely.
+        - actionType:
+            directEvent: CyanTriggerSpecial_Condition
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: a1a99d57-427f-4c80-815d-500f07be8dfb
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBDAAAAEwAZQBzAHMAVABoAGEAbgBaAGUAcgBvAAU=
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: SystemSingle.__op_LessThan__SystemSingle_SystemSingle__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: fadeRange
+            variableID: 24df0e40-47d4-4661-be83-b133b1e8d5dd
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          - isVariable: 1
+            name: LessThanZero
+            variableID: a1a99d57-427f-4c80-815d-500f07be8dfb
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionBody
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTrigger.__SendCustomEvent__CyanTrigger__SystemString
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBEAAAAF8ARgBhAGQAZQBPAHUAdABGAGkAbgBpAHMAaABlAGQABQ==
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: This CyanTrigger
+            variableID: _this_cyantrigger
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: UnityEngineMathf.__Clamp01__SystemSingle__SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: fadeRange
+            variableID: 24df0e40-47d4-4661-be83-b133b1e8d5dd
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          - isVariable: 1
+            name: fadeRange
+            variableID: 24df0e40-47d4-4661-be83-b133b1e8d5dd
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: UnityEngineMaterialPropertyBlock.__SetFloat__SystemString_SystemSingle__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBBgAAAF8AQQBsAHAAaABhAAU=
+              unityObjects: []
+          - isVariable: 1
+            name: fadeRange
+            variableID: 24df0e40-47d4-4661-be83-b133b1e8d5dd
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: _fadePropertyBlock
+            variableID: 9954828c-72b1-4c61-841f-86a5ec7c84a4
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: UnityEngineRenderer.__SetPropertyBlock__UnityEngineMaterialPropertyBlock__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: _fadePropertyBlock
+            variableID: 9954828c-72b1-4c61-841f-86a5ec7c84a4
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: _fadeRenderer
+            variableID: 37fccccf-a919-4e39-acec-fe43acd387ca
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        eventOptions:
+          userGate: 0
+          userGateExtraData: []
+          broadcast: 0
+          delay: 0
+        expanded: 1
+      - name: _FadeInFinished
+        eventInstance:
+          actionType:
+            directEvent: Event_Custom
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        actionInstances:
+        - actionType:
+            directEvent: UnityEngineTime.__get_time__SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: _fadeStartTime
+            variableID: 9878e4c4-b26e-40a0-8f48-b7b6d5b9c365
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: SystemBoolean__.Set__SystemBoolean__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          - isVariable: 1
+            name: _fadeIn
+            variableID: b52d9727-3509-4132-82bf-467f2ea0ad13
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_If
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: If the caller Udon is valid, notify it that fade in has finished.
+        - actionType:
+            directEvent: CyanTriggerSpecial_Condition
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 13d4c7fd-8426-4426-8061-1026e30f40ee
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBDQAAAGMAYQBsAGwAZQByAEkAcwBWAGEAbABpAGQABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCSDKBaseUtilities.__IsValid__SystemObject__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: callerUdon
+            variableID: b8eb2eae-b24e-46ef-8b7a-fac1d4cf7251
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: callerIsValid
+            variableID: 13d4c7fd-8426-4426-8061-1026e30f40ee
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionBody
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEvent__SystemString__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBEQAAAF8ATwBuAEYAYQBkAGUASQBuAEYAaQBuAGkAcwBoAGUAZAAF
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: callerUdon
+            variableID: b8eb2eae-b24e-46ef-8b7a-fac1d4cf7251
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        eventOptions:
+          userGate: 0
+          userGateExtraData: []
+          broadcast: 0
+          delay: 0
+        expanded: 1
+      - name: _FadeOutFinished
+        eventInstance:
+          actionType:
+            directEvent: Event_Custom
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        actionInstances:
+        - actionType:
+            directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__set_enabled__SystemBoolean__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: This UdonBehaviour
+            variableID: _this_udonbehaviour
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: Disable self at start
+        - actionType:
+            directEvent: UnityEngineGameObject.__SetActive__SystemBoolean__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: _playerTracker
+            variableID: ecd80ff9-67b6-4747-8ce1-1c9ffb6f6f07
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_If
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: If the player was immobilized, set them back to mobile again.
+        - actionType:
+            directEvent: CyanTriggerSpecial_Condition
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 2e398f2a-95d2-4245-af63-77186f0ebb43
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBFgAAAFMAaABvAHUAbABkAEkAbQBtAG8AYgBpAGwAaQB6AGUAUABsAGEAeQBlAHIABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: SystemBoolean__.Set__SystemBoolean__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: immobilizePlayer
+            variableID: 041d35f7-1271-4462-856b-4b2ecb602566
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAEF
+              unityObjects: []
+          - isVariable: 1
+            name: ShouldImmobilizePlayer
+            variableID: 2e398f2a-95d2-4245-af63-77186f0ebb43
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionBody
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__Immobilize__SystemBoolean__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: immobilizePlayer
+            variableID: 041d35f7-1271-4462-856b-4b2ecb602566
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_If
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: If the caller Udon is valid, notify it that fade in has finished.
+        - actionType:
+            directEvent: CyanTriggerSpecial_Condition
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 7dda0562-85f4-419d-b6a4-b01ab8455255
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBDQAAAGMAYQBsAGwAZQByAEkAcwBWAGEAbABpAGQABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCSDKBaseUtilities.__IsValid__SystemObject__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: callerUdon
+            variableID: b8eb2eae-b24e-46ef-8b7a-fac1d4cf7251
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: callerIsValid
+            variableID: 7dda0562-85f4-419d-b6a4-b01ab8455255
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionBody
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEvent__SystemString__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBEgAAAF8ATwBuAEYAYQBkAGUATwB1AHQARgBpAG4AaQBzAGgAZQBkAAU=
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: callerUdon
+            variableID: b8eb2eae-b24e-46ef-8b7a-fac1d4cf7251
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 1
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCUdonCommonInterfacesIUdonEventReceiver__.Set__VRCUdonCommonInterfacesIUdonEventReceiver__VRCUdonCommonInterfacesIUdonEventReceiver
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: callerUdon
+            variableID: b8eb2eae-b24e-46ef-8b7a-fac1d4cf7251
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Set the callerUdon to null to prevent trying to call it again.
+        eventOptions:
+          userGate: 0
+          userGateExtraData: []
+          broadcast: 0
+          delay: 0
+        expanded: 1
+      variables:
+      - isVariable: 0
+        name: fadeInTime
+        variableID: 5522add4-6114-4ca3-95a2-3fe33082bfde
+        data:
+          objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAIA/BQ==
+          unityObjects: []
+        type:
+          typeDef: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        sync: 0
+      - isVariable: 0
+        name: fadeOutTime
+        variableID: 96375d19-1fcf-402e-9f17-ebd0ab191526
+        data:
+          objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAIA/BQ==
+          unityObjects: []
+        type:
+          typeDef: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        sync: 0
+      - isVariable: 0
+        name: fadeColor
+        variableID: 5da373a8-a810-42ef-9aa4-619eb3c34933
+        data:
+          objEncoded: Ai8AAAAAASkAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AbABvAHIALAAgAFUAbgBpAHQAeQBFAG4AZwBpAG4AZQAuAEMAbwByAGUATQBvAGQAdQBsAGUAAAAAACAAAIA/IAAAgD8gAACAPyAAAIA/BQ==
+          unityObjects: []
+        type:
+          typeDef: UnityEngine.Color, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+        sync: 0
+      - isVariable: 0
+        name: immobilizePlayer
+        variableID: 041d35f7-1271-4462-856b-4b2ecb602566
+        data:
+          objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAEF
+          unityObjects: []
+        type:
+          typeDef: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        sync: 0
+      - isVariable: 0
+        name: callerUdon
+        variableID: b8eb2eae-b24e-46ef-8b7a-fac1d4cf7251
+        data:
+          objEncoded: Lg==
+          unityObjects: []
+        type:
+          typeDef: VRC.Udon.UdonBehaviour, VRC.Udon, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+        sync: 0
+      - isVariable: 0
+        name: _fadeStartTime
+        variableID: 9878e4c4-b26e-40a0-8f48-b7b6d5b9c365
+        data:
+          objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+          unityObjects: []
+        type:
+          typeDef: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        sync: 0
+      - isVariable: 0
+        name: _playerTracker
+        variableID: ecd80ff9-67b6-4747-8ce1-1c9ffb6f6f07
+        data:
+          objEncoded: DAAAAAA=
+          unityObjects:
+          - {fileID: 5419771978764138053}
+        type:
+          typeDef: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        sync: 0
+      - isVariable: 0
+        name: _fadeIn
+        variableID: b52d9727-3509-4132-82bf-467f2ea0ad13
+        data:
+          objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+          unityObjects: []
+        type:
+          typeDef: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        sync: 0
+      - isVariable: 0
+        name: _fadePropertyBlock
+        variableID: 9954828c-72b1-4c61-841f-86a5ec7c84a4
+        data:
+          objEncoded: Lg==
+          unityObjects: []
+        type:
+          typeDef: UnityEngine.MaterialPropertyBlock, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        sync: 0
+      - isVariable: 0
+        name: _fadeRenderer
+        variableID: 37fccccf-a919-4e39-acec-fe43acd387ca
+        data:
+          objEncoded: DAAAAAA=
+          unityObjects:
+          - {fileID: 1092451042485306627}
+        type:
+          typeDef: UnityEngine.Renderer, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        sync: 0
+      comment:
+        comment: 'A prefab used to fade the player''s screen to a solid color. Fade
+          in time, fade out time, and fade color can be configured. When calling _StartFade,
+          set the "callerUdon" variable to receive callbacks on the status of the
+          fade. Callbacks include:
+
+          - _OnFadeInFinished - called when the screen has fully faded to the color.
+
+          - _OnFadeOutFinished - Called when fade out has finished and the fade is
+          complete.'
+    udonBehaviour: {fileID: 1092451041071494893}
+--- !u!114 &1092451041071494893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092451041071494892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45115577ef41a5b4ca741ed302693907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactTextPlacement: {fileID: 0}
+  interactText: Use
+  interactTextGO: {fileID: 0}
+  proximity: 2
+  SynchronizePosition: 0
+  AllowCollisionOwnershipTransfer: 1
+  Reliable: 1
+  serializedProgramAsset: {fileID: 11400000, guid: 9c3fe766e23cdaf44ab47a294c1fd584,
+    type: 2}
+  programSource: {fileID: 11400000, guid: aaa95946b38d3474e986547f2220617c, type: 2}
+  serializedPublicVariablesBytesString: Ai8AAAAAATIAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAFQAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AAAAAAAYBAAAAAAAAACcBBAAAAHQAeQBwAGUAAWgAAABTAHkAcwB0AGUAbQAuAEMAbwBsAGwAZQBjAHQAaQBvAG4AcwAuAEcAZQBuAGUAcgBpAGMALgBMAGkAcwB0AGAAMQBbAFsAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4ALgBJAG4AdABlAHIAZgBhAGMAZQBzAC4ASQBVAGQAbwBuAFYAYQByAGkAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AXQBdACwAIABtAHMAYwBvAHIAbABpAGIAAQEJAAAAVgBhAHIAaQBhAGIAbABlAHMALwEAAAABaAAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAEkAbgB0AGUAcgBmAGEAYwBlAHMALgBJAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlACwAIABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgBdAF0ALAAgAG0AcwBjAG8AcgBsAGkAYgABAAAABgAAAAAAAAAABwUHBQ==
+  publicVariablesUnityEngineObjects: []
+  publicVariablesSerializationDataFormat: 0
+--- !u!1 &1092451042485306636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1092451042485306637}
+  - component: {fileID: 1092451042485306626}
+  - component: {fileID: 1092451042485306627}
+  m_Layer: 0
+  m_Name: FadeCube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1092451042485306637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092451042485306636}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5419771978764138048}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1092451042485306626
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092451042485306636}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1092451042485306627
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092451042485306636}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6bcdbad1f1fd6fb4599c7ddf75df7ee3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1001 &1092451042313378361
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1092451041071494883}
+    m_Modifications:
+    - target: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925820, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerTracker
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925820, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925822, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: triggerInstance.triggerDataInstance.version
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925823, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: publicVariablesUnityEngineObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925823, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: programSource
+      value: 
+      objectReference: {fileID: 11400000, guid: aaa95946b38d3474e986547f2220617c,
+        type: 2}
+    - target: {fileID: 4908870306480925823, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: serializedPublicVariablesBytesString
+      value: Ai8AAAAAATIAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAFQAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AAAAAAAYBAAAAAAAAACcBBAAAAHQAeQBwAGUAAWgAAABTAHkAcwB0AGUAbQAuAEMAbwBsAGwAZQBjAHQAaQBvAG4AcwAuAEcAZQBuAGUAcgBpAGMALgBMAGkAcwB0AGAAMQBbAFsAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4ALgBJAG4AdABlAHIAZgBhAGMAZQBzAC4ASQBVAGQAbwBuAFYAYQByAGkAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AXQBdACwAIABtAHMAYwBvAHIAbABpAGIAAQEJAAAAVgBhAHIAaQBhAGIAbABlAHMALwEAAAABaAAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAEkAbgB0AGUAcgBmAGEAYwBlAHMALgBJAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlACwAIABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgBdAF0ALAAgAG0AcwBjAG8AcgBsAGkAYgABAAAABgAAAAAAAAAABwUHBQ==
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908870306480925823, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+        type: 3}
+      propertyPath: serializedProgramAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: cef00478bf28ed346883a3eda0f51226,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 247fe84fa3afb2c41a0094c7eacc97b1, type: 3}
+--- !u!1 &5419771978764138053 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4908870306480925820, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1092451042313378361}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5419771978764138048 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4908870306480925817, guid: 247fe84fa3afb2c41a0094c7eacc97b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1092451042313378361}
+  m_PrefabAsset: {fileID: 0}

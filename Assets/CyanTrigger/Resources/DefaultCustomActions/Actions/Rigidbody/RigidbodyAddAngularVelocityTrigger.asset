@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: RigidbodyAddAngularVelocityTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: 74ffa323-114e-4bbd-ae44-f8d83cce82e0
+    actionName: Rigidbody
+    actionVariantName: AddAngularVelocity
+    description: 
+    variables:
+    - type:
+        typeDef: UnityEngine.Rigidbody, UnityEngine.PhysicsModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      udonName: Rigidbody
+      displayName: Rigidbody
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 19
+    - type:
+        typeDef: UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+      udonName: Vector3
+      displayName: Vector3
+      description: 
+      defaultValue:
+        objEncoded: Ai8AAAAAASsAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBWAGUAYwB0AG8AcgAzACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAAAAAAAgAAAAACAAAAAAIAAAAAAF
+        unityObjects: []
+      variableType: 3
+    baseEventName: Event_Custom
+    eventEntry: RigidbodyAddAngularVelocity
+  udonProgramAsset: {fileID: 11400000, guid: c0498eada6f438644892bcdcfc03cd21, type: 2}
+  assetGuid: c0498eada6f438644892bcdcfc03cd21

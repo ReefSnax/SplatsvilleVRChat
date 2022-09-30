@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: PlayerParticleEnterLocalTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: cd9257e8-2f46-4fd6-90f5-521060a8869a
+    actionName: OnPlayerParticleCollision
+    actionVariantName: Local
+    description: 
+    variables: []
+    baseEventName: Event_OnPlayerParticleCollision
+    eventEntry: _onPlayerParticleCollision
+  udonProgramAsset: {fileID: 11400000, guid: a53d230e001f3b74c853f6fa48fc66d6, type: 2}
+  assetGuid: a53d230e001f3b74c853f6fa48fc66d6

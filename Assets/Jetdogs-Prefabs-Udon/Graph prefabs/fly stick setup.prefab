@@ -324,7 +324,7 @@ PrefabInstance:
         type: 3}
       propertyPath: serializedProgramAsset
       value: 
-      objectReference: {fileID: 11400000, guid: dcb355b61127044499a9da030edc29a6,
+      objectReference: {fileID: 11400000, guid: 515885afa4368284682c642437e6cffb,
         type: 2}
     - target: {fileID: 4354015455407143680, guid: 6046a10d2b73a554e9fd38fb2a6551f5,
         type: 3}

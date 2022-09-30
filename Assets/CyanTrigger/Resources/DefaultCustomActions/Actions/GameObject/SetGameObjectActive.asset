@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
+  m_Name: SetGameObjectActive
+  m_EditorClassIdentifier: 
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 016b2abcf3ab7284282e5d39d99523f8,
+    type: 2}
+  udonAssembly: ".data_start\r\n\r\n    .export gameObject\r\n    .export value\r\n   
+    \r\n    __instance_0: %UnityEngineGameObject, this\r\n    __value_0: %SystemBoolean,
+    null\r\n    __Boolean_0: %SystemBoolean, null\r\n    __instance_1: %UnityEngineGameObject,
+    this\r\n    gameObject: %UnityEngineGameObject, this\r\n    value: %SystemBoolean,
+    null\r\n\r\n.data_end\r\n\r\n.code_start\r\n\r\n    .export SetGameObjectActiveToggle\r\n   
+    \r\n    SetGameObjectActiveToggle:\r\n    \r\n        PUSH, gameObject\r\n       
+    PUSH, __instance_0\r\n        COPY\r\n        PUSH, gameObject\r\n        PUSH,
+    __instance_1\r\n        COPY\r\n        PUSH, __instance_1\r\n        PUSH, __Boolean_0\r\n       
+    EXTERN, \"UnityEngineGameObject.__get_activeSelf__SystemBoolean\"\r\n       
+    PUSH, __Boolean_0\r\n        PUSH, __value_0\r\n        EXTERN, \"SystemBoolean.__op_UnaryNegation__SystemBoolean__SystemBoolean\"\r\n       
+    PUSH, __instance_0\r\n        PUSH, __value_0\r\n        EXTERN, \"UnityEngineGameObject.__SetActive__SystemBoolean__SystemVoid\"\r\n       
+    JUMP, 0xFFFFFFFC\r\n    \r\n\r\n.code_end\r\n"
+  assemblyError: 
+  graphData:
+    name: 
+    description: 
+    nodes:
+    - fullName: Variable_UnityEngineGameObject
+      uid: a43215ef-dbf0-4528-adad-4469204dd7ab
+      position: {x: -187.79999, y: -380.4}
+      nodeUIDs:
+      - 
+      - 
+      - 
+      - 
+      - 
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: 
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|gameObject
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089|True
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089|False
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|none
+    - fullName: Variable_SystemBoolean
+      uid: 11d97f74-96a9-47ca-88dc-a74d857dd05d
+      position: {x: -187.79999, y: -380.4}
+      nodeUIDs:
+      - 
+      - 
+      - 
+      - 
+      - 
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: 
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|value
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089|True
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089|False
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|none
+    - fullName: UnityEngineGameObject.__SetActive__SystemBoolean__SystemVoid
+      uid: d3e71f37-8863-4c4f-a1ca-8dcf14eb59a2
+      position: {x: 395.25015, y: 348.59018}
+      nodeUIDs:
+      - 0111af1b-2210-4eda-a314-4a6d466e8a41
+      - d42201b6-af90-46d3-9161-5e4a6a008c64|0
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: 
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089|False
+    - fullName: Get_Variable
+      uid: 0111af1b-2210-4eda-a314-4a6d466e8a41
+      position: {x: -27.59998, y: 436.69016}
+      nodeUIDs:
+      - 
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|a43215ef-dbf0-4528-adad-4469204dd7ab
+    - fullName: Event_Custom
+      uid: ecf48471-11e6-44d6-b4d2-9d2f2920cce3
+      position: {x: 33.200066, y: 345.49008}
+      nodeUIDs:
+      - 
+      flowUIDs:
+      - d3e71f37-8863-4c4f-a1ca-8dcf14eb59a2
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|SetGameObjectActiveToggle
+    - fullName: UnityEngineGameObject.__get_activeSelf__SystemBoolean
+      uid: 14280318-80ac-4388-9a09-22fbb5efec51
+      position: {x: 9.946009, y: 524.5243}
+      nodeUIDs:
+      - 0111af1b-2210-4eda-a314-4a6d466e8a41|0
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: 
+    - fullName: SystemBoolean.__op_UnaryNegation__SystemBoolean__SystemBoolean
+      uid: d42201b6-af90-46d3-9161-5e4a6a008c64
+      position: {x: 188.24203, y: 525.30646}
+      nodeUIDs:
+      - 14280318-80ac-4388-9a09-22fbb5efec51|0
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089|False
+    updateOrder: 0
+  graphElementData:
+  - type: 5
+    uid: 1673c08a-e0f6-49a0-9b10-11a7aa9099e4
+    jsonData: '{"visible":true,"layout":{"serializedVersion":"2","x":14.0,"y":129.0,"width":200.0,"height":150.0}}'
+  - type: 4
+    uid: 79ef1174-960e-4dab-8185-2056da476d27
+    jsonData: '{"visible":true,"layout":{"serializedVersion":"2","x":12.0,"y":21.0,"width":200.0,"height":100.0}}'
+  viewTransform:
+    position: {x: 58.6667, y: -5.3950553}
+    scale: 0.8695652
+  version: 1.0.0
+  showAssembly: 1

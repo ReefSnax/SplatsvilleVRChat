@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: PlayerJoinRemoteTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: f4e952a1-7376-461b-acd0-738fa18cf4db
+    actionName: OnPlayerJoined
+    actionVariantName: Remote Player
+    description: 
+    variables: []
+    baseEventName: Event_OnPlayerJoined
+    eventEntry: _onPlayerJoined
+  udonProgramAsset: {fileID: 11400000, guid: 6f9c2f1dac5679e4fa39decf4c02b594, type: 2}
+  assetGuid: 6f9c2f1dac5679e4fa39decf4c02b594

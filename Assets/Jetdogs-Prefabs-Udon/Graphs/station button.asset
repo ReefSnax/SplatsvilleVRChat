@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: station button
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 96e4dbadf2c7c5a41876255fc75cb636,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: ff023313d29bd804d818a63919d2407c,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export station\r\n    \r\n    __Boolean_0:
     %SystemBoolean, null\r\n    __instance_0: %VRCSDK3ComponentsVRCStation, null\r\n   

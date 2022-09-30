@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: station rotation fix
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 32683775c05ae2f4d8fc51dd6f8ed5f9,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: c7954014f7cfdb54c86831745bc5d883,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    \r\n    __instance_0: %VRCSDKBaseVRCPlayerApi,
     null\r\n    __instance_1: %UnityEngineTransform, this\r\n    __value_0: %UnityEngineQuaternion,

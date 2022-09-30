@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: vrcworld voice settings
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 1d8303e93689e804f97e0464412a3e96,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: b6a5fb6ff6fd3944885420de6cd80d54,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export Global\r\n    .export regionrevertsettings\r\n   
     .export VoiceGain\r\n    .export VoiceFar\r\n    .export VoiceNear\r\n    .export

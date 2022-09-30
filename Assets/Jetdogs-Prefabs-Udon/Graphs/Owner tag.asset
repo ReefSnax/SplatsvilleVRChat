@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: Owner tag
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 1100623dcfcf92849948178f760d6e49,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 5dddae3b8c0fab34daddfb20621ad331,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export ownerOf\r\n    .export sign\r\n   
     .export offset\r\n    .export follow\r\n    \r\n    __instance_0: %UnityEngineTransform,
     this\r\n    __instance_1: %UnityEngineTransform, this\r\n    __Boolean_0: %SystemBoolean,
     null\r\n    __instance_2: %UnityEngineTransform, this\r\n    __position_0: %UnityEngineVector3,
     null\r\n    __rotation_0: %UnityEngineQuaternion, null\r\n    __Vector3_0: %UnityEngineVector3,
-    null\r\n    __Vector3_1: %UnityEngineVector3, null\r\n    __TrackingData_0: %VRCSDKBaseVRCPlayerApiTrackingData,
-    null\r\n    __instance_3: %VRCSDKBaseVRCPlayerApi, null\r\n    __tt_0: %VRCSDKBaseVRCPlayerApiTrackingDataType,
+    null\r\n    __Vector3_1: %UnityEngineVector3, null\r\n    __instance_3: %VRCSDKBaseVRCPlayerApiTrackingData,
+    null\r\n    __instance_4: %VRCSDKBaseVRCPlayerApi, null\r\n    __tt_0: %VRCSDKBaseVRCPlayerApiTrackingDataType,
     null\r\n    __Single_0: %SystemSingle, null\r\n    __Single_1: %SystemSingle,
-    null\r\n    __Single_2: %SystemSingle, null\r\n    __instance_4: %VRCSDKBaseVRCPlayerApi,
+    null\r\n    __Single_2: %SystemSingle, null\r\n    __instance_5: %VRCSDKBaseVRCPlayerApi,
     null\r\n    __obj_0: %UnityEngineGameObject, this\r\n    __Boolean_1: %SystemBoolean,
     null\r\n    __Boolean_2: %SystemBoolean, null\r\n    __Boolean_3: %SystemBoolean,
-    null\r\n    __instance_5: %UnityEngineTransform, this\r\n    __position_1: %UnityEngineVector3,
+    null\r\n    __instance_6: %UnityEngineTransform, this\r\n    __position_1: %UnityEngineVector3,
     null\r\n    __rotation_1: %UnityEngineQuaternion, null\r\n    ownerOf: %UnityEngineGameObject,
     this\r\n    sign: %UnityEngineTransform, this\r\n    offset: %SystemSingle, null\r\n   
     follow: %SystemBoolean, null\r\n    resetPos: %UnityEngineVector3, null\r\n   
@@ -38,17 +38,17 @@ MonoBehaviour:
     JUMP, 0xFFFFFFFC\r\n    \r\n    .export _postLateUpdate\r\n    \r\n    _postLateUpdate:\r\n   
     \r\n        PUSH, follow\r\n        JUMP_IF_FALSE, 0x00000198\r\n        PUSH,
     sign\r\n        PUSH, __instance_2\r\n        COPY\r\n        PUSH, ownerOf\r\n       
-    PUSH, __obj_0\r\n        COPY\r\n        PUSH, __obj_0\r\n        PUSH, __instance_3\r\n       
+    PUSH, __obj_0\r\n        COPY\r\n        PUSH, __obj_0\r\n        PUSH, __instance_4\r\n       
     EXTERN, \"VRCSDKBaseNetworking.__GetOwner__UnityEngineGameObject__VRCSDKBaseVRCPlayerApi\"\r\n       
-    PUSH, __instance_3\r\n        PUSH, __tt_0\r\n        PUSH, __TrackingData_0\r\n       
+    PUSH, __instance_4\r\n        PUSH, __tt_0\r\n        PUSH, __instance_3\r\n       
     EXTERN, \"VRCSDKBaseVRCPlayerApi.__GetTrackingData__VRCSDKBaseVRCPlayerApiTrackingDataType__VRCSDKBaseVRCPlayerApiTrackingData\"\r\n       
-    PUSH, __TrackingData_0\r\n        PUSH, __Vector3_0\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApiTrackingData.__get_position__UnityEngineVector3\"\r\n       
+    PUSH, __instance_3\r\n        PUSH, __Vector3_0\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApiTrackingData.__get_position__UnityEngineVector3\"\r\n       
     PUSH, __Single_0\r\n        PUSH, offset\r\n        PUSH, __Single_2\r\n       
     PUSH, __Vector3_1\r\n        EXTERN, \"UnityEngineVector3.__ctor__SystemSingle_SystemSingle_SystemSingle__UnityEngineVector3\"\r\n       
     PUSH, __Vector3_0\r\n        PUSH, __Vector3_1\r\n        PUSH, __position_0\r\n       
     EXTERN, \"UnityEngineVector3.__op_Addition__UnityEngineVector3_UnityEngineVector3__UnityEngineVector3\"\r\n       
-    PUSH, ownerOf\r\n        PUSH, __obj_0\r\n        COPY\r\n        PUSH, __instance_3\r\n       
-    PUSH, __instance_4\r\n        COPY\r\n        PUSH, __instance_3\r\n        PUSH,
+    PUSH, ownerOf\r\n        PUSH, __obj_0\r\n        COPY\r\n        PUSH, __instance_4\r\n       
+    PUSH, __instance_5\r\n        COPY\r\n        PUSH, __instance_4\r\n        PUSH,
     __rotation_0\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__GetRotation__UnityEngineQuaternion\"\r\n       
     PUSH, __instance_2\r\n        PUSH, __position_0\r\n        PUSH, __rotation_0\r\n       
     EXTERN, \"UnityEngineTransform.__SetPositionAndRotation__UnityEngineVector3_UnityEngineQuaternion__SystemVoid\"\r\n       
@@ -57,7 +57,7 @@ MonoBehaviour:
     EXTERN, \"SystemBoolean.__op_UnaryNegation__SystemBoolean__SystemBoolean\"\r\n       
     PUSH, follow\r\n        PUSH, __Boolean_2\r\n        EXTERN, \"SystemBoolean.__op_UnaryNegation__SystemBoolean__SystemBoolean\"\r\n       
     PUSH, __Boolean_2\r\n        JUMP_IF_FALSE, 0x0000021C\r\n        PUSH, sign\r\n       
-    PUSH, __instance_5\r\n        COPY\r\n        PUSH, __instance_5\r\n        PUSH,
+    PUSH, __instance_6\r\n        COPY\r\n        PUSH, __instance_6\r\n        PUSH,
     resetPos\r\n        PUSH, resetRot\r\n        EXTERN, \"UnityEngineTransform.__SetPositionAndRotation__UnityEngineVector3_UnityEngineQuaternion__SystemVoid\"\r\n       
     JUMP, 0x0000021C\r\n        JUMP, 0xFFFFFFFC\r\n    \r\n\r\n.code_end\r\n"
   assemblyError: 

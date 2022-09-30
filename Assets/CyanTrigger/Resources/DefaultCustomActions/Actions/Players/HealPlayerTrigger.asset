@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: HealPlayerTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: 87ea8003-6eec-4432-bb8f-29ccdb2eb304
+    actionName: VRCPlayerApi
+    actionVariantName: HealPlayer
+    description: 
+    variables:
+    - type:
+        typeDef: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      udonName: Damage
+      displayName: Health
+      description: 
+      defaultValue:
+        objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+        unityObjects: []
+      variableType: 3
+    baseEventName: Event_Custom
+    eventEntry: HealPlayer
+  udonProgramAsset: {fileID: 11400000, guid: 6cf159e10a593474589fe1eb1bdc759f, type: 2}
+  assetGuid: 6cf159e10a593474589fe1eb1bdc759f

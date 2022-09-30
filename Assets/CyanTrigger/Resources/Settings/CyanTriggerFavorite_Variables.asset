@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16dd9cac1b03a34aa0d966f341cbb24, type: 3}
+  m_Name: CyanTriggerFavorite_Variables
+  m_EditorClassIdentifier: Assembly-CSharp-Editor:CyanTrigger:CyanTriggerSettingsFavoriteList
+  FavoriteType: 1
+  FavoriteItems:
+  - item: bool
+    data:
+      directEvent: CyanTriggerVariable_SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: int
+    data:
+      directEvent: CyanTriggerVariable_SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: float
+    data:
+      directEvent: CyanTriggerVariable_SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: String
+    data:
+      directEvent: CyanTriggerVariable_SystemString
+      guid: 
+    scopeDelta: 0
+  - item: Vector3
+    data:
+      directEvent: CyanTriggerVariable_UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion
+    data:
+      directEvent: CyanTriggerVariable_UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: Color
+    data:
+      directEvent: CyanTriggerVariable_UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: GameObject
+    data:
+      directEvent: CyanTriggerVariable_UnityEngineGameObject
+      guid: 
+    scopeDelta: 0
+  - item: Transform
+    data:
+      directEvent: CyanTriggerVariable_UnityEngineTransform
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour
+    data:
+      directEvent: CyanTriggerVariable_VRCUdonCommonInterfacesIUdonEventReceiver
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi
+    data:
+      directEvent: CyanTriggerVariable_VRCSDKBaseVRCPlayerApi
+      guid: 
+    scopeDelta: 0
+  - item: Material
+    data:
+      directEvent: CyanTriggerVariable_UnityEngineMaterial
+      guid: 
+    scopeDelta: 0
+  - item: Animator
+    data:
+      directEvent: CyanTriggerVariable_UnityEngineAnimator
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem
+    data:
+      directEvent: CyanTriggerVariable_UnityEngineParticleSystem
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource
+    data:
+      directEvent: CyanTriggerVariable_UnityEngineAudioSource
+      guid: 
+    scopeDelta: 0

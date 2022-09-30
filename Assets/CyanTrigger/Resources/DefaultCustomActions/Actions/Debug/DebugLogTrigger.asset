@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: DebugLogTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: 501e9c14-809a-4749-a2e3-934197af210b
+    actionName: Debug
+    actionVariantName: Log
+    description: 
+    variables:
+    - type:
+        typeDef: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      udonName: Message
+      displayName: Message
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 3
+    baseEventName: Event_Custom
+    eventEntry: Log
+  - guid: 322662b7-dda9-4865-8008-a61aca89f21d
+    actionName: Debug
+    actionVariantName: Log Warning
+    description: 
+    variables:
+    - type:
+        typeDef: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      udonName: Message
+      displayName: Message
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 3
+    baseEventName: Event_Custom
+    eventEntry: LogWarning
+  - guid: 0458d31f-51cf-42da-b17f-3b9a88ee3cd2
+    actionName: Debug
+    actionVariantName: Log Error
+    description: 
+    variables:
+    - type:
+        typeDef: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      udonName: Message
+      displayName: Message
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 3
+    baseEventName: Event_Custom
+    eventEntry: LogError
+  udonProgramAsset: {fileID: 11400000, guid: 05c058d4416583844b0a7a5908f8df06, type: 2}
+  assetGuid: 05c058d4416583844b0a7a5908f8df06

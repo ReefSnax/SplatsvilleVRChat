@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: custom event
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: dae3847adfddf084a8d3dc2ba1d81ffe,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: d6e389440ffdd874e86aaeea17937e50,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export udonBehaviour\r\n    .export eventName\r\n   
     .export networked\r\n    \r\n    __Boolean_0: %SystemBoolean, null\r\n    __instance_0:

@@ -1,0 +1,240 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &651717064792176197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 651717064792176198}
+  - component: {fileID: 651717064792176199}
+  - component: {fileID: 651717064792176196}
+  m_Layer: 0
+  m_Name: LocomotionSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &651717064792176198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651717064792176197}
+  m_LocalRotation: {x: -0, y: -0.38268322, z: -0, w: 0.9238797}
+  m_LocalPosition: {x: -4.24, y: 0, z: 2.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &651717064792176199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651717064792176197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd4a7956009f7d429a09b8371329c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerInstance:
+    proximity: 2
+    interactText: Use
+    triggerDataInstance:
+      version: 3
+      updateOrder: 0
+      programSyncMode: 0
+      events:
+      - name: 
+        eventInstance:
+          actionType:
+            directEvent: Event_Start
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: At the start of the world, set the player's locomotion settings.
+        actionInstances:
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__SetWalkSpeed__SystemSingle__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: WalkSpeed
+            variableID: 1dae2764-165c-4765-89ce-e35dcab87b7b
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__SetStrafeSpeed__SystemSingle__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: StrafeSpeed
+            variableID: 57e0d7a0-1f1a-4ffb-a80b-52e696ae9a0e
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__SetRunSpeed__SystemSingle__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: RunSpeed
+            variableID: 6832b65b-1dd9-4d62-92d4-3db0159c0296
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__SetJumpImpulse__SystemSingle__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: JumpImpulse
+            variableID: b11ea5a3-8c58-446a-a917-a6d3fce6d489
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        eventOptions:
+          userGate: 0
+          userGateExtraData: []
+          broadcast: 0
+          delay: 0
+        expanded: 1
+      variables:
+      - isVariable: 0
+        name: WalkSpeed
+        variableID: 1dae2764-165c-4765-89ce-e35dcab87b7b
+        data:
+          objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAABABQ==
+          unityObjects: []
+        type:
+          typeDef: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        sync: 0
+      - isVariable: 0
+        name: StrafeSpeed
+        variableID: 57e0d7a0-1f1a-4ffb-a80b-52e696ae9a0e
+        data:
+          objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAABABQ==
+          unityObjects: []
+        type:
+          typeDef: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        sync: 0
+      - isVariable: 0
+        name: RunSpeed
+        variableID: 6832b65b-1dd9-4d62-92d4-3db0159c0296
+        data:
+          objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAIBABQ==
+          unityObjects: []
+        type:
+          typeDef: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        sync: 0
+      - isVariable: 0
+        name: JumpImpulse
+        variableID: b11ea5a3-8c58-446a-a917-a6d3fce6d489
+        data:
+          objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAKBABQ==
+          unityObjects: []
+        type:
+          typeDef: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        sync: 0
+      comment:
+        comment: 
+    udonBehaviour: {fileID: 651717064792176196}
+--- !u!114 &651717064792176196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651717064792176197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45115577ef41a5b4ca741ed302693907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactTextPlacement: {fileID: 0}
+  interactText: Use
+  interactTextGO: {fileID: 0}
+  proximity: 2
+  SynchronizePosition: 0
+  AllowCollisionOwnershipTransfer: 0
+  Reliable: 0
+  serializedProgramAsset: {fileID: 11400000, guid: 9c3fe766e23cdaf44ab47a294c1fd584,
+    type: 2}
+  programSource: {fileID: 11400000, guid: aaa95946b38d3474e986547f2220617c, type: 2}
+  serializedPublicVariablesBytesString: Ai8AAAAAATIAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAFQAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AAAAAAAYBAAAAAAAAACcBBAAAAHQAeQBwAGUAAWgAAABTAHkAcwB0AGUAbQAuAEMAbwBsAGwAZQBjAHQAaQBvAG4AcwAuAEcAZQBuAGUAcgBpAGMALgBMAGkAcwB0AGAAMQBbAFsAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4ALgBJAG4AdABlAHIAZgBhAGMAZQBzAC4ASQBVAGQAbwBuAFYAYQByAGkAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AXQBdACwAIABtAHMAYwBvAHIAbABpAGIAAQEJAAAAVgBhAHIAaQBhAGIAbABlAHMALwEAAAABaAAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAEkAbgB0AGUAcgBmAGEAYwBlAHMALgBJAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlACwAIABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgBdAF0ALAAgAG0AcwBjAG8AcgBsAGkAYgABAAAABgAAAAAAAAAABwUHBQ==
+  publicVariablesUnityEngineObjects: []
+  publicVariablesSerializationDataFormat: 0

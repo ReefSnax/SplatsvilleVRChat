@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: OnCollisionExitLayerTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: 5a501cc1-d72f-4ff1-a256-fbe900097ad5
+    actionName: OnCollisionExit
+    actionVariantName: LayerMask
+    description: 
+    variables:
+    - type:
+        typeDef: UnityEngine.LayerMask, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+      udonName: CollisionMask
+      displayName: LayerMask
+      description: 
+      defaultValue:
+        objEncoded: Ai8AAAAAAS0AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBMAGEAeQBlAHIATQBhAHMAawAsACAAVQBuAGkAdAB5AEUAbgBnAGkAbgBlAC4AQwBvAHIAZQBNAG8AZAB1AGwAZQAAAAAAGAAAAAAF
+        unityObjects: []
+      variableType: 3
+    baseEventName: Event_OnCollisionExit
+    eventEntry: _onCollisionExit
+  udonProgramAsset: {fileID: 11400000, guid: bea5bdb7a6b5d0f41bd0e9261ad9326b, type: 2}
+  assetGuid: bea5bdb7a6b5d0f41bd0e9261ad9326b

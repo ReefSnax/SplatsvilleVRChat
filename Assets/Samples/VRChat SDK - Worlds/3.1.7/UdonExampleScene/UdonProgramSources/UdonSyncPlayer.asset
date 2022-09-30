@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: UdonSyncPlayer
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 0d210e13ecd64634d8238b7bc1b34f66,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 805b322a864efc44dac10483e44a81a3,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export player\r\n    .export urlInputField\r\n   
     .export syncFrequency\r\n    .export allowGuestControl\r\n    .sync url, none\r\n   

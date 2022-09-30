@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: RigidbodyToggleGravityTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: 2f0aae44-90e1-406d-852a-b69e7cf814cb
+    actionName: Rigidbody
+    actionVariantName: ToggleGravity
+    description: 
+    variables:
+    - type:
+        typeDef: UnityEngine.Rigidbody, UnityEngine.PhysicsModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      udonName: Rigidbody
+      displayName: Rigidbody
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 19
+    baseEventName: Event_Custom
+    eventEntry: RigidbodyToggleGravity
+  udonProgramAsset: {fileID: 11400000, guid: 4113cd50a007ea145b934d26ebf4d697, type: 2}
+  assetGuid: 4113cd50a007ea145b934d26ebf4d697

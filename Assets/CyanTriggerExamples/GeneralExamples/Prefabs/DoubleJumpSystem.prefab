@@ -1,0 +1,491 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6809811957752865086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6809811957752865073}
+  - component: {fileID: 6809811957752865072}
+  - component: {fileID: 6809811957752865087}
+  m_Layer: 0
+  m_Name: DoubleJumpSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6809811957752865073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6809811957752865086}
+  m_LocalRotation: {x: -0, y: -0.38268322, z: -0, w: 0.9238797}
+  m_LocalPosition: {x: -4.24, y: 0, z: 2.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -45.000004, z: 0}
+--- !u!114 &6809811957752865072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6809811957752865086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd4a7956009f7d429a09b8371329c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerInstance:
+    proximity: 2
+    interactText: Use
+    triggerDataInstance:
+      version: 3
+      updateOrder: 0
+      programSyncMode: 0
+      events:
+      - name: 
+        eventInstance:
+          actionType:
+            directEvent: Event_InputJump
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: On every jump check if it was while the player was mid air. If
+              they are in the air and have not already used their second jump, add
+              velocity to jump again.
+        actionInstances:
+        - actionType:
+            directEvent: CyanTriggerSpecial_If
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_Condition
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: f20de6bf-022f-4631-b996-76e1d26a1f85
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBDQAAAEMAYQBuAEQAbwB1AGIAbABlAEoAdQBtAHAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: If the player is not grounded, the jump button was pressed down,
+              and we have not used our second jump yet.
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionFailIfFalse
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: inputJumpBoolValue
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Fail the condition if the input button was just released instead
+              of pressed.
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionFailIfFalse
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: canJump
+            variableID: 58866934-c119-414f-9d6e-8feb98df845d
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Fail the condition if we have already used our second jump.
+        - actionType:
+            directEvent: CyanTriggerVariable_SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 39323fc2-d9b5-4f00-8c60-a4f2ab83357e
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBDQAAAEkAcwBOAG8AdABHAHIAbwB1AG4AZABlAGQABQ==
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__IsPlayerGrounded__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: IsNotGrounded
+            variableID: 39323fc2-d9b5-4f00-8c60-a4f2ab83357e
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Get if the player is currently grounded.
+        - actionType:
+            directEvent: SystemBoolean.__op_UnaryNegation__SystemBoolean__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: IsNotGrounded
+            variableID: 39323fc2-d9b5-4f00-8c60-a4f2ab83357e
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          - isVariable: 1
+            name: CanDoubleJump
+            variableID: f20de6bf-022f-4631-b996-76e1d26a1f85
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Set if we can double jump based on if we are not grounded.
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionBody
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: SystemBoolean__.Set__SystemBoolean__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          - isVariable: 1
+            name: canJump
+            variableID: 58866934-c119-414f-9d6e-8feb98df845d
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Set our can jump variable to false as we are using it now.
+        - actionType:
+            directEvent: CyanTriggerVariable_UnityEngineVector3
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: f9ea2d9a-a146-4ccf-aede-cd1d90486266
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBDgAAAFAAbABhAHkAZQByAFYAZQBsAG8AYwBpAHQAeQAF
+              unityObjects: []
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAASsAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBWAGUAYwB0AG8AcgAzACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAAAAAAAgAAAAACAAAAAAIAAAAAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Create a local vector3 variable to store the player's current
+              velocity.
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__GetVelocity__UnityEngineVector3
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: PlayerVelocity
+            variableID: f9ea2d9a-a146-4ccf-aede-cd1d90486266
+            data:
+              objEncoded: Ai8AAAAAASsAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBWAGUAYwB0AG8AcgAzACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAAAAAAAgAAAAACAAAAAAIAAAAAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Get the player's current velocity. Without this, the player would
+              lose all x and z movement and go straight up when we set the velocity
+              back.
+        - actionType:
+            directEvent: UnityEngineVector3.__set_y__SystemSingle
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: PlayerVelocity
+            variableID: f9ea2d9a-a146-4ccf-aede-cd1d90486266
+            data:
+              objEncoded: Ai8AAAAAASsAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBWAGUAYwB0AG8AcgAzACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAAAAAAAgAAAAACAAAAAAIAAAAAAF
+              unityObjects: []
+          - isVariable: 1
+            name: JumpYVelocity
+            variableID: 92194662-0a31-4020-a1c0-f2d41970337e
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Set the y component of the player's velocity to our jump value.
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__SetVelocity__UnityEngineVector3__SystemVoid
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: PlayerVelocity
+            variableID: f9ea2d9a-a146-4ccf-aede-cd1d90486266
+            data:
+              objEncoded: Ai8AAAAAASsAAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBWAGUAYwB0AG8AcgAzACwAIABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBDAG8AcgBlAE0AbwBkAHUAbABlAAAAAAAgAAAAACAAAAAAIAAAAAAF
+              unityObjects: []
+          multiInput:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 'Set the player''s velocity back. '
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput:
+          - isVariable: 1
+            name: localPlayer
+            variableID: e07961d8-197c-4d43-8d43-bc91ee220b88
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          expanded: 0
+          comment:
+            comment: 
+        eventOptions:
+          userGate: 0
+          userGateExtraData: []
+          broadcast: 0
+          delay: 0
+        expanded: 1
+      - name: 
+        eventInstance:
+          actionType:
+            directEvent: Event_FixedUpdate
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: Every frame, check when the player is grounded to know if they
+              can double jump again.
+        actionInstances:
+        - actionType:
+            directEvent: CyanTriggerSpecial_If
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_Condition
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 2a2ccf04-9552-4b17-9aaa-dcbb1ce95bcf
+            data:
+              objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBDAAAAEMAYQBuAEoAdQBtAHAAQQBnAGEAaQBuAAU=
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: VRCSDKBaseVRCPlayerApi.__IsPlayerGrounded__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 1
+            name: Local Player
+            variableID: _this_local_player
+            data:
+              objEncoded: Lg==
+              unityObjects: []
+          - isVariable: 1
+            name: CanJumpAgain
+            variableID: 2a2ccf04-9552-4b17-9aaa-dcbb1ce95bcf
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_ConditionBody
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: SystemBoolean__.Set__SystemBoolean__SystemBoolean
+            guid: 
+          inputs:
+          - isVariable: 0
+            name: 
+            variableID: 
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAEF
+              unityObjects: []
+          - isVariable: 1
+            name: canJump
+            variableID: 58866934-c119-414f-9d6e-8feb98df845d
+            data:
+              objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAAF
+              unityObjects: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        - actionType:
+            directEvent: CyanTriggerSpecial_BlockEnd
+            guid: 
+          inputs: []
+          multiInput: []
+          expanded: 0
+          comment:
+            comment: 
+        eventOptions:
+          userGate: 0
+          userGateExtraData: []
+          broadcast: 0
+          delay: 0
+        expanded: 1
+      variables:
+      - isVariable: 0
+        name: canJump
+        variableID: 58866934-c119-414f-9d6e-8feb98df845d
+        data:
+          objEncoded: Ai8AAAAAARgAAABTAHkAcwB0AGUAbQAuAEIAbwBvAGwAZQBhAG4ALAAgAG0AcwBjAG8AcgBsAGkAYgAAAAAALAEF
+          unityObjects: []
+        type:
+          typeDef: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        sync: 0
+      - isVariable: 0
+        name: JumpYVelocity
+        variableID: 92194662-0a31-4020-a1c0-f2d41970337e
+        data:
+          objEncoded: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAKBABQ==
+          unityObjects: []
+        type:
+          typeDef: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+        sync: 0
+      comment:
+        comment: 
+    udonBehaviour: {fileID: 6809811957752865087}
+--- !u!114 &6809811957752865087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6809811957752865086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45115577ef41a5b4ca741ed302693907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactTextPlacement: {fileID: 0}
+  interactText: Use
+  interactTextGO: {fileID: 0}
+  proximity: 2
+  SynchronizePosition: 0
+  AllowCollisionOwnershipTransfer: 0
+  Reliable: 0
+  serializedProgramAsset: {fileID: 11400000, guid: 9c3fe766e23cdaf44ab47a294c1fd584,
+    type: 2}
+  programSource: {fileID: 11400000, guid: aaa95946b38d3474e986547f2220617c, type: 2}
+  serializedPublicVariablesBytesString: Ai8AAAAAATIAAABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlAFQAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AAAAAAAYBAAAAAAAAACcBBAAAAHQAeQBwAGUAAWgAAABTAHkAcwB0AGUAbQAuAEMAbwBsAGwAZQBjAHQAaQBvAG4AcwAuAEcAZQBuAGUAcgBpAGMALgBMAGkAcwB0AGAAMQBbAFsAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4ALgBJAG4AdABlAHIAZgBhAGMAZQBzAC4ASQBVAGQAbwBuAFYAYQByAGkAYQBiAGwAZQAsACAAVgBSAEMALgBVAGQAbwBuAC4AQwBvAG0AbQBvAG4AXQBdACwAIABtAHMAYwBvAHIAbABpAGIAAQEJAAAAVgBhAHIAaQBhAGIAbABlAHMALwEAAAABaAAAAFMAeQBzAHQAZQBtAC4AQwBvAGwAbABlAGMAdABpAG8AbgBzAC4ARwBlAG4AZQByAGkAYwAuAEwAaQBzAHQAYAAxAFsAWwBWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgAuAEkAbgB0AGUAcgBmAGEAYwBlAHMALgBJAFUAZABvAG4AVgBhAHIAaQBhAGIAbABlACwAIABWAFIAQwAuAFUAZABvAG4ALgBDAG8AbQBtAG8AbgBdAF0ALAAgAG0AcwBjAG8AcgBsAGkAYgABAAAABgAAAAAAAAAABwUHBQ==
+  publicVariablesUnityEngineObjects: []
+  publicVariablesSerializationDataFormat: 0

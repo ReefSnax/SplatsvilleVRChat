@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: OnCollisionEnterNameContainsTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: c2c9d35f-0d0a-402e-b0c8-8624d57abc91
+    actionName: OnCollisionEnter
+    actionVariantName: NameContains
+    description: 
+    variables:
+    - type:
+        typeDef: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      udonName: searchText
+      displayName: Search Text
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 19
+    baseEventName: Event_OnCollisionEnter
+    eventEntry: _onCollisionEnter
+  udonProgramAsset: {fileID: 11400000, guid: eece81feade11784394183ab6f997f2f, type: 2}
+  assetGuid: eece81feade11784394183ab6f997f2f

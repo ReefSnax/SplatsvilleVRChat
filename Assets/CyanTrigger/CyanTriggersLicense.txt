@@ -1,0 +1,23 @@
+Summary
+
+This section briefly summarizes how you may use CyanTriggers.  It is not part of the End User License Agreement, is not legally binding, and does not include all the terms of the EULA.  You should review the terms of the actual EULA before using CyanTriggers.
+
+-	You MAY use CyanTriggers to build VRChat worlds, and make those worlds publicly available.
+-	You MAY NOT redistribute CyanTriggers to other people.  
+-	You MAY NOT modify CyanTriggers.
+
+CyanTriggers End User License Agreement
+
+ This End User License Agreement ("EULA") is a legally binding agreement between CyanLaser and any person ("You") that downloads, installs, or uses the CyanTriggers tools package ("CyanTriggers").  By downloading, installing, or using CyanTriggers, You agree to be bound by these Terms.
+
+2.	CyanLaser grants to You a perpetual, worldwide, non-exclusive license to download and use CyanTriggers to create virtual environments and assets for the VRChat platform.  You may not otherwise reproduce, transmit, distribute, sublicense, lend, or make available CyanTriggers.  You retain all rights in virtual environments and assets that You create using CyanTriggers.
+
+3.	You may, notwithstanding section 2, stream or create and distribute videos and/or screenshots of You using CyanTriggers.
+
+4.	You may not modify or reverse engineer CyanTriggers.
+
+5.	CyanTriggers is offered "as is", without representations or warranties of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and noninfringement.  In no event will CyanLaser be liable to You for any losses, claims, expenses, or damages arising from, out of, or in connection with CyanTriggers or Your use of CyanTriggers.
+
+6.	CyanLaser will not provide upgrades or support services for CyanTriggers to You except at his discretion, or as separately agreed.
+
+7.	CyanLaser may terminate this EULA at any time if You fail to comply with its terms.  You may terminate this EULA at any time, for any reason.  If this license is terminated, You must immediately destroy all copies of CyanTriggers in Your possession.  

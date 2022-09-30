@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: startdissabled
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: f9800f9f2c0595144a017c256ca5114a,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 6dee3657aac65b340922d22e9b989458,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export Gameobjects\r\n    \r\n    __index_0:
     %SystemInt32, null\r\n    __condition_0: %SystemBoolean, null\r\n    __Boolean_0:

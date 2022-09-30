@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: StationEnteredRemoteTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: 5043b37e-f5d7-42a6-a5fd-881b3821a6cf
+    actionName: OnStationEntered
+    actionVariantName: Remote Player
+    description: 
+    variables: []
+    baseEventName: Event_OnStationEntered
+    eventEntry: _onStationEntered
+  udonProgramAsset: {fileID: 11400000, guid: 335de37c8fd11f74f8a036f16f8f59ba, type: 2}
+  assetGuid: 335de37c8fd11f74f8a036f16f8f59ba

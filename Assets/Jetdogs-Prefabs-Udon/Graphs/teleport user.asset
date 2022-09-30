@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: teleport user
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 0af25f64dc083174c94cd3da56645b93,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: f1bd31e5da063d449a9da5ebbfd34063,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export teleportpoint\r\n    .export targetRotation\r\n   
     .export lerp\r\n    \r\n    __instance_0: %VRCUdonUdonBehaviour, this\r\n   

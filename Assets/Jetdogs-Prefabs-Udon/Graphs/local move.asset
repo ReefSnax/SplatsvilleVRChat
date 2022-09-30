@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: local move
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 6eeb4a6595ffb1141b3516986abed436,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: a3647af60b0d61446b63772138b4a198,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export target\r\n    \r\n    __instance_0:
     %UnityEngineTransform, this\r\n    __value_0: %UnityEngineVector3, null\r\n   

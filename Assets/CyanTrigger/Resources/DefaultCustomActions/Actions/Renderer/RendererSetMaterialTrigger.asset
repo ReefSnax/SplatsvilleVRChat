@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: RendererSetMaterialTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: e6d96c0a-9591-4e6c-9144-336d5dca47bf
+    actionName: Renderer
+    actionVariantName: SetMaterial
+    description: 
+    variables:
+    - type:
+        typeDef: UnityEngine.Renderer, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+      udonName: Renderer
+      displayName: Renderer
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 19
+    - type:
+        typeDef: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+      udonName: Material
+      displayName: Material
+      description: 
+      defaultValue:
+        objEncoded: Lg==
+        unityObjects: []
+      variableType: 3
+    - type:
+        typeDef: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      udonName: Index
+      displayName: Index
+      description: 
+      defaultValue:
+        objEncoded: Ai8AAAAAARYAAABTAHkAcwB0AGUAbQAuAEkAbgB0ADMAMgAsACAAbQBzAGMAbwByAGwAaQBiAAAAAAAYAAAAAAU=
+        unityObjects: []
+      variableType: 3
+    baseEventName: Event_Custom
+    eventEntry: SetMaterial
+  udonProgramAsset: {fileID: 11400000, guid: cd39aaf07ef12aa43a9caab806e19a81, type: 2}
+  assetGuid: cd39aaf07ef12aa43a9caab806e19a81

@@ -1,0 +1,366 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16dd9cac1b03a34aa0d966f341cbb24, type: 3}
+  m_Name: CyanTriggerFavorite_Events
+  m_EditorClassIdentifier: Assembly-CSharp-Editor:CyanTrigger:CyanTriggerSettingsFavoriteList
+  FavoriteType: 2
+  FavoriteItems:
+  - item: Custom
+    data:
+      directEvent: Event_Custom
+      guid: 
+    scopeDelta: 0
+  - item: Interact
+    data:
+      directEvent: Event_Interact
+      guid: 
+    scopeDelta: 0
+  - item: StartAndEnd
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Start
+    data:
+      directEvent: Event_Start
+      guid: 
+    scopeDelta: 0
+  - item: OnEnable
+    data:
+      directEvent: Event_OnEnable
+      guid: 
+    scopeDelta: 0
+  - item: OnDisable
+    data:
+      directEvent: Event_OnDisable
+      guid: 
+    scopeDelta: 0
+  - item: OnSpawn
+    data:
+      directEvent: Event_OnSpawn
+      guid: 
+    scopeDelta: 0
+  - item: OnDestroy
+    data:
+      directEvent: Event_OnDestroy
+      guid: 
+    scopeDelta: 0
+  - item: OnPlayerRespawn
+    data:
+      directEvent: Event_OnPlayerRespawn
+      guid: 
+    scopeDelta: 0
+  - item: OnPlayerJoined
+    data:
+      directEvent: Event_OnPlayerJoined
+      guid: 
+    scopeDelta: 0
+  - item: OnPlayerLeft
+    data:
+      directEvent: Event_OnPlayerLeft
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Pickup
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: OnPickup
+    data:
+      directEvent: Event_OnPickup
+      guid: 
+    scopeDelta: 0
+  - item: OnPickupUseDown
+    data:
+      directEvent: Event_OnPickupUseDown
+      guid: 
+    scopeDelta: 0
+  - item: OnPickupUseUp
+    data:
+      directEvent: Event_OnPickupUseUp
+      guid: 
+    scopeDelta: 0
+  - item: OnDrop
+    data:
+      directEvent: Event_OnDrop
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Stations
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: OnStationEntered
+    data:
+      directEvent: Event_OnStationEntered
+      guid: 
+    scopeDelta: 0
+  - item: OnStationExited
+    data:
+      directEvent: Event_OnStationExited
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Input
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: InputUse
+    data:
+      directEvent: Event_InputUse
+      guid: 
+    scopeDelta: 0
+  - item: InputGrab
+    data:
+      directEvent: Event_InputGrab
+      guid: 
+    scopeDelta: 0
+  - item: InputDrop
+    data:
+      directEvent: Event_InputDrop
+      guid: 
+    scopeDelta: 0
+  - item: InputJump
+    data:
+      directEvent: Event_InputJump
+      guid: 
+    scopeDelta: 0
+  - item: InputMoveHorizontal
+    data:
+      directEvent: Event_InputMoveHorizontal
+      guid: 
+    scopeDelta: 0
+  - item: InputMoveVertical
+    data:
+      directEvent: Event_InputMoveVertical
+      guid: 
+    scopeDelta: 0
+  - item: InputLookHorizontal
+    data:
+      directEvent: Event_InputLookHorizontal
+      guid: 
+    scopeDelta: 0
+  - item: InputLookVertical
+    data:
+      directEvent: Event_InputLookVertical
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Update
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Update
+    data:
+      directEvent: Event_Update
+      guid: 
+    scopeDelta: 0
+  - item: LateUpdate
+    data:
+      directEvent: Event_LateUpdate
+      guid: 
+    scopeDelta: 0
+  - item: FixedUpdate
+    data:
+      directEvent: Event_FixedUpdate
+      guid: 
+    scopeDelta: 0
+  - item: PostLateUpdate
+    data:
+      directEvent: Event_PostLateUpdate
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Midi
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: MidiNoteOn
+    data:
+      directEvent: Event_MidiNoteOn
+      guid: 
+    scopeDelta: 0
+  - item: MidiNoteOff
+    data:
+      directEvent: Event_MidiNoteOff
+      guid: 
+    scopeDelta: 0
+  - item: MidiControlChange
+    data:
+      directEvent: Event_MidiControlChange
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Player Collision
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: OnPlayerTriggerEnter
+    data:
+      directEvent: Event_OnPlayerTriggerEnter
+      guid: 
+    scopeDelta: 0
+  - item: OnPlayerTriggerStay
+    data:
+      directEvent: Event_OnPlayerTriggerStay
+      guid: 
+    scopeDelta: 0
+  - item: OnPlayerTriggerExit
+    data:
+      directEvent: Event_OnPlayerTriggerExit
+      guid: 
+    scopeDelta: 0
+  - item: OnPlayerCollisionEnter
+    data:
+      directEvent: Event_OnPlayerCollisionEnter
+      guid: 
+    scopeDelta: 0
+  - item: OnPlayerCollisionStay
+    data:
+      directEvent: Event_OnPlayerCollisionStay
+      guid: 
+    scopeDelta: 0
+  - item: OnPlayerCollisionExit
+    data:
+      directEvent: Event_OnPlayerCollisionExit
+      guid: 
+    scopeDelta: 0
+  - item: OnPlayerParticleCollision
+    data:
+      directEvent: Event_OnPlayerParticleCollision
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Collision
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: OnTriggerEnter
+    data:
+      directEvent: Event_OnTriggerEnter
+      guid: 
+    scopeDelta: 0
+  - item: OnTriggerStay
+    data:
+      directEvent: Event_OnTriggerStay
+      guid: 
+    scopeDelta: 0
+  - item: OnTriggerExit
+    data:
+      directEvent: Event_OnTriggerExit
+      guid: 
+    scopeDelta: 0
+  - item: OnCollisionEnter
+    data:
+      directEvent: Event_OnCollisionEnter
+      guid: 
+    scopeDelta: 0
+  - item: OnCollisionStay
+    data:
+      directEvent: Event_OnCollisionStay
+      guid: 
+    scopeDelta: 0
+  - item: OnCollisionExit
+    data:
+      directEvent: Event_OnCollisionExit
+      guid: 
+    scopeDelta: 0
+  - item: OnParticleCollision
+    data:
+      directEvent: Event_OnParticleCollision
+      guid: 
+    scopeDelta: 0
+  - item: OnParticleTrigger
+    data:
+      directEvent: Event_OnParticleTrigger
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Data
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: OnVariableChanged
+    data:
+      directEvent: Event_OnVariableChanged
+      guid: 
+    scopeDelta: 0
+  - item: OnPreSerialization
+    data:
+      directEvent: Event_OnPreSerialization
+      guid: 
+    scopeDelta: 0
+  - item: OnPostSerialization
+    data:
+      directEvent: Event_OnPostSerialization
+      guid: 
+    scopeDelta: 0
+  - item: OnDeserialization
+    data:
+      directEvent: Event_OnDeserialization
+      guid: 
+    scopeDelta: 0
+  - item: OnOwnershipTransferred
+    data:
+      directEvent: Event_OnOwnershipTransferred
+      guid: 
+    scopeDelta: 0
+  - item: OnOwnershipRequest
+    data:
+      directEvent: Event_OnOwnershipRequest
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1

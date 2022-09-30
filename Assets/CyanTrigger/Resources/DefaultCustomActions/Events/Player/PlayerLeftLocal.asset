@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
+  m_Name: PlayerLeftLocal
+  m_EditorClassIdentifier: 
+  serializedUdonProgramAsset: {fileID: 11400000, guid: ecdd2e24e71477d468dc1f0127bc9d2a,
+    type: 2}
+  udonAssembly: ".data_start\r\n\r\n    \r\n    __Boolean_0: %SystemBoolean, null\r\n   
+    __instance_0: %VRCSDKBaseVRCPlayerApi, null\r\n    onPlayerLeftPlayer: %VRCSDKBaseVRCPlayerApi,
+    null\r\n    __instance_1: %VRCUdonUdonBehaviour, this\r\n    __eventName_0: %SystemString,
+    null\r\n\r\n.data_end\r\n\r\n.code_start\r\n\r\n    .export _onPlayerLeft\r\n   
+    \r\n    _onPlayerLeft:\r\n    \r\n        PUSH, onPlayerLeftPlayer\r\n       
+    PUSH, __instance_0\r\n        COPY\r\n        PUSH, __instance_0\r\n        PUSH,
+    __Boolean_0\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__get_isLocal__SystemBoolean\"\r\n       
+    PUSH, __Boolean_0\r\n        JUMP_IF_FALSE, 0x0000005C\r\n        PUSH, __instance_1\r\n       
+    PUSH, __eventName_0\r\n        EXTERN, \"VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEvent__SystemString__SystemVoid\"\r\n       
+    JUMP, 0x0000005C\r\n        JUMP, 0xFFFFFFFC\r\n    \r\n\r\n.code_end\r\n"
+  assemblyError: 
+  graphData:
+    name: 
+    description: 
+    nodes:
+    - fullName: VRCSDKBaseVRCPlayerApi.__get_isLocal__SystemBoolean
+      uid: d70538f1-4afe-4cc2-b2ec-44c38062b0df
+      position: {x: 196.91019, y: 360.94113}
+      nodeUIDs:
+      - 749d9775-1756-4d32-a458-c43d1e75b27b|0
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: 
+    - fullName: Branch
+      uid: c1bbc171-3f53-483f-9545-3054301b9b3d
+      position: {x: 385.01016, y: 241.5709}
+      nodeUIDs:
+      - d70538f1-4afe-4cc2-b2ec-44c38062b0df|0
+      flowUIDs:
+      - 476fe120-3f4d-45ce-bceb-7a3a67bfa43e
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089|False
+    - fullName: VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEvent__SystemString__SystemVoid
+      uid: 476fe120-3f4d-45ce-bceb-7a3a67bfa43e
+      position: {x: 543.2396, y: 239.059}
+      nodeUIDs:
+      - 
+      - 
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: 
+      - unityObjectValue: {fileID: 0}
+        stringValue: 
+    - fullName: Event_OnPlayerLeft
+      uid: 749d9775-1756-4d32-a458-c43d1e75b27b
+      position: {x: 40.049957, y: 241.25009}
+      nodeUIDs: []
+      flowUIDs:
+      - c1bbc171-3f53-483f-9545-3054301b9b3d
+      nodeValues: []
+    updateOrder: 0
+  graphElementData:
+  - type: 5
+    uid: caeafb94-6faa-4c42-a26d-47d42ad240a9
+    jsonData: '{"visible":true,"layout":{"serializedVersion":"2","x":10.0,"y":130.0,"width":200.0,"height":150.0}}'
+  - type: 4
+    uid: 0c70b1c9-6c02-4c7a-aff1-a82b895468ea
+    jsonData: '{"visible":true,"layout":{"serializedVersion":"2","x":10.0,"y":20.0,"width":0.0,"height":0.0}}'
+  viewTransform:
+    position: {x: 349.17395, y: 173.21739}
+    scale: 0.8695652
+  version: 1.0.0
+  showAssembly: 1

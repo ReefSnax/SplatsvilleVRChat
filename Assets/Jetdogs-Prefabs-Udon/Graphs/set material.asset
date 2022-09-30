@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: set material
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 2e540abdabb523c4a9668eb531e8f630,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: f527f50e789a6f849be19ee8e4324571,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export material\r\n    .export renderers\r\n   
     .export sharedMaterial\r\n    \r\n    __instance_0: %VRCUdonUdonBehaviour, this\r\n   

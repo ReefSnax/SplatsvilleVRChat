@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: set bool
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 646b63d634bc9cd4181cd8716139d887,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 526f79681501e43498587f306fa49b5c,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export udonbehaviour\r\n    .export variablename\r\n   
     .export toggle\r\n    \r\n    __instance_0: %UnityEngineUIToggle, null\r\n   

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: random int
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: be6b33686e255c344bcfbc23afad22a0,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: e6acd3cca1afb03439082b59e85b3c56,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export min\r\n    .export max\r\n    .export
     visual\r\n    .sync out, none\r\n    \r\n    __player_0: %VRCSDKBaseVRCPlayerApi,

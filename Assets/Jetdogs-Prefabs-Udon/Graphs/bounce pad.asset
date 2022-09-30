@@ -12,42 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: bounce pad
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: ee7456dbc30a7ed49b9ab424b0fd6249,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 2b16b2b4196fb4942923b1c5f23fc04f,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export bounceVelocity\r\n    \r\n    __Boolean_0:
-    %SystemBoolean, null\r\n    __VRCPlayerApi_0: %VRCSDKBaseVRCPlayerApi, null\r\n   
-    onPlayerTriggerEnterPlayer: %VRCSDKBaseVRCPlayerApi, null\r\n    __instance_0:
+    %SystemBoolean, null\r\n    __instance_0: %VRCSDKBaseVRCPlayerApi, null\r\n   
+    onPlayerTriggerEnterPlayer: %VRCSDKBaseVRCPlayerApi, null\r\n    __instance_1:
     %VRCUdonUdonBehaviour, this\r\n    __eventName_0: %SystemString, null\r\n   
-    __Boolean_1: %SystemBoolean, null\r\n    __VRCPlayerApi_1: %VRCSDKBaseVRCPlayerApi,
+    __Boolean_1: %SystemBoolean, null\r\n    __instance_2: %VRCSDKBaseVRCPlayerApi,
     null\r\n    onPlayerCollisionEnterPlayer: %VRCSDKBaseVRCPlayerApi, null\r\n   
-    __instance_1: %VRCUdonUdonBehaviour, this\r\n    __eventName_1: %SystemString,
-    null\r\n    __instance_2: %VRCSDKBaseVRCPlayerApi, null\r\n    __velocity_0:
+    __instance_3: %VRCUdonUdonBehaviour, this\r\n    __eventName_1: %SystemString,
+    null\r\n    __instance_4: %VRCSDKBaseVRCPlayerApi, null\r\n    __velocity_0:
     %UnityEngineVector3, null\r\n    __Vector3_0: %UnityEngineVector3, null\r\n   
     __Single_0: %SystemSingle, null\r\n    __Quaternion_0: %UnityEngineQuaternion,
-    null\r\n    __Vector3_1: %UnityEngineVector3, null\r\n    __instance_3: %UnityEngineTransform,
+    null\r\n    __Vector3_1: %UnityEngineVector3, null\r\n    __instance_5: %UnityEngineTransform,
     this\r\n    bounceVelocity: %SystemSingle, null\r\n\r\n.data_end\r\n\r\n.code_start\r\n\r\n   
     .export _onPlayerTriggerEnter\r\n    \r\n    _onPlayerTriggerEnter:\r\n    \r\n       
-    PUSH, onPlayerTriggerEnterPlayer\r\n        PUSH, __VRCPlayerApi_0\r\n       
-    COPY\r\n        PUSH, __VRCPlayerApi_0\r\n        PUSH, __Boolean_0\r\n       
-    EXTERN, \"VRCSDKBaseVRCPlayerApi.__get_isLocal__SystemBoolean\"\r\n        PUSH,
-    __Boolean_0\r\n        JUMP_IF_FALSE, 0x0000005C\r\n        PUSH, __instance_0\r\n       
+    PUSH, onPlayerTriggerEnterPlayer\r\n        PUSH, __instance_0\r\n        COPY\r\n       
+    PUSH, __instance_0\r\n        PUSH, __Boolean_0\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__get_isLocal__SystemBoolean\"\r\n       
+    PUSH, __Boolean_0\r\n        JUMP_IF_FALSE, 0x0000005C\r\n        PUSH, __instance_1\r\n       
     PUSH, __eventName_0\r\n        EXTERN, \"VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEvent__SystemString__SystemVoid\"\r\n       
     JUMP, 0x0000005C\r\n        JUMP, 0xFFFFFFFC\r\n    \r\n    .export _onPlayerCollisionEnter\r\n   
     \r\n    _onPlayerCollisionEnter:\r\n    \r\n        PUSH, onPlayerCollisionEnterPlayer\r\n       
-    PUSH, __VRCPlayerApi_1\r\n        COPY\r\n        PUSH, __VRCPlayerApi_1\r\n       
-    PUSH, __Boolean_1\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__get_isLocal__SystemBoolean\"\r\n       
-    PUSH, __Boolean_1\r\n        JUMP_IF_FALSE, 0x000000C0\r\n        PUSH, __instance_1\r\n       
+    PUSH, __instance_2\r\n        COPY\r\n        PUSH, __instance_2\r\n        PUSH,
+    __Boolean_1\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__get_isLocal__SystemBoolean\"\r\n       
+    PUSH, __Boolean_1\r\n        JUMP_IF_FALSE, 0x000000C0\r\n        PUSH, __instance_3\r\n       
     PUSH, __eventName_1\r\n        EXTERN, \"VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEvent__SystemString__SystemVoid\"\r\n       
     JUMP, 0x000000C0\r\n        JUMP, 0xFFFFFFFC\r\n    \r\n    .export PlayerSetVelocity\r\n   
-    \r\n    PlayerSetVelocity:\r\n    \r\n        PUSH, __instance_2\r\n        EXTERN,
+    \r\n    PlayerSetVelocity:\r\n    \r\n        PUSH, __instance_4\r\n        EXTERN,
     \"VRCSDKBaseNetworking.__get_LocalPlayer__VRCSDKBaseVRCPlayerApi\"\r\n       
-    PUSH, __instance_3\r\n        PUSH, __Quaternion_0\r\n        EXTERN, \"UnityEngineTransform.__get_rotation__UnityEngineQuaternion\"\r\n       
+    PUSH, __instance_5\r\n        PUSH, __Quaternion_0\r\n        EXTERN, \"UnityEngineTransform.__get_rotation__UnityEngineQuaternion\"\r\n       
     PUSH, __Vector3_1\r\n        EXTERN, \"UnityEngineVector3.__get_up__UnityEngineVector3\"\r\n       
     PUSH, __Quaternion_0\r\n        PUSH, __Vector3_1\r\n        PUSH, __Vector3_0\r\n       
     EXTERN, \"UnityEngineQuaternion.__op_Multiply__UnityEngineQuaternion_UnityEngineVector3__UnityEngineVector3\"\r\n       
     PUSH, __Vector3_0\r\n        PUSH, bounceVelocity\r\n        PUSH, __velocity_0\r\n       
     EXTERN, \"UnityEngineVector3.__op_Multiply__UnityEngineVector3_SystemSingle__UnityEngineVector3\"\r\n       
-    PUSH, __instance_2\r\n        PUSH, __velocity_0\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__SetVelocity__UnityEngineVector3__SystemVoid\"\r\n       
+    PUSH, __instance_4\r\n        PUSH, __velocity_0\r\n        EXTERN, \"VRCSDKBaseVRCPlayerApi.__SetVelocity__UnityEngineVector3__SystemVoid\"\r\n       
     JUMP, 0xFFFFFFFC\r\n    \r\n\r\n.code_end\r\n"
   assemblyError: 
   graphData:

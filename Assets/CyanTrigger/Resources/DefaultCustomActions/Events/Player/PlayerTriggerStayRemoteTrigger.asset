@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: PlayerTriggerStayRemoteTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: c56b40e1-4012-42ae-be91-8926c32d5ea7
+    actionName: OnPlayerTriggerStay
+    actionVariantName: Remote Player
+    description: 
+    variables: []
+    baseEventName: Event_OnPlayerTriggerStay
+    eventEntry: _onPlayerTriggerStay
+  udonProgramAsset: {fileID: 11400000, guid: 9253ba8c39fee8c48a991b70bf8bc452, type: 2}
+  assetGuid: 9253ba8c39fee8c48a991b70bf8bc452

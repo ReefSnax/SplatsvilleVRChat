@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
   m_Name: player movement
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 9fd491097b913944f93c701c4da1ce4e,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 78cc78affe9dfbb4da54d7b81a3ee109,
     type: 2}
   udonAssembly: ".data_start\r\n\r\n    .export jumpImpulse\r\n    .export walkSpeed\r\n   
     .export runSpeed\r\n    .export strafeSpeed\r\n    .export gravityStrength\r\n   

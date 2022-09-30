@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d0ad128b95568438c70898dc9e600c, type: 3}
+  m_Name: OnParticleCollisionLayerTrigger
+  m_EditorClassIdentifier: 
+  exposedActions:
+  - guid: 954c82fc-af67-44f4-b8ec-2752dc8f5e3b
+    actionName: OnParticleCollision
+    actionVariantName: LayerMask
+    description: 
+    variables:
+    - type:
+        typeDef: UnityEngine.LayerMask, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+      udonName: CollisionMask
+      displayName: LayerMask
+      description: 
+      defaultValue:
+        objEncoded: Ai8AAAAAAS0AAABVAG4AaQB0AHkARQBuAGcAaQBuAGUALgBMAGEAeQBlAHIATQBhAHMAawAsACAAVQBuAGkAdAB5AEUAbgBnAGkAbgBlAC4AQwBvAHIAZQBNAG8AZAB1AGwAZQAAAAAAGAAAAAAF
+        unityObjects: []
+      variableType: 3
+    baseEventName: Event_OnParticleCollision
+    eventEntry: _onParticleCollision
+  udonProgramAsset: {fileID: 11400000, guid: 413fb142db88e9245975195693cdad20, type: 2}
+  assetGuid: 413fb142db88e9245975195693cdad20

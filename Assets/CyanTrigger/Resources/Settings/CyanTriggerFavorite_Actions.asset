@@ -1,0 +1,3456 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c16dd9cac1b03a34aa0d966f341cbb24, type: 3}
+  m_Name: CyanTriggerFavorite_Actions
+  m_EditorClassIdentifier: Assembly-CSharp-Editor:CyanTrigger:CyanTriggerSettingsFavoriteList
+  FavoriteType: 3
+  FavoriteItems:
+  - item: Value
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: bool
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: bool.Set
+    data:
+      directEvent: SystemBoolean__.Set__SystemBoolean__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: bool.UnaryNegation
+    data:
+      directEvent: SystemBoolean.__op_UnaryNegation__SystemBoolean__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: bool.Equality
+    data:
+      directEvent: SystemBoolean.__op_Equality__SystemBoolean_SystemBoolean__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: bool.Inequality
+    data:
+      directEvent: SystemBoolean.__op_Inequality__SystemBoolean_SystemBoolean__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: bool.LogicalAnd
+    data:
+      directEvent: SystemBoolean.__op_LogicalAnd__SystemBoolean_SystemBoolean__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: bool.LogicalOr
+    data:
+      directEvent: SystemBoolean.__op_LogicalOr__SystemBoolean_SystemBoolean__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: bool.LogicalXor
+    data:
+      directEvent: SystemBoolean.__op_LogicalXor__SystemBoolean_SystemBoolean__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: bool.ConditionalAnd
+    data:
+      directEvent: SystemBoolean.__op_ConditionalAnd__SystemBoolean_SystemBoolean__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: bool.ConditionalOr
+    data:
+      directEvent: SystemBoolean.__op_ConditionalOr__SystemBoolean_SystemBoolean__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: bool.ConditionalXor
+    data:
+      directEvent: SystemBoolean.__op_ConditionalXor__SystemBoolean_SystemBoolean__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: bool.ToString
+    data:
+      directEvent: SystemBoolean.__ToString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: bool.TryParse
+    data:
+      directEvent: SystemBoolean.__TryParse__SystemString_SystemBooleanRef__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: int
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: int.Set
+    data:
+      directEvent: SystemInt32__.Set__SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.Addition
+    data:
+      directEvent: SystemInt32.__op_Addition__SystemInt32_SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.Subtraction
+    data:
+      directEvent: SystemInt32.__op_Subtraction__SystemInt32_SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.Multiplication
+    data:
+      directEvent: SystemInt32.__op_Multiplication__SystemInt32_SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.Division
+    data:
+      directEvent: SystemInt32.__op_Division__SystemInt32_SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.Remainder
+    data:
+      directEvent: SystemInt32.__op_Remainder__SystemInt32_SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.CompareTo
+    data:
+      directEvent: SystemInt32.__CompareTo__SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.Equality
+    data:
+      directEvent: SystemInt32.__op_Equality__SystemInt32_SystemInt32__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: int.Inequality
+    data:
+      directEvent: SystemInt32.__op_Inequality__SystemInt32_SystemInt32__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: int.GreaterThan
+    data:
+      directEvent: SystemInt32.__op_GreaterThan__SystemInt32_SystemInt32__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: int.GreaterThanOrEqual
+    data:
+      directEvent: SystemInt32.__op_GreaterThanOrEqual__SystemInt32_SystemInt32__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: int.LessThan
+    data:
+      directEvent: SystemInt32.__op_LessThan__SystemInt32_SystemInt32__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: int.LessThanOrEqual
+    data:
+      directEvent: SystemInt32.__op_LessThanOrEqual__SystemInt32_SystemInt32__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: int.Get MaxValue
+    data:
+      directEvent: SystemInt32.__get_MaxValue__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.Get MinValue
+    data:
+      directEvent: SystemInt32.__get_MinValue__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.LeftShift
+    data:
+      directEvent: SystemInt32.__op_LeftShift__SystemInt32_SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.RightShift
+    data:
+      directEvent: SystemInt32.__op_RightShift__SystemInt32_SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.LogicalAnd
+    data:
+      directEvent: SystemInt32.__op_LogicalAnd__SystemInt32_SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.LogicalOr
+    data:
+      directEvent: SystemInt32.__op_LogicalOr__SystemInt32_SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.LogicalXor
+    data:
+      directEvent: SystemInt32.__op_LogicalXor__SystemInt32_SystemInt32__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.ToString
+    data:
+      directEvent: SystemInt32.__ToString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: int.Parse
+    data:
+      directEvent: SystemInt32.__Parse__SystemString__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: int.TryParse
+    data:
+      directEvent: SystemInt32.__TryParse__SystemString_SystemInt32Ref__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: float
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: float.Set
+    data:
+      directEvent: SystemSingle__.Set__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.Addition
+    data:
+      directEvent: SystemSingle.__op_Addition__SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.Subtraction
+    data:
+      directEvent: SystemSingle.__op_Subtraction__SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.Multiplication
+    data:
+      directEvent: SystemSingle.__op_Multiplication__SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.Division
+    data:
+      directEvent: SystemSingle.__op_Division__SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.Remainder
+    data:
+      directEvent: SystemSingle.__op_Remainder__SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.CompareTo
+    data:
+      directEvent: SystemSingle.__CompareTo__SystemSingle__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: float.Equality
+    data:
+      directEvent: SystemSingle.__op_Equality__SystemSingle_SystemSingle__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: float.Inequality
+    data:
+      directEvent: SystemSingle.__op_Inequality__SystemSingle_SystemSingle__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: float.GreaterThan
+    data:
+      directEvent: SystemSingle.__op_GreaterThan__SystemSingle_SystemSingle__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: float.GreaterThanOrEqual
+    data:
+      directEvent: SystemSingle.__op_GreaterThanOrEqual__SystemSingle_SystemSingle__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: float.LessThan
+    data:
+      directEvent: SystemSingle.__op_LessThan__SystemSingle_SystemSingle__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: float.LessThanOrEqual
+    data:
+      directEvent: SystemSingle.__op_LessThanOrEqual__SystemSingle_SystemSingle__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: float.Get Epsilon
+    data:
+      directEvent: SystemSingle.__get_Epsilon__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.Get MaxValue
+    data:
+      directEvent: SystemSingle.__get_MaxValue__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.Get MinValue
+    data:
+      directEvent: SystemSingle.__get_MinValue__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.Get NaN
+    data:
+      directEvent: SystemSingle.__get_NaN__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.IsNaN
+    data:
+      directEvent: SystemSingle.__IsNaN__SystemSingle__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: float.IsInfinity
+    data:
+      directEvent: SystemSingle.__IsInfinity__SystemSingle__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: float.Get PositiveInfinity
+    data:
+      directEvent: SystemSingle.__get_PositiveInfinity__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.IsPositiveInfinity
+    data:
+      directEvent: SystemSingle.__IsPositiveInfinity__SystemSingle__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: float.Get NegativeInfinity
+    data:
+      directEvent: SystemSingle.__get_NegativeInfinity__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.IsNegativeInfinity
+    data:
+      directEvent: SystemSingle.__IsNegativeInfinity__SystemSingle__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: float.ToString
+    data:
+      directEvent: SystemSingle.__ToString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: float.Parse
+    data:
+      directEvent: SystemSingle.__Parse__SystemString__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: float.TryParse
+    data:
+      directEvent: SystemSingle.__TryParse__SystemString_SystemSingleRef__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: string
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: String.Set
+    data:
+      directEvent: SystemString__.Set__SystemString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: String.Concat
+    data:
+      directEvent: SystemString.__Concat__SystemString_SystemString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: String.Get Length
+    data:
+      directEvent: SystemString.__get_Length__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: String.Substring
+    data:
+      directEvent: SystemString.__Substring__SystemInt32__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: String.Equality
+    data:
+      directEvent: SystemString.__op_Equality__SystemString_SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: String.Inequality
+    data:
+      directEvent: SystemString.__op_Inequality__SystemString_SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: String.Compare
+    data:
+      directEvent: SystemString.__Compare__SystemString_SystemString__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: String.Contains
+    data:
+      directEvent: SystemString.__Contains__SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: String.StartsWith
+    data:
+      directEvent: SystemString.__StartsWith__SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: String.EndsWith
+    data:
+      directEvent: SystemString.__EndsWith__SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: String.IndexOf
+    data:
+      directEvent: SystemString.__IndexOf__SystemChar__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: String.LastIndexOf
+    data:
+      directEvent: SystemString.__LastIndexOf__SystemChar__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: String.IsNullOrEmpty
+    data:
+      directEvent: SystemString.__IsNullOrEmpty__SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: String.IsNullOrWhiteSpace
+    data:
+      directEvent: SystemString.__IsNullOrWhiteSpace__SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: String.Insert
+    data:
+      directEvent: SystemString.__Insert__SystemInt32_SystemString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: String.Remove
+    data:
+      directEvent: SystemString.__Remove__SystemInt32_SystemInt32__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: String.Replace
+    data:
+      directEvent: SystemString.__Replace__SystemString_SystemString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: String.ToLower
+    data:
+      directEvent: SystemString.__ToLower__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: String.ToUpper
+    data:
+      directEvent: SystemString.__ToUpper__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: String.Trim
+    data:
+      directEvent: SystemString.__Trim__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Vector3
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Vector3.Addition
+    data:
+      directEvent: UnityEngineVector3.__op_Addition__UnityEngineVector3_UnityEngineVector3__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Subtraction
+    data:
+      directEvent: UnityEngineVector3.__op_Subtraction__UnityEngineVector3_UnityEngineVector3__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Multiply
+    data:
+      directEvent: UnityEngineVector3.__op_Multiply__UnityEngineVector3_SystemSingle__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Division
+    data:
+      directEvent: UnityEngineVector3.__op_Division__UnityEngineVector3_SystemSingle__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Dot
+    data:
+      directEvent: UnityEngineVector3.__Dot__UnityEngineVector3_UnityEngineVector3__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Cross
+    data:
+      directEvent: UnityEngineVector3.__Cross__UnityEngineVector3_UnityEngineVector3__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Constructor
+    data:
+      directEvent: UnityEngineVector3.__ctor__SystemSingle_SystemSingle_SystemSingle__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get x
+    data:
+      directEvent: UnityEngineVector3.__get_x__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Set x
+    data:
+      directEvent: UnityEngineVector3.__set_x__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get y
+    data:
+      directEvent: UnityEngineVector3.__get_y__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Set y
+    data:
+      directEvent: UnityEngineVector3.__set_y__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get z
+    data:
+      directEvent: UnityEngineVector3.__get_z__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Set z
+    data:
+      directEvent: UnityEngineVector3.__set_z__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get magnitude
+    data:
+      directEvent: UnityEngineVector3.__get_magnitude__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get normalized
+    data:
+      directEvent: UnityEngineVector3.__get_normalized__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get sqrMagnitude
+    data:
+      directEvent: UnityEngineVector3.__get_sqrMagnitude__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Distance
+    data:
+      directEvent: UnityEngineVector3.__Distance__UnityEngineVector3_UnityEngineVector3__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Equality
+    data:
+      directEvent: UnityEngineVector3.__op_Equality__UnityEngineVector3_UnityEngineVector3__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Inequality
+    data:
+      directEvent: UnityEngineVector3.__op_Inequality__UnityEngineVector3_UnityEngineVector3__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get zero
+    data:
+      directEvent: UnityEngineVector3.__get_zero__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get one
+    data:
+      directEvent: UnityEngineVector3.__get_one__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get right
+    data:
+      directEvent: UnityEngineVector3.__get_right__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get up
+    data:
+      directEvent: UnityEngineVector3.__get_up__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get forward
+    data:
+      directEvent: UnityEngineVector3.__get_forward__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get left
+    data:
+      directEvent: UnityEngineVector3.__get_left__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get down
+    data:
+      directEvent: UnityEngineVector3.__get_down__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get back
+    data:
+      directEvent: UnityEngineVector3.__get_back__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get positiveInfinity
+    data:
+      directEvent: UnityEngineVector3.__get_positiveInfinity__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Get negativeInfinity
+    data:
+      directEvent: UnityEngineVector3.__get_negativeInfinity__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Angle
+    data:
+      directEvent: UnityEngineVector3.__Angle__UnityEngineVector3_UnityEngineVector3__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.SignedAngle
+    data:
+      directEvent: UnityEngineVector3.__SignedAngle__UnityEngineVector3_UnityEngineVector3_UnityEngineVector3__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Lerp
+    data:
+      directEvent: UnityEngineVector3.__Lerp__UnityEngineVector3_UnityEngineVector3_SystemSingle__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Slerp
+    data:
+      directEvent: UnityEngineVector3.__Slerp__UnityEngineVector3_UnityEngineVector3_SystemSingle__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Max
+    data:
+      directEvent: UnityEngineVector3.__Max__UnityEngineVector3_UnityEngineVector3__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Min
+    data:
+      directEvent: UnityEngineVector3.__Min__UnityEngineVector3_UnityEngineVector3__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Normalize
+    data:
+      directEvent: UnityEngineVector3.__Normalize__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Project
+    data:
+      directEvent: UnityEngineVector3.__Project__UnityEngineVector3_UnityEngineVector3__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.ProjectOnPlane
+    data:
+      directEvent: UnityEngineVector3.__ProjectOnPlane__UnityEngineVector3_UnityEngineVector3__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.Reflect
+    data:
+      directEvent: UnityEngineVector3.__Reflect__UnityEngineVector3_UnityEngineVector3__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.RotateTowards
+    data:
+      directEvent: UnityEngineVector3.__RotateTowards__UnityEngineVector3_UnityEngineVector3_SystemSingle_SystemSingle__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Vector3.ToString
+    data:
+      directEvent: UnityEngineVector3.__ToString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Quaternion
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Quaternion.Multiply
+    data:
+      directEvent: UnityEngineQuaternion.__op_Multiply__UnityEngineQuaternion_UnityEngineVector3__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Dot
+    data:
+      directEvent: UnityEngineQuaternion.__Dot__UnityEngineQuaternion_UnityEngineQuaternion__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Lerp
+    data:
+      directEvent: UnityEngineQuaternion.__Lerp__UnityEngineQuaternion_UnityEngineQuaternion_SystemSingle__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Slerp
+    data:
+      directEvent: UnityEngineQuaternion.__Slerp__UnityEngineQuaternion_UnityEngineQuaternion_SystemSingle__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Angle
+    data:
+      directEvent: UnityEngineQuaternion.__Angle__UnityEngineQuaternion_UnityEngineQuaternion__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.AngleAxis
+    data:
+      directEvent: UnityEngineQuaternion.__AngleAxis__SystemSingle_UnityEngineVector3__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Constructor
+    data:
+      directEvent: UnityEngineQuaternion.__ctor__SystemSingle_SystemSingle_SystemSingle_SystemSingle__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Euler
+    data:
+      directEvent: UnityEngineQuaternion.__Euler__UnityEngineVector3__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Equality
+    data:
+      directEvent: UnityEngineQuaternion.__op_Equality__UnityEngineQuaternion_UnityEngineQuaternion__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Inequality
+    data:
+      directEvent: UnityEngineQuaternion.__op_Inequality__UnityEngineQuaternion_UnityEngineQuaternion__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.FromToRotation
+    data:
+      directEvent: UnityEngineQuaternion.__FromToRotation__UnityEngineVector3_UnityEngineVector3__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Get eulerAngles
+    data:
+      directEvent: UnityEngineQuaternion.__get_eulerAngles__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Set eulerAngles
+    data:
+      directEvent: UnityEngineQuaternion.__set_eulerAngles__UnityEngineVector3__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Get identity
+    data:
+      directEvent: UnityEngineQuaternion.__get_identity__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Inverse
+    data:
+      directEvent: UnityEngineQuaternion.__Inverse__UnityEngineQuaternion__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Normalize
+    data:
+      directEvent: UnityEngineQuaternion.__Normalize__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.Set
+    data:
+      directEvent: UnityEngineQuaternion.__Set__SystemSingle_SystemSingle_SystemSingle_SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Quaternion.ToString
+    data:
+      directEvent: UnityEngineQuaternion.__ToString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Color
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Color.Addition
+    data:
+      directEvent: UnityEngineColor.__op_Addition__UnityEngineColor_UnityEngineColor__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Subtraction
+    data:
+      directEvent: UnityEngineColor.__op_Subtraction__UnityEngineColor_UnityEngineColor__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Multiply
+    data:
+      directEvent: UnityEngineColor.__op_Multiply__SystemSingle_UnityEngineColor__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Division
+    data:
+      directEvent: UnityEngineColor.__op_Division__UnityEngineColor_SystemSingle__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Constructor
+    data:
+      directEvent: UnityEngineColor.__ctor__SystemSingle_SystemSingle_SystemSingle_SystemSingle__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Equality
+    data:
+      directEvent: UnityEngineColor.__op_Equality__UnityEngineColor_UnityEngineColor__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Color.Inequality
+    data:
+      directEvent: UnityEngineColor.__op_Inequality__UnityEngineColor_UnityEngineColor__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get r
+    data:
+      directEvent: UnityEngineColor.__get_r__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Color.Set r
+    data:
+      directEvent: UnityEngineColor.__set_r__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get g
+    data:
+      directEvent: UnityEngineColor.__get_g__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Color.Set g
+    data:
+      directEvent: UnityEngineColor.__set_g__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get b
+    data:
+      directEvent: UnityEngineColor.__get_b__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Color.Set b
+    data:
+      directEvent: UnityEngineColor.__set_b__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get a
+    data:
+      directEvent: UnityEngineColor.__get_a__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Color.Set a
+    data:
+      directEvent: UnityEngineColor.__set_a__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get black
+    data:
+      directEvent: UnityEngineColor.__get_black__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get gray
+    data:
+      directEvent: UnityEngineColor.__get_gray__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get white
+    data:
+      directEvent: UnityEngineColor.__get_white__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get clear
+    data:
+      directEvent: UnityEngineColor.__get_clear__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get blue
+    data:
+      directEvent: UnityEngineColor.__get_blue__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get cyan
+    data:
+      directEvent: UnityEngineColor.__get_cyan__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get red
+    data:
+      directEvent: UnityEngineColor.__get_red__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get magenta
+    data:
+      directEvent: UnityEngineColor.__get_magenta__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get yellow
+    data:
+      directEvent: UnityEngineColor.__get_yellow__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get green
+    data:
+      directEvent: UnityEngineColor.__get_green__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get grayscale
+    data:
+      directEvent: UnityEngineColor.__get_grayscale__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Color.Get linear
+    data:
+      directEvent: UnityEngineColor.__get_linear__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.HSVToRGB
+    data:
+      directEvent: UnityEngineColor.__HSVToRGB__SystemSingle_SystemSingle_SystemSingle_SystemBoolean__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.RGBToHSV
+    data:
+      directEvent: UnityEngineColor.__RGBToHSV__UnityEngineColor_SystemSingleRef_SystemSingleRef_SystemSingleRef__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Color.Implicit
+    data:
+      directEvent: UnityEngineColor.__op_Implicit__UnityEngineColor__UnityEngineVector4
+      guid: 
+    scopeDelta: 0
+  - item: Color.Lerp
+    data:
+      directEvent: UnityEngineColor.__Lerp__UnityEngineColor_UnityEngineColor_SystemSingle__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Color.ToString
+    data:
+      directEvent: UnityEngineColor.__ToString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: MathF
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Mathf.Abs
+    data:
+      directEvent: UnityEngineMathf.__Abs__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Approximately
+    data:
+      directEvent: UnityEngineMathf.__Approximately__SystemSingle_SystemSingle__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Ceil
+    data:
+      directEvent: UnityEngineMathf.__Ceil__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.CeilToInt
+    data:
+      directEvent: UnityEngineMathf.__CeilToInt__SystemSingle__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Floor
+    data:
+      directEvent: UnityEngineMathf.__Floor__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.FloorToInt
+    data:
+      directEvent: UnityEngineMathf.__FloorToInt__SystemSingle__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Round
+    data:
+      directEvent: UnityEngineMathf.__Round__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.RoundToInt
+    data:
+      directEvent: UnityEngineMathf.__RoundToInt__SystemSingle__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Max
+    data:
+      directEvent: UnityEngineMathf.__Max__SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Min
+    data:
+      directEvent: UnityEngineMathf.__Min__SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Clamp
+    data:
+      directEvent: UnityEngineMathf.__Clamp__SystemSingle_SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Clamp01
+    data:
+      directEvent: UnityEngineMathf.__Clamp01__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Sign
+    data:
+      directEvent: UnityEngineMathf.__Sign__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Sqrt
+    data:
+      directEvent: UnityEngineMathf.__Sqrt__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Pow
+    data:
+      directEvent: UnityEngineMathf.__Pow__SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Exp
+    data:
+      directEvent: UnityEngineMathf.__Exp__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Lerp
+    data:
+      directEvent: UnityEngineMathf.__Lerp__SystemSingle_SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.InverseLerp
+    data:
+      directEvent: UnityEngineMathf.__InverseLerp__SystemSingle_SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.LerpAngle
+    data:
+      directEvent: UnityEngineMathf.__LerpAngle__SystemSingle_SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Cos
+    data:
+      directEvent: UnityEngineMathf.__Cos__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Acos
+    data:
+      directEvent: UnityEngineMathf.__Acos__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Sin
+    data:
+      directEvent: UnityEngineMathf.__Sin__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Asin
+    data:
+      directEvent: UnityEngineMathf.__Asin__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Tan
+    data:
+      directEvent: UnityEngineMathf.__Tan__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Atan
+    data:
+      directEvent: UnityEngineMathf.__Atan__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Atan2
+    data:
+      directEvent: UnityEngineMathf.__Atan2__SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Get Deg2Rad
+    data:
+      directEvent: UnityEngineMathf.__get_Deg2Rad__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Get Rad2Deg
+    data:
+      directEvent: UnityEngineMathf.__get_Rad2Deg__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Get Epsilon
+    data:
+      directEvent: UnityEngineMathf.__get_Epsilon__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Get Infinity
+    data:
+      directEvent: UnityEngineMathf.__get_Infinity__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Get NegativeInfinity
+    data:
+      directEvent: UnityEngineMathf.__get_NegativeInfinity__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Get PI
+    data:
+      directEvent: UnityEngineMathf.__get_PI__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Log
+    data:
+      directEvent: UnityEngineMathf.__Log__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.Log10
+    data:
+      directEvent: UnityEngineMathf.__Log10__SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Mathf.PerlinNoise
+    data:
+      directEvent: UnityEngineMathf.__PerlinNoise__SystemSingle_SystemSingle__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Convert
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Convert.FromBase64String
+    data:
+      directEvent: SystemConvert.__FromBase64String__SystemString__SystemByteArray
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToBase64String
+    data:
+      directEvent: SystemConvert.__ToBase64String__SystemByteArray__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToBoolean
+    data:
+      directEvent: SystemConvert.__ToBoolean__SystemInt32__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToByte
+    data:
+      directEvent: SystemConvert.__ToByte__SystemInt32__SystemByte
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToChar
+    data:
+      directEvent: SystemConvert.__ToChar__SystemInt32__SystemChar
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToDouble
+    data:
+      directEvent: SystemConvert.__ToDouble__SystemSingle__SystemDouble
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToInt16
+    data:
+      directEvent: SystemConvert.__ToInt16__SystemInt32__SystemInt16
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToInt32
+    data:
+      directEvent: SystemConvert.__ToInt32__SystemSingle__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToInt64
+    data:
+      directEvent: SystemConvert.__ToInt64__SystemSingle__SystemInt64
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToSByte
+    data:
+      directEvent: SystemConvert.__ToSByte__SystemInt32__SystemSByte
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToSingle
+    data:
+      directEvent: SystemConvert.__ToSingle__SystemInt32__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToString
+    data:
+      directEvent: SystemConvert.__ToString__SystemInt32__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToUInt16
+    data:
+      directEvent: SystemConvert.__ToUInt16__SystemUInt32__SystemUInt16
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToUInt32
+    data:
+      directEvent: SystemConvert.__ToUInt32__SystemUInt64__SystemUInt32
+      guid: 
+    scopeDelta: 0
+  - item: Convert.ToUInt64
+    data:
+      directEvent: SystemConvert.__ToUInt64__SystemUInt32__SystemUInt64
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Special
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Comment
+    data:
+      directEvent: CyanTriggerSpecial_Comment
+      guid: 
+    scopeDelta: 0
+  - item: Block
+    data:
+      directEvent: CyanTriggerSpecial_Block
+      guid: 
+    scopeDelta: 0
+  - item: If
+    data:
+      directEvent: CyanTriggerSpecial_If
+      guid: 
+    scopeDelta: 0
+  - item: ElseIf
+    data:
+      directEvent: CyanTriggerSpecial_ElseIf
+      guid: 
+    scopeDelta: 0
+  - item: Else
+    data:
+      directEvent: CyanTriggerSpecial_Else
+      guid: 
+    scopeDelta: 0
+  - item: While
+    data:
+      directEvent: CyanTriggerSpecial_While
+      guid: 
+    scopeDelta: 0
+  - item: For
+    data:
+      directEvent: CyanTriggerSpecial_For
+      guid: 
+    scopeDelta: 0
+  - item: Break
+    data:
+      directEvent: CyanTriggerSpecial_Break
+      guid: 
+    scopeDelta: 0
+  - item: Continue
+    data:
+      directEvent: CyanTriggerSpecial_Continue
+      guid: 
+    scopeDelta: 0
+  - item: Return
+    data:
+      directEvent: CyanTriggerSpecial_Return
+      guid: 
+    scopeDelta: 0
+  - item: ReturnIfDisabled
+    data:
+      directEvent: CyanTriggerSpecial_ReturnIfDisabled
+      guid: 
+    scopeDelta: 0
+  - item: ConditionPassIfTrue
+    data:
+      directEvent: CyanTriggerSpecial_ConditionPassIfTrue
+      guid: 
+    scopeDelta: 0
+  - item: ConditionFailIfFalse
+    data:
+      directEvent: CyanTriggerSpecial_ConditionFailIfFalse
+      guid: 
+    scopeDelta: 0
+  - item: SetReturnValue
+    data:
+      directEvent: CyanTriggerSpecial_SetReturnValue
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: CyanTrigger
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: CyanTrigger.SendCustomEvent
+    data:
+      directEvent: CyanTrigger.__SendCustomEvent__CyanTrigger__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: UdonBehaviour
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: UdonBehaviour.Set
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver__.Set__VRCUdonCommonInterfacesIUdonEventReceiver__VRCUdonCommonInterfacesIUdonEventReceiver
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour.Get enabled
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour.Set enabled
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour.GetProgramVariable
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__GetProgramVariable__SystemString__SystemObject
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour.SetProgramVariable
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__SetProgramVariable__SystemString_SystemObject__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour.Get DisableInteractive
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__get_DisableInteractive__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour.Set DisableInteractive
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__set_DisableInteractive__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour.SendCustomEvent
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEvent__SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour.SendCustomEventDelayedFrames
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEventDelayedFrames__SystemString_SystemInt32_VRCUdonCommonEnumsEventTiming__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour.SendCustomEventDelayedSeconds
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomEventDelayedSeconds__SystemString_SystemSingle_VRCUdonCommonEnumsEventTiming__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour.SendCustomNetworkEvent
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__SendCustomNetworkEvent__VRCUdonCommonInterfacesNetworkEventTarget_SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: UdonBehaviour.RequestSerialization
+    data:
+      directEvent: VRCUdonCommonInterfacesIUdonEventReceiver.__RequestSerialization__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: GameObject
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: GameObject.Set
+    data:
+      directEvent: UnityEngineGameObject__.Set__UnityEngineGameObject__UnityEngineGameObject
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.Get activeInHierarchy
+    data:
+      directEvent: UnityEngineGameObject.__get_activeInHierarchy__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.Get activeSelf
+    data:
+      directEvent: UnityEngineGameObject.__get_activeSelf__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.SetActive
+    data:
+      directEvent: UnityEngineGameObject.__SetActive__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.ToggleActive
+    data:
+      directEvent: 
+      guid: 653c3be4-2bad-4ad8-bf02-fd32dc735be0
+    scopeDelta: 0
+  - item: GameObject.Get transform
+    data:
+      directEvent: UnityEngineGameObject.__get_transform__UnityEngineTransform
+      guid: 
+    scopeDelta: 0
+  - item: VRCInstantiate.Instantiate
+    data:
+      directEvent: VRCInstantiate.__Instantiate__UnityEngineGameObject__UnityEngineGameObject
+      guid: 
+    scopeDelta: 0
+  - item: Object.Destroy
+    data:
+      directEvent: UnityEngineObject.__Destroy__UnityEngineObject__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.Get name
+    data:
+      directEvent: UnityEngineGameObject.__get_name__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.Set name
+    data:
+      directEvent: UnityEngineGameObject.__set_name__SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.SetComponentActive
+    data:
+      directEvent: UnityEngineGameObject.__SetComponentActive__UnityEngineGameObject__SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.Get layer
+    data:
+      directEvent: UnityEngineGameObject.__get_layer__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.Set layer
+    data:
+      directEvent: UnityEngineGameObject.__set_layer__SystemInt32__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.Find
+    data:
+      directEvent: UnityEngineGameObject.__Find__SystemString__UnityEngineGameObject
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.GetComponent
+    data:
+      directEvent: UnityEngineGameObject.__GetComponent__SystemType__UnityEngineComponent
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.GetComponents
+    data:
+      directEvent: UnityEngineGameObject.__GetComponents__SystemType__UnityEngineComponentArray
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.GetComponentInChildren
+    data:
+      directEvent: UnityEngineGameObject.__GetComponentInChildren__SystemType_SystemBoolean__UnityEngineComponent
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.GetComponentsInChildren
+    data:
+      directEvent: UnityEngineGameObject.__GetComponentsInChildren__SystemType_SystemBoolean__UnityEngineComponentArray
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.GetComponentInParent
+    data:
+      directEvent: UnityEngineGameObject.__GetComponentInParent__SystemType__UnityEngineComponent
+      guid: 
+    scopeDelta: 0
+  - item: GameObject.GetComponentsInParent
+    data:
+      directEvent: UnityEngineGameObject.__GetComponentsInParent__SystemType_SystemBoolean__UnityEngineComponentArray
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Transform
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Transform.Set
+    data:
+      directEvent: UnityEngineTransform__.Set__UnityEngineTransform__UnityEngineTransform
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Get gameObject
+    data:
+      directEvent: UnityEngineTransform.__get_gameObject__UnityEngineGameObject
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Get parent
+    data:
+      directEvent: UnityEngineTransform.__get_parent__UnityEngineTransform
+      guid: 
+    scopeDelta: 0
+  - item: Transform.SetParent
+    data:
+      directEvent: UnityEngineTransform.__SetParent__UnityEngineTransform_SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Teleport
+    data:
+      directEvent: 
+      guid: 3173f9c0-ff01-4c13-9541-8203e2b7f21d
+    scopeDelta: 0
+  - item: Transform.Get position
+    data:
+      directEvent: UnityEngineTransform.__get_position__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Set position
+    data:
+      directEvent: UnityEngineTransform.__set_position__UnityEngineVector3__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Get rotation
+    data:
+      directEvent: UnityEngineTransform.__get_rotation__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Set rotation
+    data:
+      directEvent: UnityEngineTransform.__set_rotation__UnityEngineQuaternion__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Transform.SetPositionAndRotation
+    data:
+      directEvent: UnityEngineTransform.__SetPositionAndRotation__UnityEngineVector3_UnityEngineQuaternion__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Get lossyScale
+    data:
+      directEvent: UnityEngineTransform.__get_lossyScale__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Get localPosition
+    data:
+      directEvent: UnityEngineTransform.__get_localPosition__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Set localPosition
+    data:
+      directEvent: UnityEngineTransform.__set_localPosition__UnityEngineVector3__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Get localRotation
+    data:
+      directEvent: UnityEngineTransform.__get_localRotation__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Set localRotation
+    data:
+      directEvent: UnityEngineTransform.__set_localRotation__UnityEngineQuaternion__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Get localScale
+    data:
+      directEvent: UnityEngineTransform.__get_localScale__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Set localScale
+    data:
+      directEvent: UnityEngineTransform.__set_localScale__UnityEngineVector3__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Equality
+    data:
+      directEvent: UnityEngineTransform.__op_Equality__UnityEngineObject_UnityEngineObject__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Inequality
+    data:
+      directEvent: UnityEngineTransform.__op_Inequality__UnityEngineObject_UnityEngineObject__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Find
+    data:
+      directEvent: UnityEngineTransform.__Find__SystemString__UnityEngineTransform
+      guid: 
+    scopeDelta: 0
+  - item: Transform.Get childCount
+    data:
+      directEvent: UnityEngineTransform.__get_childCount__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: Transform.GetChild
+    data:
+      directEvent: UnityEngineTransform.__GetChild__SystemInt32__UnityEngineTransform
+      guid: 
+    scopeDelta: 0
+  - item: Transform.IsChildOf
+    data:
+      directEvent: UnityEngineTransform.__IsChildOf__UnityEngineTransform__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Transform.GetSiblingIndex
+    data:
+      directEvent: UnityEngineTransform.__GetSiblingIndex__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: Transform.SetSiblingIndex
+    data:
+      directEvent: UnityEngineTransform.__SetSiblingIndex__SystemInt32__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Transform.SetAsFirstSibling
+    data:
+      directEvent: UnityEngineTransform.__SetAsFirstSibling__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Transform.SetAsLastSibling
+    data:
+      directEvent: UnityEngineTransform.__SetAsLastSibling__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: VRC
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCPlayerAPI
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Networking.Get LocalPlayer
+    data:
+      directEvent: VRCSDKBaseNetworking.__get_LocalPlayer__VRCSDKBaseVRCPlayerApi
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.TeleportTo
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__TeleportTo__UnityEngineVector3_UnityEngineQuaternion__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.Equals
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__Equals__SystemObject__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.IsValid
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__IsValid__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: PlayerProperties
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCPlayerApi.Get displayName
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__get_displayName__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.Get isLocal
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__get_isLocal__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.Get isMaster
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__get_isMaster__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.Get playerId
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__get_playerId__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetBonePosition
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetBonePosition__UnityEngineHumanBodyBones__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetBoneRotation
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetBoneRotation__UnityEngineHumanBodyBones__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetPickupInHand
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetPickupInHand__VRCSDKBaseVRC_PickupPickupHand__VRCSDKBaseVRC_Pickup
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetPosition
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetPosition__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetRotation
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetRotation__UnityEngineQuaternion
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetTrackingData
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetTrackingData__VRCSDKBaseVRCPlayerApiTrackingDataType__VRCSDKBaseVRCPlayerApiTrackingData
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.IsOwner
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__IsOwner__UnityEngineGameObject__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.IsPlayerGrounded
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__IsPlayerGrounded__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.IsUserInVR
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__IsUserInVR__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: PlayerLocomotion
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCPlayerApi.Immobilize
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__Immobilize__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetVelocity
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetVelocity__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetVelocity
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetVelocity__UnityEngineVector3__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetWalkSpeed
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetWalkSpeed__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetWalkSpeed
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetWalkSpeed__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetStrafeSpeed
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetStrafeSpeed__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetStrafeSpeed
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetStrafeSpeed__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetRunSpeed
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetRunSpeed__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetRunSpeed
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetRunSpeed__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetJumpImpulse
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetJumpImpulse__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetJumpImpulse
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetJumpImpulse__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetGravityStrength
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetGravityStrength__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetGravityStrength
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetGravityStrength__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.UseLegacyLocomotion
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__UseLegacyLocomotion__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: PlayerVoice
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCPlayerApi.SetVoiceDistanceFar
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetVoiceDistanceFar__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetVoiceDistanceNear
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetVoiceDistanceNear__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetVoiceGain
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetVoiceGain__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetVoiceLowpass
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetVoiceLowpass__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetVoiceVolumetricRadius
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetVoiceVolumetricRadius__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: PlayerAvatarAudio
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCPlayerApi.SetAvatarAudioCustomCurve
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetAvatarAudioCustomCurve__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetAvatarAudioFarRadius
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetAvatarAudioFarRadius__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetAvatarAudioForceSpatial
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetAvatarAudioForceSpatial__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetAvatarAudioGain
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetAvatarAudioGain__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetAvatarAudioNearRadius
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetAvatarAudioNearRadius__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetAvatarAudioVolumetricRadius
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetAvatarAudioVolumetricRadius__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: PlayerTags
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCPlayerApi.GetPlayersWithTag
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetPlayersWithTag__SystemString_SystemString__SystemCollectionsGenericListSystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetPlayerTag
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetPlayerTag__SystemString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetPlayerTag
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetPlayerTag__SystemString_SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.ClearPlayerTags
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__ClearPlayerTags__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.ClearSilence
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__ClearSilence__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetSilencedToTagged
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetSilencedToTagged__SystemInt32_SystemString_SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.SetSilencedToUntagged
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__SetSilencedToUntagged__SystemInt32_SystemString_SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: PlayerCombat
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCPlayerApi.CombatSetup
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__CombatSetup__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.CombatGetCurrentHitpoints
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__CombatGetCurrentHitpoints__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.CombatGetDestructible
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__CombatGetDestructible__VRCSDKBaseIVRC_Destructible
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.CombatSetCurrentHitpoints
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__CombatSetCurrentHitpoints__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.CombatSetDamageGraphic
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__CombatSetDamageGraphic__UnityEngineGameObject__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.CombatSetMaxHitpoints
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__CombatSetMaxHitpoints__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.CombatSetRespawn
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__CombatSetRespawn__SystemBoolean_SystemSingle_UnityEngineTransform__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: VRCPlayerApi.EnablePickups
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__EnablePickups__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetPlayerById
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetPlayerById__SystemInt32__VRCSDKBaseVRCPlayerApi
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetPlayerCount
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetPlayerCount__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.GetPlayers
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__GetPlayers__VRCSDKBaseVRCPlayerApiArray__VRCSDKBaseVRCPlayerApiArray
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.PlayHapticEventInHand
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__PlayHapticEventInHand__VRCSDKBaseVRC_PickupPickupHand_SystemSingle_SystemSingle_SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPlayerApi.ToString
+    data:
+      directEvent: VRCSDKBaseVRCPlayerApi.__ToString__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: Networking.SetOwner
+    data:
+      directEvent: VRCSDKBaseNetworking.__SetOwner__VRCSDKBaseVRCPlayerApi_UnityEngineGameObject__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Networking.GetOwner
+    data:
+      directEvent: VRCSDKBaseNetworking.__GetOwner__UnityEngineGameObject__VRCSDKBaseVRCPlayerApi
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Pickups
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCPickup.Get enabled
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Set enabled
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Get IsHeld
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__get_IsHeld__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Drop
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__Drop__VRCSDKBaseVRCPlayerApi__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Get pickupable
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__get_pickupable__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Set pickupable
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__set_pickupable__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Get proximity
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__get_proximity__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Set proximity
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__set_proximity__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Get currentHand
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__get_currentHand__VRCSDKBaseVRC_PickupPickupHand
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Get currentPlayer
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__get_currentPlayer__VRCSDKBaseVRCPlayerApi
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Get InteractionText
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__get_InteractionText__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Set InteractionText
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__set_InteractionText__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Get UseText
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__get_UseText__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Set UseText
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__set_UseText__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.GenerateHapticEvent
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__GenerateHapticEvent__SystemSingle_SystemSingle_SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.PlayHaptics
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__PlayHaptics__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Get DisallowTheft
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__get_DisallowTheft__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Set DisallowTheft
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__set_DisallowTheft__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Get AutoHold
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__get_AutoHold__VRCSDKBaseVRC_PickupAutoHoldMode
+      guid: 
+    scopeDelta: 0
+  - item: VRCPickup.Set AutoHold
+    data:
+      directEvent: VRCSDK3ComponentsVRCPickup.__set_AutoHold__VRCSDKBaseVRC_PickupAutoHoldMode
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Stations
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCStation.UseStation
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__UseStation__VRCSDKBaseVRCPlayerApi__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.ExitStation
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__ExitStation__VRCSDKBaseVRCPlayerApi__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Get enabled
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Set enabled
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Get disableStationExit
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__get_disableStationExit__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Set disableStationExit
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__set_disableStationExit__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Get PlayerMobility
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__get_PlayerMobility__VRCSDKBaseVRCStationMobility
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Set PlayerMobility
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__set_PlayerMobility__VRCSDKBaseVRCStationMobility
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Get seated
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__get_seated__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Set seated
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__set_seated__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Get stationEnterPlayerLocation
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__get_stationEnterPlayerLocation__UnityEngineTransform
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Set stationEnterPlayerLocation
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__set_stationEnterPlayerLocation__UnityEngineTransform
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Get stationExitPlayerLocation
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__get_stationExitPlayerLocation__UnityEngineTransform
+      guid: 
+    scopeDelta: 0
+  - item: VRCStation.Set stationExitPlayerLocation
+    data:
+      directEvent: VRCSDK3ComponentsVRCStation.__set_stationExitPlayerLocation__UnityEngineTransform
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Video
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: BaseVRCVideoPlayer.Get enabled
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.Set enabled
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.Play
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__Play__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.Pause
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__Pause__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.Stop
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__Stop__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.PlayURL
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__PlayURL__VRCSDKBaseVRCUrl__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.LoadURL
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__LoadURL__VRCSDKBaseVRCUrl__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.Get IsPlaying
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__get_IsPlaying__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.Get IsReady
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__get_IsReady__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.GetDuration
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__GetDuration__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.GetTime
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__GetTime__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.SetTime
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__SetTime__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.Get Loop
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__get_Loop__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: BaseVRCVideoPlayer.Set Loop
+    data:
+      directEvent: VRCSDK3VideoComponentsBaseBaseVRCVideoPlayer.__set_Loop__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Portal
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCPortalMarker.Get enabled
+    data:
+      directEvent: VRCSDK3ComponentsVRCPortalMarker.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCPortalMarker.Set enabled
+    data:
+      directEvent: VRCSDK3ComponentsVRCPortalMarker.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCPortalMarker.Get roomId
+    data:
+      directEvent: VRCSDK3ComponentsVRCPortalMarker.__get_roomId__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: VRCPortalMarker.Set roomId
+    data:
+      directEvent: VRCSDK3ComponentsVRCPortalMarker.__set_roomId__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: VRCPortalMarker.RefreshPortal
+    data:
+      directEvent: VRCSDK3ComponentsVRCPortalMarker.__RefreshPortal__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Avatar Pedestal
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: VRCAvatarPedestal.Get enabled
+    data:
+      directEvent: VRCSDK3ComponentsVRCAvatarPedestal.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCAvatarPedestal.Set enabled
+    data:
+      directEvent: VRCSDK3ComponentsVRCAvatarPedestal.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCAvatarPedestal.SetAvatarUse
+    data:
+      directEvent: VRCSDK3ComponentsVRCAvatarPedestal.__SetAvatarUse__VRCSDKBaseVRCPlayerApi__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCAvatarPedestal.SwitchAvatar
+    data:
+      directEvent: VRCSDK3ComponentsVRCAvatarPedestal.__SwitchAvatar__SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: VRCAvatarPedestal.Get blueprintId
+    data:
+      directEvent: VRCSDK3ComponentsVRCAvatarPedestal.__get_blueprintId__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: VRCAvatarPedestal.Set blueprintId
+    data:
+      directEvent: VRCSDK3ComponentsVRCAvatarPedestal.__set_blueprintId__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: VRCAvatarPedestal.Get ChangeAvatarsOnUse
+    data:
+      directEvent: VRCSDK3ComponentsVRCAvatarPedestal.__get_ChangeAvatarsOnUse__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: VRCAvatarPedestal.Set ChangeAvatarsOnUse
+    data:
+      directEvent: VRCSDK3ComponentsVRCAvatarPedestal.__set_ChangeAvatarsOnUse__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Components
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Component.Get gameObject
+    data:
+      directEvent: UnityEngineComponent.__get_gameObject__UnityEngineGameObject
+      guid: 
+    scopeDelta: 0
+  - item: Component.Get transform
+    data:
+      directEvent: UnityEngineComponent.__get_transform__UnityEngineTransform
+      guid: 
+    scopeDelta: 0
+  - item: Animator
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Animator.Get enabled
+    data:
+      directEvent: UnityEngineAnimator.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Animator.Set enabled
+    data:
+      directEvent: UnityEngineAnimator.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Animator.Get speed
+    data:
+      directEvent: UnityEngineAnimator.__get_speed__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Animator.Set speed
+    data:
+      directEvent: UnityEngineAnimator.__set_speed__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Animator.GetBool
+    data:
+      directEvent: UnityEngineAnimator.__GetBool__SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Animator.SetBool
+    data:
+      directEvent: UnityEngineAnimator.__SetBool__SystemString_SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Animator.SetTrigger
+    data:
+      directEvent: UnityEngineAnimator.__SetTrigger__SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Animator.ResetTrigger
+    data:
+      directEvent: UnityEngineAnimator.__ResetTrigger__SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Animator.GetInteger
+    data:
+      directEvent: UnityEngineAnimator.__GetInteger__SystemString__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: Animator.SetInteger
+    data:
+      directEvent: UnityEngineAnimator.__SetInteger__SystemString_SystemInt32__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Animator.GetFloat
+    data:
+      directEvent: UnityEngineAnimator.__GetFloat__SystemString__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Animator.SetFloat
+    data:
+      directEvent: UnityEngineAnimator.__SetFloat__SystemString_SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Particles
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: ParticleSystem.Play
+    data:
+      directEvent: UnityEngineParticleSystem.__Play__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem.Pause
+    data:
+      directEvent: UnityEngineParticleSystem.__Pause__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem.Stop
+    data:
+      directEvent: UnityEngineParticleSystem.__Stop__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem.Clear
+    data:
+      directEvent: UnityEngineParticleSystem.__Clear__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem.Emit
+    data:
+      directEvent: UnityEngineParticleSystem.__Emit__SystemInt32__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem.IsAlive
+    data:
+      directEvent: UnityEngineParticleSystem.__IsAlive__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem.Get isEmitting
+    data:
+      directEvent: UnityEngineParticleSystem.__get_isEmitting__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem.Get isPaused
+    data:
+      directEvent: UnityEngineParticleSystem.__get_isPaused__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem.Get isPlaying
+    data:
+      directEvent: UnityEngineParticleSystem.__get_isPlaying__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: ParticleSystem.Get isStopped
+    data:
+      directEvent: UnityEngineParticleSystem.__get_isStopped__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Renderer
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Renderer.Get enabled
+    data:
+      directEvent: UnityEngineRenderer.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Renderer.Set enabled
+    data:
+      directEvent: UnityEngineRenderer.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Renderer.Get isVisible
+    data:
+      directEvent: UnityEngineRenderer.__get_isVisible__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Renderer.Get sharedMaterial
+    data:
+      directEvent: UnityEngineRenderer.__get_sharedMaterial__UnityEngineMaterial
+      guid: 
+    scopeDelta: 0
+  - item: Renderer.Set sharedMaterial
+    data:
+      directEvent: UnityEngineRenderer.__set_sharedMaterial__UnityEngineMaterial__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Renderer.Get sharedMaterials
+    data:
+      directEvent: UnityEngineRenderer.__get_sharedMaterials__UnityEngineMaterialArray
+      guid: 
+    scopeDelta: 0
+  - item: Renderer.Set sharedMaterials
+    data:
+      directEvent: UnityEngineRenderer.__set_sharedMaterials__UnityEngineMaterialArray__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Renderer.GetPropertyBlock
+    data:
+      directEvent: UnityEngineRenderer.__GetPropertyBlock__UnityEngineMaterialPropertyBlock__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Renderer.SetPropertyBlock
+    data:
+      directEvent: UnityEngineRenderer.__SetPropertyBlock__UnityEngineMaterialPropertyBlock__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Renderer.HasPropertyBlock
+    data:
+      directEvent: UnityEngineRenderer.__HasPropertyBlock__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: UI
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Text
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Text.Get enabled
+    data:
+      directEvent: UnityEngineUIText.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Text.Set enabled
+    data:
+      directEvent: UnityEngineUIText.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Text.Get text
+    data:
+      directEvent: UnityEngineUIText.__get_text__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: Text.Set text
+    data:
+      directEvent: UnityEngineUIText.__set_text__SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Text.Get fontSize
+    data:
+      directEvent: UnityEngineUIText.__get_fontSize__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: Text.Set fontSize
+    data:
+      directEvent: UnityEngineUIText.__set_fontSize__SystemInt32__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Text.Get alignment
+    data:
+      directEvent: UnityEngineUIText.__get_alignment__UnityEngineTextAnchor
+      guid: 
+    scopeDelta: 0
+  - item: Text.Set alignment
+    data:
+      directEvent: UnityEngineUIText.__set_alignment__UnityEngineTextAnchor__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Text.Get color
+    data:
+      directEvent: UnityEngineUIText.__get_color__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Text.Set color
+    data:
+      directEvent: UnityEngineUIText.__set_color__UnityEngineColor__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Image
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Image.Get enabled
+    data:
+      directEvent: UnityEngineUIImage.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Image.Set enabled
+    data:
+      directEvent: UnityEngineUIImage.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Image.Get sprite
+    data:
+      directEvent: UnityEngineUIImage.__get_sprite__UnityEngineSprite
+      guid: 
+    scopeDelta: 0
+  - item: Image.Set sprite
+    data:
+      directEvent: UnityEngineUIImage.__set_sprite__UnityEngineSprite__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Image.Get color
+    data:
+      directEvent: UnityEngineUIImage.__get_color__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: Image.Set color
+    data:
+      directEvent: UnityEngineUIImage.__set_color__UnityEngineColor__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Button
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Button.Get enabled
+    data:
+      directEvent: UnityEngineUIButton.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Button.Set enabled
+    data:
+      directEvent: UnityEngineUIButton.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Button.Get interactable
+    data:
+      directEvent: UnityEngineUIButton.__get_interactable__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Button.Set interactable
+    data:
+      directEvent: UnityEngineUIButton.__set_interactable__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Toggle
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Toggle.Get enabled
+    data:
+      directEvent: UnityEngineUIToggle.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Toggle.Set enabled
+    data:
+      directEvent: UnityEngineUIToggle.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Toggle.Get isOn
+    data:
+      directEvent: UnityEngineUIToggle.__get_isOn__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Toggle.Set isOn
+    data:
+      directEvent: UnityEngineUIToggle.__set_isOn__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Toggle.Get interactable
+    data:
+      directEvent: UnityEngineUIToggle.__get_interactable__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Toggle.Set interactable
+    data:
+      directEvent: UnityEngineUIToggle.__set_interactable__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Slider
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Slider.Get enabled
+    data:
+      directEvent: UnityEngineUISlider.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Slider.Set enabled
+    data:
+      directEvent: UnityEngineUISlider.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Slider.Get value
+    data:
+      directEvent: UnityEngineUISlider.__get_value__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Slider.Set value
+    data:
+      directEvent: UnityEngineUISlider.__set_value__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Slider.Get normalizedValue
+    data:
+      directEvent: UnityEngineUISlider.__get_normalizedValue__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Slider.Set normalizedValue
+    data:
+      directEvent: UnityEngineUISlider.__set_normalizedValue__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Slider.Get maxValue
+    data:
+      directEvent: UnityEngineUISlider.__get_maxValue__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Slider.Set maxValue
+    data:
+      directEvent: UnityEngineUISlider.__set_maxValue__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Slider.Get minValue
+    data:
+      directEvent: UnityEngineUISlider.__get_minValue__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Slider.Set minValue
+    data:
+      directEvent: UnityEngineUISlider.__set_minValue__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Slider.Get interactable
+    data:
+      directEvent: UnityEngineUISlider.__get_interactable__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Slider.Set interactable
+    data:
+      directEvent: UnityEngineUISlider.__set_interactable__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Scrollbar
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Scrollbar.Get enabled
+    data:
+      directEvent: UnityEngineUIScrollbar.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Scrollbar.Set enabled
+    data:
+      directEvent: UnityEngineUIScrollbar.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Scrollbar.Get value
+    data:
+      directEvent: UnityEngineUIScrollbar.__get_value__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Scrollbar.Set value
+    data:
+      directEvent: UnityEngineUIScrollbar.__set_value__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Scrollbar.Get interactable
+    data:
+      directEvent: UnityEngineUIScrollbar.__get_interactable__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Scrollbar.Set interactable
+    data:
+      directEvent: UnityEngineUIScrollbar.__set_interactable__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Dropdown
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Dropdown.Get enabled
+    data:
+      directEvent: UnityEngineUIDropdown.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Dropdown.Set enabled
+    data:
+      directEvent: UnityEngineUIDropdown.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Dropdown.Get value
+    data:
+      directEvent: UnityEngineUIDropdown.__get_value__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: Dropdown.Set value
+    data:
+      directEvent: UnityEngineUIDropdown.__set_value__SystemInt32__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Dropdown.Get interactable
+    data:
+      directEvent: UnityEngineUIDropdown.__get_interactable__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Dropdown.Set interactable
+    data:
+      directEvent: UnityEngineUIDropdown.__set_interactable__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: InputField
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: InputField.Get enabled
+    data:
+      directEvent: UnityEngineUIInputField.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: InputField.Set enabled
+    data:
+      directEvent: UnityEngineUIInputField.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: InputField.Get text
+    data:
+      directEvent: UnityEngineUIInputField.__get_text__SystemString
+      guid: 
+    scopeDelta: 0
+  - item: InputField.Set text
+    data:
+      directEvent: UnityEngineUIInputField.__set_text__SystemString__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: InputField.Get characterLimit
+    data:
+      directEvent: UnityEngineUIInputField.__get_characterLimit__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: InputField.Set characterLimit
+    data:
+      directEvent: UnityEngineUIInputField.__set_characterLimit__SystemInt32__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: InputField.Get caretPosition
+    data:
+      directEvent: UnityEngineUIInputField.__get_caretPosition__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: InputField.Set caretPosition
+    data:
+      directEvent: UnityEngineUIInputField.__set_caretPosition__SystemInt32__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: InputField.Get interactable
+    data:
+      directEvent: UnityEngineUIInputField.__get_interactable__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: InputField.Set interactable
+    data:
+      directEvent: UnityEngineUIInputField.__set_interactable__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: AudioSource
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: AudioSource.Get enabled
+    data:
+      directEvent: UnityEngineAudioSource.__get_enabled__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set enabled
+    data:
+      directEvent: UnityEngineAudioSource.__set_enabled__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Play
+    data:
+      directEvent: UnityEngineAudioSource.__Play__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Stop
+    data:
+      directEvent: UnityEngineAudioSource.__Stop__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Pause
+    data:
+      directEvent: UnityEngineAudioSource.__Pause__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.UnPause
+    data:
+      directEvent: UnityEngineAudioSource.__UnPause__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.PlayClipAtPoint
+    data:
+      directEvent: UnityEngineAudioSource.__PlayClipAtPoint__UnityEngineAudioClip_UnityEngineVector3__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.PlayDelayed
+    data:
+      directEvent: UnityEngineAudioSource.__PlayDelayed__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.PlayOneShot
+    data:
+      directEvent: UnityEngineAudioSource.__PlayOneShot__UnityEngineAudioClip__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.GetSpectrumData
+    data:
+      directEvent: UnityEngineAudioSource.__GetSpectrumData__SystemSingleArray_SystemInt32_UnityEngineFFTWindow__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get isPlaying
+    data:
+      directEvent: UnityEngineAudioSource.__get_isPlaying__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get time
+    data:
+      directEvent: UnityEngineAudioSource.__get_time__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set time
+    data:
+      directEvent: UnityEngineAudioSource.__set_time__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get clip
+    data:
+      directEvent: UnityEngineAudioSource.__get_clip__UnityEngineAudioClip
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set clip
+    data:
+      directEvent: UnityEngineAudioSource.__set_clip__UnityEngineAudioClip__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get mute
+    data:
+      directEvent: UnityEngineAudioSource.__get_mute__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set mute
+    data:
+      directEvent: UnityEngineAudioSource.__set_mute__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get playOnAwake
+    data:
+      directEvent: UnityEngineAudioSource.__get_playOnAwake__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set playOnAwake
+    data:
+      directEvent: UnityEngineAudioSource.__set_playOnAwake__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get loop
+    data:
+      directEvent: UnityEngineAudioSource.__get_loop__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set loop
+    data:
+      directEvent: UnityEngineAudioSource.__set_loop__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get priority
+    data:
+      directEvent: UnityEngineAudioSource.__get_priority__SystemInt32
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set priority
+    data:
+      directEvent: UnityEngineAudioSource.__set_priority__SystemInt32__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get volume
+    data:
+      directEvent: UnityEngineAudioSource.__get_volume__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set volume
+    data:
+      directEvent: UnityEngineAudioSource.__set_volume__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get pitch
+    data:
+      directEvent: UnityEngineAudioSource.__get_pitch__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set pitch
+    data:
+      directEvent: UnityEngineAudioSource.__set_pitch__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get panStereo
+    data:
+      directEvent: UnityEngineAudioSource.__get_panStereo__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set panStereo
+    data:
+      directEvent: UnityEngineAudioSource.__set_panStereo__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get spatialBlend
+    data:
+      directEvent: UnityEngineAudioSource.__get_spatialBlend__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set spatialBlend
+    data:
+      directEvent: UnityEngineAudioSource.__set_spatialBlend__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get reverbZoneMix
+    data:
+      directEvent: UnityEngineAudioSource.__get_reverbZoneMix__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set reverbZoneMix
+    data:
+      directEvent: UnityEngineAudioSource.__set_reverbZoneMix__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get spread
+    data:
+      directEvent: UnityEngineAudioSource.__get_spread__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set spread
+    data:
+      directEvent: UnityEngineAudioSource.__set_spread__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get minDistance
+    data:
+      directEvent: UnityEngineAudioSource.__get_minDistance__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set minDistance
+    data:
+      directEvent: UnityEngineAudioSource.__set_minDistance__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get maxDistance
+    data:
+      directEvent: UnityEngineAudioSource.__get_maxDistance__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set maxDistance
+    data:
+      directEvent: UnityEngineAudioSource.__set_maxDistance__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Get rolloffMode
+    data:
+      directEvent: UnityEngineAudioSource.__get_rolloffMode__UnityEngineAudioRolloffMode
+      guid: 
+    scopeDelta: 0
+  - item: AudioSource.Set rolloffMode
+    data:
+      directEvent: UnityEngineAudioSource.__set_rolloffMode__UnityEngineAudioRolloffMode__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Other
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Log
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Debug.Log
+    data:
+      directEvent: UnityEngineDebug.__Log__SystemObject__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Debug.LogWarning
+    data:
+      directEvent: UnityEngineDebug.__LogWarning__SystemObject__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Debug.LogError
+    data:
+      directEvent: UnityEngineDebug.__LogError__SystemObject__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Input
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Input.GetKey
+    data:
+      directEvent: UnityEngineInput.__GetKey__SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Input.GetKeyDown
+    data:
+      directEvent: UnityEngineInput.__GetKeyDown__SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Input.GetKeyUp
+    data:
+      directEvent: UnityEngineInput.__GetKeyUp__SystemString__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Input.GetAxis
+    data:
+      directEvent: UnityEngineInput.__GetAxis__SystemString__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: Input.GetMouseButton
+    data:
+      directEvent: UnityEngineInput.__GetMouseButton__SystemInt32__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Input.GetMouseButtonDown
+    data:
+      directEvent: UnityEngineInput.__GetMouseButtonDown__SystemInt32__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Input.GetMouseButtonUp
+    data:
+      directEvent: UnityEngineInput.__GetMouseButtonUp__SystemInt32__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: RenderSettings
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: RenderSettings.Get skybox
+    data:
+      directEvent: UnityEngineRenderSettings.__get_skybox__UnityEngineMaterial
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Set skybox
+    data:
+      directEvent: UnityEngineRenderSettings.__set_skybox__UnityEngineMaterial__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: Fog
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: RenderSettings.Get fog
+    data:
+      directEvent: UnityEngineRenderSettings.__get_fog__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Get fogColor
+    data:
+      directEvent: UnityEngineRenderSettings.__get_fogColor__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Get fogDensity
+    data:
+      directEvent: UnityEngineRenderSettings.__get_fogDensity__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Get fogEndDistance
+    data:
+      directEvent: UnityEngineRenderSettings.__get_fogEndDistance__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Get fogMode
+    data:
+      directEvent: UnityEngineRenderSettings.__get_fogMode__UnityEngineFogMode
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Get fogStartDistance
+    data:
+      directEvent: UnityEngineRenderSettings.__get_fogStartDistance__SystemSingle
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Set fog
+    data:
+      directEvent: UnityEngineRenderSettings.__set_fog__SystemBoolean__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Set fogColor
+    data:
+      directEvent: UnityEngineRenderSettings.__set_fogColor__UnityEngineColor__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Set fogDensity
+    data:
+      directEvent: UnityEngineRenderSettings.__set_fogDensity__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Set fogEndDistance
+    data:
+      directEvent: UnityEngineRenderSettings.__set_fogEndDistance__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Set fogMode
+    data:
+      directEvent: UnityEngineRenderSettings.__set_fogMode__UnityEngineFogMode__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Set fogStartDistance
+    data:
+      directEvent: UnityEngineRenderSettings.__set_fogStartDistance__SystemSingle__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Ambient Color
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: RenderSettings.Get ambientSkyColor
+    data:
+      directEvent: UnityEngineRenderSettings.__get_ambientSkyColor__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Get ambientEquatorColor
+    data:
+      directEvent: UnityEngineRenderSettings.__get_ambientEquatorColor__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Get ambientGroundColor
+    data:
+      directEvent: UnityEngineRenderSettings.__get_ambientGroundColor__UnityEngineColor
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Set ambientSkyColor
+    data:
+      directEvent: UnityEngineRenderSettings.__set_ambientSkyColor__UnityEngineColor__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Set ambientEquatorColor
+    data:
+      directEvent: UnityEngineRenderSettings.__set_ambientEquatorColor__UnityEngineColor__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: RenderSettings.Set ambientGroundColor
+    data:
+      directEvent: UnityEngineRenderSettings.__set_ambientGroundColor__UnityEngineColor__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Physics
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: 1
+  - item: Physics.Get gravity
+    data:
+      directEvent: UnityEnginePhysics.__get_gravity__UnityEngineVector3
+      guid: 
+    scopeDelta: 0
+  - item: Physics.Set gravity
+    data:
+      directEvent: UnityEnginePhysics.__set_gravity__UnityEngineVector3__SystemVoid
+      guid: 
+    scopeDelta: 0
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: _ScopeEnd New Folder
+    data:
+      directEvent: 
+      guid: 
+    scopeDelta: -1
+  - item: Utilities.IsValid
+    data:
+      directEvent: VRCSDKBaseUtilities.__IsValid__SystemObject__SystemBoolean
+      guid: 
+    scopeDelta: 0
+  - item: Object.ToString
+    data:
+      directEvent: SystemObject.__ToString__SystemString
+      guid: 
+    scopeDelta: 0
