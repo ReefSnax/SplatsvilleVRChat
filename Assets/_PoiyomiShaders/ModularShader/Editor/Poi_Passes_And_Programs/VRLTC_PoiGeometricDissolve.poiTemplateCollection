@@ -1,0 +1,165 @@
+#T#PoiGeometricDissolveProperties
+[HideInInspector] m_geoDissolve ("Geometric Dissolve", Float) = 0
+_GeoDissolveAlpha ("Dissolve Alpha", Range(0, 1)) = 0
+[ThryWideEnum(Texture, 0, Point 2 Point, 1, Sphere NOT DONE, 2, center out NOT DONE, 3, Out in NOT DONE, 4)] _GeoDissolveGradientType ("Gradient Type", Int) = 0
+[ToggleUI]_GeoDissolveVertexColor ("Vertex Color Position--{condition_showS:(_GeoDissolveGradientType==1)}", Float) = 0
+//Texture
+_GeoDissolveGradient ("Gradient--{reference_properties:[_GeoDissolveGradientPan], condition_showS:(_GeoDissolveGradientType==0)}", 2D) = "white" { }
+[HideInInspector][Vector2] _GeoDissolveGradientPan ("Panning", Vector) = (0, 0, 0, 0)
+_GeoDissolveExpansionTime ("Expansion Time", Range(0.001, 1)) = 1
+//Point to Point
+[Vector3]_GeoDissolveStartPoint ("Start Point--{condition_showS:(_GeoDissolveGradientType==1)}", Vector) = (0, -1, 0)
+[Vector3]_GeoDissolveEndPoint ("End Point--{condition_showS:(_GeoDissolveGradientType==1)}", Vector) = (0, 1, 0)
+//Sphere
+//[Vector3]_GeoDissolveSphereCenter ("Sphere Center", Vector) = (0, -1, 0)
+//[Vector3]_GeoDissolveSphereRadius ("Sphere Radius", Vector) = (0, -1, 0)
+
+[Space][ThryHeaderLabel(Motion and Size, 13)]
+[ToggleUI]_GeoDissolveSpiral ("Spiral", Float) = 0
+_GeoDissolveSpin ("Spin--{condition_showS:(_GeoDissolveSpiral==1)}", Vector) = (1, 0, 1, 3)
+_GeoDissolveTravelDistance ("Travel Distance", Float) = .2
+[VectorLabel(Min, Max)]_GeoDissolveScaleRange ("Scale Range", Vector) = (0, 1, 0, 0)
+[Space][ThryHeaderLabel(Color and Emission, 13)]
+_GeoDissolveTexture ("Color Tex--{reference_properties:[_GeoDissolveTexturePan, _GeoDissolveTextureUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_GeoDissolveTexturePan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _GeoDissolveTextureUV ("UV", Int) = 0
+_GeoDissolveColor ("Color--{reference_property:_GeoDissolveColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _GeoDissolveColorThemeIndex ("", Int) = 0
+_geoEmissionStrength ("Emission Strength", Range(0, 20)) = 0
+[VectorLabel(Min, Max)]_GeoDissolveColorRange ("Color Range", Vector) = (0, 1, 0, 0)
+[VectorLabel(Min, Max)]_GeoDissolveEmissionRange ("Emission Range", Vector) = (0, 1, 0, 0)
+
+#T#PoiGeometricDissolveVariables
+
+#if defined(PROP_GEODISSOLVETEXTURE) || !defined(OPTIMIZER_ENABLED)
+	Texture2D _GeoDissolveTexture;
+	float4 _GeoDissolveTexture_ST;
+	float2 _GeoDissolveTexturePan;
+	float _GeoDissolveTextureUV;
+#endif
+
+float _GeoDissolveGradientType;
+float _GeoDissolveVertexColor;
+sampler2D _GeoDissolveGradient;
+float4 _GeoDissolveGradient_ST;
+float2 _GeoDissolveGradientPan;
+float _GeoDissolveAlpha;
+float _GeoDissolveTravelDistance;
+float2 _GeoDissolveScaleRange;
+float2 _GeoDissolveColorRange;
+float2 _GeoDissolveEmissionRange;
+float4 _GeoDissolveColor;
+float _GeoDissolveColorThemeIndex;
+float _geoEmissionStrength;
+float3 _GeoDissolveStartPoint;
+float3 _GeoDissolveEndPoint;
+float _GeoDissolveExpansionTime;
+float4 _GeoDissolveSpin;
+float _GeoDissolveSpiral;
+#define GEO_DISSOLVE_TEXTURE 0
+#define GEO_DISSOLVE_P2P 1
+#define GEO_DISSOLVE_SPHERE 2
+#define GEO_DISSOLVE_CENTER_OUT 3
+#define GEO_DISSOLVE_OUT_IN 4
+
+#T#PoiGeometricDissolveProgram
+[maxvertexcount(3)]
+void GeometryProgram(triangle VertexOut p[3], inout TriangleStream<VertexOut> triStream)
+{
+	UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(p[0]);
+	UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(p[1]);
+	UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(p[2]);
+
+
+
+	float3 edgeA = p[1].localPos.rgb - p[0].localPos.rgb;
+	float3 edgeB = p[2].localPos.rgb - p[0].localPos.rgb;
+	float3 c = cross(edgeA, edgeB);
+	float3 outDir = normalize(c);
+
+	float3 center = (p[0].localPos.xyz + p[1].localPos.xyz + p[2].localPos.xyz) / 3.0;
+	float3 vertexColorCenter = (p[0].vertexColor.xyz + p[1].vertexColor.xyz + p[2].vertexColor.xyz) / 3.0;
+	//float dissolveAlpha = sin(_Time.y + center.y * 20) * .5 + .5;
+	float2 uv = (p[0].uv[0] + p[1].uv[0] + p[2].uv[0]) / 3.0;
+
+	float geoDissolveAlpha = _GeoDissolveAlpha;
+	if (_GeoDissolveGradientType == GEO_DISSOLVE_TEXTURE)
+	{
+		geoDissolveAlpha = (1 - tex2Dlod(_GeoDissolveGradient, float4(poiUV(uv, _GeoDissolveGradient_ST) + _GeoDissolveGradientPan * _Time.x, 0, 0)).r) * .5 ;
+		geoDissolveAlpha = -1 + geoDissolveAlpha + _GeoDissolveAlpha * 2;
+		p[0].geoDissolveAlpha = remapClamped( - .5, 1 / _GeoDissolveExpansionTime, geoDissolveAlpha);
+		p[1].geoDissolveAlpha = remapClamped( - .5, 1 / _GeoDissolveExpansionTime, geoDissolveAlpha);
+		p[2].geoDissolveAlpha = remapClamped( - .5, 1 / _GeoDissolveExpansionTime, geoDissolveAlpha);
+	}
+	else if (_GeoDissolveGradientType == GEO_DISSOLVE_P2P)
+	{
+
+		float3 pos = center;
+		if (_GeoDissolveVertexColor)
+		{
+			pos = vertexColorCenter;
+		}
+		float3 direction = normalize(_GeoDissolveEndPoint.xyz - _GeoDissolveStartPoint.xyz);
+		float3 currentPos = lerp(_GeoDissolveStartPoint.xyz, _GeoDissolveEndPoint.xyz, _GeoDissolveAlpha);
+		float distanceTo = dot(currentPos - pos, direction);
+		//edgeAlpha = smoothstep(_DissolveP2PEdgeLength + .00001, 0, distanceTo);
+		geoDissolveAlpha = distanceTo;
+		//edgeAlpha *= 1 - dissolveAlpha;
+		p[0].geoDissolveAlpha = geoDissolveAlpha / _GeoDissolveExpansionTime;
+		p[1].geoDissolveAlpha = geoDissolveAlpha / _GeoDissolveExpansionTime;
+		p[2].geoDissolveAlpha = geoDissolveAlpha / _GeoDissolveExpansionTime;
+	}
+	else if (_GeoDissolveGradientType == GEO_DISSOLVE_SPHERE)
+	{
+		//TODO
+
+	}
+	else if (_GeoDissolveGradientType == GEO_DISSOLVE_CENTER_OUT)
+	{
+		//TODO
+
+	}
+	else if (_GeoDissolveGradientType == GEO_DISSOLVE_OUT_IN)
+	{
+		//TODO
+
+	}
+
+	geoDissolveAlpha = saturate(geoDissolveAlpha) / _GeoDissolveExpansionTime;
+	for (int i = 0; i < 3; i++)
+	{
+		p[i].localPos.xyz = lerp(p[i].localPos.xyz, center, remapClamped(_GeoDissolveScaleRange.x, _GeoDissolveScaleRange.y, geoDissolveAlpha));
+		if (_GeoDissolveSpiral)
+		{
+			p[i].localPos.xyz += geoDissolveAlpha * _GeoDissolveTravelDistance * float3(sin(geoDissolveAlpha * 6.28318530718 * _GeoDissolveSpin.x * _GeoDissolveSpin.w + atan2(outDir.z, outDir.x)), sin(geoDissolveAlpha * 6.28318530718 * _GeoDissolveSpin.y * _GeoDissolveSpin.w + atan2(outDir.z, outDir.x)), cos(geoDissolveAlpha * 6.28318530718 * _GeoDissolveSpin.z * _GeoDissolveSpin.w + atan2(outDir.z, outDir.x)));
+		}
+		else
+		{
+			p[i].localPos.xyz += outDir * geoDissolveAlpha * _GeoDissolveTravelDistance;
+		}
+		p[i].worldPos = mul(unity_ObjectToWorld, p[i].localPos);
+		p[i].pos = UnityObjectToClipPos(p[i].localPos);
+	}
+
+	triStream.Append(p[0]);
+	triStream.Append(p[1]);
+	triStream.Append(p[2]);
+}
+
+#T#PoiGeometricDissolveVertexOutVariable
+float geoDissolveAlpha : TEXCOORD18;
+
+#T#PoiGeometricDissolveFragFunction
+void poiGeometricDissolve(float geoDissolveAlpha, inout PoiFragData poiFragData, in PoiMesh poiMesh, inout PoiMods poiMods)
+{
+	float4 geoDissolveColor = float4(poiThemeColor(poiMods, _GeoDissolveColor.rgb, _GeoDissolveColorThemeIndex), _GeoDissolveColor.a);
+	#if defined(PROP_GEODISSOLVETEXTURE) || !defined(OPTIMIZER_ENABLED)
+		geoDissolveColor *= POI2D_SAMPLER_PAN(_GeoDissolveTexture, _MainTex, poiUV(poiMesh.uv[_GeoDissolveTextureUV], _GeoDissolveTexture_ST), _GeoDissolveTexturePan);
+	#endif
+
+	poiFragData.baseColor = lerp(poiFragData.baseColor, geoDissolveColor.rgb, smoothstep(_GeoDissolveColorRange.x, _GeoDissolveColorRange.y, geoDissolveAlpha * geoDissolveColor.a));
+	poiFragData.emission += smoothstep(_GeoDissolveEmissionRange.x, _GeoDissolveEmissionRange.y, geoDissolveAlpha) * geoDissolveColor.rgb * _geoEmissionStrength * geoDissolveColor.a;
+}
+
+#T#PoiGeometricDissolveFragFunctionCall
+poiGeometricDissolve(i.geoDissolveAlpha, poiFragData, poiMesh, poiMods);

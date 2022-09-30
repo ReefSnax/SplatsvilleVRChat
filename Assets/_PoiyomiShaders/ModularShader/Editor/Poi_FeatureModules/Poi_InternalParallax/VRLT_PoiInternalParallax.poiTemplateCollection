@@ -1,0 +1,134 @@
+#T#PoiInternalParallaxProperties
+//ifex _PoiInternalParallax==0
+[HideInInspector] m_start_internalparallax (" Internal Parallax--{reference_property:_PoiInternalParallax}", Float) = 0
+[HideInInspector][ThryToggle(POI_INTERNALPARALLAX)]_PoiInternalParallax ("Enable", Float) = 0
+
+[Enum(Basic, 0, HeightMap, 1)] _ParallaxInternalHeightmapMode ("Parallax Mode", Int) = 0
+[ToggleUI]_ParallaxInternalHeightFromAlpha ("HeightFromAlpha", Float) = 0
+
+[sRGBWarning(true)][ThryTexture]_ParallaxInternalMap ("Internal Map--{reference_properties:[_ParallaxInternalMapPan]}", 2D) = "black" { }
+[HideInInspector][Vector2]_ParallaxInternalMapPan ("Panning", Vector) = (0, 0, 0, 0)
+
+[sRGBWarning][ThryTexture]_ParallaxInternalMapMask ("Mask--{reference_properties:[_ParallaxInternalMapMaskPan, _ParallaxInternalMapMaskUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_ParallaxInternalMapMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, distorteduv0, 4)] _ParallaxInternalMapMaskUV ("UV", Int) = 0
+[IntRange]_ParallaxInternalIterations ("Parallax Internal Iterations", Range(1, 50)) = 4
+_ParallaxInternalMinDepth ("Min Depth", Float) = 0
+_ParallaxInternalMaxDepth ("Max Depth", Float) = 0.1
+_ParallaxInternalMinFade ("Min Depth Brightness", Range(0, 5)) = 1.0
+_ParallaxInternalMaxFade ("Max Depth Brightness", Range(0, 5)) = 0.1
+_ParallaxInternalMinColor ("Min Depth Color", Color) = (1, 1, 1, 1)
+_ParallaxInternalMaxColor ("Max Depth Color", Color) = (1, 1, 1, 1)
+// [Vector2]_ParallaxInternalPanSpeed ("Pan Speed", Vector) = (0, 0, 0, 0)
+[Vector2]_ParallaxInternalPanDepthSpeed ("Per Level Speed Multiplier", Vector) = (0, 0, 0, 0)
+
+[Space(4)]
+[ThryToggleUI(true)]_ParallaxInternalHueShiftEnabled ("<size=13><b>  Hue Shift</b></size>", Float) = 0
+_ParallaxInternalHueShift ("Hue Shift--{condition_showS:(_ParallaxInternalHueShiftEnabled==1)}", Range(0, 1)) = 0
+_ParallaxInternalHueShiftSpeed ("Hue Shift Speed--{condition_showS:(_ParallaxInternalHueShiftEnabled==1)}", Float) = 0
+_ParallaxInternalHueShiftPerLevel ("Hue Shift Per Level--{condition_showS:(_ParallaxInternalHueShiftEnabled==1)}", Float) = 0
+// _ParallaxInternalHueShiftPerLevelSpeed ("Hue Shift Per Level Speed--{condition_showS:(_ParallaxInternalHueShiftEnabled==1)}", Float) = 0
+
+[HideInInspector] m_end_internalparallax ("Internal Parallax", Float) = 0
+//endex
+
+#T#PoiInternalParallaxKeywords
+//ifex _PoiInternalParallax==0
+#pragma shader_feature_local POI_INTERNALPARALLAX
+//endex
+
+#T#PoiInternalParallaxVariables
+//ifex _PoiInternalParallax==0
+#ifdef POI_INTERNALPARALLAX
+    #if defined(PROP_PARALLAXINTERNALMAP) || !defined(OPTIMIZER_ENABLED)
+        Texture2D _ParallaxInternalMap;
+    #endif
+    float4 _ParallaxInternalMap_ST;
+    float2 _ParallaxInternalMapPan;
+
+    #if defined(PROP_PARALLAXINTERNALMAPMASK) || !defined(OPTIMIZER_ENABLED)
+        Texture2D _ParallaxInternalMapMask;
+    #endif
+    float4 _ParallaxInternalMapMask_ST;
+    float2 _ParallaxInternalMapMaskPan;
+    float _ParallaxInternalMapMaskUV;
+
+    float _ParallaxInternalIterations;
+    float _ParallaxInternalMinDepth;
+    float _ParallaxInternalMaxDepth;
+    float _ParallaxInternalMinFade;
+    float _ParallaxInternalMaxFade;
+    float4 _ParallaxInternalMinColor;
+    float4 _ParallaxInternalMaxColor;
+    // float4 _ParallaxInternalPanSpeed;
+    float4 _ParallaxInternalPanDepthSpeed;
+    float _ParallaxInternalHeightmapMode;
+    float _ParallaxInternalHeightFromAlpha;
+
+    float _ParallaxInternalHueShiftEnabled;
+    float _ParallaxInternalHueShift;
+    float _ParallaxInternalHueShiftSpeed;
+    float _ParallaxInternalHueShiftPerLevel;
+    // float _ParallaxInternalHueShiftPerLevelSpeed;
+#endif
+//endex
+
+#T#PoiInternalParallaxFunctions
+//ifex _PoiInternalParallax==0
+#ifdef POI_INTERNALPARALLAX
+    void applyInternalParallax(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiCam poiCam)
+    {
+        float3 parallax = 0;
+        
+        for (int j = _ParallaxInternalIterations-1; j >= 0; j --)
+        {
+            float ratio = saturate((float)j / max(_ParallaxInternalIterations-1, 1));
+            float2 parallaxOffset = _Time.y * (_ParallaxInternalMapPan + ratio * _ParallaxInternalPanDepthSpeed);
+            float fade = lerp(_ParallaxInternalMinFade, _ParallaxInternalMaxFade, ratio);
+            fade = pow(fade, 2.2);
+            #if defined(PROP_PARALLAXINTERNALMAP) || !defined(OPTIMIZER_ENABLED)
+                float4 parallaxColor = UNITY_SAMPLE_TEX2D_SAMPLER(_ParallaxInternalMap, _MainTex, TRANSFORM_TEX(poiMesh.uv[0], _ParallaxInternalMap) + (lerp(_ParallaxInternalMinDepth, _ParallaxInternalMaxDepth, ratio)) * - (poiCam.tangentViewDir.xy / (poiCam.tangentViewDir.z)) + parallaxOffset);
+            #else
+                float4 parallaxColor = 0;
+            #endif
+            float3 parallaxTint = lerp(_ParallaxInternalMinColor, _ParallaxInternalMaxColor, ratio);
+            float parallaxHeight;
+            if(_ParallaxInternalHeightFromAlpha)
+            {
+                parallaxTint *= parallaxColor.rgb;
+                parallaxHeight = parallaxColor.a;
+            }
+            else
+            {
+                parallaxHeight = parallaxColor.r;
+            }
+            // parallaxTint = hueShift(parallaxTint, frac((ratio * _ParallaxInternalHueShiftPerLevel) + (ratio * _ParallaxInternalHueShiftPerLevelSpeed * _Time.x)) * _ParallaxInternalHueShiftEnabled);
+            parallaxTint = hueShift(parallaxTint, frac(ratio * _ParallaxInternalHueShiftPerLevel) * _ParallaxInternalHueShiftEnabled);
+            //float parallaxColor *= lerp(_ParallaxInternalMinColor, _ParallaxInternalMaxColor, 1 - ratio);
+            UNITY_BRANCH
+            if (_ParallaxInternalHeightmapMode == 1)
+            {
+                parallax = lerp(parallax, parallaxTint * fade, parallaxHeight >= 1 - ratio);
+            }
+            else
+            {
+                parallax += parallaxTint * parallaxHeight * fade;
+            }
+        }
+        parallax = hueShift(parallax, frac(_ParallaxInternalHueShift + _ParallaxInternalHueShiftSpeed * _Time.x) * _ParallaxInternalHueShiftEnabled);
+        //parallax /= _ParallaxInternalIterations;
+        #if defined(PROP_PARALLAXINTERNALMAPMASK) || !defined(OPTIMIZER_ENABLED)
+            poiFragData.baseColor.rgb += parallax * POI2D_SAMPLER_PAN(_ParallaxInternalMapMask, _MainTex, poiMesh.uv[_ParallaxInternalMapMaskUV], _ParallaxInternalMapMaskPan).r;
+        #else
+            poiFragData.baseColor.rgb += parallax;
+        #endif
+    }
+#endif
+//endex
+
+#T#PoiInternalParallaxFunctionCalls
+//ifex _PoiInternalParallax==0
+#ifdef POI_INTERNALPARALLAX
+    applyInternalParallax(poiFragData, poiMesh, poiCam);
+#endif
+//endex

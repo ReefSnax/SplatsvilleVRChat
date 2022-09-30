@@ -1,0 +1,130 @@
+#T#PoiGlobalMaskProperties
+//ifex _GlobalMaskEnable==0
+[HideInInspector] m_start_GlobalMask ("Global Mask--{reference_property:_GlobalMaskEnable}", Float) = 0
+[HideInInspector][ThryToggle(POI_GLOBALMASK)] _GlobalMaskEnable ("Global Mask Enable", Float) = 0
+
+[sRGBWarning][ThryRGBAPacker(R, G, B, A, 0)]_GlobalMaskTexture0 ("Global Mask Texture 1--{reference_properties:[_GlobalMaskTexture0Pan, _GlobalMaskTexture0UV]}", 2D) = "black" { }
+[HideInInspector][Vector2]_GlobalMaskTexture0Pan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_GlobalMaskTexture0UV ("UV", Int) = 0
+
+[sRGBWarning][ThryRGBAPacker(R, G, B, A, 0)]_GlobalMaskTexture1 ("Global Mask Texture 2--{reference_properties:[_GlobalMaskTexture1Pan, _GlobalMaskTexture1UV]}", 2D) = "black" { }
+[HideInInspector][Vector2]_GlobalMaskTexture1Pan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_GlobalMaskTexture1UV ("UV", Int) = 0
+
+[sRGBWarning][ThryRGBAPacker(R, G, B, A, 0)]_GlobalMaskTexture2 ("Global Mask Texture 3--{reference_properties:[_GlobalMaskTexture2Pan, _GlobalMaskTexture2UV]}", 2D) = "black" { }
+[HideInInspector][Vector2]_GlobalMaskTexture2Pan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_GlobalMaskTexture2UV ("UV", Int) = 0
+
+[sRGBWarning][ThryRGBAPacker(R, G, B, A, 0)]_GlobalMaskTexture3 ("Global Mask Texture 4--{reference_properties:[_GlobalMaskTexture3Pan, _GlobalMaskTexture3UV]}", 2D) = "black" { }
+[HideInInspector][Vector2]_GlobalMaskTexture3Pan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_GlobalMaskTexture3UV ("UV", Int) = 0
+
+[HideInInspector] m_end_GlobalMask ("Global Mask", Float) = 0
+//endex
+
+#T#PoiGlobalMaskKeywords
+//ifex _GlobalMaskEnable==0
+#pragma shader_feature_local POI_GLOBALMASK
+//endex
+
+#T#PoiGlobalMaskVariables
+//ifex _GlobalMaskEnable==0
+#ifdef POI_GLOBALMASK
+	#if defined(PROP_GLOBALMASKTEXTURE0) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _GlobalMaskTexture0;
+	#endif
+	float4 _GlobalMaskTexture0_ST;
+	float2 _GlobalMaskTexture0Pan;
+	float _GlobalMaskTexture0UV;
+
+	#if defined(PROP_GLOBALMASKTEXTURE1) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _GlobalMaskTexture1;
+	#endif
+	float4 _GlobalMaskTexture1_ST;
+	float2 _GlobalMaskTexture1Pan;
+	float _GlobalMaskTexture1UV;
+
+	#if defined(PROP_GLOBALMASKTEXTURE2) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _GlobalMaskTexture2;
+	#endif
+	float4 _GlobalMaskTexture2_ST;
+	float2 _GlobalMaskTexture2Pan;
+	float _GlobalMaskTexture2UV;
+
+	#if defined(PROP_GLOBALMASKTEXTURE3) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _GlobalMaskTexture3;
+	#endif
+	float4 _GlobalMaskTexture3_ST;
+	float2 _GlobalMaskTexture3Pan;
+	float _GlobalMaskTexture3UV;
+#endif
+//endex
+
+
+#T#PoiGlobalMaskFunction
+//ifex _GlobalMaskEnable==0
+#ifdef POI_GLOBALMASK
+	void ApplyGlobalMask(in PoiMesh poiMesh, inout PoiMods poiMods)
+	{
+		#if defined(PROP_GLOBALMASKTEXTURE0) || !defined(OPTIMIZER_ENABLED)
+			float4 gmcol0 = POI2D_SAMPLER_PAN(_GlobalMaskTexture0, _MainTex, poiUV(poiMesh.uv[_GlobalMaskTexture0UV], _GlobalMaskTexture0_ST), _GlobalMaskTexture0Pan);
+			poiMods.globalMask[0] = gmcol0[0];
+			poiMods.globalMask[1] = gmcol0[1];
+			poiMods.globalMask[2] = gmcol0[2];
+			poiMods.globalMask[3] = gmcol0[3];
+		#else
+			poiMods.globalMask[0] = 0;
+			poiMods.globalMask[1] = 0;
+			poiMods.globalMask[2] = 0;
+			poiMods.globalMask[3] = 0;
+		#endif
+
+		#if defined(PROP_GLOBALMASKTEXTURE1) || !defined(OPTIMIZER_ENABLED)
+			float4 gmcol1 = POI2D_SAMPLER_PAN(_GlobalMaskTexture1, _MainTex, poiUV(poiMesh.uv[_GlobalMaskTexture1UV], _GlobalMaskTexture1_ST), _GlobalMaskTexture1Pan);
+			poiMods.globalMask[4] = gmcol1[0];
+			poiMods.globalMask[5] = gmcol1[1];
+			poiMods.globalMask[6] = gmcol1[2];
+			poiMods.globalMask[7] = gmcol1[3];
+		#else
+			poiMods.globalMask[4] = 0;
+			poiMods.globalMask[5] = 0;
+			poiMods.globalMask[6] = 0;
+			poiMods.globalMask[7] = 0;
+		#endif
+
+		#if defined(PROP_GLOBALMASKTEXTURE2) || !defined(OPTIMIZER_ENABLED)
+			float4 gmcol2 = POI2D_SAMPLER_PAN(_GlobalMaskTexture2, _MainTex, poiUV(poiMesh.uv[_GlobalMaskTexture2UV], _GlobalMaskTexture2_ST), _GlobalMaskTexture2Pan);
+			poiMods.globalMask[8] = gmcol2[0];
+			poiMods.globalMask[9] = gmcol2[1];
+			poiMods.globalMask[10] = gmcol2[2];
+			poiMods.globalMask[11] = gmcol2[3];
+		#else
+			poiMods.globalMask[8] = 0;
+			poiMods.globalMask[9] = 0;
+			poiMods.globalMask[10] = 0;
+			poiMods.globalMask[11] = 0;
+		#endif
+
+		#if defined(PROP_GLOBALMASKTEXTURE3) || !defined(OPTIMIZER_ENABLED)
+			float4 gmcol3 = POI2D_SAMPLER_PAN(_GlobalMaskTexture3, _MainTex, poiUV(poiMesh.uv[_GlobalMaskTexture3UV], _GlobalMaskTexture3_ST), _GlobalMaskTexture3Pan);
+			poiMods.globalMask[12] = gmcol3[0];
+			poiMods.globalMask[13] = gmcol3[1];
+			poiMods.globalMask[14] = gmcol3[2];
+			poiMods.globalMask[15] = gmcol3[3];
+		#else
+			poiMods.globalMask[12] = 0;
+			poiMods.globalMask[13] = 0;
+			poiMods.globalMask[14] = 0;
+			poiMods.globalMask[15] = 0;
+		#endif
+	}
+#endif
+//endex
+
+
+#T#PoiGlobalMaskFunctionCall
+//ifex _GlobalMaskEnable==0
+#ifdef POI_GLOBALMASK
+	ApplyGlobalMask(poiMesh, poiMods);
+#endif
+//endex

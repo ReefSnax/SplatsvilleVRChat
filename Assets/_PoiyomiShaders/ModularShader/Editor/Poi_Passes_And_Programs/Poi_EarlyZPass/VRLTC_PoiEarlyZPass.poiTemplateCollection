@@ -1,0 +1,47 @@
+#T#EarlyZPassTags
+Tags { "LightMode" = "ForwardBase" }
+
+#T#EarlyZPassStencil
+#K#EARLYZ_PASS_STENCIL
+
+#T#EarlyZPassBlendSettings
+ZWrite On
+Cull [_Cull]
+ColorMask 0
+
+#T#EarlyZPassOnlyKeywords
+#pragma multi_compile_instancing
+#pragma multi_compile_fog
+#define POI_PASS_EARLYZ
+
+#T#EarlyZPassKeywords
+#K#EARLYZ_PASS_KEYWORDS
+
+#T#EarlyZPassPropertyVariables
+#K#EARLYZ_PROPERTY_VARIABLES
+
+#T#EarlyZPassPrograms
+#K#VERTEX_EARLYZ_DATA_STRUCTURES
+#K#VERTEX_EARLYZ_FUNCTIONS_EARLY
+#K#VERTEX_EARLYZ_FUNCTIONS
+#K#VERTEX_EARLYZ_FUNCTIONS_LATE
+#K#VERTEX_EARLYZ_PROGRAM
+
+#K#HULLDOMAIN_EARLYZSE_PROGRAM
+#K#GEOMETRY_EARLYZ_PROGRAM
+
+#K#FRAGMENT_EARLYZ_DATA_STRUCTURES
+#K#FRAGMENT_EARLYZ_FUNCTIONS_EARLY
+#K#FRAGMENT_EARLYZ_FUNCTIONS
+#K#FRAGMENT_EARLYZ_FUNCTIONS_LATE
+float4 frag(VertexOut i, uint facing : SV_IsFrontFace) : SV_Target
+/*
+#ifdef
+, out float depth : SV_DEPTH
+#endif
+*/
+{
+	UNITY_SETUP_INSTANCE_ID(i);
+	UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
+	return float4(1,1,1,1);
+}

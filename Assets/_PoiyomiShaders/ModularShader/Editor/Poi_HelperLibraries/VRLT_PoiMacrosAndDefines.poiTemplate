@@ -1,0 +1,43 @@
+#define DielectricSpec float4(0.04, 0.04, 0.04, 1.0 - 0.04)
+#define PI float(3.14159265359)
+
+#define POI2D_SAMPLER_PAN(tex, texSampler, uv, pan) (UNITY_SAMPLE_TEX2D_SAMPLER(tex, texSampler, uv + _Time.x * pan))
+#define POI2D_SAMPLER_PANGRAD(tex, texSampler, uv, pan, ddx, ddy) (UNITY_SAMPLE_TEX2D_SAMPLER(tex, texSampler, uv + _Time.x * pan, ddx, ddy))
+#define POI2D_SAMPLER(tex, texSampler, uv) (UNITY_SAMPLE_TEX2D_SAMPLER(tex, texSampler, uv))
+#define POI2D_PAN(tex, uv, pan) (tex2D(tex, uv + _Time.x * pan))
+#define POI2D(tex, uv) (tex2D(tex, uv))
+#define POI_SAMPLE_TEX2D(tex, uv) (UNITY_SAMPLE_TEX2D(tex, uv))
+#define POI_SAMPLE_TEX2D_PAN(tex, uv, pan) (UNITY_SAMPLE_TEX2D(tex, uv + _Time.x * pan))
+
+#define POI2D_MAINTEX_SAMPLER_PAN_INLINED(tex, poiMesh) (POI2D_SAMPLER_PAN(tex, _MainTex, poiUV(poiMesh.uv[tex##UV], tex##_ST), tex##Pan))
+
+#define POI_SAFE_RGB0 float4(mainTexture.rgb * .0001, 0)
+#define POI_SAFE_RGB1 float4(mainTexture.rgb * .0001, 1)
+#define POI_SAFE_RGBA mainTexture
+
+#if defined(UNITY_COMPILER_HLSL)
+	#define PoiInitStruct(type, name) name = (type)0;
+#else
+	#define PoiInitStruct(type, name)
+#endif
+
+#define POI_ERROR(poiMesh, gridSize) lerp(float3(1, 0, 1), float3(0, 0, 0), fmod(floor((poiMesh.worldPos.x) * gridSize) + floor((poiMesh.worldPos.y) * gridSize) + floor((poiMesh.worldPos.z) * gridSize), 2) == 0)
+
+#define POI_MODE_OPAQUE 0
+#define POI_MODE_CUTOUT 1
+#define POI_MODE_FADE 2
+#define POI_MODE_TRANSPARENT 3
+#define POI_MODE_ADDITIVE 4
+#define POI_MODE_SOFTADDITIVE 5
+#define POI_MODE_MULTIPLICATIVE 6
+#define POI_MODE_2XMULTIPLICATIVE 7
+#define POI_MODE_TRANSCLIPPING 9
+
+/*
+Texture2D ;
+float4 _ST;
+float2 Pan;
+float UV;
+
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7 )]
+*/

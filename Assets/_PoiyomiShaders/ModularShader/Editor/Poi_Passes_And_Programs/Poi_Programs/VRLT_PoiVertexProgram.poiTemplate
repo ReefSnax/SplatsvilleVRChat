@@ -1,0 +1,89 @@
+VertexOut vert(appdata v)
+{
+	UNITY_SETUP_INSTANCE_ID(v);
+	VertexOut o;
+	PoiInitStruct(VertexOut, o);
+	UNITY_TRANSFER_INSTANCE_ID(v, o);
+	UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+
+	#K#VERTEX_INPUT_MODS
+
+	o.objectPos = mul(unity_ObjectToWorld, float4(0, 0, 0, 1)).xyz;
+	o.objNormal = v.normal;
+	o.normal = UnityObjectToWorldNormal(v.normal);
+	o.tangent = UnityObjectToWorldDir(v.tangent);
+	
+	o.binormal = cross(o.normal, o.tangent) * (v.tangent.w * unity_WorldTransformParams.w);
+	o.vertexColor = v.color;
+
+	o.uv[0] = v.uv0;
+	o.uv[1] = v.uv1;
+	o.uv[2] = v.uv2;
+	o.uv[3] = v.uv3;
+
+	#if defined(LIGHTMAP_ON)
+		o.lightmapUV.xy = v.uv1.xy * unity_LightmapST.xy + unity_LightmapST.zw;
+	#endif
+	#ifdef DYNAMICLIGHTMAP_ON
+		o.lightmapUV.zw = v.uv2.xy * unity_DynamicLightmapST.xy + unity_DynamicLightmapST.zw;
+	#endif
+
+	o.localPos = v.vertex;
+	o.worldPos = mul(unity_ObjectToWorld, o.localPos);
+
+	float3 localOffset = float3(0, 0, 0);
+	float3 worldOffset = float3(0, 0, 0);
+
+	#K#VERTEX_MODS_EARLY
+	#K#VERTEX_MODS
+	#K#VERTEX_MODS_LATE
+
+	o.localPos.rgb += localOffset;
+	o.worldPos.rgb += worldOffset;
+
+	#K#VERTEX_MODS_PENETRATION
+
+	o.pos = UnityObjectToClipPos(o.localPos);
+	#ifdef POI_PASS_OUTLINE
+		#if defined(UNITY_REVERSED_Z)
+			//DX
+			o.pos.z += _Offset_Z * - 0.01;
+		#else
+			//OpenGL
+			o.pos.z += _Offset_Z * 0.01;
+		#endif
+	#endif
+	o.grabPos = ComputeGrabScreenPos(o.pos);
+
+
+	#ifndef FORWARD_META_PASS
+		#if !defined(UNITY_PASS_SHADOWCASTER)
+			UNITY_TRANSFER_SHADOW(o, o.uv[0].xy);
+		#else
+			TRANSFER_SHADOW_CASTER_NOPOS(o, o.pos);
+		#endif
+	#endif
+	
+	UNITY_TRANSFER_FOG(o, o.pos);
+
+	if (_RenderingReduceClipDistance)
+	{
+		if (o.pos.w < _ProjectionParams.y * 1.01 && o.pos.w > 0)
+		{
+			o.pos.z = o.pos.z * 0.0001 + o.pos.w * 0.999;
+		}
+	}
+
+	#ifdef POI_PASS_META
+		o.pos = UnityMetaVertexPosition(v.vertex, v.uv1.xy, v.uv2.xy, unity_LightmapST, unity_DynamicLightmapST);
+	#endif
+
+	#if defined(GRAIN)
+		float4 worldDirection;
+		
+		worldDirection.xyz = o.worldPos.xyz - _WorldSpaceCameraPos;
+		worldDirection.w = dot(o.pos, CalculateFrustumCorrection());
+		o.worldDirection = worldDirection;
+	#endif
+	return o;
+}

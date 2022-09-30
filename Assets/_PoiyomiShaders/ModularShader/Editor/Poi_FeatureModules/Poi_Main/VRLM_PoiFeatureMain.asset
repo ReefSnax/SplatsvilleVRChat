@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1039f25740a92fc4292bb1d94d07ad19, type: 3}
+  m_Name: VRLM_PoiFeatureMain
+  m_EditorClassIdentifier: 
+  Id: PoiFeatureMain
+  Name: 
+  Version: 
+  Author: 
+  Description: 
+  EnableProperties: []
+  Properties: []
+  ModuleDependencies: []
+  IncompatibleWith: []
+  Templates:
+  - Template: {fileID: -8827392273085209421, guid: 8aa8bb54ef5088348acc4d7ec157ee38,
+      type: 3}
+    Keywords:
+    - MAIN_PROPERTIES
+    NeedsVariant: 0
+    Queue: 100
+  - Template: {fileID: -4290662500990495517, guid: 8aa8bb54ef5088348acc4d7ec157ee38,
+      type: 3}
+    Keywords:
+    - SHADER_KEYWORDS
+    NeedsVariant: 0
+    Queue: 100
+  - Template: {fileID: -7263456333445960440, guid: 8aa8bb54ef5088348acc4d7ec157ee38,
+      type: 3}
+    Keywords:
+    - EARLYZ_PROPERTY_VARIABLES
+    - BASE_PROPERTY_VARIABLES
+    - ADD_PROPERTY_VARIABLES
+    - SHADOW_PROPERTY_VARIABLES
+    - OUTLINE_PROPERTY_VARIABLES
+    - META_PROPERTY_VARIABLES
+    NeedsVariant: 0
+    Queue: 100
+  - Template: {fileID: 5159234061367281123, guid: 8aa8bb54ef5088348acc4d7ec157ee38,
+      type: 3}
+    Keywords:
+    - FRAGMENT_BASE_COLOR
+    - FRAGMENT_ADD_COLOR
+    - FRAGMENT_SHADOW_COLOR
+    - FRAGMENT_OUTLINE_COLOR
+    - FRAGMENT_META_COLOR
+    NeedsVariant: 0
+    Queue: 100
+  - Template: {fileID: -4233938919722665711, guid: 8aa8bb54ef5088348acc4d7ec157ee38,
+      type: 3}
+    Keywords:
+    - FRAGMENT_NORMAL_CALCULATIION
+    NeedsVariant: 0
+    Queue: 100
+  Functions: []
+  AdditionalSerializedData: 

@@ -1,0 +1,80 @@
+#T#PoiToonMetallicProperties
+
+[HideInInspector] m_start_toonmetallic (" Toon Metallic--{reference_property:_ToonMetallic}", Float) = 0
+[HideInInspector][ThryToggle(POI_ToonMetallic)]_ToonMetallic ("Enable", Float) = 0
+
+_ToonMetallicColor ("Metallic Color", Color) = (1.0, 1.0, 1.0, 1.0)
+_ToonMetallicStrength ("Strength", Float) = 1.0
+[ToggleUI]_ToonMetallicUseLightIntensity ("Use Light Intensity", Int) = 1
+
+_ToonMetallic2ndColor ("2nd Color", Color) = (0.66, 0.66, 0.66, 1.0)
+_ToonMetallic2ndBorder ("2nd Border", Range(0, 1)) = 0.93
+_ToonMetallic2ndBlur ("2nd Blur", Range(0, 1)) = 0.02
+
+_ToonMetallic3rdColor ("3rd Color", Color) = (0.133, 0.125, 0.075, 1.0)
+_ToonMetallic3rdBorder ("3rd Border", Range(0, 1)) = 0.5
+_ToonMetallic3rdBlur ("3rd Blur", Range(0, 1)) = 0.05
+
+[sRGBWarning(true)]_ToonMetallicMask ("Mask--{reference_properties:[_ToonMetallicMaskPan, _ToonMetallicMaskUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_ToonMetallicMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _ToonMetallicMaskUV ("UV", Int) = 0
+
+[HideInInspector] m_end_toonmetallic ("", Float) = 0
+
+#T#PoiToonMetallicKeywords
+#pragma shader_feature_local POI_ToonMetallic
+
+#T#PoiToonMetallicVariables
+#ifdef POI_ToonMetallic
+	float4 _ToonMetallicColor;
+	float _ToonMetallicStrength;
+	float _ToonMetallicUseLightIntensity;
+
+	float4 _ToonMetallic2ndColor;
+	float _ToonMetallic2ndBorder;
+	float _ToonMetallic2ndBlur;
+
+	float4 _ToonMetallic3rdColor;
+	float _ToonMetallic3rdBorder;
+	float _ToonMetallic3rdBlur;
+
+	#if defined(PROP_TOONMETALLICMASK) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _ToonMetallicMask;
+	#endif
+	float4 _ToonMetallicMask_ST;
+	float2 _ToonMetallicMaskPan;
+	float _ToonMetallicMaskUV;
+#endif
+
+#T#PoiToonMetallicFunctions
+#ifdef POI_ToonMetallic
+	void applyToonMetallic(inout PoiFragData poiFragData, inout PoiLight poiLight, inout PoiMesh poiMesh)
+	{
+		float toonMetalliLerpValue = saturate(saturate(poiLight.nDotH) * poiLight.nDotLSaturated);
+
+		float3 toonMetallicColor = _ToonMetallicColor.rgb;
+
+		if (_ToonMetallic2ndColor.a > 0)
+		{
+			toonMetallicColor = lerp(_ToonMetallic2ndColor.rgb, toonMetallicColor, poiEdgeNonLinear(toonMetalliLerpValue, _ToonMetallic2ndBorder, _ToonMetallic2ndBlur));
+		}
+		if (_ToonMetallic3rdColor.a > 0)
+		{
+			toonMetallicColor = lerp(_ToonMetallic3rdColor.rgb, toonMetallicColor, poiEdgeNonLinear(toonMetalliLerpValue, _ToonMetallic3rdBorder, _ToonMetallic3rdBlur));
+		}
+		float lightIntensity = lerp(1, dot(poiLight.directColor, float3(0.299, 0.587, 0.114)), _ToonMetallicUseLightIntensity);
+
+		#if defined(PROP_TOONMETALLICMASK) || !defined(OPTIMIZER_ENABLED)
+			float toonMetallicMask = POI2D_SAMPLER_PAN(_ToonMetallicMask, _MainTex, poiUV(poiMesh.uv[_ToonMetallicMaskUV], _ToonMetallicMask_ST), _ToonMetallicMaskPan);
+		#else
+			float toonMetallicMask = 1;
+		#endif
+		poiFragData.finalColor *= (toonMetallicColor * _ToonMetallicStrength * lightIntensity * poiLight.nDotLSaturated) * poiFragData.baseColor * toonMetallicMask;
+	}
+#endif
+
+#T#PoiToonMetallicFunctionCalls
+#ifdef POI_ToonMetallic
+	applyToonMetallic(poiFragData, poiLight, poiMesh);
+#endif
+

@@ -1,0 +1,255 @@
+#T#PoiParallaxProperties
+//ifex _PoiParallax==0
+[HideInInspector] m_start_parallax (" Parallax Heightmapping--{reference_property:_PoiParallax}", Float) = 0
+[HideInInspector][ThryToggle(POI_PARALLAX)]_PoiParallax ("Enable", Float) = 0
+[ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_ParallaxUV ("Applies To: ", Int) = 0
+
+[sRGBWarning][ThryTexture]_HeightMap ("Heightmap--{reference_properties:[_HeightMapPan, _HeightMapUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_HeightMapPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_HeightMapUV ("UV", Int) = 0
+
+[sRGBWarning][ThryTexture]_Heightmask ("Mask--{reference_properties:[_HeightmaskPan, _HeightmaskUV, _HeightmaskInvert]}", 2D) = "white" { }
+[HideInInspector][Vector2]_HeightmaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ToggleUI]_HeightmaskInvert ("Invert", Float) = 0
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_HeightmaskUV ("UV", Int) = 0
+_HeightStrength ("Strength", Range(0, 1)) = 0.4247461
+//_HeightOffset ("Offset", Range(-1, 1)) = 0
+_CurvatureU ("Curvature U", Range(0, 100)) = 0
+_CurvatureV ("Curvature V", Range(0, 30)) = 0
+[IntRange]_HeightStepsMin ("Steps Min", Range(0, 128)) = 10
+[IntRange]_HeightStepsMax ("Steps Max", Range(0, 128)) = 128
+_CurvFix ("Curvature Bias", Range(0, 1)) = 1
+// [ThryToggle]_ParallaxUV0 ("UV0", Float) = 0
+// [ThryToggle]_ParallaxUV1 ("UV1", Float) = 0
+// [ThryToggle]_ParallaxUV2 ("UV2", Float) = 0
+// [ThryToggle]_ParallaxUV3 ("UV3", Float) = 0
+// [ThryToggle]_ParallaxPano ("Panosphere", Float) = 0
+// [ThryToggle]_ParallaxWorldPos ("World Pos", Float) = 0
+// [ThryToggle]_ParallaxPolar ("Polar", Float) = 0
+// [ThryToggle]_ParallaxDist ("Distorted UV", Float) = 0
+
+[HideInInspector] m_end_parallax ("Parallax Heightmapping", Float) = 0
+//endex
+
+#T#PoiParallaxKeywords
+//ifex _PoiParallax==0
+#pragma shader_feature_local POI_PARALLAX
+//endex
+
+#T#PoiParallaxVariables
+//ifex _PoiParallax==0
+#ifdef POI_PARALLAX
+
+    sampler2D _HeightMap;
+    float4 _HeightMap_ST;
+    float2 _HeightMapPan;
+    float _HeightMapUV;
+
+    #if defined(PROP_HEIGHTMASK) || !defined(OPTIMIZER_ENABLED)
+        Texture2D _Heightmask;
+        float4 _Heightmask_ST;
+        float2 _HeightmaskPan;
+        float _HeightmaskUV;
+        float _HeightmaskInvert;
+        SamplerState _linear_repeat;
+    #endif
+
+    float _ParallaxUV;
+    float _HeightStrength;
+    float _HeightOffset;
+    float _HeightStepsMin;
+    float _HeightStepsMax;
+
+    float _CurvatureU;
+    float _CurvatureV;
+    float _CurvFix;
+#endif
+//endex
+
+#T#PoiParallaxFunctions
+//ifex _PoiParallax==0
+#ifdef POI_PARALLAX
+    inline float2 POM(in PoiLight poiLight, sampler2D heightMap, in PoiMesh poiMesh, float3 worldViewDir, float3 viewDirTan, int minSamples, int maxSamples, float parallax, float refPlane, float2 tilling, float2 curv)
+    {
+        #if defined(PROP_HEIGHTMASK) || !defined(OPTIMIZER_ENABLED)
+            float heightMask = POI2D_SAMPLER_PAN(_Heightmask, _linear_repeat, poiUV(poiMesh.uv[_HeightmaskUV], _Heightmask_ST), _HeightmaskPan).r;
+            if (_HeightmaskInvert)
+            {
+                heightMask = 1 - heightMask;
+            }
+        #else
+            float heightMask = 1;
+        #endif
+
+        float2 uvs = poiUV(poiMesh.uv[_HeightMapUV], _HeightMap_ST);
+        float2 dx = ddx(uvs);
+        float2 dy = ddy(uvs);
+        float3 result = 0;
+        int stepIndex = 0;
+        int numSteps = (int)lerp(maxSamples, minSamples, saturate(dot(poiMesh.normals[0], worldViewDir)));
+        float layerHeight = 1.0 / numSteps;
+        float2 plane = parallax * heightMask * (viewDirTan.xy / viewDirTan.z);
+        uvs += refPlane * plane;
+        float2 deltaTex = -plane * layerHeight;
+        float2 prevTexOffset = 0;
+        float prevRayZ = 1.0f;
+        float prevHeight = 0.0f;
+        float2 currTexOffset = deltaTex;
+        float currRayZ = 1.0f - layerHeight;
+        float currHeight = 0.0f;
+        float intersection = 0;
+        float2 finalTexOffset = 0;
+        while (stepIndex < numSteps + 1)
+        {
+            result.z = dot(curv, currTexOffset * currTexOffset);
+            currHeight = tex2Dgrad(heightMap, uvs + currTexOffset, dx, dy).r * (1 - result.z);
+            if (currHeight > currRayZ)
+            {
+                stepIndex = numSteps + 1;
+            }
+            else
+            {
+                stepIndex++;
+                prevTexOffset = currTexOffset;
+                prevRayZ = currRayZ;
+                prevHeight = currHeight;
+                currTexOffset += deltaTex;
+                currRayZ -= layerHeight * (1 - result.z) * (1 + _CurvFix);
+            }
+        }
+        int sectionSteps = 10;
+        int sectionIndex = 0;
+        float newZ = 0;
+        float newHeight = 0;
+        while (sectionIndex < sectionSteps)
+        {
+            intersection = (prevHeight - prevRayZ) / (prevHeight - currHeight + currRayZ - prevRayZ);
+            finalTexOffset = prevTexOffset +intersection * deltaTex;
+            newZ = prevRayZ - intersection * layerHeight;
+            newHeight = tex2Dgrad(heightMap, uvs + finalTexOffset, dx, dy).r;
+            if (newHeight > newZ)
+            {
+                currTexOffset = finalTexOffset;
+                currHeight = newHeight;
+                currRayZ = newZ;
+                deltaTex = intersection * deltaTex;
+                layerHeight = intersection * layerHeight;
+            }
+            else
+            {
+                prevTexOffset = finalTexOffset;
+                prevHeight = newHeight;
+                prevRayZ = newZ;
+                deltaTex = (1 - intersection) * deltaTex;
+                layerHeight = (1 - intersection) * layerHeight;
+            }
+            sectionIndex++;
+        }
+        #ifdef UNITY_PASS_SHADOWCASTER
+            if (unity_LightShadowBias.z == 0.0)
+            {
+        #endif
+        if (result.z > 1)
+            clip(-1);
+        #ifdef UNITY_PASS_SHADOWCASTER
+        }
+        #endif
+
+        return uvs + finalTexOffset;
+    }
+    /*
+    float2 ParallaxOffsetMultiStep(float surfaceHeight, float strength, float2 uv, float3 tangentViewDir)
+    {
+        float2 uvOffset = 0;
+        float2 prevUVOffset = 0;
+        float stepSize = 1.0 / _HeightSteps;
+        float stepHeight = 1;
+        float2 uvDelta = tangentViewDir.xy * (stepSize * strength);
+        float prevStepHeight = stepHeight;
+        float prevSurfaceHeight = surfaceHeight;
+
+        [unroll(20)]
+        for (int j = 1; j <= _HeightSteps && stepHeight > surfaceHeight; j++)
+        {
+            prevUVOffset = uvOffset;
+            prevStepHeight = stepHeight;
+            prevSurfaceHeight = surfaceHeight;
+            uvOffset -= uvDelta;
+            stepHeight -= stepSize;
+            surfaceHeight = POI2D_SAMPLER_PAN(_Heightmap, _MainTex, poiUV(uv + uvOffset, _Heightmap_ST), _HeightmapPan) + _HeightOffset;
+        }
+
+        [unroll(3)]
+        for (int k = 0; k < 3; k++)
+        {
+            uvDelta *= 0.5;
+            stepSize *= 0.5;
+
+            if (stepHeight < surfaceHeight)
+            {
+                uvOffset += uvDelta;
+                stepHeight += stepSize;
+            }
+            else
+            {
+                uvOffset -= uvDelta;
+                stepHeight -= stepSize;
+            }
+            surfaceHeight = POI2D_SAMPLER_PAN(_Heightmap, _MainTex, poiUV(uv + uvOffset, _Heightmap_ST), _HeightmapPan) + _HeightOffset;
+        }
+        return uvOffset;
+    }
+    */
+    void applyParallax(inout PoiMesh poiMesh, in PoiLight poiLight, in PoiCam poiCam)
+    {
+        /*
+        half h = POI2D_SAMPLER_PAN(_Heightmap, _linear_repeat, poiUV(poiMesh.uv[_HeightmaskUV], _Heightmap_ST), _HeightmapPan).r + _HeightOffset;
+        #if defined(PROP_HEIGHTMASK) || !defined(OPTIMIZER_ENABLED)
+            half m = POI2D_SAMPLER_PAN(_Heightmask, _linear_repeat, poiUV(poiMesh.uv[_HeightmaskUV], _Heightmask_ST), _HeightmaskPan).r + _HeightOffset;
+        #else
+            half m = 1 + _HeightOffset;
+        #endif
+        h = clamp(h, 0, 0.999);
+        m = lerp(m, 1 - m, _HeightmaskInvert);
+        #if defined(OPTIMIZER_ENABLED)das
+            poiMesh.uv[_ParallaxUV] += ParallaxOffsetMultiStep(h, _HeightStrength * m, poiMesh.uv[_HeightmapUV], tangentViewDir / tangentViewDir.z);
+        #else
+            float2 offset = ParallaxOffsetMultiStep(h, _HeightStrength * m, poiMesh.uv[_HeightmapUV], tangentViewDir / tangentViewDir.z);
+            if (_ParallaxUV == 0)       poiMesh.uv[0] += offset;
+            if (_ParallaxUV == 1)       poiMesh.uv[1] += offset;
+            if (_ParallaxUV == 2)       poiMesh.uv[2] += offset;
+            if (_ParallaxUV == 3)       poiMesh.uv[3] += offset;
+            if (_ParallaxUV == 4)       poiMesh.uv[4] += offset;
+            if (_ParallaxUV == 5)       poiMesh.uv[5] += offset;
+            if (_ParallaxUV == 6)       poiMesh.uv[6] += offset;
+            if (_ParallaxUV == 7)       poiMesh.uv[7] += offset;
+        #endif
+        */
+
+        #if defined(OPTIMIZER_ENABLED)
+            poiMesh.uv[_ParallaxUV] = POM(poiLight, _HeightMap, poiMesh, poiCam.viewDir, poiCam.tangentViewDir, _HeightStepsMin, _HeightStepsMax, _HeightStrength, 0, _HeightMap_ST.xy, float2(_CurvatureU, _CurvatureV));
+        #else
+            float2 offset = POM(poiLight, _HeightMap, poiMesh, poiCam.viewDir, poiCam.tangentViewDir, _HeightStepsMin, _HeightStepsMax, _HeightStrength, 0, _HeightMap_ST.xy, float2(_CurvatureU, _CurvatureV));
+            if (_ParallaxUV == 0)       poiMesh.uv[0] = offset;
+            if (_ParallaxUV == 1)       poiMesh.uv[1] = offset;
+            if (_ParallaxUV == 2)       poiMesh.uv[2] = offset;
+            if (_ParallaxUV == 3)       poiMesh.uv[3] = offset;
+            if (_ParallaxUV == 4)       poiMesh.uv[4] = offset;
+            if (_ParallaxUV == 5)       poiMesh.uv[5] = offset;
+            if (_ParallaxUV == 6)       poiMesh.uv[6] = offset;
+            if (_ParallaxUV == 7)       poiMesh.uv[7] = offset;
+        #endif
+    }
+#endif
+//endex
+
+#T#PoiParallaxFunctionCalls
+//ifex _PoiParallax==0
+#ifdef POI_PARALLAX
+    #ifndef POI_PASS_OUTLINE
+        //return frac(i.tangentViewDir.x);
+        //return float4(i.binormal.xyz,1);
+        applyParallax(poiMesh, poiLight, poiCam);
+    #endif
+#endif
+//endex

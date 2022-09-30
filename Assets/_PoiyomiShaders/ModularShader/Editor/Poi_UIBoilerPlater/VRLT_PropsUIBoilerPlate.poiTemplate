@@ -1,0 +1,15 @@
+[HideInInspector] shader_master_label ("<color=#E75898ff>Poiyomi 8.1.144</color>", Float) = 0
+[HideInInspector] shader_is_using_thry_editor ("", Float) = 0
+[HideInInspector] footer_youtube ("{texture:{name:icon-youtube,height:16},action:{type:URL,data:https://www.youtube.com/poiyomi},hover:YOUTUBE}", Float) = 0
+[HideInInspector] footer_twitter ("{texture:{name:icon-twitter,height:16},action:{type:URL,data:https://twitter.com/poiyomi},hover:TWITTER}", Float) = 0
+[HideInInspector] footer_patreon ("{texture:{name:icon-patreon,height:16},action:{type:URL,data:https://www.patreon.com/poiyomi},hover:PATREON}", Float) = 0
+[HideInInspector] footer_discord ("{texture:{name:icon-discord,height:16},action:{type:URL,data:https://discord.gg/Ays52PY},hover:DISCORD}", Float) = 0
+[HideInInspector] footer_github ("{texture:{name:icon-github,height:16},action:{type:URL,data:https://github.com/poiyomi/PoiyomiToonShader},hover:GITHUB}", Float) = 0
+
+// Keyword to remind users in the VRChat SDK that this material hasn't been locked.  Inelegant but it works.
+[HideInInspector] _ForgotToLockMaterial (";;YOU_FORGOT_TO_LOCK_THIS_MATERIAL;", Int) = 1
+[ThryShaderOptimizerLockButton] _ShaderOptimizerEnabled ("", Int) = 0
+[Helpbox(1)] _LockTooltip ("Animations don't work by default when locked in. Right click a property if you want to animate it. The shader will lock in automatically at upload time.", Int) = 0
+[HideInInspector] GeometryShader_Enabled("GEOMETRY SHADER ENABLED", Float) = 1
+[HideInInspector] Tessellation_Enabled("TESSELLATION ENABLED", Float) = 1
+#K#TOP_PROPERTIES

@@ -1,0 +1,276 @@
+#T#PoiVideoEffectsProperties
+//ifex _VideoEffectsEnable==0
+[HideInInspector] m_start_videoEffects ("Video Effects--{reference_property:_VideoEffectsEnable}", Float) = 0
+[HideInInspector][ThryToggle(POI_VIDEOEFFECTS)]_VideoEffectsEnable ("Enable VideoEffects", Float) = 0
+[Enum(LCD, 0, TN, 1, CRT, 2, OLED, 3, Gameboy, 4, Projector, 5)] _VideoType ("Screen Type", Int) = 3
+_VideoBacklight ("Brightness", Range(0, 100)) = 1
+[ToggleUI]_VideoEmissionEnabled ("Emission Enabled", Float) = 1
+_VideoPixelTexture ("Pixel Texture", 2D) = "white" { }
+[sRGBWarning]_VideoMaskTexture ("Mask--{reference_properties:[_VideoMaskTexturePan, _VideoMaskTextureUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_VideoMaskTexturePan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_VideoMaskTextureUV ("UV", Int) = 0
+[HideInInspector] m_start_VideoSettings ("Video Texture Settings", Float) = 0
+[Vector2]_VideoResolution ("Resolution", Vector) = (1280, 720, 0, 0)
+[ToggleUI]_VideoPixelateToResolution ("Pixelate To Resolution", Float) = 0
+// [ToggleUI]_VideoRepeatVideoTexture ("Clamp To UV", Float) = 0
+_VideoSaturation ("Saturation", Range(-1, 3)) = 0
+_VideoContrast ("Contrast boost", Range(0, 3)) = 0
+[HideInInspector] m_end_VideoSettings ("Video Texture Settings", Float) = 0
+[HideInInspector] m_start_CRT ("CRT Options--{condition_showS:(_VideoType==2)}", Float) = 0
+_VideoCRTRefreshRate ("Refresh Rate", Float) = 24
+_VideoCRTPixelEnergizedTime ("Pixel Fade Time", Float) = 1.9
+[HideInInspector] m_end_CRT ("CRT Options", Float) = 0
+[HideInInspector] m_start_Gameboy ("Gameboy Options--{condition_showS:(_VideoType==4)}", Float) = 0
+[sRGBWarning(true)][Gradient]_VideoGameboyRamp ("Color Ramp", 2D) = "white" { }
+[HideInInspector] m_end_Gameboy ("Gameboy Options", Float) = 0
+[HideInInspector] m_end_videoEffects ("Video Effects", Float) = 0
+//endex
+
+#T#PoiVideoEffectsKeywords
+//ifex _VideoEffectsEnable==0
+#pragma shader_feature_local POI_VIDEOEFFECTS
+//endex
+
+#T#PoiVideoEffectsVariables
+//ifex _VideoEffectsEnable==0
+#ifdef POI_VIDEOEFFECTS
+	#if defined(PROP_VIDEOPIXELTEXTURE) || !defined(OPTIMIZER_ENABLED)
+		sampler2D _VideoPixelTexture;
+		float4 _VideoPixelTexture_ST;
+	#endif
+	#if defined(PROP_VIDEOMASKTEXTURE) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _VideoMaskTexture;
+		float4 _VideoMaskTexture_ST;
+		float2 _VideoMaskTexturePan;
+		float _VideoMaskTextureUV;
+	#endif
+	
+	float _VideoType;
+	float2 _VideoResolution;
+	sampler2D _VideoGameboyRamp;
+	float _VideoBacklight;
+	float _VideoCRTRefreshRate;
+	float _VideoCRTPixelEnergizedTime;
+	float _VideoRepeatVideoTexture;
+	float _VideoPixelateToResolution;
+	float2 _VideoMaskPanning;
+
+	float _VideoSaturation;
+	float _VideoContrast;
+	float _VideoEmissionEnabled;
+#endif
+//endex
+
+#T#PoiVideoEffectsFunctions
+//ifex _VideoEffectsEnable==0
+#if defined(POI_VIDEOEFFECTS)
+	float3 applyBacklight(float3 videoTexture, half backlightStrength)
+	{
+		return max(backlightStrength, videoTexture.rgb);
+	}
+	
+	float3 applyViewAngleTN(float3 videoTexture, PoiCam poiCam, PoiMesh poiMesh)
+	{
+		float3 reflectionVector = normalize(reflect(poiCam.viewDir.rgb, poiMesh.normals[1].rgb));
+		float upwardShift = dot(reflectionVector, poiMesh.binormal);
+		upwardShift = pow(upwardShift, 1);
+		float sideShift = dot(reflectionVector, poiMesh.tangent);
+		sideShift *= pow(sideShift, 3);
+		#if !UNITY_COLORSPACE_GAMMA
+			videoTexture = LinearToGammaSpace(videoTexture);
+		#endif
+		videoTexture = saturate(lerp(half3(0.5, 0.5, 0.5), videoTexture, upwardShift + 1));
+		#if !UNITY_COLORSPACE_GAMMA
+			videoTexture = GammaToLinearSpace(videoTexture);
+		#endif
+		videoTexture = (lerp(videoTexture, videoTexture.gbr, sideShift));
+		return videoTexture;
+	}
+	
+	float calculateCRTPixelBrightness(float2 uv)
+	{
+		float totalPixels = _VideoResolution.x * _VideoResolution.y;
+		float2 uvPixel = float2((floor((1 - uv.y) * _VideoResolution.y)) / _VideoResolution.y, (floor(uv.x * _VideoResolution.x)) / _VideoResolution.x);
+		float currentPixelNumber = _VideoResolution.x * (_VideoResolution.y * uvPixel.x) + _VideoResolution.y * uvPixel.y;
+		float currentPixelAlpha = currentPixelNumber / totalPixels;
+		half electronBeamAlpha = frac(_Time.y * _VideoCRTRefreshRate);
+		float electronBeamPixelNumber = totalPixels * electronBeamAlpha;
+		
+		float DistanceInPixelsFromCurrentElectronBeamPixel = 0;
+		if (electronBeamPixelNumber >= currentPixelNumber)
+		{
+			DistanceInPixelsFromCurrentElectronBeamPixel = electronBeamPixelNumber - currentPixelNumber;
+		}
+		else
+		{
+			DistanceInPixelsFromCurrentElectronBeamPixel = electronBeamPixelNumber + (totalPixels - currentPixelNumber);
+		}
+		float CRTFrameTime = 1 / _VideoCRTRefreshRate;
+		float timeSincecurrentPixelWasHitByElectronBeam = (DistanceInPixelsFromCurrentElectronBeamPixel / totalPixels);
+		
+		return saturate(_VideoCRTPixelEnergizedTime - timeSincecurrentPixelWasHitByElectronBeam);
+	}
+	
+	void applyContrastSettings(inout float3 pixel)
+	{
+		#if !UNITY_COLORSPACE_GAMMA
+			pixel = LinearToGammaSpace(pixel);
+		#endif
+		pixel = saturate(lerp(half3(0.5, 0.5, 0.5), pixel, _VideoContrast + 1));
+		#if !UNITY_COLORSPACE_GAMMA
+			pixel = GammaToLinearSpace(pixel);
+		#endif
+	}
+	
+	void applySaturationSettings(inout float3 pixel)
+	{
+		pixel = lerp(pixel.rgb, dot(pixel.rgb, float3(0.3, 0.59, 0.11)), -_VideoSaturation);
+	}
+	
+	void applyVideoSettings(inout float3 pixel)
+	{
+		applySaturationSettings(pixel);
+		applyContrastSettings(pixel);
+	}
+	
+	void calculateLCD(inout float4 videoTexture, float3 pixels)
+	{
+		videoTexture.rgb = applyBacklight(videoTexture, _VideoBacklight * .01);
+		applyVideoSettings(videoTexture.rgb);
+		videoTexture.rgb = videoTexture * pixels * _VideoBacklight;
+	}
+	void calculateTN(inout float4 videoTexture, float3 pixels, PoiCam poiCam, PoiMesh poiMesh)
+	{
+		videoTexture.rgb = applyBacklight(videoTexture, _VideoBacklight * .01);
+		videoTexture.rgb = applyViewAngleTN(videoTexture, poiCam, poiMesh);
+		applyVideoSettings(videoTexture.rgb);
+		videoTexture.rgb = videoTexture * pixels * _VideoBacklight;
+	}
+	void calculateCRT(inout float4 videoTexture, float3 pixels, float2 uv)
+	{
+		float brightness = calculateCRTPixelBrightness(uv);
+		applyVideoSettings(videoTexture.rgb);
+		videoTexture.rgb = videoTexture * pixels * brightness * _VideoBacklight;
+	}
+	void calculateOLED(inout float4 videoTexture, float3 pixels)
+	{
+		applyVideoSettings(videoTexture.rgb);
+		videoTexture.rgb = videoTexture * pixels * _VideoBacklight;
+	}
+	void calculateGameboy(inout float4 videoTexture)
+	{
+		applyVideoSettings(videoTexture.rgb);
+		// half brightness = saturate((videoTexture.r + videoTexture.g + videoTexture.b) * .3333333);
+		half brightness = LinearRgbToLuminance(LinearToGammaSpace(videoTexture.rgb));
+		#if defined(PROP_VIDEOGAMEBOYRAMP) || !defined(OPTIMIZER_ENABLED)
+			videoTexture.rgb = tex2Dlod(_VideoGameboyRamp, float4(brightness.xx, 0, 0));
+		#else
+			float3 dg = float3(0.00392156863, 0.0392156863, 0.00392156863);
+			float3 lg = float3(0.333333333, 0.5, 0.00392156863);
+			videoTexture.rgb = lerp(dg, lg, brightness);
+		#endif
+	}
+	void calculateProjector(inout float4 videoTexture)
+	{
+		applyVideoSettings(videoTexture.rgb);
+		
+		float3 projectorColor = videoTexture * _VideoBacklight;
+		videoTexture.r = clamp(projectorColor.r, videoTexture.r, 1000);
+		videoTexture.g = clamp(projectorColor.g, videoTexture.g, 1000);
+		videoTexture.b = clamp(projectorColor.b, videoTexture.b, 1000);
+	}
+
+	void applyVideoEffects(inout PoiFragData poiFragData, in PoiCam poiCam, in PoiMesh poiMesh, inout PoiLight poiLight, in PoiMods poiMods)
+	{
+		#if defined(PROP_VIDEOPIXELTEXTURE) || !defined(OPTIMIZER_ENABLED)
+			float3 pixels = tex2D(_VideoPixelTexture, poiUV(poiMesh.uv[_MainTexUV], _VideoPixelTexture_ST) * _VideoResolution);
+		#else
+			float3 pixels = 1;
+		#endif
+		// globalVideoOn = 0;
+		float4 videoTexture = 0;
+		// UNITY_BRANCH
+		// float2 uvs = poiUV(poiMesh.uv[_MainTexUV], _MainTex_ST) + _Time.x * _MainTexPan;
+		float2 uvs = poiMesh.uv[_MainTexUV];
+		if(_VideoPixelateToResolution)
+		{
+			float2 originalUVs = uvs;
+			// uvs = round(uvs * _VideoResolution + 0.5) / _VideoResolution;
+			uvs = sharpSample(float4(1/_VideoResolution.xy, _VideoResolution.xy), uvs);
+			uvs = poiUV(uvs, _MainTex_ST) + _Time.x * _MainTexPan;
+			videoTexture = _MainTex.SampleGrad(sampler_MainTex, uvs, ddx(originalUVs), ddy(originalUVs));
+			// videoTexture = UNITY_SAMPLE_TEX2D(_MainTex, uvs);
+		}
+		else
+		{
+			uvs = poiUV(uvs, _MainTex_ST) + _Time.x * _MainTexPan;
+			videoTexture.rgb = poiFragData.baseColor;
+			videoTexture.a = poiFragData.alpha;
+		}
+		float4 modifiedVideoTexture = videoTexture;
+		
+		// UNITY_BRANCH
+		// if(_VideoRepeatVideoTexture == 1)
+		// {
+		// 	if(poiMesh.uv[_VideoUVNumber].x > 1 || poiMesh.uv[_VideoUVNumber].x < 0 || poiMesh.uv[_VideoUVNumber].y > 1 || poiMesh.uv[_VideoUVNumber].y < 0)
+		// 	{
+		// 		return;
+		// 	}
+		// }
+		
+		switch(_VideoType)
+		{
+			case 0: // LCD
+			{
+				calculateLCD(modifiedVideoTexture, pixels);
+				break;
+			}
+			case 1: // TN
+			{
+				calculateTN(modifiedVideoTexture, pixels, poiCam, poiMesh);
+				break;
+			}
+			case 2: // CRT
+			{
+				calculateCRT(modifiedVideoTexture, pixels, uvs);
+				break;
+			}
+			case 3: // OLED
+			{
+				calculateOLED(modifiedVideoTexture, pixels);
+				break;
+			}
+			case 4: // Gameboy
+			{
+				calculateGameboy(modifiedVideoTexture);
+				break;
+			}
+			case 5: // Projector
+			{
+				calculateProjector(modifiedVideoTexture);
+				break;
+			}
+		}
+		#if defined(PROP_VIDEOMASKTEXTURE) || !defined(OPTIMIZER_ENABLED)
+			float screenMask = POI2D_MAINTEX_SAMPLER_PAN_INLINED(_VideoMaskTexture, poiMesh);
+		#else
+			float screenMask = 1;
+		#endif
+		
+		// videoTexture = lerp(videoTextureBeforeScreen, videoTexture, screenMask);
+		poiFragData.baseColor = lerp(poiFragData.baseColor, modifiedVideoTexture, screenMask);
+		// UNITY_BRANCH
+		if (_VideoEmissionEnabled)
+		{
+			poiFragData.emission += modifiedVideoTexture.rgb * screenMask;
+		}
+	}
+#endif
+//endex
+
+#T#PoiVideoEffectsFunctionCalls
+//ifex _VideoEffectsEnable==0
+#if defined(POI_VIDEOEFFECTS)
+	applyVideoEffects(poiFragData, poiCam, poiMesh, poiLight, poiMods);
+#endif
+//endex

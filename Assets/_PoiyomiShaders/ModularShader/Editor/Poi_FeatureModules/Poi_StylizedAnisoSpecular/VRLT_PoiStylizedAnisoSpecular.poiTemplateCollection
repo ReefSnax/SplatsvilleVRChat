@@ -1,0 +1,237 @@
+#T#PoiAnisoProperties
+//ifex _EnableAniso==0
+
+[HideInInspector] m_start_Aniso (" Anisotropics--{reference_property:_EnableAniso}", Float) = 0
+[HideInInspector][ThryToggle(POI_ANISOTROPICS)]_EnableAniso ("Enable Aniso", Float) = 0
+[sRGBWarning(true)][ThryRGBAPacker(1, RGB Color, A Offset, 1)]_AnisoColorMap ("Color & Offset--{reference_properties:[_AnisoColorMapPan, _AnisoColorMapUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_AnisoColorMapPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _AnisoColorMapUV ("UV", Int) = 0
+/*
+[sRGBWarning]_AnisoNoiseMap ("Noise Map--{reference_properties:[_AnisoNoiseMapPan, _AnisoNoiseMapUV]}", 2D) = "black" { }
+[HideInInspector][Vector2]_AnisoNoiseMapPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _AnisoNoiseMapUV ("UV", Int) = 0
+*/
+_AnisoUseLightColor ("Mix Light Color", Range(0, 1)) = 1
+_AnisoUseBaseColor ("Mix Base Color", Range(0, 1)) = 0
+_AnisoReplace ("Replace Blending", Range(0, 1)) = 0
+_AnisoAdd ("Add Blending", Range(0, 1)) = 1
+_AnisoHideInShadow ("Hide In Shadow", Range(0, 1)) = 1
+
+[Space(10)]
+[ThryHeaderLabel(Top Layer, 13)]
+_Aniso0Power ("Power", Range(0, 1)) = 0
+_Aniso0Strength ("Strength", Range(0, 1)) = 1
+_Aniso0Offset ("Offset", Range(-10, 10)) = 0
+_Aniso0OffsetMapStrength ("Map Offset Strength", Range(0, 1)) = 0
+_Aniso0Tint ("Tint--{reference_property:_Aniso0TintIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _Aniso0TintIndex ("", Int) = 0
+[ThryToggleUI(true)] _Aniso0ToonMode ("Toon Mode", Float) = 0
+_Aniso0Edge ("Edge--{condition_showS:(_Aniso0ToonMode==1)}", Range(0, 1)) = .5
+_Aniso0Blur ("Blur--{condition_showS:(_Aniso0ToonMode==1)}", Range(0, 1)) = 0
+
+[Space(10)]
+[ThryHeaderLabel(Bottom Layer, 13)]
+_Aniso1Power ("Power", Range(0, 1)) = .1
+_Aniso1Strength ("Strength", Range(0, 1)) = 1
+_Aniso1Offset ("Offset", Range(-1, 1)) = 0
+_Aniso1OffsetMapStrength ("Map Offset Strength", Range(0, 1)) = 0
+_Aniso1Tint ("Tint--{reference_property:_Aniso1TintIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _Aniso1TintIndex ("", Int) = 0
+[ThryToggleUI(true)] _Aniso1ToonMode ("Toon Mode", Float) = 0
+_Aniso1Edge ("Edge--{condition_showS:(_Aniso1ToonMode==1)}", Range(0, 1)) = .5
+_Aniso1Blur ("Blur--{condition_showS:(_Aniso1ToonMode==1)}", Range(0, 1)) = 0
+
+[Space(4)]
+[ThryToggle(POI_ANISOTROPICS_DEBUG)]_AnisoDebugToggle ("Debug", Float) = 0
+[ThryWideEnum(Off, 0, Overall Specular, 1, Specular 0, 2, Specular 1, 3)] _AnisoDebugMode ("Visualize--{condition_showS:(_AnisoDebugToggle==1)}", Int) = 0
+
+[HideInInspector] m_end_Ansio ("Anisotropics", Float) = 0
+//endex
+
+#T#PoiAnisoKeywords
+//ifex _EnableAniso==0
+#pragma shader_feature_local POI_ANISOTROPICS
+#pragma shader_feature_local POI_ANISOTROPICS_DEBUG
+//endex
+
+#T#PoiAnisoVariables
+//ifex _EnableAniso==0
+#ifdef POI_ANISOTROPICS
+
+	#if defined(PROP_ANISOCOLORMAP) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _AnisoColorMap;
+		float4 _AnisoColorMap_ST;
+		float2 _AnisoColorMapPan;
+		float _AnisoColorMapUV;
+	#endif
+	/*
+	#if defined(PROP_ANISONOISEMAP) || !defined(OPTIMIZER_ENABLED)
+	    Texture2D _AnisoNoiseMap;
+	    float4 _AnisoNoiseMap_ST;
+	    float2 _AnisoNoiseMapPan;
+	    float _AnisoNoiseMapUV;
+	#endif
+	*/
+	float _AnisoHideInShadow;
+	float _AnisoReplace;
+	float _AnisoAdd;
+	float _AnisoUseBaseColor;
+	float _AnisoUseLightColor;
+
+
+	float _Aniso0Strength;
+	float _Aniso0Power;
+	float _Aniso0Offset;
+	float4 _Aniso0Tint;
+	float _Aniso0TintIndex;
+	float _Aniso0OffsetMapStrength;
+	float _Aniso0ToonMode;
+	float _Aniso0Edge;
+	float _Aniso0Blur;
+
+	float _Aniso1Strength;
+	float _Aniso1Power;
+	float _Aniso1Offset;
+	float4 _Aniso1Tint;
+	float _Aniso1TintIndex;
+	float _Aniso1OffsetMapStrength;
+	float _Aniso1ToonMode;
+	float _Aniso1Edge;
+	float _Aniso1Blur;
+
+	float _AnisoDebugMode;
+#endif
+//endex
+
+#T#PoiAnisoFunctions
+//ifex _EnableAniso==0
+#ifdef POI_ANISOTROPICS
+	/*
+	float D_GGX_Anisotropic(float at, float ab, float TdotH, float BdotH, float NdotH)
+	{
+	    // Burley 2012, "Physically-Based Shading at Disney"
+
+	    // The values at and ab are perceptualRoughness^2, a2 is therefore perceptualRoughness^4
+	    // The dot product below computes perceptualRoughness^8. We cannot fit in fp16 without clamping
+	    // the roughness to too high values so we perform the dot product and the division in fp32
+	    float a2 = at * ab;
+	    float3 d = float3(ab * TdotH, at * BdotH, a2 * NdotH);
+	    float d2 = dot(d, d);
+	    float b2 = a2 / d2;
+	    return a2 * b2 * b2 * (1.0 / UNITY_PI);
+	}
+
+	//-------------------------------------GGX Anisotropic visibility function
+	float V_SmithGGXCorrelated_Anisotropic(float at, float ab, float TdotV, float BdotV, float TdotL, float BdotL, float NdotV, float NdotL)
+	{
+	    // Heitz 2014, "Understanding the Masking-Shadowing Function in Microfacet-Based BRDFs"
+	    float lambdaV = NdotL * length(float3(at * TdotV, ab * BdotV, NdotV));
+	    float lambdaL = NdotV * length(float3(at * TdotL, ab * BdotL, NdotL));
+	    return 0.5 / (lambdaV + lambdaL);
+	}
+	*/
+
+	float calculateAnisotropics(float3 binormal, float offset, float3 normal, float3 viewDir, float3 LightDirection, float exponent, float strength, float shadowMask)
+	{
+		float3 ShiftedTangent = normalize(binormal + offset * normal);
+		float3 H = normalize(LightDirection + viewDir);
+		float dotTH = dot(ShiftedTangent, H);
+		float sinTH = sqrt(1.0 - dotTH * dotTH);
+		float dirAtten = smoothstep(-1.0, 0.0, dotTH);
+		return saturate(dirAtten * pow(sinTH, exponent) * strength) * shadowMask;
+	}
+
+	float aaEdgeFeather(float value, float edge, float feather)
+	{
+		float edgeMin = saturate(edge - feather * 0.5);
+		float edgeMax = saturate(edge + feather * 0.5);
+		return saturate((value - edgeMin) / saturate(edgeMax - edgeMin + fwidth(value)));
+	}
+
+	float3 applyAnisotropics(inout PoiFragData poiFragData, inout PoiLight poiLight, in PoiCam poiCam, in PoiMesh poiMesh, in PoiMods poiMods)
+	{
+		#if defined(PROP_ANISOCOLORMAP) || !defined(OPTIMIZER_ENABLED)
+			float4 specMap = POI2D_SAMPLER_PAN(_AnisoColorMap, _MainTex, poiUV(poiMesh.uv[_AnisoColorMapUV], _AnisoColorMap_ST), _AnisoColorMapPan);
+		#else
+			float4 specMap = float4(1, 1, 1, 0);
+		#endif
+
+		float3 binormalObj = normalize(mul(unity_WorldToObject, poiMesh.binormal));
+		float shadowMask = lerp(1, poiMax(poiLight.rampedLightMap), _AnisoHideInShadow);
+		#ifdef POI_PASS_ADD
+			shadowMask *= poiLight.attenuation;
+		#endif
+
+		float spec0 = calculateAnisotropics(binormalObj, _Aniso0Offset +_Aniso0OffsetMapStrength * specMap.a, poiMesh.normals[1], poiCam.viewDir, poiLight.direction, _Aniso0Power * 1000, _Aniso0Strength, shadowMask);
+		float spec1 = calculateAnisotropics(binormalObj, _Aniso1Offset +_Aniso1OffsetMapStrength * specMap.a, poiMesh.normals[1], poiCam.viewDir, poiLight.direction, _Aniso1Power * 1000, _Aniso1Strength, shadowMask);
+
+		spec0 = lerp(spec0, aaEdgeFeather(spec0, _Aniso0Edge, _Aniso0Blur), _Aniso0ToonMode);
+		spec1 = lerp(spec1, aaEdgeFeather(spec1, _Aniso1Edge, _Aniso1Blur), _Aniso1ToonMode);
+
+		float3 spec0Color = specMap.rgb * _Aniso0Tint;
+		float3 spec1Color = specMap.rgb * _Aniso1Tint;
+
+		float3 finalSpec = saturate(saturate(spec0 * spec0Color) + saturate(spec1 * spec1Color)) * lerp(1, poiFragData.baseColor, _AnisoUseBaseColor) * lerp(dot(poiLight.directColor, float3(0.299, 0.587, 0.114)), poiLight.directColor, _AnisoUseLightColor);
+		float3 baseColor = poiFragData.baseColor;
+
+		poiFragData.baseColor = lerp(poiFragData.baseColor, spec1Color * lerp(1, baseColor, _AnisoUseBaseColor) * lerp(dot(poiLight.directColor, float3(0.299, 0.587, 0.114)), poiLight.directColor, _AnisoUseLightColor), _AnisoReplace * spec1);
+		poiFragData.baseColor = lerp(poiFragData.baseColor, spec0Color * lerp(1, baseColor, _AnisoUseBaseColor) * lerp(dot(poiLight.directColor, float3(0.299, 0.587, 0.114)), poiLight.directColor, _AnisoUseLightColor), _AnisoReplace * spec0);
+		poiLight.finalLightAdd += max(0, finalSpec * _AnisoAdd);
+
+		#if defined(VERTEXLIGHT_ON) && defined(POI_VERTEXLIGHT_ON)
+			for (int index = 0; index < 4; index++)
+			{
+				float vSpec0 = calculateAnisotropics(binormalObj, _Aniso0Offset +_Aniso0OffsetMapStrength * specMap.a, poiMesh.normals[1], poiCam.viewDir, poiLight.vDirection[index], _Aniso0Power * 1000, _Aniso0Strength, poiLight.vAttenuationDotNL[index]);
+				float vSpec1 = calculateAnisotropics(binormalObj, _Aniso1Offset +_Aniso1OffsetMapStrength * specMap.a, poiMesh.normals[1], poiCam.viewDir, poiLight.vDirection[index], _Aniso1Power * 1000, _Aniso1Strength, poiLight.vAttenuationDotNL[index]);
+
+				vSpec0 = lerp(vSpec0, aaEdgeFeather(vSpec0, _Aniso0Edge, _Aniso0Blur), _Aniso0ToonMode);
+				vSpec1 = lerp(vSpec1, aaEdgeFeather(vSpec1, _Aniso1Edge, _Aniso1Blur), _Aniso1ToonMode);
+
+				float3 vSpec0Color = specMap.rgb * _Aniso0Tint;
+				float3 vSpec1Color = specMap.rgb * _Aniso1Tint;
+
+				poiLight.finalLightAdd += max(0, saturate(saturate(vSpec0 * spec0Color) + saturate(vSpec1 * spec1Color)) * lerp(1, poiFragData.baseColor, _AnisoUseBaseColor) * lerp(dot(poiLight.vColor[index], float3(0.299, 0.587, 0.114)), poiLight.vColor[index], _AnisoUseLightColor) * _AnisoAdd);
+
+				poiFragData.baseColor = lerp(poiFragData.baseColor, spec1Color * lerp(1, baseColor, _AnisoUseBaseColor) * lerp(dot(poiLight.vColor[index], float3(0.299, 0.587, 0.114)), poiLight.vColor[index], _AnisoUseLightColor), _AnisoReplace * vSpec1);
+				poiFragData.baseColor = lerp(poiFragData.baseColor, spec0Color * lerp(1, baseColor, _AnisoUseBaseColor) * lerp(dot(poiLight.vColor[index], float3(0.299, 0.587, 0.114)), poiLight.vColor[index], _AnisoUseLightColor), _AnisoReplace * vSpec0);
+			}
+		#endif
+
+		#ifdef POI_ANISOTROPICS_DEBUG
+			switch(_AnisoDebugMode)
+			{
+				// final Spec
+				case 1:
+					{
+						return finalSpec;
+					break;
+				}
+				case 2:
+					{
+						return spec0 * spec0Color;
+					break;
+				}
+				case 3:
+					{
+						return spec1 * spec1Color;
+					break;
+				}
+			}
+		#endif
+
+		return float3(0, 0, 0);
+	}
+#endif
+//endex
+
+#T#PoiAnisoFunctionCalls
+//ifex _EnableAniso==0
+#ifdef POI_ANISOTROPICS
+	#ifdef POI_ANISOTROPICS_DEBUG
+		return float4(applyAnisotropics(poiFragData, poiLight, poiCam, poiMesh, poiMods), 1) + POI_SAFE_RGB1;
+	#else
+		applyAnisotropics(poiFragData, poiLight, poiCam, poiMesh, poiMods);
+	#endif
+#endif
+//endex
+

@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ca84e725c7c764aa5ed097918d14b7, type: 3}
+  m_Name: ftLocalStorage
+  m_EditorClassIdentifier: 
+  modifiedAssetPathList:
+  - Assets/Bakery/examples/content/sponza/sponza.FBX
+  - Assets/Lobby/Obj_LobbyProjector.dae
+  - Assets/City/Obj_SighterTarget.dae
+  - Assets/Lobby/Obj_Minigame.dae
+  - Assets/Lobby/Obj_MinigameChairYellow.dae
+  - Assets/Lobby/Obj_MinigameChairBlue.dae
+  - Assets/Lobby/FldBG_LobbyDV.dae
+  - Assets/Lobby/FldObj_DoorVSLobbyLocker.dae
+  - Assets/Lobby/Obj_LobbyPod.dae
+  - Assets/City/Obj_SighterTargetMove.dae
+  - Assets/Lobby/FldObj_DoorLobby.dae
+  - Assets/Lobby/Locker/Loc_Case00.dae
+  - Assets/Lobby/Locker/Loc_Door00.dae
+  - Assets/Lobby/Fld_VSLobbyScreen.dae
+  - Assets/Lobby/Obj_LobbyPlayerDevice.dae
+  - Assets/Lobby/Obj_VSLobbyScreenSignage.dae
+  - Assets/Lobby/Fld_VSLobby.dae
+  - Assets/Lobby/Obj_LobbyCapsuleMachine.dae
+  - Assets/City/Fld_BankaraCity.dae
+  - Assets/City/FldObj_VSLobbyExteriorTV.dae
+  - Assets/City/Fld_VSLobbyExterior.dae
+  - Assets/City/Fld_BankaraCityTownHouse.dae
+  - Assets/City/Fld_BankaraCityTownHouseCloseShop.dae
+  - Assets/City/Fld_BankaraCityVehicle.dae
+  - Assets/City/FldObj_PlazaDecorationDay.dae
+  - Assets/City/FldObj_PlazaApartmentStore.dae
+  - Assets/City/FldBG_BankaraCity.dae
+  - Assets/City/Grizco/Fld_CoopLobbyBuilding.dae
+  - Assets/Lobby/TableTurf/Obj_Minigame.dae
+  - Assets/Lobby/TableTurf/Obj_MinigameChairBlue.dae
+  - Assets/Lobby/TableTurf/Obj_MinigameChairYellow.dae
+  - Assets/Lobby/Obj_LobbyCapsuleMachineFest.dae
+  - Assets/City/Apartment/Fld_PlazaSignage.dae
+  - Assets/City/Manhole/Obj_GateManhole.dae
+  - Assets/City/Shoal/FldObj_LocalLobbyBuilding.dae
+  - Assets/City/Cafe/Fld_CafeBuilding.dae
+  - Assets/City/Amiibo/Obj_PlazaAmiibo.dae
+  - Assets/City/Apartment/Fld_PlazaPostBox.dae
+  - Assets/City/Weapon Shop/Fld_ShopExteriorWeapon.dae
+  - Assets/City/Doors/FldObj_DoorTVStationCoop.dae
+  - Assets/City/Apartment/FldObj_PlazaApartment.dae
+  - Assets/Lobby/Obj_LobbyCopyrobot.dae
+  - Assets/City/Doors/FldObj_DoorTshirts.dae
+  - Assets/City/Tableturf/Obj_PlazaMiniGameTable.dae
+  - Assets/City/Murch/Obj_PlazaTurbanshellCase.dae
+  - Assets/City/Doors/FldObj_DoorShoes.dae
+  - Assets/City/Doors/FldObj_DoorGoods.dae
+  - Assets/City/Tower TV/FldObj_DoorVSLobbyExterior.dae
+  - Assets/City/Stage/FldObj_MikoshiStage.dae
+  - Assets/City/Info/Fld_PlazaSanpoSignboard.dae
+  - Assets/City/Fld_BankaraCityTownHouseFes.dae
+  - Assets/City/Doors/FldObj_DoorGear.dae
+  - Assets/City/FES/FldObj_BankaraCityFestMainDecorSecond.dae
+  - Assets/City/FES/FldObj_BankaraCityFestMikoshi.dae
+  - Assets/City/Polling/Fld_FesPollingplace.dae
+  - Assets/City/FldObj_PlazaApartmentDay.dae
+  - Assets/City/Polling/FldObj_FesPollingTent.dae
+  - Assets/City/Tableturf/Obj_PlazaMiniGameDecoration.dae
+  - Assets/City/Obj_SighterTargetLarge.dae
+  - Assets/City/FES/FldObj_BankaraCityFestToriiLantern.dae
+  - Assets/City/Polling/FldObj_FesTeamGoods.dae
+  - Assets/City/FES/FldObj_BankaraCityFestTorii.dae
+  - Assets/City/Newsroom/Obj_SurimiTVscreen.dae
+  - Assets/City/Newsroom/Fld_Room_News.dae
+  - Assets/City/Newsroom/Obj_SurimiDai.dae
+  - Assets/City/Doors/FldObj_DoorTVStationLocalLobby.dae
+  - Assets/City/Decorations/FldObj_BankaraCityFestSecond.dae
+  - Assets/City/FES/fanscreen.fbx
+  modifiedAssetPaddingHash: aaf8cc2ecfc3a693e1c4d890f595d37200b309cecec1249129391cbdd084c2f291abf057953ea0db03ac6ed28109ecc0173d5196af67e2a81f08071f80c5d890c1ab134968227aa550f2b8d9323fd3d9f83d35eafed0ac3fccae27c1fddc895301144511dca88b8aada767e0dbd42030f595d372cec1249100b309ce5dcd7aa63f3fd3d9716fde4f11757f58e1dfc5d8d2de8190b7f23a06b31bf8be46cfaff3c8a242d03826f7fcc28b2f4be493391ca6da2658c2c4d89034075c238200dccb9979f50a885031ee4f7759cb2866134e4b54097b8a92976f577a19649a8f1ac28e31e5c0726ea96ab7f23a063c4efff009a3ddde20104e925fa48c562a80ec6419c2a693c052f26d540cb70ad7c2a693

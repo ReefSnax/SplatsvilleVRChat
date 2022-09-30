@@ -1,0 +1,44 @@
+#T#PoiNormalCorrectProperties
+//ifex _NormalCorrect==0
+[HideInInspector] m_start_normalCorrect (" Normal Correct--{reference_property:_NormalCorrect}}", Float) = 0
+[HideInInspector][ThryToggle(POI_NORMALCORRECT)]_NormalCorrect ("Enable", Float) = 0
+_NormalCorrectAmount ("Normal Correct Amount", Range(0,1)) = 0.9
+[Vector3]_NormalCorrectOrigin ("Origin", Vector) = (0,0.4,-0.025)
+[HideInInspector] m_end_normalCorrect ("", Float) = 0
+//endex
+
+#T#PoiNormalCorrectKeywords
+//ifex _NormalCorrect==0
+#pragma shader_feature POI_NORMALCORRECT
+//endex
+
+#T#PoiNormalCorrectVariables
+//ifex _NormalCorrect==0
+#ifdef POI_NORMALCORRECT
+    float _NormalCorrectAmount;
+    float3 _NormalCorrectOrigin;
+#endif
+//endex
+
+#T#PoiNormalCorrectFunctions
+// normal correct code from https://github.com/yoship1639/UniToon (MIT)
+//ifex _NormalCorrect==0
+#ifdef POI_NORMALCORRECT
+    void applyNormalCorrect(inout VertexOut i)
+    {
+        float3 normalCorrectObject = i.localPos.xyz - _NormalCorrectOrigin;
+        normalCorrectObject.y = 0;
+        normalCorrectObject = normalize(normalCorrectObject);
+        float3 normalCorrectWorld = UnityObjectToWorldDir(normalCorrectObject);
+        i.normal.xyz = normalize(lerp(i.normal.xyz, normalCorrectWorld, _NormalCorrectAmount));
+        i.objNormal.xyz = normalize(lerp(i.objNormal.xyz, normalCorrectObject, _NormalCorrectAmount));
+    }
+#endif
+//endex
+
+#T#PoiNormalCorrectFunctionCalls
+//ifex _NormalCorrect==0
+#ifdef POI_NORMALCORRECT
+    applyNormalCorrect(i);
+#endif
+//endex

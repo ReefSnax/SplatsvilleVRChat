@@ -1,0 +1,224 @@
+#T#PoiALDecalsProperties
+//ifex _EnableALDecal==0
+[HideInInspector] m_start_ALDecalSpectrum ("AL ♫ Spectrum--{  reference_property:_EnableALDecal}", Float) = 0
+[HideInInspector][ThryToggle(POI_AL_DECAL)]_EnableALDecal ("Enable AL Decal", Float) = 0
+[HideInInspector][ThryWideEnum(lil Spectrum, 0)] _ALDecalType ("AL Type--{ condition_showS:_EnableAudioLink==1}", Int) = 0
+
+[ThryHeaderLabel(Transform, 13)]
+[Space(4)]
+[Enum(Normal, 0, Circle, 1)] _ALDecalUVMode ("UV Mode", Float) = 0
+[ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _ALDecalUV ("UV", Int) = 0
+[Vector2]_ALUVPosition ("Position", Vector) = (.5, .5, 1)
+_ALUVScale ("Scale", Vector) = (1, 1, 1, 1)
+_ALUVRotation ("Rotation", Range(0, 360)) = 0
+_ALUVRotationSpeed ("Rotation Speed", Float) = 0
+_ALDecalLineWidth ("Line Width", Range(0, 1)) = 1.0
+_ALDecaldCircleDimensions ("Cirlce Dimensions--{ condition_showS:_ALDecalUVMode==1}", Vector) = (0, 1, 0, 1)
+
+[Space][ThryHeaderLabel(Volume, 13)]
+[Space(4)]
+_ALDecalVolumeStep ("Volume Step Num (0 = Off)", Float) = 0.0
+_ALDecalVolumeClipMin ("Volume Clip Min", Range(0, 1)) = 0.0
+_ALDecalVolumeClipMax ("Volume Clip Max", Range(0, 1)) = 1.0
+
+[Space][ThryHeaderLabel(Band, 13)]
+[Space(4)]
+_ALDecalBandStep ("Band Step Num (0 = Off)", Float) = 0.0
+_ALDecalBandClipMin ("Band Clip Min", Range(0, 1)) = 0.0
+_ALDecalBandClipMax ("Band Clip Max", Range(0, 1)) = 1.0
+
+
+[Space][ThryToggleUI(true)]_ALDecalShapeClip ("<size=13><b>  Shape Clip</b></size>", Float) = 0
+_ALDecalShapeClipVolumeWidth ("Volume Width--{ condition_showS:_ALDecalShapeClip==1}", Range(0, 1)) = 0.5
+_ALDecalShapeClipBandWidth ("Band Width--{ condition_showS:_ALDecalShapeClip==1}", Range(0, 1)) = 0.5
+
+[Space][ThryHeaderLabel(Audio Mods, 13)]
+[Space(4)]
+_ALDecalVolume ("Volume", Int) = 0.5
+_ALDecalBaseBoost ("Bass Boost", Float) = 5.0
+_ALDecalTrebleBoost ("Treble Boost", Float) = 1.0
+
+[Space][ThryHeaderLabel(Colors and Blending, 13)]
+[Space(4)]
+[sRGBWarning(true)][ThryRGBAPacker(1, RGB Color, A Mask, 1)]_ALDecalColorMask ("Color & Mask--{reference_properties:[_ALDecalColorMaskPan, _ALDecalColorMaskUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_ALDecalColorMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _ALDecalColorMaskUV ("UV", Int) = 0
+[Enum(UVX, 0, UVY, 1, Volume, 2)] _ALDecalVolumeColorSource ("Source", Int) = 1
+_ALDecalVolumeColorLow ("Volume Color Low", Color) = (0, 0, 1)
+_ALDecalLowEmission ("Low Emission", Range(0, 20)) = 0
+_ALDecalVolumeColorMid ("Volume Color Mid", Color) = (0, 1, 0)
+_ALDecalMidEmission ("Mid Emission", Range(0, 20)) = 0
+_ALDecalVolumeColorHigh ("Volume Color High", Color) = (1, 0, 0)
+_ALDecalHighEmission ("High Emission", Range(0, 20)) = 0
+[ThryWideEnum(Replace, 0, Darken, 1, Multiply, 2, Color Burn, 3, Linear Burn, 4, Lighten, 5, Screen, 6, Color Dodge, 7, Linear Dodge(Add), 8, Overlay, 9, Soft Lighten, 10, Hard Light, 11, Vivid Light, 12, Linear Light, 13, Pin Light, 14, Hard Mix, 15, Difference, 16, Exclusion, 17, Subtract, 18, Divide, 19)]_ALDecalBlendType ("Blend Type", Range(0, 1)) = 0
+_ALDecalBlendAlpha ("Alpha", Range(0, 1)) = 1
+_ALDecalControlsAlpha ("Override Alpha", Range(0, 1)) = 0
+[HideInInspector] m_end_ALDecalSpectrum ("AL ♫ Spectrum", Float) = 0
+//endex
+
+#T#PoiALDecalsKeywords
+//ifex _EnableALDecal==0
+#pragma shader_feature_local POI_AL_DECAL
+//endex
+#T#PoiALDecalsVariables
+//ifex _EnableALDecal==0
+#ifdef POI_AUDIOLINK
+    #ifdef POI_AL_DECAL
+        float _ALDecalUV;
+        float4 _ALUVScale;
+        float2 _ALUVPosition;
+        float _ALUVRotation;
+        float _ALUVRotationSpeed;
+        float4 _ALDecaldCircleDimensions;
+
+        float _ALDecalUVMode;
+
+        float _ALDecalVolumeStep;
+        float _ALDecalVolumeClipMin;
+        float _ALDecalVolumeClipMax;
+
+        float _ALDecalBandStep;
+        float _ALDecalBandClipMin;
+        float _ALDecalBandClipMax;
+
+        float _ALDecalShapeClip;
+        float _ALDecalShapeClipVolumeWidth;
+        float _ALDecalShapeClipBandWidth;
+
+        #if defined(PROP_ALDECALCOLORMASK) || !defined(OPTIMIZER_ENABLED)
+            Texture2D _ALDecalColorMask;
+            float4 _ALDecalColorMask_ST;
+            float2 _ALDecalColorMaskPan;
+            float _ALDecalColorMaskUV;
+        #endif
+
+        float _ALDecalVolume;
+        float _ALDecalBaseBoost;
+        float _ALDecalTrebleBoost;
+        float _ALDecalLineWidth;
+        float _ALDecalVolumeColorSource;
+        float3 _ALDecalVolumeColorLow;
+        float3 _ALDecalVolumeColorMid;
+        float3 _ALDecalVolumeColorHigh;
+        float _ALDecalLowEmission;
+        float _ALDecalMidEmission;
+        float _ALDecalHighEmission;
+        float _ALDecalBlendType;
+        float _ALDecalBlendAlpha;
+        float _ALDecalControlsAlpha;
+    #endif
+#endif
+//endex
+
+#T#PoiALDecalsFunctions
+//ifex _EnableALDecal==0
+#ifdef POI_AUDIOLINK
+    #ifdef POI_AL_DECAL
+        void ApplyAudioLinkDecal(in PoiMesh poiMesh, inout PoiFragData poiFragData, in PoiMods poiMods)
+        {
+            float4 colorAndMask = float4(1, 1, 1, 1);
+            #if defined(PROP_ALDECALCOLORMASK) || !defined(OPTIMIZER_ENABLED)
+                colorAndMask = POI2D_SAMPLER_PAN(_ALDecalColorMask, _MainTex, poiUV(poiMesh.uv[_ALDecalColorMaskUV], _ALDecalColorMask_ST), _ALDecalColorMaskPan);
+            #endif
+
+            float2 uv = poiMesh.uv[_ALDecalUV];
+            float2 decalCenter = _ALUVPosition;
+            float theta = radians(_ALUVRotation + _Time.z * _ALUVRotationSpeed);
+            float cs = cos(theta);
+            float sn = sin(theta);
+            uv = float2((uv.x - decalCenter.x) * cs - (uv.y - decalCenter.y) * sn + decalCenter.x, (uv.x - decalCenter.x) * sn + (uv.y - decalCenter.y) * cs + decalCenter.y);
+            uv = remap(uv, float2(0, 0) - _ALUVScale.xz / 2 + _ALUVPosition, _ALUVScale.yw / 2 + _ALUVPosition, float2(0, 0), float2(1, 1));
+
+            // Mask
+            float4 audioLinkMask = 1.0;
+
+            // UV
+            float2 aluv = uv;
+            if (_ALDecalUVMode == 1)
+            {
+                float2 uvdir = uv * 2 - 1;
+                aluv.x = frac(atan2(uvdir.y, uvdir.x) * UNITY_INV_TWO_PI);
+                aluv.y = length(uvdir);
+            }
+
+            // Scale / Offset / Step
+            float maskY = aluv.y;
+            if (_ALDecalUVMode == 1)
+            {
+                maskY = remap(maskY, _ALDecaldCircleDimensions.x, _ALDecaldCircleDimensions.y, 0, 1);
+            }
+            float maskX = aluv.x;
+            if (_ALDecalUVMode == 1)
+            {
+                maskX = remap(maskX, _ALDecaldCircleDimensions.z, _ALDecaldCircleDimensions.w, 0, 1);
+            }
+
+
+            float maskVolume = _ALDecalVolumeStep != 0.0 ? floor(maskY * _ALDecalVolumeStep) / _ALDecalVolumeStep : maskY;
+            float maskBand = _ALDecalBandStep != 0.0 ? floor(maskX * _ALDecalBandStep) / _ALDecalBandStep : maskX;
+
+            // Copy
+            audioLinkMask.r = maskVolume;
+            audioLinkMask.g = maskBand;
+
+            // Clip
+            audioLinkMask.b = maskVolume < _ALDecalVolumeClipMin || maskVolume > _ALDecalVolumeClipMax ? 0.0 : audioLinkMask.b;
+            audioLinkMask.b = maskBand < _ALDecalBandClipMin || maskBand > _ALDecalBandClipMax ? 0.0 : audioLinkMask.b;
+
+            // Shape Clip
+            if (_ALDecalShapeClip)
+            {
+                float volumeth = _ALDecalShapeClipVolumeWidth;
+                if (_ALDecalVolumeStep != 0.0) audioLinkMask.b = frac(maskY * _ALDecalVolumeStep) > volumeth ? 0.0 : audioLinkMask.b;
+
+                float bandwidth = _ALDecalUVMode == 1 ? _ALDecalShapeClipBandWidth / aluv.y : _ALDecalShapeClipBandWidth;
+                float bandth = 1.0 - bandwidth;
+                if (_ALDecalBandStep != 0.0) audioLinkMask.b = frac(maskX * _ALDecalBandStep + bandth * 0.5) < bandth ? 0.0 : audioLinkMask.b;
+            }
+
+            // AudioLink
+            float2 audioLinkUV = float2(frac(audioLinkMask.g * 2.0), 4.5 / 4.0 + floor(audioLinkMask.g * 2.0) / 4.0);
+            audioLinkUV.y *= 0.0625;
+            float4 audioTexture = _AudioTexture.Sample(sampler_linear_clamp, audioLinkUV);
+            float audioVal = audioTexture.b * _ALDecalVolume * lerp(_ALDecalBaseBoost, _ALDecalTrebleBoost, audioLinkMask.g);
+            float audioLinkValue = _ALDecalLineWidth < 1.0 ? abs(audioVal - audioLinkMask.r) < _ALDecalLineWidth : audioVal > audioLinkMask.r * 2.0;
+            audioLinkValue = saturate(audioLinkValue) * audioLinkMask.b;
+            //clip(audioLinkValue - .5);
+            audioLinkValue *= colorAndMask.a;
+
+            if (!poiMods.audioLinkAvailable)
+            {
+                audioLinkValue = 0;
+            }
+
+
+            float3 alColorChord = _AudioTexture.Sample(sampler_linear_clamp, float2(maskX, 24.5 / 64.0)).rgb;
+            float volumeColorSrc = audioLinkMask.g;
+            if (_ALDecalVolumeColorSource == 1) volumeColorSrc = audioLinkMask.r;
+            if (_ALDecalVolumeColorSource == 2) volumeColorSrc = audioVal;
+            
+            float3 volumeColor = lerp(_ALDecalVolumeColorLow.rgb, _ALDecalVolumeColorMid.rgb, saturate(volumeColorSrc * 2));
+            volumeColor = lerp(volumeColor, _ALDecalVolumeColorHigh.rgb, saturate(volumeColorSrc * 2 - 1));
+
+            float3 emissionColor = lerp(_ALDecalVolumeColorLow.rgb * _ALDecalLowEmission, _ALDecalVolumeColorMid.rgb * _ALDecalMidEmission, saturate(volumeColorSrc * 2));
+            emissionColor = lerp(emissionColor, _ALDecalVolumeColorHigh.rgb * _ALDecalHighEmission, saturate(volumeColorSrc * 2 - 1));
+
+            
+            //poiFragData.baseColor = lerp(poiFragData.baseColor, volumeColor, audioLinkValue);
+            #if defined(POI_PASS_BASE) || defined(POI_PASS_ADD)
+                poiFragData.emission += emissionColor * audioLinkValue;
+                poiFragData.baseColor.rgb = lerp(poiFragData.baseColor, customBlend(poiFragData.baseColor, volumeColor * colorAndMask.rgb, _ALDecalBlendType), saturate(_ALDecalBlendAlpha * audioLinkValue));
+            #endif
+            poiFragData.alpha = lerp(poiFragData.alpha, poiFragData.alpha * audioLinkValue, _ALDecalControlsAlpha);
+        }
+    #endif
+#endif
+//endex
+#T#PoiALDecalsFunctionCalls
+//ifex _EnableALDecal==0
+#ifdef POI_AUDIOLINK
+    #ifdef POI_AL_DECAL
+        ApplyAudioLinkDecal(poiMesh, poiFragData, poiMods);
+    #endif
+#endif
+//endex

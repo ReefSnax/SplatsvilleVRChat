@@ -1,0 +1,44 @@
+#T#AddPassTags
+Tags { "LightMode" = "ForwardAdd" }
+
+#T#AddPassStencil
+#K#ADD_PASS_STENCIL
+
+#T#AddPassBlendSettings
+ZWrite Off
+Cull [_Cull]
+AlphaToMask [_AlphaToCoverage]
+ZTest [_ZTest]
+ColorMask [_ColorMask]
+Offset [_OffsetFactor], [_OffsetUnits]
+
+BlendOp [_AddBlendOp], [_AddBlendOpAlpha]
+Blend [_AddSrcBlend] [_AddDstBlend], [_AddSrcBlendAlpha] [_AddDstBlendAlpha]
+
+#T#AddPassOnlyKeywords
+#pragma multi_compile_fwdadd_fullshadows
+#pragma multi_compile_instancing
+#pragma multi_compile_fog
+#define POI_PASS_ADD
+
+#T#AddPassKeywords
+#K#ADD_PASS_KEYWORDS
+
+#T#AddPassPropertyVariables
+#K#ADD_PROPERTY_VARIABLES
+
+#T#AddPassPrograms
+#K#VERTEX_ADD_DATA_STRUCTURES
+#K#VERTEX_ADD_FUNCTIONS_EARLY
+#K#VERTEX_ADD_FUNCTIONS
+#K#VERTEX_ADD_FUNCTIONS_LATE
+#K#VERTEX_ADD_PROGRAM
+
+#K#HULLDOMAIN_ADD_PROGRAM
+#K#GEOMETRY_ADD_PROGRAM
+
+#K#FRAGMENT_ADD_DATA_STRUCTURES
+#K#FRAGMENT_ADD_FUNCTIONS_EARLY
+#K#FRAGMENT_ADD_FUNCTIONS
+#K#FRAGMENT_ADD_FUNCTIONS_LATE
+#K#FRAGMENT_ADD_PROGRAM

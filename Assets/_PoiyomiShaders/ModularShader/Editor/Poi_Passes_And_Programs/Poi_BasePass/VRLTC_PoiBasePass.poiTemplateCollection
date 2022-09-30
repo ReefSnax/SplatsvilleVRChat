@@ -1,0 +1,45 @@
+#T#BasePassTags
+Tags { "LightMode" = "ForwardBase" }
+
+#T#BasePassStencil
+#K#BASE_PASS_STENCIL
+
+#T#BasePassBlendSettings
+ZWrite [_ZWrite]
+Cull [_Cull]
+AlphaToMask [_AlphaToCoverage]
+ZTest [_ZTest]
+ColorMask [_ColorMask]
+Offset [_OffsetFactor], [_OffsetUnits]
+
+BlendOp [_BlendOp], [_BlendOpAlpha]
+Blend [_SrcBlend] [_DstBlend], [_SrcBlendAlpha] [_DstBlendAlpha]
+
+#T#BasePassOnlyKeywords
+#pragma multi_compile_fwdbase
+#pragma multi_compile_instancing
+#pragma multi_compile_fog
+#pragma multi_compile _ VERTEXLIGHT_ON
+#define POI_PASS_BASE
+
+#T#BasePassKeywords
+#K#BASE_PASS_KEYWORDS
+
+#T#BasePassPropertyVariables
+#K#BASE_PROPERTY_VARIABLES
+
+#T#BasePassPrograms
+#K#VERTEX_BASE_DATA_STRUCTURES
+#K#VERTEX_BASE_FUNCTIONS_EARLY
+#K#VERTEX_BASE_FUNCTIONS
+#K#VERTEX_BASE_FUNCTIONS_LATE
+#K#VERTEX_BASE_PROGRAM
+
+#K#HULLDOMAIN_BASE_PROGRAM
+#K#GEOMETRY_BASE_PROGRAM
+
+#K#FRAGMENT_BASE_DATA_STRUCTURES
+#K#FRAGMENT_BASE_FUNCTIONS_EARLY
+#K#FRAGMENT_BASE_FUNCTIONS
+#K#FRAGMENT_BASE_FUNCTIONS_LATE
+#K#FRAGMENT_BASE_PROGRAM

@@ -1,0 +1,743 @@
+#T#PoiMatcapProperties
+// First Matcap
+//ifex _MatcapEnable==0
+[HideInInspector] m_start_matcap ("Matcap 0--{reference_property:_MatcapEnable,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/shading/matcap},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(POI_MATCAP0)]_MatcapEnable ("Enable Matcap", Float) = 0
+[ThryWideEnum(UTS Style, 0, Top Pinch, 1, Double Sided, 2)] _MatcapUVMode ("UV Mode", Int) = 1
+_MatcapColor ("Color--{reference_property:_MatcapColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _MatcapColorThemeIndex ("", Int) = 0
+[sRGBWarning(true)][TextureNoSO]_Matcap ("Matcap", 2D) = "white" { }
+_MatcapBorder ("Border", Range(0, .5)) = 0.43
+[sRGBWarning]_MatcapMask ("Mask--{reference_properties:[_MatcapMaskPan, _MatcapMaskUV, _MatcapMaskInvert]}", 2D) = "white" { }
+[HideInInspector][Vector2]_MatcapMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _MatcapMaskUV ("UV", Int) = 0
+[HideInInspector][ToggleUI]_MatcapMaskInvert ("Invert", Float) = 0
+[ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _MatcapMaskGlobalMask ("Global Mask--{reference_property:_MatcapMaskGlobalMaskBlendType}", Int) = 0
+[HideInInspector][ThryWideEnum(Replace, 0, Darken, 1, Multiply, 2, Color Burn, 3, Linear Burn, 4, Lighten, 5, Screen, 6, Color Dodge, 7, Linear Dodge(Add), 8, Overlay, 9, Soft Lighten, 10, Hard Light, 11, Vivid Light, 12, Linear Light, 13, Pin Light, 14, Hard Mix, 15, Difference, 16, Exclusion, 17, Subtract, 18, Divide, 19)]_MatcapMaskGlobalMaskBlendType ("Blending", Range(0, 1)) = 2
+_MatcapEmissionStrength ("Emission Strength", Range(0, 20)) = 0
+_MatcapIntensity ("Intensity", Range(0, 5)) = 1
+_MatcapLightMask ("Hide in Shadow", Range(0, 1)) = 0
+_MatcapReplace ("Replace Blend", Range(0, 1)) = 1
+_MatcapMultiply ("Multiply Blend", Range(0, 1)) = 0
+_MatcapAdd ("Add Blend", Range(0, 1)) = 0
+_MatcapMixed ("Mixed Blend", Range(0, 1)) = 0
+_MatcapAddToLight ("Add To Light", Range(0, 1)) = 0
+_MatcapAlphaOverride ("Override Alpha", Range(0, 1)) = 0
+[Enum(Vertex, 0, Pixel, 1)] _MatcapNormal ("Normal to use", Int) = 1
+[ThryToggle(POI_MATCAP0_CUSTOM_NORMAL, true)] _Matcap0CustomNormal ("<size=13><b>  Custom Normal</b></size>", Float) = 0
+[Normal]_Matcap0NormalMap ("Normal Map--{reference_properties:[_Matcap0NormalMapPan, _Matcap0NormalMapUV, _Matcap0NormalMapScale], condition_showS:(_Matcap0CustomNormal==1)}", 2D) = "bump" { }
+[HideInInspector][Vector2]_Matcap0NormalMapPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _Matcap0NormalMapUV ("UV", Int) = 0
+[HideInInspector]_Matcap0NormalMapScale ("Intensity", Range(0, 10)) = 1
+[ThryToggleUI(true)] _MatcapHueShiftEnabled ("<size=13><b>  Hue Shift</b></size>", Float) = 0
+_MatcapHueShiftSpeed ("Shift Speed--{condition_showS:(_MatcapHueShiftEnabled==1)}", Float) = 0
+_MatcapHueShift ("Hue Shift--{condition_showS:(_MatcapHueShiftEnabled==1)}", Range(0, 1)) = 0
+[ThryToggleUI(true)] _MatcapTPSDepthEnabled ("<size=13><b>  TPS Depth Mask Enabled</b></size>", Float) = 0
+_MatcapTPSMaskStrength ("TPS Mask Strength--{condition_showS:(_MatcapTPSDepthEnabled==1)}", Range(0, 1)) = 1
+[HideInInspector] m_end_matcap ("Matcap--{condition_showS:(_MatcapHueShiftEnabled==1)}", Float) = 0
+//endex
+
+// Second Matcap
+//ifex _Matcap2Enable==0
+[HideInInspector] m_start_Matcap2 ("Matcap 1--{reference_property:_Matcap2Enable,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/shading/matcap},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(COLOR_GRADING_HDR_3D)]_Matcap2Enable ("Enable Matcap 2", Float) = 0
+[ThryWideEnum(UTS Style, 0, Top Pinch, 1, Double Sided, 2)] _Matcap2UVMode ("UV Mode", Int) = 1
+_Matcap2Color ("Color--{reference_property:_Matcap2ColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _Matcap2ColorThemeIndex ("", Int) = 0
+[sRGBWarning(true)][TextureNoSO]_Matcap2 ("Matcap", 2D) = "white" { }
+_Matcap2Border ("Border", Range(0, .5)) = 0.43
+[sRGBWarning]_Matcap2Mask ("Mask--{reference_properties:[_Matcap2MaskPan, _Matcap2MaskUV, _Matcap2MaskInvert]}", 2D) = "white" { }
+[HideInInspector][Vector2]_Matcap2MaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _Matcap2MaskUV ("UV", Int) = 0
+[HideInInspector][ToggleUI]_Matcap2MaskInvert ("Invert", Float) = 0
+[ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _Matcap2MaskGlobalMask ("Global Mask--{reference_property:_Matcap2MaskGlobalMaskBlendType}", Int) = 0
+[HideInInspector][ThryWideEnum(Replace, 0, Darken, 1, Multiply, 2, Color Burn, 3, Linear Burn, 4, Lighten, 5, Screen, 6, Color Dodge, 7, Linear Dodge(Add), 8, Overlay, 9, Soft Lighten, 10, Hard Light, 11, Vivid Light, 12, Linear Light, 13, Pin Light, 14, Hard Mix, 15, Difference, 16, Exclusion, 17, Subtract, 18, Divide, 19)]_Matcap2MaskGlobalMaskBlendType ("Blending", Range(0, 1)) = 2
+_Matcap2EmissionStrength ("Emission Strength", Range(0, 20)) = 0
+_Matcap2Intensity ("Intensity", Range(0, 5)) = 1
+_Matcap2LightMask ("Hide in Shadow", Range(0, 1)) = 0
+_Matcap2Replace ("Replace Blend", Range(0, 1)) = 0
+_Matcap2Multiply ("Multiply Blend", Range(0, 1)) = 0
+_Matcap2Add ("Add Blend", Range(0, 1)) = 0
+_Matcap2Mixed ("Mixed Blend", Range(0, 1)) = 0
+_Matcap2AddToLight ("Add To Light", Range(0, 1)) = 0
+_Matcap2AlphaOverride ("Override Alpha", Range(0, 1)) = 0
+[Enum(Vertex, 0, Pixel, 1)] _Matcap2Normal ("Normal to use", Int) = 1
+[ThryToggle(POI_MATCAP1_CUSTOM_NORMAL, true)] _Matcap1CustomNormal ("<size=13><b>  Custom Normal</b></size>", Float) = 0
+[ThryToggle()]_Matcap1CustomNormal ("Custom Normal", Float) = 0
+[Normal]_Matcap1NormalMap ("Normal Map--{reference_properties:[_Matcap1NormalMapPan, _Matcap1NormalMapUV, _Matcap1NormalMapScale], condition_showS:(_Matcap1CustomNormal==1)}", 2D) = "bump" { }
+[HideInInspector][Vector2]_Matcap1NormalMapPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _Matcap1NormalMapUV ("UV", Int) = 0
+[HideInInspector]_Matcap1NormalMapScale ("Intensity", Range(0, 10)) = 1
+[ThryToggleUI(true)] _Matcap2HueShiftEnabled ("<size=13><b>  Hue Shift</b></size>", Float) = 0
+_Matcap2HueShiftSpeed ("Shift Speed--{condition_showS:(_Matcap2HueShiftEnabled==1)}", Float) = 0
+_Matcap2HueShift ("Hue Shift--{condition_showS:(_Matcap2HueShiftEnabled==1)}", Range(0, 1)) = 0
+[ThryToggleUI(true)] _Matcap2TPSDepthEnabled ("<size=13><b>  TPS Depth Mask Enabled</b></size>", Float) = 0
+_Matcap2TPSMaskStrength ("TPS Mask Strength--{condition_showS:(_Matcap2TPSDepthEnabled==1)}", Range(0, 1)) = 1
+[HideInInspector] m_end_Matcap2 ("Matcap 1--{condition_showS:(_Matcap2HueShiftEnabled==1)}", Float) = 0
+//endex
+
+// Third Matcap
+//ifex _Matcap3Enable==0
+[HideInInspector] m_start_Matcap3 ("Matcap 2--{reference_property:_Matcap3Enable,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/shading/matcap},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(POI_MATCAP2)]_Matcap3Enable ("Enable Matcap 2", Float) = 0
+[ThryWideEnum(UTS Style, 0, Top Pinch, 1, Double Sided, 2)] _Matcap3UVMode ("UV Mode", Int) = 1
+_Matcap3Color ("Color--{reference_property:_Matcap3ColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _Matcap3ColorThemeIndex ("", Int) = 0
+[sRGBWarning(true)][TextureNoSO]_Matcap3 ("Matcap", 2D) = "white" { }
+_Matcap3Border ("Border", Range(0, .5)) = 0.43
+[sRGBWarning]_Matcap3Mask ("Mask--{reference_properties:[_Matcap3MaskPan, _Matcap3MaskUV, _Matcap3MaskInvert]}", 2D) = "white" { }
+[HideInInspector][Vector2]_Matcap3MaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _Matcap3MaskUV ("UV", Int) = 0
+[HideInInspector][ToggleUI]_Matcap3MaskInvert ("Invert", Float) = 0
+[ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _Matcap3MaskGlobalMask ("Global Mask--{reference_property:_Matcap3MaskGlobalMaskBlendType}", Int) = 0
+[HideInInspector][ThryWideEnum(Replace, 0, Darken, 1, Multiply, 2, Color Burn, 3, Linear Burn, 4, Lighten, 5, Screen, 6, Color Dodge, 7, Linear Dodge(Add), 8, Overlay, 9, Soft Lighten, 10, Hard Light, 11, Vivid Light, 12, Linear Light, 13, Pin Light, 14, Hard Mix, 15, Difference, 16, Exclusion, 17, Subtract, 18, Divide, 19)]_Matcap3MaskGlobalMaskBlendType ("Blending", Range(0, 1)) = 2
+_Matcap3EmissionStrength ("Emission Strength", Range(0, 20)) = 0
+_Matcap3Intensity ("Intensity", Range(0, 5)) = 1
+_Matcap3LightMask ("Hide in Shadow", Range(0, 1)) = 0
+_Matcap3Replace ("Replace Blend", Range(0, 1)) = 0
+_Matcap3Multiply ("Multiply Blend", Range(0, 1)) = 0
+_Matcap3Add ("Add Blend", Range(0, 1)) = 0
+_Matcap3Mixed ("Mixed Blend", Range(0, 1)) = 0
+_Matcap3AddToLight ("Add To Light", Range(0, 1)) = 0
+_Matcap3AlphaOverride ("Override Alpha", Range(0, 1)) = 0
+[Enum(Vertex, 0, Pixel, 1)] _Matcap3Normal ("Normal to use", Int) = 1
+[ThryToggle(POI_MATCAP2_CUSTOM_NORMAL, true)] _Matcap2CustomNormal ("<size=13><b>  Custom Normal</b></size>", Float) = 0
+[ThryToggle()]_Matcap2CustomNormal ("Custom Normal", Float) = 0
+[Normal]_Matcap2NormalMap ("Normal Map--{reference_properties:[_Matcap2NormalMapPan, _Matcap2NormalMapUV, _Matcap2NormalMapScale], condition_showS:(_Matcap2CustomNormal==1)}", 2D) = "bump" { }
+[HideInInspector][Vector2]_Matcap2NormalMapPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _Matcap2NormalMapUV ("UV", Int) = 0
+[HideInInspector]_Matcap2NormalMapScale ("Intensity", Range(0, 10)) = 1
+[ThryToggleUI(true)] _Matcap3HueShiftEnabled ("<size=13><b>  Hue Shift</b></size>", Float) = 0
+_Matcap3HueShiftSpeed ("Shift Speed--{condition_showS:(_Matcap3HueShiftEnabled==1)}", Float) = 0
+_Matcap3HueShift ("Hue Shift--{condition_showS:(_Matcap3HueShiftEnabled==1)}", Range(0, 1)) = 0
+[ThryToggleUI(true)] _Matcap3TPSDepthEnabled ("<size=13><b>  TPS Depth Mask Enabled</b></size>", Float) = 0
+_Matcap3TPSMaskStrength ("TPS Mask Strength--{condition_showS:(_Matcap3TPSDepthEnabled==1)}", Range(0, 1)) = 1
+[HideInInspector] m_end_Matcap3 ("Matcap 2--{condition_showS:(_Matcap3HueShiftEnabled==1)}", Float) = 0
+//endex
+
+// Fourth Matcap
+//ifex _Matcap4Enable==0
+[HideInInspector] m_start_Matcap4 ("Matcap 3--{reference_property:_Matcap4Enable,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/shading/matcap},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(POI_MATCAP3)]_Matcap4Enable ("Enable Matcap 3", Float) = 0
+[ThryWideEnum(UTS Style, 0, Top Pinch, 1, Double Sided, 2)] _Matcap4UVMode ("UV Mode", Int) = 1
+_Matcap4Color ("Color--{reference_property:_Matcap4ColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _Matcap4ColorThemeIndex ("", Int) = 0
+[sRGBWarning(true)][TextureNoSO]_Matcap4 ("Matcap", 2D) = "white" { }
+_Matcap4Border ("Border", Range(0, .5)) = 0.43
+[sRGBWarning]_Matcap4Mask ("Mask--{reference_properties:[_Matcap4MaskPan, _Matcap4MaskUV, _Matcap4MaskInvert]}", 2D) = "white" { }
+[HideInInspector][Vector2]_Matcap4MaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _Matcap4MaskUV ("UV", Int) = 0
+[HideInInspector][ToggleUI]_Matcap4MaskInvert ("Invert", Float) = 0
+[ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _Matcap4MaskGlobalMask ("Global Mask--{reference_property:_Matcap4MaskGlobalMaskBlendType}", Int) = 0
+[HideInInspector][ThryWideEnum(Replace, 0, Darken, 1, Multiply, 2, Color Burn, 3, Linear Burn, 4, Lighten, 5, Screen, 6, Color Dodge, 7, Linear Dodge(Add), 8, Overlay, 9, Soft Lighten, 10, Hard Light, 11, Vivid Light, 12, Linear Light, 13, Pin Light, 14, Hard Mix, 15, Difference, 16, Exclusion, 17, Subtract, 18, Divide, 19)]_Matcap4MaskGlobalMaskBlendType ("Blending", Range(0, 1)) = 2
+_Matcap4EmissionStrength ("Emission Strength", Range(0, 20)) = 0
+_Matcap4Intensity ("Intensity", Range(0, 5)) = 1
+_Matcap4LightMask ("Hide in Shadow", Range(0, 1)) = 0
+_Matcap4Replace ("Replace Blend", Range(0, 1)) = 0
+_Matcap4Multiply ("Multiply Blend", Range(0, 1)) = 0
+_Matcap4Add ("Add Blend", Range(0, 1)) = 0
+_Matcap4Mixed ("Mixed Blend", Range(0, 1)) = 0
+_Matcap4AddToLight ("Add To Light", Range(0, 1)) = 0
+_Matcap4AlphaOverride ("Override Alpha", Range(0, 1)) = 0
+[Enum(Vertex, 0, Pixel, 1)] _Matcap4Normal ("Normal to use", Int) = 1
+[ThryToggle(POI_MATCAP3_CUSTOM_NORMAL, true)] _Matcap3CustomNormal ("<size=13><b>  Custom Normal</b></size>", Float) = 0
+[ThryToggle()]_Matcap3CustomNormal ("Custom Normal", Float) = 0
+[Normal]_Matcap3NormalMap ("Normal Map--{reference_properties:[_Matcap3NormalMapPan, _Matcap3NormalMapUV, _Matcap3NormalMapScale], condition_showS:(_Matcap3CustomNormal==1)}", 2D) = "bump" { }
+[HideInInspector][Vector2]_Matcap3NormalMapPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _Matcap3NormalMapUV ("UV", Int) = 0
+[HideInInspector]_Matcap3NormalMapScale ("Intensity", Range(0, 10)) = 1
+[ThryToggleUI(true)] _Matcap4HueShiftEnabled ("<size=13><b>  Hue Shift</b></size>", Float) = 0
+_Matcap4HueShiftSpeed ("Shift Speed--{condition_showS:(_Matcap4HueShiftEnabled==1)}", Float) = 0
+_Matcap4HueShift ("Hue Shift--{condition_showS:(_Matcap4HueShiftEnabled==1)}", Range(0, 1)) = 0
+[ThryToggleUI(true)] _Matcap4TPSDepthEnabled ("<size=13><b>  TPS Depth Mask Enabled</b></size>", Float) = 0
+_Matcap4TPSMaskStrength ("TPS Mask Strength--{condition_showS:(_Matcap4TPSDepthEnabled==1)}", Range(0, 1)) = 1
+[HideInInspector] m_end_Matcap4 ("Matcap 3--{condition_showS:(_Matcap4HueShiftEnabled==1)}", Float) = 0
+//endex
+
+#T#PoiMatcapKeywords
+//ifex _MatcapEnable==0
+#pragma shader_feature_local POI_MATCAP0
+#pragma shader_feature_local POI_MATCAP0_CUSTOM_NORMAL
+//endex
+//ifex _Matcap2Enable==0
+#pragma shader_feature COLOR_GRADING_HDR_3D
+#pragma shader_feature_local POI_MATCAP1_CUSTOM_NORMAL
+//endex
+//ifex _Matcap3Enable==0
+#pragma shader_feature_local POI_MATCAP2
+#pragma shader_feature_local POI_MATCAP2_CUSTOM_NORMAL
+//endex
+//ifex _Matcap4Enable==0
+#pragma shader_feature_local POI_MATCAP3
+#pragma shader_feature_local POI_MATCAP3_CUSTOM_NORMAL
+//endex
+
+#T#PoiMatcapVariables
+//ifex _MatcapEnable==0
+#ifdef POI_MATCAP0
+	#if defined(PROP_MATCAP) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _Matcap;
+		float4 _Matcap_ST;
+		float2 _MatcapPan;
+		float _MatcapUV;
+	#endif
+	#if defined(PROP_MATCAPMASK) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _MatcapMask;
+		float4 _MatcapMask_ST;
+		float2 _MatcapMaskPan;
+		float _MatcapMaskUV;
+	#endif
+	#ifdef POI_MATCAP0_CUSTOM_NORMAL
+		#if defined(PROP_MATCAP0NORMALMAP) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _Matcap0NormalMap;
+		#endif
+		float4 _Matcap0NormalMap_ST;
+		float2 _Matcap0NormalMapPan;
+		float _Matcap0NormalMapUV;
+		float _Matcap0NormalMapScale;
+	#endif
+	float _MatcapUVMode;
+	float _MatcapMaskInvert;
+	float _MatcapMaskGlobalMask;
+	float _MatcapMaskGlobalMaskBlendType;
+	float _MatcapBorder;
+	float4 _MatcapColor;
+	float _MatcapColorThemeIndex;
+	float _MatcapIntensity;
+	float _MatcapReplace;
+	float _MatcapMultiply;
+	float _MatcapAdd;
+	float _MatcapAddToLight;
+	float _MatcapMixed;
+	float _MatcapAlphaOverride;
+	float _MatcapEnable;
+	float _MatcapLightMask;
+	float _MatcapEmissionStrength;
+	float _MatcapNormal;
+	float _MatcapHueShiftEnabled;
+	float _MatcapHueShiftSpeed;
+	float _MatcapHueShift;
+	float _MatcapTPSDepthEnabled;
+	float _MatcapTPSMaskStrength;
+#endif
+//endex
+//ifex _Matcap2Enable==0
+#ifdef COLOR_GRADING_HDR_3D
+	#if defined(PROP_MATCAP2) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _Matcap2;
+		float4 _Matcap2_ST;
+		float2 _Matcap2Pan;
+		float _Matcap2UV;
+	#endif
+	#if defined(PROP_MATCAP2MASK) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _Matcap2Mask;
+		float4 _Matcap2Mask_ST;
+		float2 _Matcap2MaskPan;
+		float _Matcap2MaskUV;
+	#endif
+	#ifdef POI_MATCAP1_CUSTOM_NORMAL
+		#if defined(PROP_MATCAP1NORMALMAP) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _Matcap1NormalMap;
+		#endif
+		float4 _Matcap1NormalMap_ST;
+		float2 _Matcap1NormalMapPan;
+		float _Matcap1NormalMapUV;
+		float _Matcap1NormalMapScale;
+	#endif
+	float _Matcap2UVMode;
+	float _Matcap2MaskInvert;
+	float _Matcap2MaskGlobalMask;
+	float _Matcap2MaskGlobalMaskBlendType;
+	float _Matcap2Border;
+	float4 _Matcap2Color;
+	float _Matcap2ColorThemeIndex;
+	float _Matcap2Intensity;
+	float _Matcap2Replace;
+	float _Matcap2Multiply;
+	float _Matcap2Add;
+	float _Matcap2AddToLight;
+	float _Matcap2Mixed;
+	float _Matcap2AlphaOverride;
+	float _Matcap2Enable;
+	float _Matcap2LightMask;
+	float _Matcap2EmissionStrength;
+	float _Matcap2Normal;
+	float _Matcap2HueShiftEnabled;
+	float _Matcap2HueShiftSpeed;
+	float _Matcap2HueShift;
+	float _Matcap2TPSDepthEnabled;
+	float _Matcap2TPSMaskStrength;
+#endif
+//endex
+
+//ifex _Matcap3Enable==0
+#ifdef POI_MATCAP2
+	#if defined(PROP_MATCAP3) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _Matcap3;
+		float4 _Matcap3_ST;
+		float2 _Matcap3Pan;
+		float _Matcap3UV;
+	#endif
+	#if defined(PROP_MATCAP3MASK) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _Matcap3Mask;
+		float4 _Matcap3Mask_ST;
+		float2 _Matcap3MaskPan;
+		float _Matcap3MaskUV;
+	#endif
+	#ifdef POI_MATCAP2_CUSTOM_NORMAL
+		#if defined(PROP_MATCAP2NORMALMAP) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _Matcap2NormalMap;
+		#endif
+		float4 _Matcap2NormalMap_ST;
+		float2 _Matcap2NormalMapPan;
+		float _Matcap2NormalMapUV;
+		float _Matcap2NormalMapScale;
+	#endif
+	float _Matcap3UVMode;
+	float _Matcap3MaskInvert;
+	float _Matcap3MaskGlobalMask;
+	float _Matcap3MaskGlobalMaskBlendType;
+	float _Matcap3Border;
+	float4 _Matcap3Color;
+	float _Matcap3ColorThemeIndex;
+	float _Matcap3Intensity;
+	float _Matcap3Replace;
+	float _Matcap3Multiply;
+	float _Matcap3Add;
+	float _Matcap3AddToLight;
+	float _Matcap3Mixed;
+	float _Matcap3AlphaOverride;
+	float _Matcap3Enable;
+	float _Matcap3LightMask;
+	float _Matcap3EmissionStrength;
+	float _Matcap3Normal;
+	float _Matcap3HueShiftEnabled;
+	float _Matcap3HueShiftSpeed;
+	float _Matcap3HueShift;
+	float _Matcap3TPSDepthEnabled;
+	float _Matcap3TPSMaskStrength;
+#endif
+//endex
+
+//ifex _Matcap4Enable==0
+#ifdef POI_MATCAP3
+	#if defined(PROP_MATCAP4) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _Matcap4;
+		float4 _Matcap4_ST;
+		float2 _Matcap4Pan;
+		float _Matcap4UV;
+	#endif
+	#if defined(PROP_MATCAP4MASK) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _Matcap4Mask;
+		float4 _Matcap4Mask_ST;
+		float2 _Matcap4MaskPan;
+		float _Matcap4MaskUV;
+	#endif
+	#ifdef POI_MATCAP3_CUSTOM_NORMAL
+		#if defined(PROP_MATCAP3NORMALMAP) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _Matcap3NormalMap;
+		#endif
+		float4 _Matcap3NormalMap_ST;
+		float2 _Matcap3NormalMapPan;
+		float _Matcap3NormalMapUV;
+		float _Matcap3NormalMapScale;
+	#endif
+	float _Matcap4UVMode;
+	float _Matcap4MaskInvert;
+	float _Matcap4MaskGlobalMask;
+	float _Matcap4MaskGlobalMaskBlendType;
+	float _Matcap4Border;
+	float4 _Matcap4Color;
+	float _Matcap4ColorThemeIndex;
+	float _Matcap4Intensity;
+	float _Matcap4Replace;
+	float _Matcap4Multiply;
+	float _Matcap4Add;
+	float _Matcap4AddToLight;
+	float _Matcap4Mixed;
+	float _Matcap4AlphaOverride;
+	float _Matcap4Enable;
+	float _Matcap4LightMask;
+	float _Matcap4EmissionStrength;
+	float _Matcap4Normal;
+	float _Matcap4HueShiftEnabled;
+	float _Matcap4HueShiftSpeed;
+	float _Matcap4HueShift;
+	float _Matcap4TPSDepthEnabled;
+	float _Matcap4TPSMaskStrength;
+#endif
+//endex
+
+#T#PoiMatcapFunctions
+//ifex _MatcapEnable==0 && _Matcap2Enable==0 && _Matcap3Enable==0 && _Matcap4Enable==0
+void blendMatcap(inout PoiLight poiLight, inout PoiFragData poiFragData, in PoiMods poiMods, float add, float lightAdd, float multiply, float replace, float mixed, float4 matcapColor, float matcapMask, float emissionStrength, float matcapLightMask, uint globalMaskIndex, float globalMaskBlendType)
+{
+	if (matcapLightMask)
+	{
+		matcapMask *= lerp(1, poiLight.rampedLightMap, matcapLightMask);
+	}
+	if (globalMaskIndex > 0)
+	{
+		matcapMask = customBlend(matcapMask, poiMods.globalMask[globalMaskIndex-1], globalMaskBlendType);
+	}
+	
+	poiFragData.baseColor.rgb = lerp(poiFragData.baseColor.rgb, matcapColor.rgb, replace * matcapMask * matcapColor.a * .999999);
+	poiFragData.baseColor.rgb *= lerp(1, matcapColor.rgb, multiply * matcapMask * matcapColor.a);
+	poiFragData.baseColor.rgb += matcapColor.rgb * add * matcapMask * matcapColor.a;
+	poiLight.finalLightAdd += matcapColor.rgb * lightAdd * matcapMask * matcapColor.a;
+	poiFragData.baseColor.rgb = lerp(poiFragData.baseColor.rgb, poiFragData.baseColor.rgb + poiFragData.baseColor.rgb * matcapColor.rgb, mixed * matcapMask * matcapColor.a);
+	poiFragData.emission += matcapColor.rgb * emissionStrength * matcapMask * matcapColor.a;
+}
+//endex
+//ifex _MatcapEnable==0 && _Matcap2Enable==0 && _Matcap3Enable==0 && _Matcap4Enable==0
+#if defined(POI_MATCAP0) || defined(COLOR_GRADING_HDR_3D) || defined(POI_MATCAP2) || defined(POI_MATCAP3)
+	void applyMatcap(inout PoiFragData poiFragData, in PoiCam poiCam, in PoiMesh poiMesh, inout PoiLight poiLight, in PoiMods poiMods)
+	{
+		float4 matcap = 0;
+		float matcapMask = 0;
+		float4 matcap2 = 0;
+		float matcap2Mask = 0;
+		float4 matcap3 = 0;
+		float matcap3Mask = 0;
+		float4 matcap4 = 0;
+		float matcap4Mask = 0;
+		float2 matcapUV = 0;
+		//endex
+
+		//ifex _MatcapEnable==0
+		// Matcap 1
+		#ifdef POI_MATCAP0
+			float3 normal0 = poiMesh.normals[_MatcapNormal];
+			#ifdef POI_MATCAP0_CUSTOM_NORMAL
+				#if defined(PROP_MATCAP0NORMALMAP) || !defined(OPTIMIZER_ENABLED)
+					normal0 = calculateNormal(poiMesh.normals[_MatcapNormal], poiMesh, _Matcap0NormalMap, _Matcap0NormalMap_ST, _Matcap0NormalMapPan, _Matcap0NormalMapUV, _Matcap0NormalMapScale);
+				#endif
+			#endif
+
+			switch(_MatcapUVMode)
+			{
+				// Normal / UTS
+				case 0:
+					{
+						float3 viewNormal = (mul(UNITY_MATRIX_V, float4(normal0, 0))).rgb;
+						float3 NormalBlend_MatCapUV_Detail = viewNormal.rgb * float3(-1, -1, 1);
+						float3 NormalBlend_MatCapUV_Base = (mul(UNITY_MATRIX_V, float4(poiCam.viewDir, 0)).rgb * float3(-1, -1, 1)) + float3(0, 0, 1);
+						float3 noSknewViewNormal = NormalBlend_MatCapUV_Base * dot(NormalBlend_MatCapUV_Base, NormalBlend_MatCapUV_Detail) / NormalBlend_MatCapUV_Base.b - NormalBlend_MatCapUV_Detail;
+						
+						matcapUV = noSknewViewNormal.rg * _MatcapBorder + 0.5;
+						break;
+				}
+				// Top Pinch
+				case 1:
+					{
+						float3 worldViewUp = normalize(float3(0, 1, 0) - poiCam.viewDir * dot(poiCam.viewDir, float3(0, 1, 0)));
+						float3 worldViewRight = normalize(cross(poiCam.viewDir, worldViewUp));
+						matcapUV = float2(dot(worldViewRight, normal0), dot(worldViewUp, normal0)) * _MatcapBorder + 0.5;
+						break;
+				}
+				// Custom Double Sided
+				case 2:
+					{
+						float3 reflection = reflect(-poiCam.viewDir, normal0);
+						float2 uv = float2(dot(reflection, float3(1, 0, 0)), dot(reflection, float3(0, 1, 0)));
+						matcapUV = uv * _MatcapBorder + 0.5;
+						break;
+				}
+			}
+			if (IsInMirror())
+			{
+				matcapUV.x = 1 - matcapUV.x;
+			}
+
+			#if defined(PROP_MATCAP) || !defined(OPTIMIZER_ENABLED)
+				matcap = UNITY_SAMPLE_TEX2D_SAMPLER(_Matcap, _MainTex, TRANSFORM_TEX(matcapUV, _Matcap)) * float4(poiThemeColor(poiMods, _MatcapColor.rgb, _MatcapColorThemeIndex), _MatcapColor.a);
+			#else
+				matcap = float4(poiThemeColor(poiMods, _MatcapColor.rgb, _MatcapColorThemeIndex), _MatcapColor.a);
+			#endif
+
+			matcap.rgb *= _MatcapIntensity;
+			#if defined(PROP_MATCAPMASK) || !defined(OPTIMIZER_ENABLED)
+				matcapMask = POI2D_SAMPLER_PAN(_MatcapMask, _MainTex, poiUV(poiMesh.uv[_MatcapMaskUV], _MatcapMask_ST), _MatcapMaskPan);
+			#else
+				matcapMask = 1;
+			#endif
+
+			if (_MatcapMaskInvert)
+			{
+				matcapMask = 1 - matcapMask;
+			}
+
+			#ifdef TPS_Penetrator
+				if (_MatcapTPSDepthEnabled)
+				{
+					matcapMask = lerp(0, matcapMask * TPSBufferedDepth(poiMesh.localPos, poiMesh.vertexColor), _MatcapTPSMaskStrength);
+				}
+			#endif
+			
+			poiFragData.alpha *= lerp(1, matcap.a, matcapMask * _MatcapAlphaOverride);
+
+			//UNITY_BRANCH
+			if (_MatcapHueShiftEnabled)
+			{
+				matcap.rgb = hueShift(matcap.rgb, _MatcapHueShift + _Time.x * _MatcapHueShiftSpeed);
+			}
+			
+			blendMatcap(poiLight, poiFragData, poiMods, _MatcapAdd, _MatcapAddToLight, _MatcapMultiply, _MatcapReplace, _MatcapMixed, matcap, matcapMask, _MatcapEmissionStrength, _MatcapLightMask, _MatcapMaskGlobalMask, _MatcapMaskGlobalMaskBlendType);
+		#endif
+		//endex
+		//ifex _Matcap2Enable==0
+		// Matcap 2
+		#ifdef COLOR_GRADING_HDR_3D
+
+			float3 normal1 = poiMesh.normals[_Matcap2Normal];
+			#ifdef POI_MATCAP1_CUSTOM_NORMAL
+				#if defined(PROP_MATCAP1NORMALMAP) || !defined(OPTIMIZER_ENABLED)
+					normal1 = calculateNormal(poiMesh.normals[_Matcap2Normal], poiMesh, _Matcap1NormalMap, _Matcap1NormalMap_ST, _Matcap1NormalMapPan, _Matcap1NormalMapUV, _Matcap1NormalMapScale);
+				#endif
+			#endif
+
+			matcapUV = 0;
+
+			switch(_Matcap2UVMode)
+			{
+				// Normal / UTS
+				case 0:
+					{
+						float3 viewNormal = (mul(UNITY_MATRIX_V, float4(normal1, 0))).rgb;
+						float3 NormalBlend_MatCapUV_Detail = viewNormal.rgb * float3(-1, -1, 1);
+						float3 NormalBlend_MatCapUV_Base = (mul(UNITY_MATRIX_V, float4(poiCam.viewDir, 0)).rgb * float3(-1, -1, 1)) + float3(0, 0, 1);
+						float3 noSknewViewNormal = NormalBlend_MatCapUV_Base * dot(NormalBlend_MatCapUV_Base, NormalBlend_MatCapUV_Detail) / NormalBlend_MatCapUV_Base.b - NormalBlend_MatCapUV_Detail;
+						
+						matcapUV = noSknewViewNormal.rg * _Matcap2Border + 0.5;
+						break;
+				}
+				// Top Pinch
+				case 1:
+					{
+						float3 worldViewUp = normalize(float3(0, 1, 0) - poiCam.viewDir * dot(poiCam.viewDir, float3(0, 1, 0)));
+						float3 worldViewRight = normalize(cross(poiCam.viewDir, worldViewUp));
+						matcapUV = float2(dot(worldViewRight, normal1), dot(worldViewUp, normal1)) * _Matcap2Border + 0.5;
+						break;
+				}
+				// Custom Double Sided
+				case 2:
+					{
+						float3 reflection = reflect(-poiCam.viewDir, normal1);
+						float2 uv = float2(dot(reflection, float3(1, 0, 0)), dot(reflection, float3(0, 1, 0)));
+						matcapUV = uv * _Matcap2Border + 0.5;
+						break;
+				}
+			}
+			if (IsInMirror())
+			{
+				matcapUV.x = 1 - matcapUV.x;
+			}
+
+			#if defined(PROP_MATCAP2) || !defined(OPTIMIZER_ENABLED)
+				matcap2 = UNITY_SAMPLE_TEX2D_SAMPLER(_Matcap2, _MainTex, TRANSFORM_TEX(matcapUV, _Matcap2)) * float4(poiThemeColor(poiMods, _Matcap2Color.rgb, _Matcap2ColorThemeIndex), _Matcap2Color.a);
+			#else
+				matcap2 = float4(poiThemeColor(poiMods, _Matcap2Color.rgb, _Matcap2ColorThemeIndex), _Matcap2Color.a);
+			#endif
+			matcap2.rgb *= _Matcap2Intensity;
+			#if defined(PROP_MATCAP2MASK) || !defined(OPTIMIZER_ENABLED)
+				matcap2Mask = POI2D_SAMPLER_PAN(_Matcap2Mask, _MainTex, poiUV(poiMesh.uv[_Matcap2MaskUV], _Matcap2Mask_ST), _Matcap2MaskPan);
+			#else
+				matcap2Mask = 1;
+			#endif
+			if (_Matcap2MaskInvert)
+			{
+				matcap2Mask = 1 - matcap2Mask;
+			}
+
+			#ifdef TPS_Penetrator
+				if (_Matcap2TPSDepthEnabled)
+				{
+					matcap2Mask = lerp(0, matcap2Mask * TPSBufferedDepth(poiMesh.localPos, poiMesh.vertexColor), _Matcap2TPSMaskStrength);
+				}
+			#endif
+
+			poiFragData.alpha *= lerp(1, matcap2.a, matcap2Mask * _Matcap2AlphaOverride);
+			
+			//UNITY_BRANCH
+			if (_Matcap2HueShiftEnabled)
+			{
+				matcap2.rgb = hueShift(matcap2.rgb, _Matcap2HueShift + _Time.x * _Matcap2HueShiftSpeed);
+			}
+			
+			blendMatcap(poiLight, poiFragData, poiMods, _Matcap2Add, _Matcap2AddToLight, _Matcap2Multiply, _Matcap2Replace, _Matcap2Mixed, matcap2, matcap2Mask, _Matcap2EmissionStrength, _Matcap2LightMask, _Matcap2MaskGlobalMask, _Matcap2MaskGlobalMaskBlendType);
+		#endif
+		//endex
+		//ifex _Matcap3Enable==0
+		// Matcap 3
+		#ifdef POI_MATCAP2
+
+			float3 normal2 = poiMesh.normals[_Matcap3Normal];
+			#ifdef POI_MATCAP2_CUSTOM_NORMAL
+				#if defined(PROP_MATCAP2NORMALMAP) || !defined(OPTIMIZER_ENABLED)
+					normal2 = calculateNormal(poiMesh.normals[_Matcap3Normal], poiMesh, _Matcap2NormalMap, _Matcap2NormalMap_ST, _Matcap2NormalMapPan, _Matcap2NormalMapUV, _Matcap2NormalMapScale);
+				#endif
+			#endif
+
+			matcapUV = 0;
+
+			switch(_Matcap3UVMode)
+			{
+				// Normal / UTS
+				case 0:
+					{
+						float3 viewNormal = (mul(UNITY_MATRIX_V, float4(normal2, 0))).rgb;
+						float3 NormalBlend_MatCapUV_Detail = viewNormal.rgb * float3(-1, -1, 1);
+						float3 NormalBlend_MatCapUV_Base = (mul(UNITY_MATRIX_V, float4(poiCam.viewDir, 0)).rgb * float3(-1, -1, 1)) + float3(0, 0, 1);
+						float3 noSknewViewNormal = NormalBlend_MatCapUV_Base * dot(NormalBlend_MatCapUV_Base, NormalBlend_MatCapUV_Detail) / NormalBlend_MatCapUV_Base.b - NormalBlend_MatCapUV_Detail;
+						
+						matcapUV = noSknewViewNormal.rg * _Matcap3Border + 0.5;
+						break;
+				}
+				// Top Pinch
+				case 1:
+					{
+						float3 worldViewUp = normalize(float3(0, 1, 0) - poiCam.viewDir * dot(poiCam.viewDir, float3(0, 1, 0)));
+						float3 worldViewRight = normalize(cross(poiCam.viewDir, worldViewUp));
+						matcapUV = float2(dot(worldViewRight, normal2), dot(worldViewUp, normal2)) * _Matcap3Border + 0.5;
+						break;
+				}
+				// Custom Double Sided
+				case 2:
+					{
+						float3 reflection = reflect(-poiCam.viewDir, normal2);
+						float2 uv = float2(dot(reflection, float3(1, 0, 0)), dot(reflection, float3(0, 1, 0)));
+						matcapUV = uv * _Matcap3Border + 0.5;
+						break;
+				}
+			}
+			if (IsInMirror())
+			{
+				matcapUV.x = 1 - matcapUV.x;
+			}
+
+			#if defined(PROP_MATCAP3) || !defined(OPTIMIZER_ENABLED)
+				matcap3 = UNITY_SAMPLE_TEX2D_SAMPLER(_Matcap3, _MainTex, TRANSFORM_TEX(matcapUV, _Matcap3)) * float4(poiThemeColor(poiMods, _Matcap3Color.rgb, _Matcap3ColorThemeIndex), _Matcap3Color.a);
+			#else
+				matcap3 = float4(poiThemeColor(poiMods, _Matcap3Color.rgb, _Matcap3ColorThemeIndex), _Matcap3Color.a);
+			#endif
+			matcap3.rgb *= _Matcap3Intensity;
+			#if defined(PROP_MATCAP3MASK) || !defined(OPTIMIZER_ENABLED)
+				matcap3Mask = POI2D_SAMPLER_PAN(_Matcap3Mask, _MainTex, poiUV(poiMesh.uv[_Matcap3MaskUV], _Matcap3Mask_ST), _Matcap3MaskPan);
+			#else
+				matcap3Mask = 1;
+			#endif
+			if (_Matcap3MaskInvert)
+			{
+				matcap3Mask = 1 - matcap3Mask;
+			}
+
+			#ifdef TPS_Penetrator
+				if (_Matcap3TPSDepthEnabled)
+				{
+					matcap3Mask = lerp(0, matcap3Mask * TPSBufferedDepth(poiMesh.localPos, poiMesh.vertexColor), _Matcap3TPSMaskStrength);
+				}
+			#endif
+
+			poiFragData.alpha *= lerp(1, matcap3.a, matcap3Mask * _Matcap3AlphaOverride);
+			
+			//UNITY_BRANCH
+			if (_Matcap3HueShiftEnabled)
+			{
+				matcap3.rgb = hueShift(matcap3.rgb, _Matcap3HueShift + _Time.x * _Matcap3HueShiftSpeed);
+			}
+			
+			blendMatcap(poiLight, poiFragData, poiMods, _Matcap3Add, _Matcap3AddToLight, _Matcap3Multiply, _Matcap3Replace, _Matcap3Mixed, matcap3, matcap3Mask, _Matcap3EmissionStrength, _Matcap3LightMask, _Matcap3MaskGlobalMask, _Matcap3MaskGlobalMaskBlendType);
+		#endif
+		//endex
+		//ifex _Matcap4Enable==0
+		// Matcap 4
+		#ifdef POI_MATCAP3
+
+			float3 normal3 = poiMesh.normals[_Matcap4Normal];
+			#ifdef POI_MATCAP3_CUSTOM_NORMAL
+				#if defined(PROP_MATCAP3NORMALMAP) || !defined(OPTIMIZER_ENABLED)
+					normal3 = calculateNormal(poiMesh.normals[_Matcap4Normal], poiMesh, _Matcap3NormalMap, _Matcap3NormalMap_ST, _Matcap3NormalMapPan, _Matcap3NormalMapUV, _Matcap3NormalMapScale);
+				#endif
+			#endif
+
+			matcapUV = 0;
+
+			switch(_Matcap4UVMode)
+			{
+				// Normal / UTS
+				case 0:
+					{
+						float3 viewNormal = (mul(UNITY_MATRIX_V, float4(normal3, 0))).rgb;
+						float3 NormalBlend_MatCapUV_Detail = viewNormal.rgb * float3(-1, -1, 1);
+						float3 NormalBlend_MatCapUV_Base = (mul(UNITY_MATRIX_V, float4(poiCam.viewDir, 0)).rgb * float3(-1, -1, 1)) + float3(0, 0, 1);
+						float3 noSknewViewNormal = NormalBlend_MatCapUV_Base * dot(NormalBlend_MatCapUV_Base, NormalBlend_MatCapUV_Detail) / NormalBlend_MatCapUV_Base.b - NormalBlend_MatCapUV_Detail;
+						
+						matcapUV = noSknewViewNormal.rg * _Matcap4Border + 0.5;
+						break;
+				}
+				// Top Pinch
+				case 1:
+					{
+						float3 worldViewUp = normalize(float3(0, 1, 0) - poiCam.viewDir * dot(poiCam.viewDir, float3(0, 1, 0)));
+						float3 worldViewRight = normalize(cross(poiCam.viewDir, worldViewUp));
+						matcapUV = float2(dot(worldViewRight, normal3), dot(worldViewUp, normal3)) * _Matcap4Border + 0.5;
+						break;
+				}
+				// Custom Double Sided
+				case 2:
+					{
+						float3 reflection = reflect(-poiCam.viewDir, normal3);
+						float2 uv = float2(dot(reflection, float3(1, 0, 0)), dot(reflection, float3(0, 1, 0)));
+						matcapUV = uv * _Matcap4Border + 0.5;
+						break;
+				}
+			}
+			if (IsInMirror())
+			{
+				matcapUV.x = 1 - matcapUV.x;
+			}
+
+			#if defined(PROP_MATCAP4) || !defined(OPTIMIZER_ENABLED)
+				matcap4 = UNITY_SAMPLE_TEX2D_SAMPLER(_Matcap4, _MainTex, TRANSFORM_TEX(matcapUV, _Matcap4)) * float4(poiThemeColor(poiMods, _Matcap4Color.rgb, _Matcap4ColorThemeIndex), _Matcap4Color.a);
+			#else
+				matcap4 = float4(poiThemeColor(poiMods, _Matcap4Color.rgb, _Matcap4ColorThemeIndex), _Matcap4Color.a);
+			#endif
+			matcap4.rgb *= _Matcap4Intensity;
+			#if defined(PROP_MATCAP4MASK) || !defined(OPTIMIZER_ENABLED)
+				matcap4Mask = POI2D_SAMPLER_PAN(_Matcap4Mask, _MainTex, poiUV(poiMesh.uv[_Matcap4MaskUV], _Matcap4Mask_ST), _Matcap4MaskPan);
+			#else
+				matcap4Mask = 1;
+			#endif
+			if (_Matcap4MaskInvert)
+			{
+				matcap4Mask = 1 - matcap4Mask;
+			}
+
+			#ifdef TPS_Penetrator
+				if (_Matcap4TPSDepthEnabled)
+				{
+					matcap4Mask = lerp(0, matcap4Mask * TPSBufferedDepth(poiMesh.localPos, poiMesh.vertexColor), _Matcap4TPSMaskStrength);
+				}
+			#endif
+
+			poiFragData.alpha *= lerp(1, matcap4.a, matcap4Mask * _Matcap4AlphaOverride);
+			
+			//UNITY_BRANCH
+			if (_Matcap4HueShiftEnabled)
+			{
+				matcap4.rgb = hueShift(matcap4.rgb, _Matcap4HueShift + _Time.x * _Matcap4HueShiftSpeed);
+			}
+			
+			blendMatcap(poiLight, poiFragData, poiMods, _Matcap4Add, _Matcap4AddToLight, _Matcap4Multiply, _Matcap4Replace, _Matcap4Mixed, matcap4, matcap4Mask, _Matcap4EmissionStrength, _Matcap4LightMask, _Matcap4MaskGlobalMask, _Matcap4MaskGlobalMaskBlendType);
+		#endif
+		//endex
+//ifex _MatcapEnable==0 && _Matcap2Enable==0 && _Matcap3Enable==0 && _Matcap4Enable==0
+	}
+#endif
+//endex
+#T#PoiMatcapFunctionCalls
+//ifex _MatcapEnable==0 && _Matcap2Enable==0 && _Matcap3Enable==0 && _Matcap4Enable==0
+#if defined(POI_MATCAP0) || defined(COLOR_GRADING_HDR_3D) || defined(POI_MATCAP2) || defined(POI_MATCAP3)
+	applyMatcap(poiFragData, poiCam, poiMesh, poiLight, poiMods);
+#endif
+//endex

@@ -1,0 +1,166 @@
+#T#PoiDepthRimLightProperties
+//ifex _EnableDepthRimLighting==0
+[HideInInspector] m_start_depthRimLightOptions ("Depth Rim Lighting--{reference_property:_EnableDepthRimLighting,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/shading/depth-rim-lighting},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(_POI_DEPTH_RIMLIGHT)]_EnableDepthRimLighting ("", Float) = 0
+[Enum(vertex, 0, pixel, 1)] _DepthRimNormalToUse ("Normal To Use", Int) = 1
+[ThryWideEnum(Two Samples, 0, Ten Samples, 1)] _DepthRimType ("Rim Type", Int) = 0
+_DepthRimWidth ("Width", Range(0, 1)) = .2
+_DepthRimSharpness ("Depth", Range(0, 1)) = .2
+[ToggleUI]_DepthRimHideInShadow ("Hide In Shadow", Float) = 0
+
+[Space][ThryHeaderLabel(Color and Blending, 13)]
+_DepthRimMixBaseColor ("Use Base Color", Range(0, 1)) = 0
+_DepthRimMixLightColor ("Light Color Mix", Range(0, 1)) = 0
+_DepthRimColor ("Rim Color--{reference_property:_DepthRimColorThemeIndex}", Color) = (1, 1, 1, 1)
+_DepthRimBrightness ("Color Brightness", Range(0, 10)) = 1
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _DepthRimColorThemeIndex ("", Int) = 0
+_DepthRimEmission ("Emission", Range(0, 20)) = 0
+_DepthRimReplace ("Replace", Range(0, 1)) = 0
+_DepthRimAdd ("Add", Range(0, 1)) = 0
+_DepthRimMultiply ("Multiply", Range(0, 1)) = 0
+_DepthRimAdditiveLighting ("Add to Light", Range(0, 1)) = 0
+[HideInInspector] m_end_depthRimLightOptions ("Rim Lighting", Float) = 0
+//endex
+
+#T#PoiRimLightKeywords
+//ifex _EnableDepthRimLighting==0
+#pragma shader_feature_local _POI_DEPTH_RIMLIGHT
+//endex
+
+#T#PoiDepthRimLightVariables
+//ifex _EnableDepthRimLighting==0
+#ifdef _POI_DEPTH_RIMLIGHT
+	float _DepthRimNormalToUse;
+	float _DepthRimWidth;
+	float _DepthRimSharpness;
+	float _DepthRimHideInShadow;
+	float4 _DepthRimColor;
+	float _DepthRimColorThemeIndex;
+	float _DepthRimMixBaseColor;
+	float _DepthRimEmission;
+	float _DepthRimReplace;
+	float _DepthRimAdd;
+	float _DepthRimMultiply;
+	float _DepthRimAdditiveLighting;
+	float _DepthRimMixLightColor;
+	float _DepthRimType;
+	float _DepthRimBrightness;
+
+	static float2 sobelSamplePoints[9] = {
+		float2(-1, 1), float2(0, 1), float2(1, 1),
+		float2(-1, 0), float2(0, 0), float2(1, 01),
+		float2(-1, -1), float2(0, -1), float2(1, -1)
+	};
+
+	static float sobelXMatrix[9] = {
+		1, 0, -1,
+		2, 0, -2,
+		1, 0, -1
+	};
+	static float sobelYMatrix[9] = {
+		1, 2, 1,
+		0, 0, 0,
+		- 1, -2, -1
+	};
+#endif
+//endex
+
+#T#PoiDepthRimLightFunction
+//ifex _EnableDepthRimLighting==0
+#ifdef _POI_DEPTH_RIMLIGHT
+	
+	float PositivePow(float base, float power)
+	{
+		return pow(max(abs(base), Epsilon), power);
+	}
+
+	float GetScaleWithHight()
+	{
+		return _ScreenParams.y / 1080;
+	}
+
+	float GetSSRimScale(float z)
+	{
+		float w = (1.0 / (PositivePow(z + saturate(UNITY_MATRIX_P._m00), 1.5) + 0.75)) * GetScaleWithHight();
+		w *= lerp(1, UNITY_MATRIX_P._m00, 0.60 * saturate(0.25 * z * z));
+		return w < 0.01 ? 0 : w;
+	}
+
+	void ApplyDepthRimLighting(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiCam poiCam, inout PoiLight poiLight, in PoiMods poiMods)
+	{
+		float rim = 0;
+		float perspectiveDivide = 1.0f / poiCam.clipPos.w;
+		float4 direction = poiCam.worldDirection * perspectiveDivide;
+		float2 screenPos = poiCam.grabPos.xy * perspectiveDivide;
+		float z = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, screenPos);
+		
+		#if UNITY_REVERSED_Z
+			if (z == 0) return;
+		#else
+			if (z == 1) return;
+		#endif
+		
+		float depth = CorrectedLinearEyeDepth(z, direction.w);
+
+
+		switch(_DepthRimType)
+		{
+			case 0:
+				{
+					float3 viewPos = UnityObjectToViewPos(poiMesh.localPos);
+					float3 viewDir = normalize(viewPos);
+					
+					float3 viewNorm = mul((float3x3)UNITY_MATRIX_V, poiMesh.normals[_DepthRimNormalToUse]);
+					float3 viewCrossNorm = cross(viewDir, viewNorm);
+					float2 N_View = normalize(float2(-viewCrossNorm.y, viewCrossNorm.x));
+
+					float3 viewLight = mul((float3x3)UNITY_MATRIX_V, poiLight.direction);
+					float3 viewCrossLight = cross(viewDir, viewLight);
+					float2 L_View = normalize(float2(-viewCrossLight.y, viewCrossLight.x));
+					
+					//float lDotN = saturate(poiLight.nDotL + _RimLightLength);
+					float scale = _DepthRimWidth * GetSSRimScale(depth);
+					float2 ssUV1 = clamp(screenPos + N_View * .1 * scale, 0, _ScreenParams.xy - 1);
+					float depthDiff = z - SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, ssUV1) ;
+
+					rim = smoothstep(0.24 * _DepthRimSharpness * z, 0.25 * z, depthDiff);
+					rim *= lerp(1, (dot(L_View, N_View) > 0), _DepthRimHideInShadow);
+				}
+				break;
+			case 1:
+				{
+					//float lDotN = saturate(poiLight.nDotL + _RimLightLength);
+					float scale = _DepthRimWidth * GetSSRimScale(depth);
+					float depthDiff = 0;
+					for (int i = 0; i < 9; i++)
+					{
+						float2 ssUV1 = clamp(screenPos + sobelSamplePoints[i] * .1 * scale, 0, _ScreenParams.xy - 1);
+						depthDiff = max(depthDiff, z - SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, ssUV1));
+					}
+					rim = smoothstep(0.24 * _DepthRimSharpness * z, 0.25 * z, depthDiff);
+					rim *= lerp(1, lerp(poiLight.vertexNDotL > 0, poiLight.nDotL > 0, _DepthRimNormalToUse), _DepthRimHideInShadow);
+				}
+				break;
+		}
+
+		float3 rimColor = poiThemeColor(poiMods, _DepthRimColor.rgb, _DepthRimColorThemeIndex).rgb * lerp(1, poiLight.directColor, _DepthRimMixLightColor) * lerp(1, poiFragData.baseColor, _DepthRimMixBaseColor) * _DepthRimBrightness;
+
+		poiLight.finalLightAdd += rim * rimColor * _DepthRimAdditiveLighting;
+		poiFragData.emission += rim * rimColor * _DepthRimEmission;
+		poiFragData.baseColor = lerp(poiFragData.baseColor, rimColor, rim * _DepthRimReplace);
+		poiFragData.baseColor += rim * rimColor * _DepthRimAdd;
+		poiFragData.baseColor *= lerp(1, rimColor, rim * _DepthRimMultiply);
+	}
+#endif
+//endex
+
+#T#PoiDepthRimLightFunctionCall
+//ifex _EnableDepthRimLighting==0
+#ifdef _POI_DEPTH_RIMLIGHT
+	if (!IsInMirror())
+	{
+		ApplyDepthRimLighting(poiFragData, poiMesh, poiCam, poiLight, poiMods);
+	}
+#endif
+//endex
+

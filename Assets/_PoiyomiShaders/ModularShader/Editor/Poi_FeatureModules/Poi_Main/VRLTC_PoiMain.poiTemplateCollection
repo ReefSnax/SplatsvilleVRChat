@@ -1,0 +1,159 @@
+
+#T#PoiMainProperties
+//Main-main
+_Color ("Color & Alpha--{reference_property:_ColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _ColorThemeIndex ("", Int) = 0
+[sRGBWarning(true)]_MainTex ("Texture--{reference_properties:[_MainTexPan, _MainTexUV, _MainPixelMode]}", 2D) = "white" { }
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _MainTexUV ("UV", Int) = 0
+[HideInInspector][Vector2]_MainTexPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ToggleUI]_MainPixelMode ("Pixel Mode", Float) = 0
+[Normal]_BumpMap ("Normal Map--{reference_properties:[_BumpMapPan, _BumpMapUV, _BumpScale]}", 2D) = "bump" { }
+[HideInInspector][Vector2]_BumpMapPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _BumpMapUV ("UV", Int) = 0
+[HideInInspector]_BumpScale ("Intensity", Range(0, 10)) = 1
+[sRGBWarning]_ClippingMask ("Alpha Map--{reference_properties:[_ClippingMaskPan, _ClippingMaskUV, _Inverse_Clipping]}", 2D) = "white" { }
+[HideInInspector][Vector2]_ClippingMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _ClippingMaskUV ("UV", Int) = 0
+[HideInInspector][ToggleUI]_Inverse_Clipping ("Invert", Float) = 0
+_Cutoff ("Alpha Cutoff", Range(0, 1.001)) = 0.5
+
+//ifex _MainColorAdjustToggle==0
+[HideInInspector] m_start_MainHueShift ("Color Adjust--{reference_property:_MainColorAdjustToggle,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/color-and-normals/color-adjust},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(COLOR_GRADING_HDR)] _MainColorAdjustToggle ("Adjust Colors", Float) = 0
+[sRGBWarning][ThryRGBAPacker(R Hue Mask, G Brightness Mask, B Saturation Mask, A Nothing)]_MainColorAdjustTexture ("Mask (Expand)--{reference_properties:[_MainColorAdjustTexturePan, _MainColorAdjustTextureUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_MainColorAdjustTexturePan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _MainColorAdjustTextureUV ("UV", Int) = 0
+_Saturation ("Saturation", Range(-1, 10)) = 0
+_MainBrightness ("Brightness", Range(-1, 1)) = 0
+[ThryToggleUI(true)] _MainHueShiftToggle ("<size=13><b>  Hue Shift</b></size>", Float) = 0
+[ToggleUI]_MainHueShiftReplace ("Hue Replace?--{condition_showS:(_MainHueShiftToggle==1)}", Float) = 1
+_MainHueShift ("Hue Shift--{condition_showS:(_MainHueShiftToggle==1)}", Range(0, 1)) = 0
+_MainHueShiftSpeed ("Hue Shift Speed--{condition_showS:(_MainHueShiftToggle==1)}", Float) = 0
+
+[Space(4)]
+[ThryToggleUI(true)]_MainHueALCTEnabled ("<size=13><b>  Hue Shift Audio Link</b></size>--{condition_showS:(_MainHueShiftToggle==1 && _EnableAudioLink==1)}", Float) = 0
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)]_MainALHueShiftBand ("Band--{condition_showS:(_MainHueShiftToggle==1 && _EnableAudioLink==1 && _MainHueALCTEnabled==1)}", Int) = 0
+[ThryWideEnum(Motion increases as intensity of band increases, 0, Above but Smooth, 1, Motion moves back and forth as a function of intensity, 2, Above but Smoooth, 3, Fixed speed increase when the band is dark Stationary when light, 4, Above but Smooooth, 5, Fixed speed increase when the band is dark Fixed speed decrease when light, 6, Above but Smoooooth, 7)]_MainALHueShiftCTIndex ("Motion Type--{condition_showS:(_MainHueShiftToggle==1 && _EnableAudioLink==1 && _MainHueALCTEnabled==1)}", Int) = 0
+_MainHueALMotionSpeed ("Motion Speed--{condition_showS:(_MainHueShiftToggle==1 && _EnableAudioLink==1 && _MainHueALCTEnabled==1)}", Float) = 1
+[HideInInspector] m_end_MainHueShift ("Hue Shift", Float) = 0
+//endex
+
+#T#PoiMainKeywords
+//ifex _MainColorAdjustToggle==0
+#pragma shader_feature COLOR_GRADING_HDR
+//endex
+
+#T#PoiMainVariables
+float4 _Color;
+float _ColorThemeIndex;
+UNITY_DECLARE_TEX2D(_MainTex);
+UNITY_DECLARE_DEPTH_TEXTURE(_CameraDepthTexture);
+float _MainPixelMode;
+float4 _MainTex_ST;
+float2 _MainTexPan;
+float _MainTexUV;
+float4 _MainTex_TexelSize;
+Texture2D _BumpMap;
+float4 _BumpMap_ST;
+float2 _BumpMapPan;
+float _BumpMapUV;
+float _BumpScale;
+Texture2D _ClippingMask;
+float4 _ClippingMask_ST;
+float2 _ClippingMaskPan;
+float _ClippingMaskUV;
+float _Inverse_Clipping;
+float _Cutoff;
+//ifex _MainColorAdjustToggle==0
+float _MainColorAdjustToggle;
+#if defined(PROP_MAINCOLORADJUSTTEXTURE) || !defined(OPTIMIZER_ENABLED)
+	Texture2D _MainColorAdjustTexture;
+#endif
+float4 _MainColorAdjustTexture_ST;
+float2 _MainColorAdjustTexturePan;
+float _MainColorAdjustTextureUV;
+float _MainHueShiftToggle;
+float _MainHueShiftReplace;
+float _MainHueShift;
+float _MainHueShiftSpeed;
+float _Saturation;
+float _MainBrightness;
+
+float _MainHueALCTEnabled;
+float _MainALHueShiftBand;
+float _MainALHueShiftCTIndex;
+float _MainHueALMotionSpeed;
+//endex
+
+SamplerState sampler_linear_clamp;
+SamplerState sampler_linear_repeat;
+
+#T#PoiMainImplementation
+poiFragData.baseColor = mainTexture.rgb * poiThemeColor(poiMods, _Color.rgb, _ColorThemeIndex);
+poiFragData.alpha = mainTexture.a * _Color.a;
+
+//ifex _MainColorAdjustToggle==0
+#ifdef COLOR_GRADING_HDR
+	#if defined(PROP_MAINCOLORADJUSTTEXTURE) || !defined(OPTIMIZER_ENABLED)
+		float4 hueShiftAlpha = POI2D_SAMPLER_PAN(_MainColorAdjustTexture, _MainTex, poiUV(poiMesh.uv[_MainColorAdjustTextureUV], _MainColorAdjustTexture_ST), _MainColorAdjustTexturePan);
+	#else
+		float4 hueShiftAlpha = 1;
+	#endif
+	
+	if (_MainHueShiftToggle)
+	{
+		float shift = _MainHueShift;
+		#ifdef POI_AUDIOLINK
+			//UNITY_BRANCH
+			if (poiMods.audioLinkAvailable && _MainHueALCTEnabled)
+			{
+				shift += AudioLinkGetChronoTime(_MainALHueShiftCTIndex, _MainALHueShiftBand) * _MainHueALMotionSpeed;
+			}
+		#endif
+		if (_MainHueShiftReplace)
+		{
+			poiFragData.baseColor = lerp(poiFragData.baseColor, hueShift(poiFragData.baseColor, shift + _MainHueShiftSpeed * _Time.x), hueShiftAlpha.r);
+		}
+		else
+		{
+			poiFragData.baseColor = hueShift(poiFragData.baseColor, frac((shift - (1 - hueShiftAlpha.r) + _MainHueShiftSpeed * _Time.x)));
+		}
+	}
+	poiFragData.baseColor = lerp(poiFragData.baseColor, dot(poiFragData.baseColor, float3(0.3, 0.59, 0.11)), -_Saturation * hueShiftAlpha.b);
+	poiFragData.baseColor = saturate(poiFragData.baseColor + _MainBrightness * hueShiftAlpha.g);
+#endif
+//endex
+
+#if defined(PROP_CLIPPINGMASK) || !defined(OPTIMIZER_ENABLED)
+	float alphaMask = POI2D_SAMPLER_PAN(_ClippingMask, _MainTex, poiUV(poiMesh.uv[_ClippingMaskUV], _ClippingMask_ST), _ClippingMaskPan).r;
+	if (_Inverse_Clipping)
+	{
+		alphaMask = 1 - alphaMask;
+	}
+#else
+	float alphaMask = 1;
+#endif
+
+poiFragData.alpha *= alphaMask;
+
+#K#BASE_COLOR_MOD
+
+#T#PoiMainNormalImplementation
+float3 mainNormal = UnpackScaleNormal(POI2D_SAMPLER_PAN(_BumpMap, _MainTex, poiUV(poiMesh.uv[_BumpMapUV], _BumpMap_ST), _BumpMapPan), _BumpScale);
+poiMesh.tangentSpaceNormal = mainNormal;
+
+#K#TANGENT_NORMAL_INJECTION
+
+poiMesh.normals[1] = normalize(
+	poiMesh.tangentSpaceNormal.x * poiMesh.tangent.xyz +
+	poiMesh.tangentSpaceNormal.y * poiMesh.binormal +
+	poiMesh.tangentSpaceNormal.z * poiMesh.normals[0]
+);
+
+// I'm just testing this because it makes it the same as if there is no normal map in the slot
+float3 fancyNormal = UnpackNormal(float4(0.5, 0.5, 1, 1));
+poiMesh.normals[0] = normalize(
+	fancyNormal.x * poiMesh.tangent.xyz +
+	fancyNormal.y * poiMesh.binormal +
+	fancyNormal.z * poiMesh.normals[0]
+);

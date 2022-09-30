@@ -1,0 +1,241 @@
+#T#PoiAlphaOptionsProperties
+[HideInInspector] m_start_Alpha ("Alpha Options--{button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/color-and-normals/alpha-options},hover:Documentation}}", Float) = 0
+[ToggleUI]_AlphaForceOpaque ("Force Opaque", Float) = 0
+_AlphaMod ("Alpha Mod", Range(-1, 1)) = 0.0
+[ToggleUI]_AlphaPremultiply ("Alpha Premultiply", Float) = 0
+_AlphaBoostFA ("Boost Transparency in ForwardAdd--{condition_showS:(_AddBlendOp==4)}", Range(1, 100)) = 10
+
+//ifex _AlphaToCoverage==0 && isNotAnimated(_AlphaToCoverage)
+[Space(4)]
+[ThryToggleUI(true)] _AlphaToCoverage ("<size=13><b>  Alpha To Coverage</b></size>", Float) = 0
+[ToggleUI]_AlphaSharpenedA2C ("Sharpened  A2C--{condition_showS:(_AlphaToCoverage==1)}", Float) = 0
+_AlphaMipScale ("Mip Level Alpha Scale--{condition_showS:(_AlphaToCoverage==1)}", Range(0, 1)) = 0.25
+//endex
+
+//ifex _AlphaDithering==0 && isNotAnimated(_AlphaDithering)
+[Space(4)]
+[ThryToggleUI(true)] _AlphaDithering ("<size=13><b>  Dithering</b></size>", Float) = 0
+_AlphaDitherGradient ("Dither Gradient--{condition_showS:(_AlphaDithering==1)}", Range(0, 1)) = .1
+//endex
+
+//ifex _AlphaDistanceFade==0 && isNotAnimated(_AlphaDistanceFade)
+[Space(4)]
+[ThryToggleUI(true)] _AlphaDistanceFade ("<size=13><b>  Distance Alpha</b></size>", Float) = 0
+[Enum(Object Position, 0, Pixel Position, 1)] _AlphaDistanceFadeType ("Pos To Use--{condition_showS:(_AlphaDistanceFade==1)}", Int) = 1
+_AlphaDistanceFadeMinAlpha ("Min Distance Alpha--{condition_showS:(_AlphaDistanceFade==1)}", Range(0, 1)) = 0
+_AlphaDistanceFadeMaxAlpha ("Max Distance Alpha--{condition_showS:(_AlphaDistanceFade==1)}", Range(0, 1)) = 1
+_AlphaDistanceFadeMin ("Min Distance--{condition_showS:(_AlphaDistanceFade==1)}", Float) = 0
+_AlphaDistanceFadeMax ("Max Distance--{condition_showS:(_AlphaDistanceFade==1)}", Float) = 0
+//endex
+
+//ifex _AlphaFresnel==0 && isNotAnimated(_AlphaFresnel)
+[Space(4)]
+[ThryToggleUI(true)] _AlphaFresnel ("<size=13><b>  Fresnel Alpha</b></size>", Float) = 0
+_AlphaFresnelAlpha ("Intensity--{condition_showS:(_AlphaFresnel==1)}", Range(0, 1)) = 0
+_AlphaFresnelSharpness ("Sharpness--{condition_showS:(_AlphaFresnel==1)}", Range(0, 1)) = .5
+_AlphaFresnelWidth ("Width--{condition_showS:(_AlphaFresnel==1)}", Range(0, 1)) = .5
+[ToggleUI]_AlphaFresnelInvert ("Invert--{condition_showS:(_AlphaFresnel==1)}", Float) = 0
+//endex
+
+//ifex _AlphaAngular==0 && isNotAnimated(_AlphaAngular)
+[Space(4)]
+[ThryToggleUI(true)] _AlphaAngular ("<size=13><b>  Angular Alpha</b></size>", Float) = 0
+[Enum(Camera Face Model, 0, Model Face Camera, 1, Face Each Other, 2)] _AngleType ("Angle Type--{condition_showS:(_AlphaAngular==1)}", Int) = 0
+[Enum(Model, 0, Vertex, 1)] _AngleCompareTo ("Model or Vert Positon--{condition_showS:(_AlphaAngular==1)}", Int) = 0
+[Vector3]_AngleForwardDirection ("Forward Direction--{condition_showS:(_AlphaAngular==1)}", Vector) = (0, 0, 1)
+_CameraAngleMin ("Camera Angle Min--{condition_showS:(_AlphaAngular==1)}", Range(0, 180)) = 45
+_CameraAngleMax ("Camera Angle Max--{condition_showS:(_AlphaAngular==1)}", Range(0, 180)) = 90
+_ModelAngleMin ("Model Angle Min--{condition_showS:(_AlphaAngular==1)}", Range(0, 180)) = 45
+_ModelAngleMax ("Model Angle Max--{condition_showS:(_AlphaAngular==1)}", Range(0, 180)) = 90
+_AngleMinAlpha ("Min Alpha--{condition_showS:(_AlphaAngular==1)}", Range(0, 1)) = 0
+//endex
+
+//ifex _AlphaAudioLinkEnabled==0 && isNotAnimated(_AlphaAudioLinkEnabled)
+[Space(4)]
+[ThryToggleUI(true)]_AlphaAudioLinkEnabled ("<size=13><b>  Alpha Audio Link</b></size>--{condition_showS:(_EnableAudioLink==1)}", Float) = 0
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _AlphaAudioLinkAddBand ("Add Band--{ condition_showS:(_AlphaAudioLinkEnabled==1 && _EnableAudioLink==1)}", Int) = 0
+[VectorLabel(Min, Max)]_AlphaAudioLinkAddRange ("Add Range--{ condition_showS:(_AlphaAudioLinkEnabled==1 && _EnableAudioLink==1)}", Vector) = (0, 0, 0)
+//endex
+[HideInInspector] m_end_Alpha ("Alpha Options", Float) = 0
+
+
+#T#PoiAlphaOptionsKeywords
+//#pragma shader_feature KEYWORD
+
+#T#PoiAlphaOptionsVariables
+float _AlphaForceOpaque;
+float _AlphaMod;
+float _AlphaPremultiply;
+float _AlphaBoostFA;
+//ifex _AlphaToCoverage==0 && isNotAnimated(_AlphaToCoverage)
+float _AlphaToCoverage;
+float _AlphaSharpenedA2C;
+float _AlphaMipScale;
+//endex
+
+//ifex _AlphaDithering==0 && isNotAnimated(_AlphaDithering)
+float _AlphaDithering;
+float _AlphaDitherGradient;
+//endex
+
+//ifex _AlphaDistanceFade==0 && isNotAnimated(_AlphaDistanceFade)
+float _AlphaDistanceFade;
+float _AlphaDistanceFadeType;
+float _AlphaDistanceFadeMinAlpha;
+float _AlphaDistanceFadeMaxAlpha;
+float _AlphaDistanceFadeMin;
+float _AlphaDistanceFadeMax;
+//endex
+
+//ifex _AlphaFresnel==0 && isNotAnimated(_AlphaFresnel)
+float _AlphaFresnel;
+float _AlphaFresnelAlpha;
+float _AlphaFresnelSharpness;
+float _AlphaFresnelWidth;
+float _AlphaFresnelInvert;
+//endex
+
+//ifex _AlphaAngular==0 && isNotAnimated(_AlphaAngular)
+float _AlphaAngular;
+float _AngleType;
+float _AngleCompareTo;
+float3 _AngleForwardDirection;
+float _CameraAngleMin;
+float _CameraAngleMax;
+float _ModelAngleMin;
+float _ModelAngleMax;
+float _AngleMinAlpha;
+//endex
+
+//ifex _AlphaAudioLinkEnabled==0 && isNotAnimated(_AlphaAudioLinkEnabled)
+float _AlphaAudioLinkEnabled;
+float2 _AlphaAudioLinkAddRange;
+float _AlphaAudioLinkAddBand;
+//endex
+
+#T#PoiAlphaOptionsFunctions
+void applyAlphaOptions(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiCam poiCam, in PoiMods poiMods)
+{
+	poiFragData.alpha = saturate(poiFragData.alpha + _AlphaMod);
+
+	//ifex _AlphaDistanceFade==0 && isNotAnimated(_AlphaDistanceFade)
+	if (_AlphaDistanceFade)
+	{
+		float3 position = _AlphaDistanceFadeType ? poiMesh.worldPos : poiMesh.objectPosition;
+		poiFragData.alpha *= lerp(_AlphaDistanceFadeMinAlpha, _AlphaDistanceFadeMaxAlpha, smoothstep(_AlphaDistanceFadeMin, _AlphaDistanceFadeMax, distance(position, poiCam.worldPos)));
+	}
+	//endex
+
+	//ifex _AlphaFresnel==0 && isNotAnimated(_AlphaFresnel)
+	if (_AlphaFresnel)
+	{
+		float holoRim = saturate(1 - smoothstep(min(_AlphaFresnelSharpness, _AlphaFresnelWidth), _AlphaFresnelWidth, poiCam.vDotN));
+		holoRim = abs(lerp(1, holoRim, _AlphaFresnelAlpha));
+		poiFragData.alpha *= _AlphaFresnelInvert ?1 - holoRim : holoRim;
+	}
+	//endex
+
+	//ifex _AlphaAngular==0 && isNotAnimated(_AlphaAngular)
+	if (_AlphaAngular)
+	{
+		half cameraAngleMin = _CameraAngleMin / 180;
+		half cameraAngleMax = _CameraAngleMax / 180;
+		half modelAngleMin = _ModelAngleMin / 180;
+		half modelAngleMax = _ModelAngleMax / 180;
+		float3 pos = _AngleCompareTo == 0 ? poiMesh.objectPosition : poiMesh.worldPos;
+		half3 cameraToModelDirection = normalize(pos - getCameraPosition());
+		half3 modelForwardDirection = normalize(mul(unity_ObjectToWorld, normalize(_AngleForwardDirection.rgb)));
+		half cameraLookAtModel = remapClamped(cameraAngleMax, cameraAngleMin, .5 * dot(cameraToModelDirection, getCameraForward()) + .5);
+		half modelLookAtCamera = remapClamped(modelAngleMax, modelAngleMin, .5 * dot(-cameraToModelDirection, modelForwardDirection) + .5);
+		if (_AngleType == 0)
+		{
+			poiFragData.alpha *= max(cameraLookAtModel, _AngleMinAlpha);
+		}
+		else if (_AngleType == 1)
+		{
+			poiFragData.alpha *= max(modelLookAtCamera, _AngleMinAlpha);
+		}
+		else if (_AngleType == 2)
+		{
+			poiFragData.alpha *= max(cameraLookAtModel * modelLookAtCamera, _AngleMinAlpha);
+		}
+	}
+	//endex
+
+	//ifex _AlphaAudioLinkEnabled==0 && isNotAnimated(_AlphaAudioLinkEnabled)
+	#ifdef POI_AUDIOLINK
+		if (poiMods.audioLinkAvailable && _AlphaAudioLinkEnabled)
+		{
+			poiFragData.alpha = saturate(poiFragData.alpha + lerp(_AlphaAudioLinkAddRange.x, _AlphaAudioLinkAddRange.y, poiMods.audioLink[_AlphaAudioLinkAddBand]));
+		}
+	#endif
+	//endex
+
+}
+
+//ifex _AlphaDithering==0 && isNotAnimated(_AlphaDithering)
+inline half Dither8x8Bayer(int x, int y)
+{
+	const half dither[ 64 ] = {
+		1, 49, 13, 61, 4, 52, 16, 64,
+		33, 17, 45, 29, 36, 20, 48, 32,
+		9, 57, 5, 53, 12, 60, 8, 56,
+		41, 25, 37, 21, 44, 28, 40, 24,
+		3, 51, 15, 63, 2, 50, 14, 62,
+		35, 19, 47, 31, 34, 18, 46, 30,
+		11, 59, 7, 55, 10, 58, 6, 54,
+		43, 27, 39, 23, 42, 26, 38, 22
+	};
+	int r = y * 8 + x;
+	return dither[r] / 64;
+}
+
+half calcDither(half2 grabPos)
+{
+	return Dither8x8Bayer(fmod(grabPos.x, 8), fmod(grabPos.y, 8));
+}
+
+void applyDithering(inout PoiFragData poiFragData, in PoiCam poiCam)
+{
+	if (_AlphaDithering)
+	{
+		poiFragData.alpha = saturate(poiFragData.alpha - (calcDither(poiCam.screenUV) * (1 - poiFragData.alpha) * _AlphaDitherGradient));
+	}
+}
+//endex
+
+//ifex _AlphaToCoverage==0 && isNotAnimated(_AlphaToCoverage)
+void ApplyAlphaToCoverage(inout PoiFragData poiFragData, in PoiMesh poiMesh)
+{
+	// Force Model Opacity to 1 if desired
+	UNITY_BRANCH
+	if (_Mode == 1)
+	{
+		UNITY_BRANCH
+		if (_AlphaSharpenedA2C && _AlphaToCoverage)
+		{
+			// rescale alpha by mip level
+			poiFragData.alpha *= 1 + max(0, CalcMipLevel(poiMesh.uv[0] * _MainTex_TexelSize.zw)) * _AlphaMipScale;
+			// rescale alpha by partial derivative
+			poiFragData.alpha = (poiFragData.alpha - _Cutoff) / max(fwidth(poiFragData.alpha), 0.0001) + _Cutoff;
+			poiFragData.alpha = saturate(poiFragData.alpha);
+		}
+	}
+}
+//endex
+
+#T#PoiAlphaOptionsFunctionCall
+applyAlphaOptions(poiFragData, poiMesh, poiCam, poiMods);
+
+#T#PoiAlphaOptionsDitherFunctionCall
+//ifex _AlphaDithering==0 && isNotAnimated(_AlphaDithering)
+applyDithering(poiFragData, poiCam);
+//endex
+
+#T#PoiAlphaOptionsForceOpaque
+poiFragData.alpha = _AlphaForceOpaque ? 1 : poiFragData.alpha;
+
+#T#PoiAlphaToCoverageFunctionCall
+//ifex _AlphaToCoverage==0 && isNotAnimated(_AlphaToCoverage)
+ApplyAlphaToCoverage(poiFragData, poiMesh);
+//endex

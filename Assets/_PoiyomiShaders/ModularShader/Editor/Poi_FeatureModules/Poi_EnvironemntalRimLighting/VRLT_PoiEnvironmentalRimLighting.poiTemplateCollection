@@ -1,0 +1,85 @@
+#T#PoiEnviroRimProperties
+//ifex _EnableEnvironmentalRim==0
+[HideInInspector] m_start_reflectionRim ("Environmental Rim--{reference_property:_EnableEnvironmentalRim,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/shading/environmental-rim},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(POI_ENVIRORIM)]_EnableEnvironmentalRim ("Enable", Float) = 0
+[sRGBWarning]_RimEnviroMask ("Mask--{reference_properties:[_RimEnviroMaskPan, _RimEnviroMaskUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_RimEnviroMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_RimEnviroMaskUV ("UV", Int) = 0
+_RimEnviroBlur ("Blur", Range(0, 1)) = 0.7
+_RimEnviroWidth ("Rim Width", Range(0, 1)) = 0.45
+_RimEnviroSharpness ("Rim Sharpness", Range(0, 1)) = 0
+_RimEnviroMinBrightness ("Min Brightness Threshold", Range(0, 2)) = 0
+_RimEnviroIntensity ("Intensity", Range(0, 1)) = 1
+[HideInInspector] m_end_reflectionRim ("", Float) = 0
+//endex
+
+#T#PoiEnviroRimKeywords
+//ifex _EnableEnvironmentalRim==0
+#pragma shader_feature_local POI_ENVIRORIM
+//endex
+
+#T#PoiEnviroRimVariables
+//ifex _EnableEnvironmentalRim==0
+#ifdef POI_ENVIRORIM
+
+	#if defined(PROP_RIMENVIROMASK) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _RimEnviroMask; 
+	#endif
+	float4 _RimEnviroMask_ST;
+	float2 _RimEnviroMaskPan;
+	float _RimEnviroMaskUV;
+
+    float _RimEnviroBlur;
+    float _RimEnviroMinBrightness;
+    float _RimEnviroWidth;
+    float _RimEnviroSharpness;
+    float _RimEnviroIntensity;
+#endif
+//endex
+
+#T#PoiEnviroRimFunctions
+//ifex _EnableEnvironmentalRim==0
+#ifdef POI_ENVIRORIM
+    void applyEnvironmentRim(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiCam poiCam)
+    {
+        float enviroRimAlpha = saturate(1 - smoothstep(min(_RimEnviroSharpness, _RimEnviroWidth), _RimEnviroWidth, poiCam.vDotN));
+        _RimEnviroBlur *= 1.7 - 0.7 * _RimEnviroBlur;
+        
+        float3 enviroRimColor = 0;
+        float interpolator = unity_SpecCube0_BoxMin.w;
+        UNITY_BRANCH
+        if (interpolator < 0.99999)
+        {
+            //Probe 1
+            float4 reflectionData0 = UNITY_SAMPLE_TEXCUBE_LOD(unity_SpecCube0, poiMesh.normals[1], _RimEnviroBlur * UNITY_SPECCUBE_LOD_STEPS);
+            float3 reflectionColor0 = DecodeHDR(reflectionData0, unity_SpecCube0_HDR);
+            
+            //Probe 2
+            float4 reflectionData1 = UNITY_SAMPLE_TEXCUBE_SAMPLER_LOD(unity_SpecCube1, unity_SpecCube0, poiMesh.normals[1], _RimEnviroBlur * UNITY_SPECCUBE_LOD_STEPS);
+            float3 reflectionColor1 = DecodeHDR(reflectionData1, unity_SpecCube1_HDR);
+            
+            enviroRimColor = lerp(reflectionColor1, reflectionColor0, interpolator);
+        }
+        else
+        {
+            float4 reflectionData = UNITY_SAMPLE_TEXCUBE_LOD(unity_SpecCube0, poiMesh.normals[1], _RimEnviroBlur * UNITY_SPECCUBE_LOD_STEPS);
+            enviroRimColor = DecodeHDR(reflectionData, unity_SpecCube0_HDR);
+        }
+        
+        half enviroMask = 1; 
+		#if defined(PROP_RIMENVIROMASK) || !defined(OPTIMIZER_ENABLED)
+			enviroMask = poiMax(POI2D_SAMPLER_PAN(_RimEnviroMask, _MainTex, poiMesh.uv[_RimEnviroMaskUV], _RimEnviroMaskPan).rgb);
+		#endif
+        float3 envRimCol = lerp(0, max(0, (enviroRimColor - _RimEnviroMinBrightness) * poiFragData.baseColor), enviroRimAlpha).rgb * enviroMask * _RimEnviroIntensity;
+		poiFragData.finalColor += envRimCol;
+    }
+#endif
+//endex
+
+#T#PoiEnviroRimFunctionCalls
+//ifex _EnableEnvironmentalRim==0
+#ifdef POI_ENVIRORIM
+    applyEnvironmentRim(poiFragData, poiMesh, poiCam);
+#endif
+//endex
+

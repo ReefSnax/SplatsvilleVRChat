@@ -1,0 +1,1167 @@
+float2 poiUV(float2 uv, float4 tex_st)
+{
+	return uv * tex_st.xy + tex_st.zw;
+}
+
+float2 vertexUV(in VertexOut o, int index)
+{
+	switch (index)
+	{
+		case 0:
+			return o.uv[0];
+		case 1:
+			return o.uv[1];
+		case 2:
+			return o.uv[2];
+		case 3:
+			return o.uv[3];
+		default:
+			return o.uv[0];
+	}
+}
+
+float2 vertexUV(in appdata v, int index)
+{
+	switch (index)
+	{
+		case 0:
+			return v.uv0;
+		case 1:
+			return v.uv1;
+		case 2:
+			return v.uv2;
+		case 3:
+			return v.uv3;
+		default:
+			return v.uv0;
+	}
+}
+
+//Lighting Helpers
+float calculateluminance(float3 color)
+{
+	return color.r * 0.299 + color.g * 0.587 + color.b * 0.114;
+}
+
+bool IsInMirror()
+{
+	return unity_CameraProjection[2][0] != 0.f || unity_CameraProjection[2][1] != 0.f;
+}
+
+bool IsOrthographicCamera()
+{
+	return unity_OrthoParams.w == 1 || UNITY_MATRIX_P[3][3] == 1;
+}
+
+float shEvaluateDiffuseL1Geomerics_local(float L0, float3 L1, float3 n)
+{
+	// average energy
+	float R0 = max(0, L0);
+	
+	// avg direction of incoming light
+	float3 R1 = 0.5f * L1;
+	
+	// directional brightness
+	float lenR1 = length(R1);
+	
+	// linear angle between normal and direction 0-1
+	//float q = 0.5f * (1.0f + dot(R1 / lenR1, n));
+	//float q = dot(R1 / lenR1, n) * 0.5 + 0.5;
+	float q = dot(normalize(R1), n) * 0.5 + 0.5;
+	q = saturate(q); // Thanks to ScruffyRuffles for the bug identity.
+	
+	// power for q
+	// lerps from 1 (linear) to 3 (cubic) based on directionality
+	float p = 1.0f + 2.0f * lenR1 / R0;
+	
+	// dynamic range constant
+	// should vary between 4 (highly directional) and 0 (ambient)
+	float a = (1.0f - lenR1 / R0) / (1.0f + lenR1 / R0);
+	
+	return R0 * (a + (1.0f - a) * (p + 1.0f) * pow(q, p));
+}
+
+half3 BetterSH9(half4 normal)
+{
+	float3 indirect;
+	float3 L0 = float3(unity_SHAr.w, unity_SHAg.w, unity_SHAb.w) + float3(unity_SHBr.z, unity_SHBg.z, unity_SHBb.z) / 3.0;
+	indirect.r = shEvaluateDiffuseL1Geomerics_local(L0.r, unity_SHAr.xyz, normal.xyz);
+	indirect.g = shEvaluateDiffuseL1Geomerics_local(L0.g, unity_SHAg.xyz, normal.xyz);
+	indirect.b = shEvaluateDiffuseL1Geomerics_local(L0.b, unity_SHAb.xyz, normal.xyz);
+	indirect = max(0, indirect);
+	indirect += SHEvalLinearL2(normal);
+	return indirect;
+}
+
+// Silent's code ends here
+
+float3 getCameraForward()
+{
+	#if UNITY_SINGLE_PASS_STEREO
+		float3 p1 = mul(unity_StereoCameraToWorld[0], float4(0, 0, 1, 1));
+		float3 p2 = mul(unity_StereoCameraToWorld[0], float4(0, 0, 0, 1));
+	#else
+		float3 p1 = mul(unity_CameraToWorld, float4(0, 0, 1, 1)).xyz;
+		float3 p2 = mul(unity_CameraToWorld, float4(0, 0, 0, 1)).xyz;
+	#endif
+	return normalize(p2 - p1);
+}
+
+half3 GetSHLength()
+{
+	half3 x, x1;
+	x.r = length(unity_SHAr);
+	x.g = length(unity_SHAg);
+	x.b = length(unity_SHAb);
+	x1.r = length(unity_SHBr);
+	x1.g = length(unity_SHBg);
+	x1.b = length(unity_SHBb);
+	return x + x1;
+}
+
+float3 BoxProjection(float3 direction, float3 position, float4 cubemapPosition, float3 boxMin, float3 boxMax)
+{
+	#if UNITY_SPECCUBE_BOX_PROJECTION
+		//UNITY_BRANCH
+		if (cubemapPosition.w > 0)
+		{
+			float3 factors = ((direction > 0 ? boxMax : boxMin) - position) / direction;
+			float scalar = min(min(factors.x, factors.y), factors.z);
+			direction = direction * scalar + (position - cubemapPosition.xyz);
+		}
+	#endif
+	return direction;
+}
+
+float poiMax(float2 i)
+{
+	return max(i.x, i.y);
+}
+
+float poiMax(float3 i)
+{
+	return max(max(i.x, i.y), i.z);
+}
+
+float poiMax(float4 i)
+{
+	return max(max(max(i.x, i.y), i.z), i.w);
+}
+
+
+float3 calculateNormal(in float3 baseNormal, in PoiMesh poiMesh, in Texture2D normalTexture, in float4 normal_ST, in float2 normalPan, in float normalUV, in float normalIntensity)
+{
+	float3 normal = UnpackScaleNormal(POI2D_SAMPLER_PAN(normalTexture, _MainTex, poiUV(poiMesh.uv[normalUV], normal_ST), normalPan), normalIntensity);
+	return normalize(
+		normal.x * poiMesh.tangent +
+		normal.y * poiMesh.binormal +
+		normal.z * baseNormal
+	);
+}
+
+float remap(float x, float minOld, float maxOld, float minNew = 0, float maxNew = 1)
+{
+	return minNew + (x - minOld) * (maxNew - minNew) / (maxOld - minOld);
+}
+
+float2 remap(float2 x, float2 minOld, float2 maxOld, float2 minNew = 0, float2 maxNew = 1)
+{
+	return minNew + (x - minOld) * (maxNew - minNew) / (maxOld - minOld);
+}
+
+float3 remap(float3 x, float3 minOld, float3 maxOld, float3 minNew = 0, float3 maxNew = 1)
+{
+	return minNew + (x - minOld) * (maxNew - minNew) / (maxOld - minOld);
+}
+
+float4 remap(float4 x, float4 minOld, float4 maxOld, float4 minNew = 0, float4 maxNew = 1)
+{
+	return minNew + (x - minOld) * (maxNew - minNew) / (maxOld - minOld);
+}
+
+float remapClamped(float minOld, float maxOld, float x, float minNew = 0, float maxNew = 1)
+{
+	return clamp(minNew + (x - minOld) * (maxNew - minNew) / (maxOld - minOld), minNew, maxNew);
+}
+
+float2 remapClamped(float2 minOld, float2 maxOld, float2 x, float2 minNew, float2 maxNew)
+{
+	return clamp(minNew + (x - minOld) * (maxNew - minNew) / (maxOld - minOld), minNew, maxNew);
+}
+
+float3 remapClamped(float3 minOld, float3 maxOld, float3 x, float3 minNew, float3 maxNew)
+{
+	return clamp(minNew + (x - minOld) * (maxNew - minNew) / (maxOld - minOld), minNew, maxNew);
+}
+
+float4 remapClamped(float4 minOld, float4 maxOld, float4 x, float4 minNew, float4 maxNew)
+{
+	return clamp(minNew + (x - minOld) * (maxNew - minNew) / (maxOld - minOld), minNew, maxNew);
+}
+float2 calcParallax(in float height, in PoiCam poiCam)
+{
+	return ((height * - 1) + 1) * (poiCam.tangentViewDir.xy / poiCam.tangentViewDir.z);
+}
+
+
+/*
+0: Zero	                float4(0.0, 0.0, 0.0, 0.0),
+1: One	                float4(1.0, 1.0, 1.0, 1.0),
+2: DstColor	            destinationColor,
+3: SrcColor	            sourceColor,
+4: OneMinusDstColor	    float4(1.0, 1.0, 1.0, 1.0) - destinationColor,
+5: SrcAlpha	            sourceColor.aaaa,
+6: OneMinusSrcColor	    float4(1.0, 1.0, 1.0, 1.0) - sourceColor,
+7: DstAlpha	            destinationColor.aaaa,
+8: OneMinusDstAlpha	    float4(1.0, 1.0, 1.0, 1.0) - destinationColor.,
+9: SrcAlphaSaturate     saturate(sourceColor.aaaa),
+10: OneMinusSrcAlpha	float4(1.0, 1.0, 1.0, 1.0) - sourceColor.aaaa,
+*/
+
+float4 poiBlend(const float sourceFactor, const  float4 sourceColor, const  float destinationFactor, const  float4 destinationColor, const float4 blendFactor)
+{
+	float4 sA = 1 - blendFactor;
+	const float4 blendData[11] = {
+		float4(0.0, 0.0, 0.0, 0.0),
+		float4(1.0, 1.0, 1.0, 1.0),
+		destinationColor,
+		sourceColor,
+		float4(1.0, 1.0, 1.0, 1.0) - destinationColor,
+		sA,
+		float4(1.0, 1.0, 1.0, 1.0) - sourceColor,
+		sA,
+		float4(1.0, 1.0, 1.0, 1.0) - sA,
+		saturate(sourceColor.aaaa),
+		1 - sA,
+	};
+	
+	return lerp(blendData[sourceFactor] * sourceColor + blendData[destinationFactor] * destinationColor, sourceColor, sA);
+}
+
+// Average
+float blendAverage(float base, float blend)
+{
+	return (base + blend) / 2.0;
+}
+float3 blendAverage(float3 base, float3 blend)
+{
+	return (base + blend) / 2.0;
+}
+
+// Color burn
+float blendColorBurn(float base, float blend)
+{
+	return (blend == 0.0)?blend : max((1.0 - ((1.0 - base) / blend)), 0.0);
+}
+
+float3 blendColorBurn(float3 base, float3 blend)
+{
+	return float3(blendColorBurn(base.r, blend.r), blendColorBurn(base.g, blend.g), blendColorBurn(base.b, blend.b));
+}
+
+// Color Dodge
+float blendColorDodge(float base, float blend)
+{
+	return (blend == 1.0)?blend : min(base / (1.0 - blend), 1.0);
+}
+
+float3 blendColorDodge(float3 base, float3 blend)
+{
+	return float3(blendColorDodge(base.r, blend.r), blendColorDodge(base.g, blend.g), blendColorDodge(base.b, blend.b));
+}
+
+// Darken
+float blendDarken(float base, float blend)
+{
+	return min(blend, base);
+}
+
+float3 blendDarken(float3 base, float3 blend)
+{
+	return float3(blendDarken(base.r, blend.r), blendDarken(base.g, blend.g), blendDarken(base.b, blend.b));
+}
+
+// Exclusion
+float blendExclusion(float base, float blend)
+{
+	return base + blend - 2.0 * base * blend;
+}
+float3 blendExclusion(float3 base, float3 blend)
+{
+	return base + blend - 2.0 * base * blend;
+}
+
+// Reflect
+float blendReflect(float base, float blend)
+{
+	return (blend == 1.0)?blend : min(base * base / (1.0 - blend), 1.0);
+}
+
+float3 blendReflect(float3 base, float3 blend)
+{
+	return float3(blendReflect(base.r, blend.r), blendReflect(base.g, blend.g), blendReflect(base.b, blend.b));
+}
+
+// Glow
+float blendGlow(float base, float blend)
+{
+	return blendReflect(blend, base);
+}
+float3 blendGlow(float3 base, float3 blend)
+{
+	return blendReflect(blend, base);
+}
+
+// Overlay
+float blendOverlay(float base, float blend)
+{
+	return base < 0.5?(2.0 * base * blend) : (1.0 - 2.0 * (1.0 - base) * (1.0 - blend));
+}
+
+float3 blendOverlay(float3 base, float3 blend)
+{
+	return float3(blendOverlay(base.r, blend.r), blendOverlay(base.g, blend.g), blendOverlay(base.b, blend.b));
+}
+
+// Hard Light
+float blendHardLight(float base, float blend)
+{
+	return blendOverlay(blend, base);
+}
+float3 blendHardLight(float3 base, float3 blend)
+{
+	return blendOverlay(blend, base);
+}
+
+// Vivid light
+float blendVividLight(float base, float blend)
+{
+	return (blend < 0.5)?blendColorBurn(base, (2.0 * blend)) : blendColorDodge(base, (2.0 * (blend - 0.5)));
+}
+
+float3 blendVividLight(float3 base, float3 blend)
+{
+	return float3(blendVividLight(base.r, blend.r), blendVividLight(base.g, blend.g), blendVividLight(base.b, blend.b));
+}
+
+// Hard mix
+float blendHardMix(float base, float blend)
+{
+	return (blendVividLight(base, blend) < 0.5)?0.0 : 1.0;
+}
+
+float3 blendHardMix(float3 base, float3 blend)
+{
+	return float3(blendHardMix(base.r, blend.r), blendHardMix(base.g, blend.g), blendHardMix(base.b, blend.b));
+}
+
+// Lighten
+float blendLighten(float base, float blend)
+{
+	return max(blend, base);
+}
+
+float3 blendLighten(float3 base, float3 blend)
+{
+	return float3(blendLighten(base.r, blend.r), blendLighten(base.g, blend.g), blendLighten(base.b, blend.b));
+}
+
+// Linear Burn
+float blendLinearBurn(float base, float blend)
+{
+	// Note : Same implementation as BlendSubtractf
+	return max(base + blend - 1.0, 0.0);
+}
+
+float3 blendLinearBurn(float3 base, float3 blend)
+{
+	// Note : Same implementation as BlendSubtract
+	return max(base + blend - float3(1.0, 1.0, 1.0), float3(0.0, 0.0, 0.0));
+}
+
+// Linear Dodge
+float blendLinearDodge(float base, float blend)
+{
+	// Note : Same implementation as BlendAddf
+	return min(base + blend, 1.0);
+}
+
+float3 blendLinearDodge(float3 base, float3 blend)
+{
+	// Note : Same implementation as BlendAdd
+	return min(base + blend, float3(1.0, 1.0, 1.0));
+}
+
+// Linear light
+float blendLinearLight(float base, float blend)
+{
+	return blend < 0.5?blendLinearBurn(base, (2.0 * blend)) : blendLinearDodge(base, (2.0 * (blend - 0.5)));
+}
+
+float3 blendLinearLight(float3 base, float3 blend)
+{
+	return float3(blendLinearLight(base.r, blend.r), blendLinearLight(base.g, blend.g), blendLinearLight(base.b, blend.b));
+}
+
+// Multiply
+float blendMultiply(float base, float blend)
+{
+	return base * blend;
+}
+float3 blendMultiply(float3 base, float3 blend)
+{
+	return base * blend;
+}
+
+// Negation
+float blendNegation(float base, float blend)
+{
+	return 1.0 - abs(1.0 - base - blend);
+}
+float3 blendNegation(float3 base, float3 blend)
+{
+	return float3(1.0, 1.0, 1.0) - abs(float3(1.0, 1.0, 1.0) - base - blend);
+}
+
+// Normal
+float blendNormal(float base, float blend)
+{
+	return blend;
+}
+float3 blendNormal(float3 base, float3 blend)
+{
+	return blend;
+}
+
+// Phoenix
+float blendPhoenix(float base, float blend)
+{
+	return min(base, blend) - max(base, blend) + 1.0;
+}
+float3 blendPhoenix(float3 base, float3 blend)
+{
+	return min(base, blend) - max(base, blend) + float3(1.0, 1.0, 1.0);
+}
+
+// Pin light
+float blendPinLight(float base, float blend)
+{
+	return (blend < 0.5)?blendDarken(base, (2.0 * blend)) : blendLighten(base, (2.0 * (blend - 0.5)));
+}
+
+float3 blendPinLight(float3 base, float3 blend)
+{
+	return float3(blendPinLight(base.r, blend.r), blendPinLight(base.g, blend.g), blendPinLight(base.b, blend.b));
+}
+
+// Screen
+float blendScreen(float base, float blend)
+{
+	return 1.0 - ((1.0 - base) * (1.0 - blend));
+}
+
+float3 blendScreen(float3 base, float3 blend)
+{
+	return float3(blendScreen(base.r, blend.r), blendScreen(base.g, blend.g), blendScreen(base.b, blend.b));
+}
+
+// Soft Light
+float blendSoftLight(float base, float blend)
+{
+	return (blend < 0.5)?(2.0 * base * blend + base * base * (1.0 - 2.0 * blend)) : (sqrt(base) * (2.0 * blend - 1.0) + 2.0 * base * (1.0 - blend));
+}
+
+float3 blendSoftLight(float3 base, float3 blend)
+{
+	return float3(blendSoftLight(base.r, blend.r), blendSoftLight(base.g, blend.g), blendSoftLight(base.b, blend.b));
+}
+
+// Subtract
+float blendSubtract(float base, float blend)
+{
+	return max(base - blend, 0.0);
+}
+
+float3 blendSubtract(float3 base, float3 blend)
+{
+	return max(base - blend, 0.0);
+}
+
+// Difference
+float blendDifference(float base, float blend)
+{
+	return abs(base - blend);
+}
+
+float3 blendDifference(float3 base, float3 blend)
+{
+	return abs(base - blend);
+}
+
+// Divide
+float blendDivide(float base, float blend)
+{
+	return base / max(blend, 0.0001);
+}
+
+float3 blendDivide(float3 base, float3 blend)
+{
+	return base / max(blend, 0.0001);
+}
+
+float3 customBlend(float3 base, float3 blend, float blendType)
+{
+	switch(blendType)
+	{
+		case 0 : return blendNormal			(base, blend); break;
+		case 1 : return blendDarken			(base, blend); break;
+		case 2 : return blendMultiply		(base, blend); break;
+		case 3 : return blendColorBurn		(base, blend); break;
+		case 4 : return blendLinearBurn		(base, blend); break;
+		case 5 : return blendLighten		(base, blend); break;
+		case 6 : return blendScreen			(base, blend); break;
+		case 7 : return blendColorDodge		(base, blend); break;
+		case 8 : return blendLinearDodge	(base, blend); break;
+		case 9 : return blendOverlay		(base, blend); break;
+		case 10: return blendSoftLight		(base, blend); break;
+		case 11: return blendHardLight		(base, blend); break;
+		case 12: return blendVividLight		(base, blend); break;
+		case 13: return blendLinearLight	(base, blend); break;
+		case 14: return blendPinLight		(base, blend); break;
+		case 15: return blendHardMix		(base, blend); break;
+		case 16: return blendDifference		(base, blend); break;
+		case 17: return blendExclusion		(base, blend); break;
+		case 18: return blendSubtract		(base, blend); break;
+		case 19: return blendDivide			(base, blend); break;
+		default: return 0; break;
+	}
+}
+
+float customBlend(float base, float blend, float blendType)
+{
+	switch(blendType)
+	{
+		case 0 : return blendNormal			(base, blend); break;
+		case 1 : return blendDarken			(base, blend); break;
+		case 2 : return blendMultiply		(base, blend); break;
+		case 3 : return blendColorBurn		(base, blend); break;
+		case 4 : return blendLinearBurn		(base, blend); break;
+		case 5 : return blendLighten		(base, blend); break;
+		case 6 : return blendScreen			(base, blend); break;
+		case 7 : return blendColorDodge		(base, blend); break;
+		case 8 : return blendLinearDodge	(base, blend); break;
+		case 9 : return blendOverlay		(base, blend); break;
+		case 10: return blendSoftLight		(base, blend); break;
+		case 11: return blendHardLight		(base, blend); break;
+		case 12: return blendVividLight		(base, blend); break;
+		case 13: return blendLinearLight	(base, blend); break;
+		case 14: return blendPinLight		(base, blend); break;
+		case 15: return blendHardMix		(base, blend); break;
+		case 16: return blendDifference		(base, blend); break;
+		case 17: return blendExclusion		(base, blend); break;
+		case 18: return blendSubtract		(base, blend); break;
+		case 19: return blendDivide			(base, blend); break;
+		default: return 0; break;
+	}
+}
+
+float random(float2 p)
+{
+	return frac(sin(dot(p, float2(12.9898, 78.2383))) * 43758.5453123);
+}
+
+float2 random2(float2 p)
+{
+	return frac(sin(float2(dot(p, float2(127.1, 311.7)), dot(p, float2(269.5, 183.3)))) * 43758.5453);
+}
+
+float3 random3(float3 p)
+{
+	return frac(sin(float3(dot(p, float3(127.1, 311.7, 248.6)), dot(p, float3(269.5, 183.3, 423.3)), dot(p, float3(248.3, 315.9, 184.2)))) * 43758.5453);
+}
+
+float3 randomFloat3(float2 Seed, float maximum)
+{
+	return (.5 + float3(
+		frac(sin(dot(Seed.xy, float2(12.9898, 78.233))) * 43758.5453),
+		frac(sin(dot(Seed.yx, float2(12.9898, 78.233))) * 43758.5453),
+		frac(sin(dot(float2(Seed), float2(12.9898, 78.233))) * 43758.5453)
+	) * .5) * (maximum);
+}
+
+float3 randomFloat3Range(float2 Seed, float Range)
+{
+	return (float3(
+		frac(sin(dot(Seed.xy, float2(12.9898, 78.233))) * 43758.5453),
+		frac(sin(dot(Seed.yx, float2(12.9898, 78.233))) * 43758.5453),
+		frac(sin(dot(float2(Seed.x * Seed.y, Seed.y + Seed.x), float2(12.9898, 78.233))) * 43758.5453)
+	) * 2 - 1) * Range;
+}
+
+float3 randomFloat3WiggleRange(float2 Seed, float Range, float wiggleSpeed)
+{
+	float3 rando = (float3(
+		frac(sin(dot(Seed.xy, float2(12.9898, 78.233))) * 43758.5453),
+		frac(sin(dot(Seed.yx, float2(12.9898, 78.233))) * 43758.5453),
+		frac(sin(dot(float2(Seed.x * Seed.y, Seed.y + Seed.x), float2(12.9898, 78.233))) * 43758.5453)
+	) * 2 - 1);
+	float speed = 1 + wiggleSpeed;
+	return float3(sin((_Time.x + rando.x * PI) * speed), sin((_Time.x + rando.y * PI) * speed), sin((_Time.x + rando.z * PI) * speed)) * Range;
+}
+
+void poiDither(float4 In, float4 ScreenPosition, out float4 Out)
+{
+	float2 uv = ScreenPosition.xy * _ScreenParams.xy;
+	float DITHER_THRESHOLDS[16] = {
+		1.0 / 17.0, 9.0 / 17.0, 3.0 / 17.0, 11.0 / 17.0,
+		13.0 / 17.0, 5.0 / 17.0, 15.0 / 17.0, 7.0 / 17.0,
+		4.0 / 17.0, 12.0 / 17.0, 2.0 / 17.0, 10.0 / 17.0,
+		16.0 / 17.0, 8.0 / 17.0, 14.0 / 17.0, 6.0 / 17.0
+	};
+	uint index = (uint(uv.x) % 4) * 4 + uint(uv.y) % 4;
+	Out = In - DITHER_THRESHOLDS[index];
+}
+
+static const float Epsilon = 1e-10;
+// The weights of RGB contributions to luminance.
+// Should sum to unity.
+static const float3 HCYwts = float3(0.299, 0.587, 0.114);
+static const float HCLgamma = 3;
+static const float HCLy0 = 100;
+static const float HCLmaxL = 0.530454533953517; // == exp(HCLgamma / HCLy0) - 0.5
+static const float3 wref = float3(1.0, 1.0, 1.0);
+#define TAU 6.28318531
+
+float3 HUEtoRGB(in float H)
+{
+	float R = abs(H * 6 - 3) - 1;
+	float G = 2 - abs(H * 6 - 2);
+	float B = 2 - abs(H * 6 - 4);
+	return saturate(float3(R, G, B));
+}
+
+float3 RGBtoHCV(in float3 RGB)
+{
+	// Based on work by Sam Hocevar and Emil Persson
+	float4 P = (RGB.g < RGB.b) ? float4(RGB.bg, -1.0, 2.0 / 3.0) : float4(RGB.gb, 0.0, -1.0 / 3.0);
+	float4 Q = (RGB.r < P.x) ? float4(P.xyw, RGB.r) : float4(RGB.r, P.yzx);
+	float C = Q.x - min(Q.w, Q.y);
+	float H = abs((Q.w - Q.y) / (6 * C + Epsilon) + Q.z);
+	return float3(H, C, Q.x);
+}
+
+float3 HSVtoRGB(in float3 HSV)
+{
+	float3 RGB = HUEtoRGB(HSV.x);
+	return ((RGB - 1) * HSV.y + 1) * HSV.z;
+}
+
+float3 RGBtoHSV(in float3 RGB)
+{
+	float3 HCV = RGBtoHCV(RGB);
+	float S = HCV.y / (HCV.z + Epsilon);
+	return float3(HCV.x, S, HCV.z);
+}
+
+float3 HSLtoRGB(in float3 HSL)
+{
+	float3 RGB = HUEtoRGB(HSL.x);
+	float C = (1 - abs(2 * HSL.z - 1)) * HSL.y;
+	return (RGB - 0.5) * C + HSL.z;
+}
+
+float3 RGBtoHSL(in float3 RGB)
+{
+	float3 HCV = RGBtoHCV(RGB);
+	float L = HCV.z - HCV.y * 0.5;
+	float S = HCV.y / (1 - abs(L * 2 - 1) + Epsilon);
+	return float3(HCV.x, S, L);
+}
+
+void DecomposeHDRColor(in float3 linearColorHDR, out float3 baseLinearColor, out float exposure)
+{
+	// Optimization/adaptation of https://github.com/Unity-Technologies/UnityCsReference/blob/master/Editor/Mono/GUI/ColorMutator.cs#L23 but skips weird photoshop stuff
+	float maxColorComponent = max(linearColorHDR.r, max(linearColorHDR.g, linearColorHDR.b));
+	bool isSDR = maxColorComponent <= 1.0;
+
+	float scaleFactor = isSDR ? 1.0 : (1.0 / maxColorComponent);
+	exposure = isSDR ? 0.0 : log(maxColorComponent) * 1.44269504089; // ln(2)
+	
+	baseLinearColor = scaleFactor * linearColorHDR;
+}
+
+float3 ApplyHDRExposure(float3 linearColor, float exposure)
+{
+	return linearColor * pow(2, exposure);
+}
+
+// Transforms an RGB color using a matrix. Note that S and V are absolute values here
+float3 ModifyViaHSV(float3 color, float h, float s, float v)
+{
+	float3 colorHSV = RGBtoHSV(color);
+	colorHSV.x = frac(colorHSV.x + h);
+	colorHSV.y = saturate(colorHSV.y + s);
+	colorHSV.z = saturate(colorHSV.z + v);
+	return HSVtoRGB(colorHSV);
+}
+
+float3 ModifyViaHSV(float3 color, float3 HSVMod)
+{
+	return ModifyViaHSV(color, HSVMod.x, HSVMod.y, HSVMod.z);
+}
+
+float3 hueShift(float3 color, float hueOffset)
+{
+	color = RGBtoHSV(color);
+	color.x = frac(hueOffset +color.x);
+	return HSVtoRGB(color);
+}
+
+// LCH
+float xyzF(float t)
+{
+	return lerp(pow(t, 1. / 3.), 7.787037 * t + 0.139731, step(t, 0.00885645));
+}
+float xyzR(float t)
+{
+	return lerp(t * t * t, 0.1284185 * (t - 0.139731), step(t, 0.20689655));
+}
+
+float4x4 poiRotationMatrixFromAngles(float x, float y, float z)
+{
+	float angleX = radians(x);
+	float c = cos(angleX);
+	float s = sin(angleX);
+	float4x4 rotateXMatrix = float4x4(1, 0, 0, 0,
+	0, c, -s, 0,
+	0, s, c, 0,
+	0, 0, 0, 1);
+	
+	float angleY = radians(y);
+	c = cos(angleY);
+	s = sin(angleY);
+	float4x4 rotateYMatrix = float4x4(c, 0, s, 0,
+	0, 1, 0, 0,
+	- s, 0, c, 0,
+	0, 0, 0, 1);
+	
+	float angleZ = radians(z);
+	c = cos(angleZ);
+	s = sin(angleZ);
+	float4x4 rotateZMatrix = float4x4(c, -s, 0, 0,
+	s, c, 0, 0,
+	0, 0, 1, 0,
+	0, 0, 0, 1);
+	
+	return mul(mul(rotateXMatrix, rotateYMatrix), rotateZMatrix);
+}
+
+float4x4 poiRotationMatrixFromAngles(float3 angles)
+{
+	float angleX = radians(angles.x);
+	float c = cos(angleX);
+	float s = sin(angleX);
+	float4x4 rotateXMatrix = float4x4(1, 0, 0, 0,
+	0, c, -s, 0,
+	0, s, c, 0,
+	0, 0, 0, 1);
+	
+	float angleY = radians(angles.y);
+	c = cos(angleY);
+	s = sin(angleY);
+	float4x4 rotateYMatrix = float4x4(c, 0, s, 0,
+	0, 1, 0, 0,
+	- s, 0, c, 0,
+	0, 0, 0, 1);
+	
+	float angleZ = radians(angles.z);
+	c = cos(angleZ);
+	s = sin(angleZ);
+	float4x4 rotateZMatrix = float4x4(c, -s, 0, 0,
+	s, c, 0, 0,
+	0, 0, 1, 0,
+	0, 0, 0, 1);
+	
+	return mul(mul(rotateXMatrix, rotateYMatrix), rotateZMatrix);
+}
+
+float3 getCameraPosition()
+{
+	#ifdef USING_STEREO_MATRICES
+		return lerp(unity_StereoWorldSpaceCameraPos[0], unity_StereoWorldSpaceCameraPos[1], 0.5);
+	#endif
+	return _WorldSpaceCameraPos;
+}
+
+half2 calcScreenUVs(half4 grabPos)
+{
+	half2 uv = grabPos.xy / (grabPos.w + 0.0000000001);
+	#if UNITY_SINGLE_PASS_STEREO
+		uv.xy *= half2(_ScreenParams.x * 2, _ScreenParams.y);
+	#else
+		uv.xy *= _ScreenParams.xy;
+	#endif
+	
+	return uv;
+}
+
+float CalcMipLevel(float2 texture_coord)
+{
+	float2 dx = ddx(texture_coord);
+	float2 dy = ddy(texture_coord);
+	float delta_max_sqr = max(dot(dx, dx), dot(dy, dy));
+	
+	return 0.5 * log2(delta_max_sqr);
+}
+
+float inverseLerp(float A, float B, float T)
+{
+	return (T - A) / (B - A);
+}
+
+float inverseLerp2(float2 a, float2 b, float2 value)
+{
+	float2 AB = b - a;
+	float2 AV = value - a;
+	return dot(AV, AB) / dot(AB, AB);
+}
+
+float inverseLerp3(float3 a, float3 b, float3 value)
+{
+	float3 AB = b - a;
+	float3 AV = value - a;
+	return dot(AV, AB) / dot(AB, AB);
+}
+
+float inverseLerp4(float4 a, float4 b, float4 value)
+{
+	float4 AB = b - a;
+	float4 AV = value - a;
+	return dot(AV, AB) / dot(AB, AB);
+}
+
+/*
+MIT License
+
+Copyright (c) 2019 wraikny
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+VertexTransformShader is dependent on:
+*/
+
+float4 quaternion_conjugate(float4 v)
+{
+	return float4(
+		v.x, -v.yzw
+	);
+}
+
+float4 quaternion_mul(float4 v1, float4 v2)
+{
+	float4 result1 = (v1.x * v2 + v1 * v2.x);
+	
+	float4 result2 = float4(
+		- dot(v1.yzw, v2.yzw),
+		cross(v1.yzw, v2.yzw)
+	);
+	
+	return float4(result1 + result2);
+}
+
+// angle : radians
+float4 get_quaternion_from_angle(float3 axis, float angle)
+{
+	float sn = sin(angle * 0.5);
+	float cs = cos(angle * 0.5);
+	return float4(axis * sn, cs);
+}
+
+float4 quaternion_from_vector(float3 inVec)
+{
+	return float4(0.0, inVec);
+}
+
+float degree_to_radius(float degree)
+{
+	return (
+		degree / 180.0 * PI
+	);
+}
+
+float3 rotate_with_quaternion(float3 inVec, float3 rotation)
+{
+	float4 qx = get_quaternion_from_angle(float3(1, 0, 0), radians(rotation.x));
+	float4 qy = get_quaternion_from_angle(float3(0, 1, 0), radians(rotation.y));
+	float4 qz = get_quaternion_from_angle(float3(0, 0, 1), radians(rotation.z));
+	
+	#define MUL3(A, B, C) quaternion_mul(quaternion_mul((A), (B)), (C))
+	float4 quaternion = normalize(MUL3(qx, qy, qz));
+	float4 conjugate = quaternion_conjugate(quaternion);
+	
+	float4 inVecQ = quaternion_from_vector(inVec);
+	
+	float3 rotated = (
+		MUL3(quaternion, inVecQ, conjugate)
+	).yzw;
+	
+	return rotated;
+}
+
+float4 transform(float4 input, float4 pos, float4 rotation, float4 scale)
+{
+	input.rgb *= (scale.xyz * scale.w);
+	input = float4(rotate_with_quaternion(input.xyz, rotation.xyz * rotation.w) + (pos.xyz * pos.w), input.w);
+	return input;
+}
+
+/*
+MIT END
+*/
+
+float3 poiThemeColor(in PoiMods poiMods, in float3 srcColor, in float themeIndex)
+{
+	if (themeIndex == 0) return srcColor;
+	themeIndex -= 1;
+	
+	if (themeIndex <= 3)
+	{
+		return poiMods.globalColorTheme[themeIndex];
+	}
+
+	#ifdef POI_AUDIOLINK
+		if (poiMods.audioLinkAvailable)
+		{
+			return poiMods.globalColorTheme[themeIndex];
+		}
+	#endif
+
+	return srcColor;
+}
+
+float lilIsIn0to1(float f)
+{
+	float value = 0.5 - abs(f - 0.5);
+	return saturate(value / clamp(fwidth(value), 0.0001, 1.0));
+}
+
+float lilIsIn0to1(float f, float nv)
+{
+	float value = 0.5 - abs(f - 0.5);
+	return saturate(value / clamp(fwidth(value), 0.0001, nv));
+}
+
+float poiEdgeLinearNoSaturate(float value, float border)
+{
+	return (value - border) / clamp(fwidth(value), 0.0001, 1.0);
+}
+
+float poiEdgeLinearNoSaturate(float value, float border, float blur)
+{
+	float borderMin = saturate(border - blur * 0.5);
+	float borderMax = saturate(border + blur * 0.5);
+	return (value - borderMin) / saturate(borderMax - borderMin + fwidth(value));
+}
+
+float poiEdgeLinearNoSaturate(float value, float border, float blur, float borderRange)
+{
+	float borderMin = saturate(border - blur * 0.5 - borderRange);
+	float borderMax = saturate(border + blur * 0.5);
+	return (value - borderMin) / saturate(borderMax - borderMin + fwidth(value));
+}
+
+float poiEdgeNonLinearNoSaturate(float value, float border)
+{
+	//return (value - border) / clamp(fwidth(value), 0.0001, 1.0);
+
+	float fwidthValue = fwidth(value);
+	return smoothstep(border - fwidthValue, border + fwidthValue, value);
+}
+
+float poiEdgeNonLinearNoSaturate(float value, float border, float blur)
+{
+	float fwidthValue = fwidth(value);
+	float borderMin = saturate(border - blur * 0.5);
+	float borderMax = saturate(border + blur * 0.5);
+	return smoothstep(borderMin - fwidthValue, borderMax + fwidthValue, value);
+}
+
+float poiEdgeNonLinearNoSaturate(float value, float border, float blur, float borderRange)
+{
+	float fwidthValue = fwidth(value);
+	float borderMin = saturate(border - blur * 0.5 - borderRange);
+	float borderMax = saturate(border + blur * 0.5);
+	return smoothstep(borderMin - fwidthValue, borderMax + fwidthValue, value);
+}
+
+float poiEdgeNonLinear(float value, float border)
+{
+	return saturate(poiEdgeNonLinearNoSaturate(value, border));
+}
+
+float poiEdgeNonLinear(float value, float border, float blur)
+{
+	return saturate(poiEdgeNonLinearNoSaturate(value, border, blur));
+}
+
+float poiEdgeNonLinear(float value, float border, float blur, float borderRange)
+{
+	return saturate(poiEdgeNonLinearNoSaturate(value, border, blur, borderRange));
+}
+
+float poiEdgeLinear(float value, float border)
+{
+	return saturate(poiEdgeLinearNoSaturate(value, border));
+}
+
+float poiEdgeLinear(float value, float border, float blur)
+{
+	return saturate(poiEdgeLinearNoSaturate(value, border, blur));
+}
+
+float poiEdgeLinear(float value, float border, float blur, float borderRange)
+{
+	return saturate(poiEdgeLinearNoSaturate(value, border, blur, borderRange));
+}
+// From https://github.com/lilxyzw/OpenLit/blob/main/Assets/OpenLit/core.hlsl
+float3 OpenLitLinearToSRGB(float3 col)
+{
+	return LinearToGammaSpace(col);
+}
+
+float3 OpenLitSRGBToLinear(float3 col)
+{
+	return GammaToLinearSpace(col);
+}
+
+float OpenLitLuminance(float3 rgb)
+{
+	#if defined(UNITY_COLORSPACE_GAMMA)
+		return dot(rgb, float3(0.22, 0.707, 0.071));
+	#else
+		return dot(rgb, float3(0.0396819152, 0.458021790, 0.00609653955));
+	#endif
+}
+
+float OpenLitGray(float3 rgb)
+{
+	return dot(rgb, float3(1.0/3.0, 1.0/3.0, 1.0/3.0));
+}
+
+void OpenLitShadeSH9ToonDouble(float3 lightDirection, out float3 shMax, out float3 shMin)
+{
+	#if !defined(LIGHTMAP_ON) && UNITY_SHOULD_SAMPLE_SH
+		float3 N = lightDirection * 0.666666;
+		float4 vB = N.xyzz * N.yzzx;
+		// L0 L2
+		float3 res = float3(unity_SHAr.w,unity_SHAg.w,unity_SHAb.w);
+		res.r += dot(unity_SHBr, vB);
+		res.g += dot(unity_SHBg, vB);
+		res.b += dot(unity_SHBb, vB);
+		res += unity_SHC.rgb * (N.x * N.x - N.y * N.y);
+		// L1
+		float3 l1;
+		l1.r = dot(unity_SHAr.rgb, N);
+		l1.g = dot(unity_SHAg.rgb, N);
+		l1.b = dot(unity_SHAb.rgb, N);
+		shMax = res + l1;
+		shMin = res - l1;
+		#if defined(UNITY_COLORSPACE_GAMMA)
+			shMax = OpenLitLinearToSRGB(shMax);
+			shMin = OpenLitLinearToSRGB(shMin);
+		#endif
+	#else
+		shMax = 0.0;
+		shMin = 0.0;
+	#endif
+}
+
+float3 OpenLitComputeCustomLightDirection(float4 lightDirectionOverride)
+{
+	float3 customDir = length(lightDirectionOverride.xyz) * normalize(mul((float3x3)unity_ObjectToWorld, lightDirectionOverride.xyz));
+	return lightDirectionOverride.w ? customDir : lightDirectionOverride.xyz; // .w isn't doc'd anywhere and is always 0 unless end user changes it
+}
+
+float3 OpenLitLightingDirection(float4 lightDirectionOverride)
+{
+	float3 mainDir = _WorldSpaceLightPos0.xyz * OpenLitLuminance(_LightColor0.rgb);
+	#if !defined(LIGHTMAP_ON) && UNITY_SHOULD_SAMPLE_SH
+		float3 sh9Dir = unity_SHAr.xyz * 0.333333 + unity_SHAg.xyz * 0.333333 + unity_SHAb.xyz * 0.333333;
+		float3 sh9DirAbs = float3(sh9Dir.x, abs(sh9Dir.y), sh9Dir.z);
+	#else
+		float3 sh9Dir = 0;
+		float3 sh9DirAbs = 0;
+	#endif
+	float3 customDir = OpenLitComputeCustomLightDirection(lightDirectionOverride);
+
+	return normalize(sh9DirAbs + mainDir + customDir);
+}
+
+float3 OpenLitLightingDirection()
+{
+	float4 customDir = float4(0.001,0.002,0.001,0.0);
+	return OpenLitLightingDirection(customDir);
+}
+
+inline float4 CalculateFrustumCorrection()
+{
+	float x1 = -UNITY_MATRIX_P._31 / (UNITY_MATRIX_P._11 * UNITY_MATRIX_P._34);
+	float x2 = -UNITY_MATRIX_P._32 / (UNITY_MATRIX_P._22 * UNITY_MATRIX_P._34);
+	return float4(x1, x2, 0, UNITY_MATRIX_P._33 / UNITY_MATRIX_P._34 + x1 * UNITY_MATRIX_P._13 + x2 * UNITY_MATRIX_P._23);
+}
+
+inline float CorrectedLinearEyeDepth(float z, float B)
+{
+	return 1.0 / (z / UNITY_MATRIX_P._34 + B);
+}
+
+//Silent's code
+float2 sharpSample( float4 texelSize , float2 p )
+{
+	p = p*texelSize.zw;
+    float2 c = max(0.0, fwidth(p));
+    p = floor(p) + saturate(frac(p) / c);
+	p = (p - 0.5)*texelSize.xy;
+	return p;
+}
+
+
+void applyToGlobalMask(inout PoiMods poiMods, int index, int blendType, float val)
+    {
+        float valBlended = customBlend(poiMods.globalMask[index], val, blendType);
+        switch (index)
+        {
+            case 0: poiMods.globalMask[0] = valBlended; break;
+            case 1: poiMods.globalMask[1] = valBlended; break;
+            case 2: poiMods.globalMask[2] = valBlended; break;
+            case 3: poiMods.globalMask[3] = valBlended; break;
+            case 4: poiMods.globalMask[4] = valBlended; break;
+            case 5: poiMods.globalMask[5] = valBlended; break;
+            case 6: poiMods.globalMask[6] = valBlended; break;
+            case 7: poiMods.globalMask[7] = valBlended; break;
+            case 8: poiMods.globalMask[8] = valBlended; break;
+            case 9: poiMods.globalMask[9] = valBlended; break;
+            case 10: poiMods.globalMask[10] = valBlended; break;
+            case 11: poiMods.globalMask[11] = valBlended; break;
+            case 12: poiMods.globalMask[12] = valBlended; break;
+            case 13: poiMods.globalMask[13] = valBlended; break;
+            case 14: poiMods.globalMask[14] = valBlended; break;
+            case 15: poiMods.globalMask[15] = valBlended; break;
+        }
+    }

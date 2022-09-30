@@ -1,0 +1,175 @@
+#T#PoiStylizedSpecularProperties
+//ifex _StylizedSpecular==0
+[HideInInspector] m_start_stylizedSpec (" Stylized Specular--{reference_property:_StylizedSpecular,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/shading/stylized-specular},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(POI_STYLIZED_StylizedSpecular)]_StylizedSpecular ("Enable", Float) = 0
+
+[sRGBWarning(true)][ThryTexture]_HighColor_Tex ("Specular Map--{reference_properties:[_HighColor_TexPan, _HighColor_TexUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_HighColor_TexPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_HighColor_TexUV ("UV", Int) = 0
+_HighColor ("Tint--{reference_property:_HighColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _HighColorThemeIndex ("", Int) = 0
+[sRGBWarning]_Set_HighColorMask ("Mask--{reference_properties:[_Set_HighColorMaskPan, _Set_HighColorMaskUV, _Tweak_HighColorMaskLevel]}", 2D) = "white" { }
+[HideInInspector][Vector2]_Set_HighColorMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_Set_HighColorMaskUV ("UV", Int) = 0
+[HideInInspector]_Tweak_HighColorMaskLevel ("Mask Level", Range(-1, 1)) = 0
+[ThryWideEnum(Toon, 0, Realistic, 1)]_Is_SpecularToHighColor ("Specular Mode", Float) = 0
+[ThryWideEnum(Replace, 0, Add, 1)]_Is_BlendAddToHiColor ("Color Blend Mode", Int) = 0
+
+_StylizedSpecularStrength ("Strength", Float) = 1
+[ToggleUI] _UseLightColor ("Use Light Color", Float) = 1
+[ToggleUI]_SSIgnoreCastedShadows ("Ignore Casted Shadows", Float) = 0
+[Space(8)]
+
+[ThryHeaderLabel(Layer 1, 13)]
+_HighColor_Power ("Size", Range(0, 1)) = 0.2
+_StylizedSpecularFeather ("Feather--{condition_showS:(_Is_SpecularToHighColor==0)}", Range(0, 1)) = 0
+_Layer1Strength ("Strength", Range(0, 1)) = 1
+[Space(8)]
+
+[ThryHeaderLabel(Layer 2, 13)]
+_Layer2Size ("Size", Range(0, 1)) = 0
+_StylizedSpecular2Feather ("Feather--{condition_showS:(_Is_SpecularToHighColor==0)}", Range(0, 1)) = 0
+_Layer2Strength ("Strength", Range(0, 1)) = 0
+[HideInInspector] m_end_stylizedSpec ("", Float) = 0
+//endex
+#T#PoiStylizedSpecularKeywords
+//ifex _StylizedSpecular==0
+#pragma shader_feature_local POI_STYLIZED_StylizedSpecular
+//endex
+
+#T#PoiStylizedSpecularVariables
+//ifex _StylizedSpecular==0
+#ifdef POI_STYLIZED_StylizedSpecular
+	#if defined(PROP_HIGHCOLOR_TEX) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _HighColor_Tex;
+	#endif
+	float4 _HighColor_Tex_ST;
+	float2 _HighColor_TexPan;
+	float _HighColor_TexUV;
+
+	#if defined(PROP_SET_HIGHCOLORMASK) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _Set_HighColorMask;
+	#endif
+	float4 _Set_HighColorMask_ST;
+	float2 _Set_HighColorMaskPan;
+	float _Set_HighColorMaskUV;
+	float _Tweak_HighColorMaskLevel;
+
+	/*
+	#if defined(PROP_StylizedSpecularOPTMAP1) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _StylizedSpecularOptMap1;
+	#endif
+	float4 _StylizedSpecularOptMap1_ST;
+	float2 _StylizedSpecularOptMap1Pan;
+	float _StylizedSpecularOptMap1UV;
+
+	#if defined(PROP_StylizedSpecularOPTMAP2) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _StylizedSpecularOptMap2;
+	#endif
+	float4 _StylizedSpecularOptMap2_ST;
+	float2 _StylizedSpecularOptMap2Pan;
+	float _StylizedSpecularOptMap2UV;
+	*/
+
+	float4 _HighColor;
+	float _UseLightColor;
+
+	float _HighColor_Power;
+	float _StylizedSpecularFeather;
+	float _Layer1Strength;
+	
+	float _Layer2Size;
+	float _StylizedSpecular2Feather;
+	float _Layer2Strength;
+	float _SSIgnoreCastedShadows;
+	float _StylizedSpecularStrength;
+	float _UseSpecularOptMap2;
+	float _HighColorThemeIndex;
+	float _Is_BlendAddToHiColor;
+	float _Is_SpecularToHighColor;
+#endif
+//endex
+
+#T#PoiStylizedSpecularFunctions
+//ifex _StylizedSpecular==0
+#ifdef POI_STYLIZED_StylizedSpecular
+	void stylizedSpecular(inout PoiFragData poiFragData, in PoiCam poiCam, inout PoiLight poiLight, in PoiMesh poiMesh, in PoiMods poiMods)
+	{
+		float specArea = 0.5 * poiLight.nDotH + 0.5;
+		#if defined(PROP_HIGHCOLOR_TEX) || !defined(OPTIMIZER_ENABLED)
+			float3 specularMap = POI2D_SAMPLER_PAN(_HighColor_Tex, _MainTex, poiUV(poiMesh.uv[_HighColor_TexUV], _HighColor_Tex_ST), _HighColor_TexPan);
+		#else
+			float3 specularMap = 1;
+		#endif
+
+		// Spec 1
+		float specMask1 = 0;
+		float specMask2 = 0;
+		if (_Is_SpecularToHighColor)
+		{
+			specMask1 += pow(specArea, exp2(lerp(11, 1, _HighColor_Power))) * _Layer1Strength;
+			specMask2 += pow(specArea, exp2(lerp(11, 1, _Layer2Size))) * _Layer2Strength;
+		}
+		else
+		{
+			specMask1 += poiEdgeNonLinear(specArea, (1.0 - pow(_HighColor_Power, 5)), _StylizedSpecularFeather) * _Layer1Strength;
+			specMask2 += poiEdgeNonLinear(specArea, (1.0 - pow(_Layer2Size, 5)), _StylizedSpecular2Feather) * _Layer2Strength;
+		}
+
+
+		#if defined(PROP_SET_HIGHCOLORMASK) || !defined(OPTIMIZER_ENABLED)
+			float specularMask = POI2D_SAMPLER_PAN(_Set_HighColorMask, _MainTex, poiUV(poiMesh.uv[_Set_HighColorMaskUV], _Set_HighColorMask_ST), _Set_HighColorMaskPan).g;
+		#else
+			float specularMask = 1;
+		#endif
+
+		specularMask = saturate(specularMask + _Tweak_HighColorMaskLevel);
+
+		float specMask = saturate(specMask1 + specMask2) * specularMask * poiLight.rampedLightMap;
+		float attenuation = min(poiLight.nDotLSaturated, lerp(poiLight.attenuation, 1, _SSIgnoreCastedShadows));
+		if (_Is_BlendAddToHiColor == 1)
+		{
+			poiLight.finalLightAdd += max(0, specularMap * poiThemeColor(poiMods, _HighColor, _HighColorThemeIndex) * lerp(1, poiLight.directColor, _UseLightColor) * specMask * poiLight.occlusion * attenuation * _StylizedSpecularStrength);
+		}
+		else
+		{
+			poiFragData.baseColor = lerp(poiFragData.baseColor, specularMap * poiThemeColor(poiMods, _HighColor, _HighColorThemeIndex) * lerp(1, poiLight.directColor, _UseLightColor), saturate(specMask * poiLight.occlusion * attenuation * _StylizedSpecularStrength));
+		}
+		//poiFragData.baseColor = _StylizedSpecularStrength;
+
+		float3 vSpecMask = 0;
+		#if defined(VERTEXLIGHT_ON) && defined(POI_VERTEXLIGHT_ON)
+			for (int index = 0; index < 4; index++)
+			{
+				specArea = 0.5 * poiLight.vDotNH[index] + 0.5;
+				if (_Is_SpecularToHighColor)
+				{
+					vSpecMask = pow(specArea, exp2(lerp(11, 1, _HighColor_Power))) * _Layer1Strength * poiLight.vAttenuation * poiLight.vColor[index];
+					vSpecMask = max(vSpecMask, pow(specArea, exp2(lerp(11, 1, _Layer2Size))) * _Layer2Strength * poiLight.vAttenuation * poiLight.vColor[index]);
+				}
+				else
+				{
+					vSpecMask = poiEdgeNonLinear(specArea, (1.0 - pow(_HighColor_Power, 5)), _StylizedSpecularFeather) * _Layer1Strength * poiLight.vAttenuation * poiLight.vColor[index];
+					vSpecMask = max(vSpecMask, poiEdgeNonLinear(specArea, (1.0 - pow(_Layer2Size, 5)), _StylizedSpecular2Feather) * _Layer2Strength * poiLight.vAttenuation * poiLight.vColor[index]);
+				}
+			}
+			vSpecMask *= specularMask;
+			if (_Is_BlendAddToHiColor == 1)
+			{
+				poiLight.finalLightAdd += max(0, specularMap * poiThemeColor(poiMods, _HighColor, _HighColorThemeIndex) * vSpecMask * poiLight.occlusion * _StylizedSpecularStrength);
+			}
+			else
+			{
+				poiFragData.baseColor = lerp(poiFragData.baseColor, specularMap * poiThemeColor(poiMods, _HighColor, _HighColorThemeIndex), saturate(vSpecMask * poiLight.occlusion * _StylizedSpecularStrength));
+			}
+		#endif
+	}
+#endif
+//endex
+
+#T#PoiStylizedSpecularFunctionCalls
+//ifex _StylizedSpecular==0
+#ifdef POI_STYLIZED_StylizedSpecular
+	stylizedSpecular(poiFragData, poiCam, poiLight, poiMesh, poiMods);
+#endif
+//endex

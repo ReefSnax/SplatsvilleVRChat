@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f11136daadff0b44ac2278a314682ab, type: 3}
+  m_Name: set avatarpedestal id
+  m_EditorClassIdentifier: 
+  serializedUdonProgramAsset: {fileID: 11400000, guid: bfa81af694da7b84eb5a093935e871f9,
+    type: 2}
+  udonAssembly: ".data_start\r\n\r\n    .export id\r\n    .export pedestal\r\n   
+    \r\n    __VRCAvatarPedestal_0: %VRCSDK3ComponentsVRCAvatarPedestal, null\r\n   
+    __String_0: %SystemString, null\r\n    id: %SystemString, null\r\n    pedestal:
+    %VRCSDK3ComponentsVRCAvatarPedestal, null\r\n\r\n.data_end\r\n\r\n.code_start\r\n\r\n   
+    .export _interact\r\n    \r\n    _interact:\r\n    \r\n        PUSH, pedestal\r\n       
+    PUSH, __VRCAvatarPedestal_0\r\n        COPY\r\n        PUSH, id\r\n        PUSH,
+    __String_0\r\n        COPY\r\n        PUSH, __VRCAvatarPedestal_0\r\n       
+    PUSH, __String_0\r\n        EXTERN, \"VRCSDK3ComponentsVRCAvatarPedestal.__set_blueprintId__SystemString\"\r\n       
+    JUMP, 0xFFFFFFFC\r\n    \r\n\r\n.code_end\r\n"
+  assemblyError: 
+  graphData:
+    name: 
+    description: 
+    nodes:
+    - fullName: Variable_SystemString
+      uid: 05f755c6-be4b-4419-bd61-15da2ed8a814
+      position: {x: 0, y: 0}
+      nodeUIDs:
+      - 
+      - 
+      - 
+      - 
+      - 
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: 
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|id
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089|True
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089|False
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|none
+    - fullName: Event_Interact
+      uid: 7dc7c49e-8d94-4173-81bd-04d42fb2b4c9
+      position: {x: 686, y: 133}
+      nodeUIDs: []
+      flowUIDs:
+      - dadd03e7-abdf-4066-b07b-8ec4b3e4db32
+      nodeValues: []
+    - fullName: Get_Variable
+      uid: 50e831b0-74ee-40dc-a32e-32dbe2f7a7aa
+      position: {x: 667, y: 333}
+      nodeUIDs:
+      - 
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|05f755c6-be4b-4419-bd61-15da2ed8a814
+    - fullName: Variable_VRCSDK3ComponentsVRCAvatarPedestal
+      uid: 17f65d44-6863-46b6-9d21-b77d2bfc3988
+      position: {x: 0, y: 0}
+      nodeUIDs:
+      - 
+      - 
+      - 
+      - 
+      - 
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: 
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|pedestal
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089|True
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+          PublicKeyToken=b77a5c561934e089|False
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|none
+    - fullName: Get_Variable
+      uid: 7b71361e-b9f7-40e4-8555-05fc81831750
+      position: {x: 578, y: 234}
+      nodeUIDs:
+      - 
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|17f65d44-6863-46b6-9d21-b77d2bfc3988
+    - fullName: VRCSDK3ComponentsVRCAvatarPedestal.__set_blueprintId__SystemString
+      uid: dadd03e7-abdf-4066-b07b-8ec4b3e4db32
+      position: {x: 887, y: 204}
+      nodeUIDs:
+      - 7b71361e-b9f7-40e4-8555-05fc81831750|0
+      - 50e831b0-74ee-40dc-a32e-32dbe2f7a7aa|0
+      flowUIDs: []
+      nodeValues:
+      - unityObjectValue: {fileID: 0}
+        stringValue: 
+      - unityObjectValue: {fileID: 0}
+        stringValue: 
+    updateOrder: 0
+  graphElementData:
+  - type: 5
+    uid: 4f17a508-6f93-415b-9d69-178a6e886e95
+    jsonData: '{"visible":true,"layout":{"serializedVersion":"2","x":10.0,"y":130.0,"width":220.0,"height":261.0}}'
+  - type: 4
+    uid: c1cbc2b9-866b-4ba0-b367-42951ec41f9f
+    jsonData: '{"visible":true,"layout":{"serializedVersion":"2","x":10.0,"y":20.0,"width":0.0,"height":0.0}}'
+  - type: 2
+    uid: 1b6ea758-ff30-4dc8-9019-e13974d41a81
+    jsonData: '{"uid":"1b6ea758-ff30-4dc8-9019-e13974d41a81","layout":{"serializedVersion":"2","x":553.0,"y":76.0,"width":522.0,"height":365.0},"containedElements":["50e831b0-74ee-40dc-a32e-32dbe2f7a7aa","7b71361e-b9f7-40e4-8555-05fc81831750","dadd03e7-abdf-4066-b07b-8ec4b3e4db32","7dc7c49e-8d94-4173-81bd-04d42fb2b4c9"],"title":"set
+      id","layer":0,"elementTypeColor":{"r":0.0,"g":0.0,"b":0.0,"a":0.0}}'
+  viewTransform:
+    position: {x: 124, y: 342.4}
+    scale: 1
+  version: 1.0.0
+  showAssembly: 0

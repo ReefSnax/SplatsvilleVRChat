@@ -1,0 +1,546 @@
+#T#PoiRimLightProperties
+//ifex _EnableRimLighting==0
+[HideInInspector] m_start_rimLightOptions ("Rim Lighting--{reference_property:_EnableRimLighting,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/shading/rim-lighting},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(_GLOSSYREFLECTIONS_OFF)]_EnableRimLighting ("Enable Rim Lighting", Float) = 0
+[KeywordEnum(Poiyomi, UTS2)] _RimStyle ("Style", Float) = 0
+[sRGBWarning(true)]_RimTex ("Rim Texture--{reference_properties:[_RimTexPan, _RimTexUV], condition_showS:_RimStyle==0}", 2D) = "white" { }
+[HideInInspector][Vector2]_RimTexPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _RimTexUV ("UV", Int) = 0
+[sRGBWarning]_RimMask ("Rim Mask--{reference_properties:[_RimMaskPan, _RimMaskUV], condition_showS:_RimStyle==0}", 2D) = "white" { }
+[HideInInspector][Vector2]_RimMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _RimMaskUV ("UV", Int) = 0
+_Is_NormalMapToRimLight ("Normal Strength", Range(0, 1)) = 1
+[ToggleUI]_RimLightingInvert ("Invert Rim Lighting--{ condition_showS:_RimStyle==0}", Float) = 0
+_RimLightColor ("Rim Color--{reference_property:_RimLightColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _RimLightColorThemeIndex ("", Int) = 0
+_RimWidth ("Rim Width--{ condition_showS:_RimStyle==0}", Range(0, 1)) = 0.8
+_RimSharpness ("Rim Sharpness--{ condition_showS:_RimStyle==0}", Range(0, 1)) = .25
+_RimPower ("Rim Power--{ condition_showS:_RimStyle==0}", Range(0, 10)) = 1
+_RimStrength ("Rim Emission--{ condition_showS:_RimStyle==0}", Range(0, 20)) = 0
+_RimBaseColorMix ("Mix Base Color--{ condition_showS:_RimStyle==0}", Range(0, 1)) = 0
+[ThryWideEnum(Add, 0, Replace, 1, Multiply, 2, Mixed, 3)] _RimBlendMode ("Blend Mode--{ condition_showS:_RimStyle==0}", Int) = 0
+_RimBrightness ("Brightness--{ condition_showS:_RimStyle==0}", Range(0, 10)) = 1
+_RimBlendStrength ("Blend Strength--{ condition_showS:_RimStyle==0}", Range(0, 1)) = 1
+
+_Is_LightColor_RimLight ("Mix Light Color--{ condition_showS:_RimStyle==1}", Range(0, 1)) = 1
+_RimLight_Power ("Rim Power--{ condition_showS:_RimStyle==1}", Range(0, 1)) = 0.1
+_RimLight_InsideMask ("Inside Mask--{ condition_showS:_RimStyle==1}", Range(0.0001, 1)) = 0.0001
+[Toggle(_)] _RimLight_FeatherOff ("Feather Off--{ condition_showS:_RimStyle==1}", Float) = 0
+[ThryToggleUI(true)] _LightDirection_MaskOn ("<size=13><b>  Light Direction Mask</b></size>--{ condition_showS:_RimStyle==1}", Float) = 0
+_Tweak_LightDirection_MaskLevel ("Light Dir Mask Level--{ condition_showS:_LightDirection_MaskOn==1&&_RimStyle==1}", Range(0, 0.5)) = 0
+[ThryToggleUI(true)] _Add_Antipodean_RimLight ("<size=13><b>  Antipodean(Ap) Rim</b></size>--{ condition_showS:_LightDirection_MaskOn==1&&_RimStyle==1}", Float) = 0
+_Is_LightColor_Ap_RimLight ("Ap Light Color Mix--{ condition_showS:_LightDirection_MaskOn==1&&_Add_Antipodean_RimLight==1&&_RimStyle==1}", Range(0, 1)) = 1
+_Ap_RimLightColor ("Ap Color--{reference_property:_RimApColorThemeIndex, condition_showS:_LightDirection_MaskOn==1&&_Add_Antipodean_RimLight==1&&_RimStyle==1}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _RimApColorThemeIndex ("", Int) = 0
+_Ap_RimLight_Power ("Ap Power--{ condition_showS:_LightDirection_MaskOn==1&&_Add_Antipodean_RimLight==1&&_RimStyle==1}", Range(0, 1)) = 0.1
+[Toggle(_)] _Ap_RimLight_FeatherOff ("Ap Feather Off--{ condition_showS:_LightDirection_MaskOn==1&&_Add_Antipodean_RimLight==1&&_RimStyle==1}", Float) = 0
+[sRGBWarning]_Set_RimLightMask ("Set_RimLightMask--{ condition_showS:_LightDirection_MaskOn==1&&_RimStyle==1}", 2D) = "white" { }
+_Tweak_RimLightMaskLevel ("Tweak_RimLightMaskLevel--{ condition_showS:_LightDirection_MaskOn==1&&_RimStyle==1}", Range(-1, 1)) = 0
+
+[ThryToggleUI(true)] _RimShadowToggle ("<size=13><b>  Light Direction Mask</b></size>--{ condition_showS:_RimStyle==0}", Float) = 0
+[Enum(Shadow Map, 0, Custom, 1)]_RimShadowMaskRampType ("Light Falloff Type--{ condition_showS:_RimStyle==0&&_RimShadowToggle==1}", Int) = 0
+[ToggleUI]_RimShadowMaskInvert ("Invert Shadow Mask--{ condition_showS:_RimStyle==0&&_RimShadowToggle==1}", Float) = 0
+_RimShadowMaskStrength ("Shadow Mask Strength--{ condition_showS:_RimStyle==0&&_RimShadowToggle==1}", Range(0, 1)) = 1
+[MultiSlider]_RimShadowAlpha ("Hide In Shadow--{ condition_showS:_RimStyle==0&&_RimShadowToggle==1&&_RimShadowMaskRampType==1}", Vector) = (0.0, 0.0, 0, 1)
+_RimShadowWidth ("Shrink In Shadow--{ condition_showS:_RimStyle==0&&_RimShadowToggle==1}", Range(0, 1)) = 0
+
+[ThryToggleUI(true)] _RimHueShiftEnabled ("<size=13><b>  Hue Shift</b></size>", Float) = 0
+_RimHueShiftSpeed ("Shift Speed--{condition_showS:(_RimHueShiftEnabled==1)}", Float) = 0
+_RimHueShift ("Hue Shift--{condition_showS:(_RimHueShiftEnabled==1)}", Range(0, 1)) = 0
+
+[HideInInspector] m_start_RimAudioLink ("Audio Link ♫--{ condition_showS:_EnableAudioLink==1}", Float) = 0
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _AudioLinkRimWidthBand ("Width Add Band", Int) = 0
+[VectorLabel(Min, Max)] _AudioLinkRimWidthAdd ("Width Add", Vector) = (0, 0, 0, 0)
+	[Space(7)]
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _AudioLinkRimEmissionBand ("Emission Add Band", Int) = 0
+[VectorLabel(Min, Max)] _AudioLinkRimEmissionAdd ("Emission Add", Vector) = (0, 0, 0, 0)
+	[Space(7)]
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _AudioLinkRimBrightnessBand ("Brightness Band", Int) = 0
+[VectorLabel(Min, Max)] _AudioLinkRimBrightnessAdd ("Brightness Add", Vector) = (0, 0, 0, 0)
+[HideInInspector] m_end_RimAudioLink ("Audio Link", Float) = 0
+
+// Second Rim Lighting
+[HideInInspector] m_start_rim2LightOptions ("Second Rim Lighting--{reference_property:_EnableRim2Lighting,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/shading/rim-lighting},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(POI_RIM2)]_EnableRim2Lighting ("Enable Rim2 Lighting", Float) = 0
+[sRGBWarning(true)]_Rim2Tex ("Rim Texture--{reference_properties:[_Rim2TexPan, _Rim2TexUV], condition_showS:_RimStyle==0}", 2D) = "white" { }
+[HideInInspector][Vector2]_Rim2TexPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _Rim2TexUV ("UV", Int) = 0
+[sRGBWarning]_Rim2Mask ("Rim Mask--{reference_properties:[_Rim2MaskPan, _Rim2MaskUV], condition_showS:_RimStyle==0}", 2D) = "white" { }
+[HideInInspector][Vector2]_Rim2MaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _Rim2MaskUV ("UV", Int) = 0
+_Is_NormalMapToRim2Light ("Normal Strength", Range(0, 1)) = 1
+[ToggleUI]_Rim2LightingInvert ("Invert Rim Lighting--{ condition_showS:_RimStyle==0}", Float) = 0
+_Rim2LightColor ("Rim Color--{reference_property:_Rim2LightColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _Rim2LightColorThemeIndex ("", Int) = 0
+_Rim2Width ("Rim Width--{ condition_showS:_RimStyle==0}", Range(0, 1)) = 0.8
+_Rim2Sharpness ("Rim Sharpness--{ condition_showS:_RimStyle==0}", Range(0, 1)) = .25
+_Rim2Power ("Rim Power--{ condition_showS:_RimStyle==0}", Range(0, 10)) = 1
+_Rim2Strength ("Rim Emission--{ condition_showS:_RimStyle==0}", Range(0, 20)) = 0
+_Rim2BaseColorMix ("Mix Base Color--{ condition_showS:_RimStyle==0}", Range(0, 1)) = 0
+[ThryWideEnum(Add, 0, Replace, 1, Multiply, 2, Mixed, 3)] _Rim2BlendMode ("Blend Mode--{ condition_showS:_RimStyle==0}", Int) = 0
+_Rim2Brightness ("Brightness--{ condition_showS:_RimStyle==0}", Range(0, 10)) = 1
+_Rim2BlendStrength ("Blend Strength--{ condition_showS:_RimStyle==0}", Range(0, 1)) = 1
+
+_Is_LightColor_Rim2Light ("Mix Light Color--{ condition_showS:_RimStyle==1}", Range(0, 1)) = 1
+_Rim2Light_Power ("Rim Power--{ condition_showS:_RimStyle==1}", Range(0, 1)) = 0.1
+_Rim2Light_InsideMask ("Inside Mask--{ condition_showS:_RimStyle==1}", Range(0.0001, 1)) = 0.0001
+[Toggle(_)] _Rim2Light_FeatherOff ("Feather Off--{ condition_showS:_RimStyle==1}", Float) = 0
+[ThryToggleUI(true)] _LightDirection_MaskOn2 ("<size=13><b>  Light Direction Mask</b></size>--{ condition_showS:_RimStyle==1}", Float) = 0
+_Tweak_LightDirection_MaskLevel2 ("Light Dir Mask Level--{ condition_showS:_LightDirection_MaskOn2==1&&_RimStyle==1}", Range(0, 0.5)) = 0
+[ThryToggleUI(true)] _Add_Antipodean_Rim2Light ("<size=13><b>  Antipodean(Ap) Rim</b></size>--{ condition_showS:_LightDirection_MaskOn2==1&&_RimStyle==1}", Float) = 0
+_Is_LightColor_Ap_Rim2Light ("Ap Light Color Mix--{ condition_showS:_LightDirection_MaskOn2==1&&_Add_Antipodean_Rim2Light==1&&_RimStyle==1}", Range(0, 1)) = 1
+_Ap_Rim2LightColor ("Ap Color--{reference_property:_Rim2ApColorThemeIndex, condition_showS:_LightDirection_MaskOn2==1&&_Add_Antipodean_Rim2Light==1&&_RimStyle==1}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _Rim2ApColorThemeIndex ("", Int) = 0
+_Ap_Rim2Light_Power ("Ap Power--{ condition_showS:_LightDirection_MaskOn2==1&&_Add_Antipodean_Rim2Light==1&&_RimStyle==1}", Range(0, 1)) = 0.1
+[Toggle(_)] _Ap_Rim2Light_FeatherOff ("Ap Feather Off--{ condition_showS:_LightDirection_MaskOn2==1&&_Add_Antipodean_Rim2Light==1&&_RimStyle==1}", Float) = 0
+[sRGBWarning]_Set_Rim2LightMask ("Set_RimLightMask--{ condition_showS:_LightDirection_MaskOn2==1&&_RimStyle==1}", 2D) = "white" { }
+_Tweak_Rim2LightMaskLevel ("Tweak_RimLightMaskLevel--{ condition_showS:_LightDirection_MaskOn2==1&&_RimStyle==1}", Range(-1, 1)) = 0
+
+[ThryToggleUI(true)] _Rim2ShadowToggle ("<size=13><b>  Light Direction Mask</b></size>--{ condition_showS:_RimStyle==0}", Float) = 0
+[Enum(Shadow Map, 0, Custom, 1)]_Rim2ShadowMaskRampType ("Light Falloff Type--{ condition_showS:_RimStyle==0&&_Rim2ShadowToggle==1}", Int) = 0
+[ToggleUI]_Rim2ShadowMaskInvert ("Invert Shadow Mask--{ condition_showS:_RimStyle==0&&_Rim2ShadowToggle==1}", Float) = 0
+_Rim2ShadowMaskStrength ("Shadow Mask Strength--{ condition_showS:_RimStyle==0&&_Rim2ShadowToggle==1}", Range(0, 1)) = 1
+[MultiSlider]_Rim2ShadowAlpha ("Hide In Shadow--{ condition_showS:_RimStyle==0&&_Rim2ShadowToggle==1&&_Rim2ShadowMaskRampType==1}", Vector) = (0.0, 0.0, 0, 1)
+_Rim2ShadowWidth ("Shrink In Shadow--{ condition_showS:_RimStyle==0&&_Rim2ShadowToggle==1}", Range(0, 1)) = 0
+
+[ThryToggleUI(true)] _Rim2HueShiftEnabled ("<size=13><b>  Hue Shift</b></size>", Float) = 0
+_Rim2HueShiftSpeed ("Shift Speed--{condition_showS:(_Rim2HueShiftEnabled==1)}", Float) = 0
+_Rim2HueShift ("Hue Shift--{condition_showS:(_Rim2HueShiftEnabled==1)}", Range(0, 1)) = 0
+
+[HideInInspector] m_start_Rim2AudioLink ("Audio Link ♫--{ condition_showS:_EnableAudioLink==1}", Float) = 0
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _AudioLinkRim2WidthBand ("Width Add Band", Int) = 0
+[VectorLabel(Min, Max)] _AudioLinkRim2WidthAdd ("Width Add", Vector) = (0, 0, 0, 0)
+	[Space(7)]
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _AudioLinkRim2EmissionBand ("Emission Add Band", Int) = 0
+[VectorLabel(Min, Max)] _AudioLinkRim2EmissionAdd ("Emission Add", Vector) = (0, 0, 0, 0)
+	[Space(7)]
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _AudioLinkRim2BrightnessBand ("Brightness Band", Int) = 0
+[VectorLabel(Min, Max)] _AudioLinkRim2BrightnessAdd ("Brightness Add", Vector) = (0, 0, 0, 0)
+[HideInInspector] m_end_Rim2AudioLink ("Audio Link", Float) = 0
+
+[HideInInspector] m_end_rim2LightOptions ("Rim2 Lighting", Float) = 0
+
+[HideInInspector] m_end_rimLightOptions ("Rim Lighting", Float) = 0
+//endex
+
+#T#PoiRimLightKeywords
+//ifex _EnableRimLighting==0
+#pragma shader_feature _GLOSSYREFLECTIONS_OFF
+#pragma shader_feature_local _RIMSTYLE_POIYOMI _RIMSTYLE_UTS2
+#pragma shader_feature_local POI_RIM2
+//endex
+#T#PoiRimLightVariables
+//ifex _EnableRimLighting==0
+#ifdef _GLOSSYREFLECTIONS_OFF
+	float _Is_NormalMapToRimLight;
+	float4 _RimLightColor;
+	float _RimLightColorThemeIndex;
+	#ifdef POI_RIM2
+		float _Is_NormalMapToRim2Light;
+		float4 _Rim2LightColor;
+		float _Rim2LightColorThemeIndex;
+	#endif
+	#ifdef _RIMSTYLE_POIYOMI
+		float _RimLightingInvert;
+		float _RimWidth;
+		float _RimStrength;
+		float _RimSharpness;
+		float _RimBaseColorMix;
+		float _ShadowMix;
+		float _ShadowMixThreshold;
+		float _ShadowMixWidthMod;
+		float _EnableRimLighting;
+		float _RimWidthNoiseStrength;
+		float4 _RimShadowAlpha;
+		float _RimShadowWidth;
+		float _RimBlendStrength;
+		float _RimBlendMode;
+		float _RimShadowToggle;
+		float _RimPower;
+		float _RimShadowMaskStrength;
+		float _RimShadowMaskRampType;
+		float _RimShadowMaskInvert;
+		float _RimBrightness;
+		#if defined(PROP_RIMTEX) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _RimTex;
+		#endif
+		float4 _RimTex_ST;
+		float2 _RimTexPan;
+		float _RimTexUV;
+		#if defined(PROP_RIMMASK) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _RimMask;
+		#endif
+		float4 _RimMask_ST;
+		float2 _RimMaskPan;
+		float _RimMaskUV;
+		#if defined(PROP_RIMWIDTHNOISETEXTURE) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _RimWidthNoiseTexture;
+		#endif
+		float4 _RimWidthNoiseTexture_ST;
+		float2 _RimWidthNoiseTexturePan;
+		float _RimWidthNoiseTextureUV;
+
+		#ifdef POI_RIM2
+			float _Rim2LightingInvert;
+			float _Rim2Width;
+			float _Rim2Strength;
+			float _Rim2Sharpness;
+			float _Rim2BaseColorMix;
+			// float _ShadowMix;
+			// float _ShadowMixThreshold;
+			// float _ShadowMixWidthMod;
+			float _EnableRim2Lighting;
+			float _Rim2WidthNoiseStrength;
+			float4 _Rim2ShadowAlpha;
+			float _Rim2ShadowWidth;
+			float _Rim2BlendStrength;
+			float _Rim2BlendMode;
+			float _Rim2ShadowToggle;
+			float _Rim2Power;
+			float _Rim2ShadowMaskStrength;
+			float _Rim2ShadowMaskRampType;
+			float _Rim2ShadowMaskInvert;
+			float _Rim2Brightness;
+			#if defined(PROP_RIM2TEX) || !defined(OPTIMIZER_ENABLED)
+				Texture2D _Rim2Tex;
+			#endif
+			float4 _Rim2Tex_ST;
+			float2 _Rim2TexPan;
+			float _Rim2TexUV;
+			#if defined(PROP_RIM2MASK) || !defined(OPTIMIZER_ENABLED)
+				Texture2D _Rim2Mask;
+			#endif
+			float4 _Rim2Mask_ST;
+			float2 _Rim2MaskPan;
+			float _Rim2MaskUV;
+			#if defined(PROP_RIM2WIDTHNOISETEXTURE) || !defined(OPTIMIZER_ENABLED)
+				Texture2D _Rim2WidthNoiseTexture;
+			#endif
+			// float4 _Rim2WidthNoiseTexture_ST;
+			// float2 _Rim2WidthNoiseTexturePan;
+			// float _Rim2WidthNoiseTextureUV;
+		#endif
+
+		#ifdef POI_AUDIOLINK
+			half _AudioLinkRimWidthBand;
+			float2 _AudioLinkRimWidthAdd;
+			half _AudioLinkRimEmissionBand;
+			float2 _AudioLinkRimEmissionAdd;
+			half _AudioLinkRimBrightnessBand;
+			float2 _AudioLinkRimBrightnessAdd;
+			#ifdef POI_RIM2
+				half _AudioLinkRim2WidthBand;
+				float2 _AudioLinkRim2WidthAdd;
+				half _AudioLinkRim2EmissionBand;
+				float2 _AudioLinkRim2EmissionAdd;
+				half _AudioLinkRim2BrightnessBand;
+				float2 _AudioLinkRim2BrightnessAdd;
+			#endif
+		#endif
+	#endif
+
+	#ifdef _RIMSTYLE_UTS2
+		float _RimLight;
+		float _Is_LightColor_RimLight;
+		float _RimLight_Power;
+		float _RimLight_InsideMask;
+		float _RimLight_FeatherOff;
+		float _LightDirection_MaskOn;
+		float _Tweak_LightDirection_MaskLevel;
+		float _Add_Antipodean_RimLight;
+		float4 _Ap_RimLightColor;
+		float _RimApColorThemeIndex;
+		float _Is_LightColor_Ap_RimLight;
+		float _Ap_RimLight_Power;
+		float _Ap_RimLight_FeatherOff;
+		#if defined(PROP_SET_RIMLIGHTMASK) || !defined(OPTIMIZER_ENABLED)
+			Texture2D _Set_RimLightMask;
+			float4 _Set_RimLightMask_ST;
+			float2 _Set_RimLightMaskPan;
+			float _Set_RimLightMaskUV;
+		#endif
+		float _Tweak_RimLightMaskLevel;
+		#ifdef POI_RIM2
+			float _Rim2Light;
+			float _Is_LightColor_Rim2Light;
+			float _Rim2Light_Power;
+			float _Rim2Light_InsideMask;
+			float _Rim2Light_FeatherOff;
+			float _LightDirection_MaskOn2;
+			float _Tweak_LightDirection_MaskLevel2;
+			float _Add_Antipodean_Rim2Light;
+			float4 _Ap_Rim2LightColor;
+			float _Rim2ApColorThemeIndex;
+			float _Is_LightColor_Ap_Rim2Light;
+			float _Ap_Rim2Light_Power;
+			float _Ap_Rim2Light_FeatherOff;
+			#if defined(PROP_SET_RIM2LIGHTMASK) || !defined(OPTIMIZER_ENABLED)
+				Texture2D _Set_Rim2LightMask;
+				float4 _Set_Rim2LightMask_ST;
+				float2 _Set_Rim2LightMaskPan;
+				float _Set_Rim2LightMaskUV;
+			#endif
+			float _Tweak_Rim2LightMaskLevel;
+		#endif
+	#endif
+
+	float _RimHueShiftEnabled;
+	float _RimHueShiftSpeed;
+	float _RimHueShift;
+	#ifdef POI_RIM2
+		float _Rim2HueShiftEnabled;
+		float _Rim2HueShiftSpeed;
+		float _Rim2HueShift;
+	#endif
+#endif
+//endex
+
+#T#PoiRimLightFunction
+//ifex _EnableRimLighting==0
+#ifdef _GLOSSYREFLECTIONS_OFF
+	#ifdef _RIMSTYLE_POIYOMI
+		void ApplyRimLighting(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiCam poiCam, in PoiLight poiLight, in PoiMods poiMods)
+		{
+			/*
+			#if defined(PROP_RIMWIDTHNOISETEXTURE) || !defined(OPTIMIZER_ENABLED)
+				float rimNoise = POI2D_SAMPLER_PAN(_RimWidthNoiseTexture, _MainTex, poiUV(poiMesh.uv[_RimWidthNoiseTextureUV], _RimWidthNoiseTexture_ST), _RimWidthNoiseTexturePan);
+			#else
+				float rimNoise = 0;
+			#endif
+
+			rimNoise = (rimNoise - .5) * _RimWidthNoiseStrength;
+			*/
+
+			float viewDotNormal = abs(dot(poiCam.viewDir, lerp(poiMesh.normals[0], poiMesh.normals[1], _Is_NormalMapToRimLight)));
+
+			UNITY_BRANCH
+			if (_RimLightingInvert)
+			{
+				viewDotNormal = 1 - viewDotNormal;
+			}
+
+			viewDotNormal = pow(viewDotNormal, _RimPower);
+
+			if (_RimShadowWidth && _RimShadowToggle)
+			{
+				viewDotNormal += lerp(0, (1 - poiLight.nDotLNormalized) * 3, _RimShadowWidth);
+			}
+
+			float rimStrength = _RimStrength;
+
+			float rimWidth = lerp( - .05, 1, _RimWidth);
+			
+			float blendStrength = _RimBlendStrength;
+
+			#ifdef POI_AUDIOLINK
+				UNITY_BRANCH
+				if (poiMods.audioLinkAvailable)
+				{
+					rimWidth = clamp(rimWidth + lerp(_AudioLinkRimWidthAdd.x, _AudioLinkRimWidthAdd.y, poiMods.audioLink[_AudioLinkRimWidthBand]), - .05, 1);
+					blendStrength += lerp(_AudioLinkRimEmissionAdd.x, _AudioLinkRimEmissionAdd.y, poiMods.audioLink[_AudioLinkRimEmissionBand]);
+					blendStrength += lerp(_AudioLinkRimBrightnessAdd.x, _AudioLinkRimBrightnessAdd.y, poiMods.audioLink[_AudioLinkRimBrightnessBand]);
+				}
+			#endif
+
+			//rimWidth -= rimNoise;
+			
+			#if defined(PROP_RIMMASK) || !defined(OPTIMIZER_ENABLED)
+				float rimMask = POI2D_SAMPLER_PAN(_RimMask, _MainTex, poiUV(poiMesh.uv[_RimMaskUV], _RimMask_ST), _RimMaskPan);
+			#else
+				float rimMask = 1;
+			#endif
+
+			#if defined(PROP_RIMTEX) || !defined(OPTIMIZER_ENABLED)
+				float4 rimColor = POI2D_SAMPLER_PAN(_RimTex, _MainTex, poiUV(poiMesh.uv[_RimTexUV], _RimTex_ST), _RimTexPan) * float4(poiThemeColor(poiMods, _RimLightColor.rgb, _RimLightColorThemeIndex), _RimLightColor.a);
+			#else
+				float4 rimColor = float4(poiThemeColor(poiMods, _RimLightColor.rgb, _RimLightColorThemeIndex), _RimLightColor.a);
+			#endif
+			
+			UNITY_BRANCH
+			if (_RimHueShiftEnabled)
+			{
+				rimColor.rgb = hueShift(rimColor.rgb, _RimHueShift + _Time.x * _RimHueShiftSpeed);
+			}
+			
+			rimWidth = max(lerp(rimWidth, rimWidth * lerp(0, 1, poiLight.lightMap - _ShadowMixThreshold) * _ShadowMixWidthMod, _ShadowMix), 0);
+			float rim = 1 - smoothstep(min(_RimSharpness, rimWidth), rimWidth, viewDotNormal);
+			rim *= _RimLightColor.a * rimColor.a * rimMask;
+
+			if (_RimShadowToggle)
+			{
+				switch(_RimShadowMaskRampType)
+				{
+					case 0:
+						float rampedLightMap = poiLight.rampedLightMap;
+						if (_RimShadowMaskInvert) rampedLightMap = 1 - rampedLightMap;
+						rim = lerp(rim, rim * rampedLightMap, _RimShadowMaskStrength);
+						break;
+					case 1:
+						float nDotLNormalized = poiLight.nDotLNormalized;
+						if (_RimShadowMaskInvert) nDotLNormalized = 1 - nDotLNormalized;
+						rim = lerp(rim, rim * smoothstep(_RimShadowAlpha.x, _RimShadowAlpha.y, nDotLNormalized), _RimShadowMaskStrength);
+						break;
+				}
+			}
+
+			float3 finalRimColor = rimColor.rgb * lerp(1, poiFragData.baseColor, _RimBaseColorMix);
+			finalRimColor *= _RimBrightness;
+			// Add 0, Replace 1, Multiply 2, Mixed 3
+			switch(_RimBlendMode)
+			{
+				case 0: poiFragData.baseColor += finalRimColor * rim * blendStrength; break;
+				case 1: poiFragData.baseColor = lerp(poiFragData.baseColor, finalRimColor, rim * blendStrength); break;
+				case 2: poiFragData.baseColor = lerp(poiFragData.baseColor, poiFragData.baseColor * finalRimColor, rim * blendStrength); break;
+				case 3: poiFragData.baseColor = lerp(poiFragData.baseColor.rgb, poiFragData.baseColor.rgb + poiFragData.baseColor.rgb * finalRimColor, rim * blendStrength); break;
+			}
+			poiFragData.baseColor = saturate(poiFragData.baseColor);
+			poiFragData.emission += finalRimColor * rim * rimStrength;
+			#ifdef POI_RIM2
+				viewDotNormal = abs(dot(poiCam.viewDir, lerp(poiMesh.normals[0], poiMesh.normals[1], _Is_NormalMapToRim2Light)));
+
+				UNITY_BRANCH
+				if (_Rim2LightingInvert)
+				{
+					viewDotNormal = 1 - viewDotNormal;
+				}
+
+				viewDotNormal = pow(viewDotNormal, _Rim2Power);
+
+				if (_Rim2ShadowWidth && _Rim2ShadowToggle)
+				{
+					viewDotNormal += lerp(0, (1 - poiLight.nDotLNormalized) * 3, _Rim2ShadowWidth);
+				}
+
+				float rim2Strength = _Rim2Strength;
+
+				float rim2Width = lerp( - .05, 1, _Rim2Width);
+				
+				float rim2BlendStrength = _Rim2BlendStrength;
+
+				#ifdef POI_AUDIOLINK
+					UNITY_BRANCH
+					if (poiMods.audioLinkAvailable)
+					{
+						rim2Width = clamp(rim2Width + lerp(_AudioLinkRim2WidthAdd.x, _AudioLinkRim2WidthAdd.y, poiMods.audioLink[_AudioLinkRim2WidthBand]), - .05, 1);
+						rim2BlendStrength += lerp(_AudioLinkRim2EmissionAdd.x, _AudioLinkRim2EmissionAdd.y, poiMods.audioLink[_AudioLinkRim2EmissionBand]);
+						rim2BlendStrength += lerp(_AudioLinkRim2BrightnessAdd.x, _AudioLinkRim2BrightnessAdd.y, poiMods.audioLink[_AudioLinkRim2BrightnessBand]);
+					}
+				#endif
+
+				//rim2Width -= rimNoise;
+				
+				#if defined(PROP_RIM2MASK) || !defined(OPTIMIZER_ENABLED)
+					float rim2Mask = POI2D_SAMPLER_PAN(_Rim2Mask, _MainTex, poiUV(poiMesh.uv[_Rim2MaskUV], _Rim2Mask_ST), _Rim2MaskPan);
+				#else
+					float rim2Mask = 1;
+				#endif
+
+				#if defined(PROP_RIM2TEX) || !defined(OPTIMIZER_ENABLED)
+					float4 rim2Color = POI2D_SAMPLER_PAN(_Rim2Tex, _MainTex, poiUV(poiMesh.uv[_Rim2TexUV], _Rim2Tex_ST), _Rim2TexPan) * float4(poiThemeColor(poiMods, _Rim2LightColor.rgb, _Rim2LightColorThemeIndex), _Rim2LightColor.a);
+				#else
+					float4 rim2Color = float4(poiThemeColor(poiMods, _Rim2LightColor.rgb, _Rim2LightColorThemeIndex), _Rim2LightColor.a);
+				#endif
+				
+				UNITY_BRANCH
+				if (_Rim2HueShiftEnabled)
+				{
+					rim2Color.rgb = hueShift(rim2Color.rgb, _Rim2HueShift + _Time.x * _Rim2HueShiftSpeed);
+				}
+				
+				// rim2Width = max(lerp(rim2Width, rim2Width * lerp(0, 1, poiLight.lightMap - _ShadowMixThreshold) * _ShadowMixWidthMod, _ShadowMix), 0);
+				float rim2 = 1 - smoothstep(min(_Rim2Sharpness, rim2Width), rim2Width, viewDotNormal);
+				rim2 *= _Rim2LightColor.a * rim2Color.a * rim2Mask;
+
+				if (_Rim2ShadowToggle)
+				{
+					switch(_Rim2ShadowMaskRampType)
+					{
+						case 0:
+							float rampedLightMap = poiLight.rampedLightMap;
+							if (_Rim2ShadowMaskInvert) rampedLightMap = 1 - rampedLightMap;
+							rim2 = lerp(rim2, rim2 * rampedLightMap, _Rim2ShadowMaskStrength);
+							break;
+						case 1:
+							float nDotLNormalized = poiLight.nDotLNormalized;
+							if (_Rim2ShadowMaskInvert) nDotLNormalized = 1 - nDotLNormalized;
+							rim2 = lerp(rim2, rim2 * smoothstep(_Rim2ShadowAlpha.x, _Rim2ShadowAlpha.y, nDotLNormalized), _Rim2ShadowMaskStrength);
+							break;
+					}
+				}
+
+				float3 finalRim2Color = rim2Color.rgb * lerp(1, poiFragData.baseColor, _Rim2BaseColorMix);
+				finalRim2Color *= _Rim2Brightness;
+				// Add 0, Replace 1, Multiply 2, Mixed 3
+				switch(_Rim2BlendMode)
+				{
+					case 0: poiFragData.baseColor += finalRim2Color * rim2 * rim2BlendStrength; break;
+					case 1: poiFragData.baseColor = lerp(poiFragData.baseColor, finalRim2Color, rim2 * rim2BlendStrength); break;
+					case 2: poiFragData.baseColor = lerp(poiFragData.baseColor, poiFragData.baseColor * finalRim2Color, rim2 * rim2BlendStrength); break;
+					case 3: poiFragData.baseColor = lerp(poiFragData.baseColor.rgb, poiFragData.baseColor.rgb + poiFragData.baseColor.rgb * finalRim2Color, rim2 * rim2BlendStrength); break;
+				}
+				poiFragData.baseColor = saturate(poiFragData.baseColor);
+				poiFragData.emission += finalRim2Color * rim2 * rim2Strength;
+			#endif
+		}
+	#endif
+	#ifdef _RIMSTYLE_UTS2
+		void ApplyRimLighting(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiCam poiCam, in PoiLight poiLight, in PoiMods poiMods)
+		{
+			//float3 Set_HighColor = (lerp(saturate((Set_FinalBaseColor - _TweakHighColorMask_var)), Set_FinalBaseColor, lerp(_Is_BlendAddToHiColor, 1.0, _Is_SpecularToHighColor)) + lerp(_HighColor_var, (_HighColor_var * ((1.0 - Set_FinalShadowMask) + (Set_FinalShadowMask * _TweakHighColorOnShadow))), _Is_UseTweakHighColorOnShadow));
+			#if defined(PROP_SET_RIMLIGHTMASK) || !defined(OPTIMIZER_ENABLED)
+				float4 _Set_RimLightMask_var = POI2D_SAMPLER_PAN(_Set_RimLightMask, _MainTex, poiUV(poiMesh.uv[_Set_RimLightMaskUV], _Set_RimLightMask_ST), _Set_RimLightMaskPan);
+			#else
+				float4 _Set_RimLightMask_var = float4(1.0, 1.0, 1.0, 1.0);
+			#endif
+			float3 rimColor = float3(poiThemeColor(poiMods, _RimLightColor.rgb, _RimLightColorThemeIndex));
+			float3 _Is_LightColor_RimLight_var = lerp(rimColor, (rimColor * poiLight.directColor), _Is_LightColor_RimLight);
+			float _RimArea_var = (1.0 - dot(lerp(poiMesh.normals[0], poiMesh.normals[1], _Is_NormalMapToRimLight), poiCam.viewDir));
+			float _RimLightPower_var = pow(_RimArea_var, exp2(lerp(3, 0, _RimLight_Power)));
+			float _Rimlight_InsideMask_var = saturate(lerp((0.0 + ((_RimLightPower_var - _RimLight_InsideMask) * (1.0 - 0.0)) / (1.0 - _RimLight_InsideMask)), step(_RimLight_InsideMask, _RimLightPower_var), _RimLight_FeatherOff));
+			float _VertHalfLambert_var = 0.5 * dot(poiMesh.normals[0], poiLight.direction) + 0.5;
+			float3 _LightDirection_MaskOn_var = lerp((_Is_LightColor_RimLight_var * _Rimlight_InsideMask_var), (_Is_LightColor_RimLight_var * saturate((_Rimlight_InsideMask_var - ((1.0 - _VertHalfLambert_var) + _Tweak_LightDirection_MaskLevel)))), _LightDirection_MaskOn);
+			float _ApRimLightPower_var = pow(_RimArea_var, exp2(lerp(3, 0, _Ap_RimLight_Power)));
+			float3 ApRimColor = float3(poiThemeColor(poiMods, _Ap_RimLightColor.rgb, _RimApColorThemeIndex));
+			float3 _RimLight_var = (saturate((_Set_RimLightMask_var.g + _Tweak_RimLightMaskLevel)) * lerp(_LightDirection_MaskOn_var, (_LightDirection_MaskOn_var + (lerp(ApRimColor, (ApRimColor * poiLight.directColor), _Is_LightColor_Ap_RimLight) * saturate((lerp((0.0 + ((_ApRimLightPower_var - _RimLight_InsideMask) * (1.0 - 0.0)) / (1.0 - _RimLight_InsideMask)), step(_RimLight_InsideMask, _ApRimLightPower_var), _Ap_RimLight_FeatherOff) - (saturate(_VertHalfLambert_var) + _Tweak_LightDirection_MaskLevel))))), _Add_Antipodean_RimLight));
+			UNITY_BRANCH
+			if (_RimHueShiftEnabled)
+			{
+				_RimLight_var = hueShift(_RimLight_var, _RimHueShift + _Time.x * _RimHueShiftSpeed);
+			}
+			poiFragData.baseColor = saturate(poiFragData.baseColor + _RimLight_var);
+			//Composition: HighColor and RimLight as _RimLight_var
+
+			#ifdef POI_RIM2
+				#if defined(PROP_SET_RIM2LIGHTMASK) || !defined(OPTIMIZER_ENABLED)
+					float4 _Set_Rim2LightMask_var = POI2D_SAMPLER_PAN(_Set_Rim2LightMask, _MainTex, poiUV(poiMesh.uv[_Set_Rim2LightMaskUV], _Set_Rim2LightMask_ST), _Set_Rim2LightMaskPan);
+				#else
+					float4 _Set_Rim2LightMask_var = float4(1.0, 1.0, 1.0, 1.0);
+				#endif
+				float3 rim2Color = float3(poiThemeColor(poiMods, _Rim2LightColor.rgb, _Rim2LightColorThemeIndex));
+				float3 _Is_LightColor_Rim2Light_var = lerp(rim2Color, (rim2Color * poiLight.directColor), _Is_LightColor_Rim2Light);
+				float _Rim2Area_var = (1.0 - dot(lerp(poiMesh.normals[0], poiMesh.normals[1], _Is_NormalMapToRimLight), poiCam.viewDir));
+				float _Rim2LightPower_var = pow(_Rim2Area_var, exp2(lerp(3, 0, _Rim2Light_Power)));
+				float _Rim2light_InsideMask_var = saturate(lerp((0.0 + ((_Rim2LightPower_var - _Rim2Light_InsideMask) * (1.0 - 0.0)) / (1.0 - _Rim2Light_InsideMask)), step(_Rim2Light_InsideMask, _Rim2LightPower_var), _Rim2Light_FeatherOff));
+				float _VertHalfLambert_var2 = 0.5 * dot(poiMesh.normals[0], poiLight.direction) + 0.5;
+				float3 _LightDirection_MaskOn2_var = lerp((_Is_LightColor_Rim2Light_var * _Rim2light_InsideMask_var), (_Is_LightColor_Rim2Light_var * saturate((_Rim2light_InsideMask_var - ((1.0 - _VertHalfLambert_var2) + _Tweak_LightDirection_MaskLevel2)))), _LightDirection_MaskOn);
+				float _ApRim2LightPower_var = pow(_Rim2Area_var, exp2(lerp(3, 0, _Ap_Rim2Light_Power)));
+				float3 ApRim2Color = float3(poiThemeColor(poiMods, _Ap_Rim2LightColor.rgb, _Rim2ApColorThemeIndex));
+				float3 _Rim2Light_var = (saturate((_Set_Rim2LightMask_var.g + _Tweak_Rim2LightMaskLevel)) * lerp(_LightDirection_MaskOn2_var, (_LightDirection_MaskOn2_var + (lerp(ApRim2Color, (ApRim2Color * poiLight.directColor), _Is_LightColor_Ap_Rim2Light) * saturate((lerp((0.0 + ((_ApRim2LightPower_var - _Rim2Light_InsideMask) * (1.0 - 0.0)) / (1.0 - _Rim2Light_InsideMask)), step(_Rim2Light_InsideMask, _ApRim2LightPower_var), _Ap_Rim2Light_FeatherOff) - (saturate(_VertHalfLambert_var2) + _Tweak_LightDirection_MaskLevel2))))), _Add_Antipodean_Rim2Light));
+				UNITY_BRANCH
+				if (_Rim2HueShiftEnabled)
+				{
+					_Rim2Light_var = hueShift(_Rim2Light_var, _Rim2HueShift + _Time.x * _Rim2HueShiftSpeed);
+				}
+				poiFragData.baseColor = saturate(poiFragData.baseColor + _Rim2Light_var);
+			#endif
+		}
+	#endif
+#endif
+//endex
+
+#T#PoiRimLightFunctionCall
+//ifex _EnableRimLighting==0
+#ifdef _GLOSSYREFLECTIONS_OFF
+	ApplyRimLighting(poiFragData, poiMesh, poiCam, poiLight, poiMods);
+#endif
+//endex

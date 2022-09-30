@@ -1,0 +1,30 @@
+#T#PoiNameProperties
+
+#T#PoiNameKeywords
+#pragma shader_feature KEYWORD
+
+#T#PoiNameVariables
+#ifdef KEYWORD
+    
+#endif
+
+/*
+Texture2D ;
+float4 _ST;
+float2 Pan;
+float UV;
+*/
+
+#T#PoiNameFunctions
+#ifdef KEYWORD
+    void function()
+    {
+
+    }
+#endif
+
+#T#PoiNameFunctionCalls
+#ifdef KEYWORD
+    function();
+#endif
+

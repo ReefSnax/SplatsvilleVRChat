@@ -1,0 +1,97 @@
+#T#PoiTruchetProperties
+
+[HideInInspector] m_start_truchet ("Truchet--{reference_property: _EnableTruchet}", Float) = 0
+[HideInInspector][ThryToggle(POI_TRUCHET)] _EnableTruchet ("Enable Truchet", Float) = 0
+[ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _TruchetUV ("UV", Int) = 0
+[ThryWideEnum(Straight, 0, Curved, 1)] _TruchetShape ("Shape", Int) = 1
+_TruchetDensity ("Density", Float) = 1
+_TruchetThiccness ("Thiccness", Range(0, 1)) = .1
+_TruchetColor ("Color", Color) = (1, 1, 1, 1)
+_TruchetPan ("Path Pan", Float) = 10
+[sRGBWarning(true)]_TruchetTex ("TruchetTex", 2D) = "white" { }
+_TruchetAlpha ("Alpha", Range(0, 1)) = 1
+_TruchetEmissionStrength ("Emission Strength", Range(0, 20)) = 0
+[Vector2]_TruchetTexPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector] m_end_truchet ("", Float) = 0
+
+#T#PoiTruchetKeywords
+#pragma shader_feature_local POI_TRUCHET
+
+#T#PoiTruchetVariables
+#ifdef POI_TRUCHET
+	float _TruchetUV;
+	float _TruchetDensity;
+	float _TruchetThiccness;
+	float4 _TruchetColor;
+	float _TruchetPan;
+	Texture2D _TruchetTex;
+	float4 _TruchetTex_ST;
+	float2 _TruchetTexPan;
+	float _TruchetShape;
+	float _TruchetAlpha;
+	float _TruchetEmissionStrength;
+#endif
+
+
+#T#PoiTruchetFunctions
+#ifdef POI_TRUCHET
+	float Hash21(float2 value)
+	{
+		value = frac(value * float2(923.34, 567.345));
+		value += dot(value, value + 34.23);
+		return frac(value.x * value.y);
+	}
+
+	void applyTruchet(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiMods poiMods)
+	{
+		float2 uv = poiMesh.uv[_TruchetUV] * _TruchetDensity;
+		float2 gridUV = frac(uv) - .5;
+		float2 id = floor(uv);
+
+		// Random # 0-1
+		float randomID = Hash21(id);
+
+		if (randomID < .5)
+		{
+			gridUV.x *= -1;
+		}
+		float mask = 0;
+		float distance = 0;
+		float side = sign(gridUV.x + gridUV.y + .001);
+		float checker = fmod(id.x + id.y, 2.0) * 2 - 1;
+		float2 pathUV = float2(0, 0);
+		switch(_TruchetShape)
+		{
+			// Straight
+			case 0:
+				distance = abs(abs(gridUV.x + gridUV.y) - .5);
+				mask = smoothstep(0.01, - .01, distance - _TruchetThiccness);
+				break;
+			// Curved
+			case 1:
+				pathUV = gridUV - side * 0.5;
+				distance = length(pathUV);
+				mask = smoothstep(0.001, - .001, abs(distance - .5) - _TruchetThiccness);
+				// -pi to pi
+				float angle = atan2(pathUV.x, pathUV.y);
+
+				pathUV.x = checker * angle / 1.57;
+				pathUV.y = (distance - (.5 - _TruchetThiccness)) / (2 * _TruchetThiccness);
+				if (randomID < .5 ^ checker > 0)
+				{
+					pathUV.y = 1 - pathUV.y;
+				}
+				break;
+		}
+		float4 TruchetTex = POI2D_SAMPLER_PAN(_TruchetTex, _MainTex, poiUV(pathUV, _TruchetTex_ST), _TruchetTexPan);
+
+		float3 col = mask;
+		poiFragData.emission += lerp(0, TruchetTex.rgb * _TruchetColor, min(mask, TruchetTex.a) * _TruchetEmissionStrength);
+		poiFragData.baseColor = lerp(poiFragData.baseColor, TruchetTex.rgb * _TruchetColor, min(mask, TruchetTex.a) * _TruchetAlpha);
+	}
+#endif
+
+#T#PoiTruchetFunctionCalls
+#ifdef POI_TRUCHET
+	applyTruchet(poiFragData, poiMesh, poiMods);
+#endif

@@ -1,0 +1,474 @@
+#T#PoiStatsOverlayProperties
+//ifex _TextEnabled==0
+// MSDF OVERLAY
+[HideInInspector] m_start_Text ("Stats Overlay--{reference_property:_TextEnabled,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/special-fx/stats-overlay},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(EFFECT_BUMP)]_TextEnabled ("Text", Float) = 0
+[sRGBWarning]_TextGlyphs ("Font Array", 2D) = "black" { }
+_TextPixelRange ("Pixel Range", Float) = 4.0
+
+// FPS
+[HideInInspector] m_start_TextFPS ("FPS--{reference_property:_TextFPSEnabled}", Float) = 0
+[HideInInspector][ToggleUI]_TextFPSEnabled ("FPS Text", Float) = 0
+[ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _TextFPSUV ("FPS UV", Int) = 0
+_TextFPSColor ("Color--{reference_property:_TextFPSColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _TextFPSColorThemeIndex ("", Int) = 0
+_TextFPSEmissionStrength ("Emission Strength", Range(0, 20)) = 0
+[Vector2]_TextFPSOffset ("Offset", Vector) = (0, 0, 0, 0)
+_TextFPSRotation ("Rotation", Range(0, 360)) = 0
+[Vector2]_TextFPSScale ("Scale", Vector) = (1, 1, 1, 1)
+[VectorLabel(L, D, R, U)]_TextFPSPadding ("Padding Reduction", Vector) = (0, 0, 0, 0)
+[HideInInspector] m_end_TextFPS ("FPS", Float) = 0
+
+// POSITION
+[HideInInspector] m_start_TextPosition ("Position--{reference_property:_TextPositionEnabled}", Float) = 0
+[HideInInspector][ToggleUI]_TextPositionEnabled ("Position Text", Float) = 0
+[ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _TextPositionUV ("Position UV", Int) = 0
+//[ToggleUI]_TextPositionVertical ("Vertical", Float) = 0
+_TextPositionColor ("Color--{reference_property:_TextPositionColorThemeIndex}", Color) = (1, 0, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _TextPositionColorThemeIndex ("", Int) = 0
+_TextPositionEmissionStrength ("Emission Strength", Range(0, 20)) = 0
+[Vector2]_TextPositionOffset ("Offset", Vector) = (0, 0, 0, 0)
+_TextPositionRotation ("Rotation", Range(0, 360)) = 0
+[Vector2]_TextPositionScale ("Scale", Vector) = (1, 1, 1, 1)
+[VectorLabel(L, D, R, U)]_TextPositionPadding ("Padding Reduction", Vector) = (0, 0, 0, 0)
+[HideInInspector] m_end_TextPosition ("Position", Float) = 0
+
+// INSTANCE TIME
+[HideInInspector] m_start_TextInstanceTime ("Instance Time--{reference_property:_TextTimeEnabled}", Float) = 0
+[HideInInspector][ToggleUI]_TextTimeEnabled ("Time Text", Float) = 0
+[ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _TextTimeUV ("Time UV", Int) = 0
+_TextTimeColor ("Color--{reference_property:_TextTimeColorThemeIndex}", Color) = (1, 0, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _TextTimeColorThemeIndex ("", Int) = 0
+_TextTimeEmissionStrength ("Emission Strength", Range(0, 20)) = 0
+[Vector2]_TextTimeOffset ("Offset", Vector) = (0, 0, 0, 0)
+_TextTimeRotation ("Rotation", Range(0, 360)) = 0
+[Vector2]_TextTimeScale ("Scale", Vector) = (1, 1, 1, 1)
+[VectorLabel(L, D, R, U)]_TextTimePadding ("Padding Reduction", Vector) = (0, 0, 0, 0)
+[HideInInspector] m_end_TextInstanceTime ("Instance Time", Float) = 0
+
+// NUMERIC OVERLAY
+[HideInInspector] m_start_TextNumeric ("Numeric (WIP)--{reference_property:_TextNumericEnabled}", Float) = 0
+[HideInInspector][ToggleUI]_TextNumericEnabled ("Numeric Text", Float) = 0
+[ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _TextNumericUV ("Numeric UV", Int) = 0
+_TextNumericColor ("Color--{reference_property:_TextNumericColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _TextNumericColorThemeIndex ("", Int) = 0
+_TextNumericValue ("Display Value", Float) = 0
+_TextNumericWholeDigits ("Whole Digits", Range(0, 4)) = 4
+_TextNumericDecimalDigits ("Decimal Digits", Range(0, 4)) = 0
+[ToggleUI]_TextNumericTrimZeroes ("Trim Leading Zeroes", Float) = 0
+_TextNumericEmissionStrength ("Emission Strength", Range(0, 20)) = 0
+[Vector2]_TextNumericOffset ("Offset", Vector) = (0, 0, 0, 0)
+_TextNumericRotation ("Rotation", Range(0, 360)) = 0
+[Vector2]_TextNumericScale ("Scale", Vector) = (1, 1, 1, 1)
+[VectorLabel(L, D, R, U)]_TextNumericPadding ("Padding Reduction", Vector) = (0, 0, 0, 0)
+[HideInInspector] m_end_TextNumeric ("Numeric", Float) = 0
+
+[HideInInspector] m_end_Text ("MSDF Text Overlay", Float) = 0
+//endex
+
+#T#PoiStatsOverlayKeywords
+//ifex _TextEnabled==0
+#pragma shader_feature EFFECT_BUMP
+//endex
+
+#T#PoiStatsOverlayVariables
+//ifex _TextEnabled==0
+#ifdef EFFECT_BUMP
+	sampler2D _TextGlyphs;
+	float4 _TextGlyphs_ST;
+	float4 _TextGlyphs_TexelSize;
+	float _TextFPSUV;
+	float _TextTimeUV;
+	float _TextPositionUV;
+	float _TextNumericUV;
+	float _TextPixelRange;
+	
+	float _TextFPSEnabled;
+	float _TextPositionEnabled;
+	float _TextTimeEnabled;
+	float _TextNumericEnabled;
+	
+	float4 _TextFPSColor;
+	float _TextFPSEmissionStrength;
+	fixed4 _TextFPSPadding;
+	float2 _TextFPSOffset;
+	float2 _TextFPSScale;
+	float _TextFPSRotation;
+	
+	fixed _TextPositionVertical;
+	float4 _TextPositionColor;
+	float _TextPositionEmissionStrength;
+	fixed4 _TextPositionPadding;
+	float2 _TextPositionOffset;
+	float2 _TextPositionScale;
+	float _TextPositionRotation;
+	
+	float4 _TextTimeColor;
+	float _TextTimeEmissionStrength;
+	fixed4 _TextTimePadding;
+	float2 _TextTimeOffset;
+	float2 _TextTimeScale;
+	float _TextTimeRotation;
+
+	float4 _TextNumericColor;
+	float _TextNumericEmissionStrength;
+	fixed4 _TextNumericPadding;
+	float2 _TextNumericOffset;
+	float2 _TextNumericScale;
+	float _TextNumericRotation;
+	float _TextNumericValue;
+	float _TextNumericWholeDigits;
+	float _TextNumericDecimalDigits;
+	float _TextNumericTrimZeroes;
+	
+	float _TextFPSColorThemeIndex;
+	float _TextPositionColorThemeIndex;
+	float _TextTimeColorThemeIndex;
+	float _TextNumericColorThemeIndex;
+
+	float3 globalTextEmission;
+
+	#define ASCII_SPACE 32
+	#define ASCII_LEFT_PARENTHESIS 40
+	#define ASCII_RIGHT_PARENTHESIS 41
+	#define ASCII_POSITIVE 43
+	#define ASCII_PERIOD 46
+	#define ASCII_NEGATIVE 45
+	#define ASCII_COMMA 44
+	#define ASCII_E 69
+	#define ASCII_F 70
+	#define ASCII_I 73
+	#define ASCII_M 77
+	#define ASCII_O 79
+	#define ASCII_P 80
+	#define ASCII_R 82
+	#define ASCII_S 83
+	#define ASCII_T 84
+	#define ASCII_SEMICOLON 58
+	#define glyphWidth 0.0625
+
+#endif
+//endex
+
+#T#PoiStatsOverlayFunctions
+//ifex _TextEnabled==0
+#ifdef EFFECT_BUMP
+
+	float2 TransformUV(float2 offset, float rotation, float2 scale, float2 uv)
+	{
+		float theta = radians(rotation);
+		scale = 1 - scale;
+		float cs = cos(theta);
+		float sn = sin(theta);
+		float2 centerPoint = offset + .5;
+		uv = float2((uv.x - centerPoint.x) * cs - (uv.y - centerPoint.y) * sn + centerPoint.x, (uv.x - centerPoint.x) * sn + (uv.y - centerPoint.y) * cs + centerPoint.y);
+		
+		return remap(uv, float2(0, 0) + offset + (scale * .5), float2(1, 1) + offset - (scale * .5), float2(0, 0), float2(1, 1));
+	}
+
+	float2 getAsciiCoordinate(float index)
+	{
+		return float2((index - 1) / 16, 1 - ((floor(index / 16 - glyphWidth)) / 16));
+	}
+	
+	float median(float r, float g, float b)
+	{
+		return max(min(r, g), min(max(r, g), b));
+	}
+	
+	void ApplyPositionText(inout PoiFragData poiFragData, float2 uv, in PoiMods poiMods)
+	{
+		float3 cameraPos = clamp(getCameraPosition(), -999, 999);
+		float3 absCameraPos = abs(cameraPos);
+		float totalCharacters = 20;
+		float positionArray[20];
+		positionArray[0] = cameraPos.x >= 0 ? ASCII_NEGATIVE : ASCII_POSITIVE;
+		positionArray[1] = floor((absCameraPos.x * .01) % 10) + 48;
+		positionArray[2] = floor((absCameraPos.x * .1) % 10) + 48;
+		positionArray[3] = floor(absCameraPos.x % 10) + 48;
+		positionArray[4] = ASCII_PERIOD;
+		positionArray[5] = floor((absCameraPos.x * 10) % 10) + 48;
+		positionArray[6] = ASCII_COMMA;
+		positionArray[7] = cameraPos.y >= 0 ? ASCII_NEGATIVE : ASCII_POSITIVE;
+		positionArray[8] = floor((absCameraPos.y * .01) % 10) + 48;
+		positionArray[9] = floor((absCameraPos.y * .1) % 10) + 48;
+		positionArray[10] = floor(absCameraPos.y % 10) + 48;
+		positionArray[11] = ASCII_PERIOD;
+		positionArray[12] = floor((absCameraPos.y * 10) % 10) + 48;
+		positionArray[13] = ASCII_COMMA;
+		positionArray[14] = cameraPos.z >= 0 ? ASCII_NEGATIVE : ASCII_POSITIVE;
+		positionArray[15] = floor((absCameraPos.z * .01) % 10) + 48;
+		positionArray[16] = floor((absCameraPos.z * .1) % 10) + 48;
+		positionArray[17] = floor(absCameraPos.z % 10) + 48;
+		positionArray[18] = ASCII_PERIOD;
+		positionArray[19] = floor((absCameraPos.z * 10) % 10) + 48;
+		
+		uv = TransformUV(_TextPositionOffset, _TextPositionRotation, _TextPositionScale, uv);
+		
+		if (uv.x > 1 || uv.x < 0 || uv.y > 1 || uv.y < 0)
+		{
+			return;
+		}
+		
+		float currentCharacter = floor(uv.x * totalCharacters);
+		float2 glyphPos = getAsciiCoordinate(positionArray[currentCharacter]);
+		
+		float2 startUV = float2(1 / totalCharacters * currentCharacter, 0);
+		float2 endUV = float2(1 / totalCharacters * (currentCharacter + 1), 1);
+		
+		fixed4 textPositionPadding = _TextPositionPadding;
+		textPositionPadding *= 1 / totalCharacters;
+
+		uv = remapClamped(startUV, endUV, uv, float2(glyphPos.x + textPositionPadding.x, glyphPos.y - glyphWidth + textPositionPadding.y), float2(glyphPos.x + glyphWidth - textPositionPadding.z, glyphPos.y - textPositionPadding.w));
+		
+		if (uv.x > glyphPos.x + glyphWidth - textPositionPadding.z - .001 || uv.x < glyphPos.x + textPositionPadding.x + .001 || uv.y > glyphPos.y - textPositionPadding.w - .001 || uv.y < glyphPos.y - glyphWidth + textPositionPadding.y + .001)
+		{
+			return;
+		}
+		
+		float3 samp = tex2D(_TextGlyphs, TRANSFORM_TEX(uv, _TextGlyphs)).rgb;
+		float2 msdfUnit = _TextPixelRange / _TextGlyphs_TexelSize.zw;
+		float sigDist = median(samp.r, samp.g, samp.b) - 0.5;
+		sigDist *= max(dot(msdfUnit, 0.5 / fwidth(uv)), 1);
+		float opacity = clamp(sigDist + 0.5, 0, 1);
+		poiFragData.baseColor = lerp(poiFragData.baseColor, poiThemeColor(poiMods, _TextPositionColor.rgb, _TextPositionColorThemeIndex), opacity * _TextPositionColor.a);
+		globalTextEmission += poiThemeColor(poiMods, _TextPositionColor.rgb, _TextPositionColorThemeIndex) * opacity * _TextPositionEmissionStrength;
+	}
+	
+	void ApplyTimeText(inout PoiFragData poiFragData, float2 uv, in PoiMods poiMods)
+	{
+		float instanceTime = _Time.y;
+		float hours = instanceTime / 3600;
+		float minutes = (instanceTime / 60) % 60;
+		float seconds = instanceTime % 60;
+		float totalCharacters = 8;
+		float timeArray[8];
+		timeArray[0] = floor((hours * .1) % 10) + 48;
+		timeArray[1] = floor(hours % 10) + 48;
+		timeArray[2] = ASCII_SEMICOLON;
+		timeArray[3] = floor((minutes * .1) % 10) + 48;
+		timeArray[4] = floor(minutes % 10) + 48;
+		timeArray[5] = ASCII_SEMICOLON;
+		timeArray[6] = floor((seconds * .1) % 10) + 48;
+		timeArray[7] = floor(seconds % 10) + 48;
+		
+		uv = TransformUV(_TextTimeOffset, _TextTimeRotation, _TextTimeScale, uv);
+		
+		if (uv.x > 1 || uv.x < 0 || uv.y > 1 || uv.y < 0)
+		{
+			return;
+		}
+		
+		float currentCharacter = floor(uv.x * totalCharacters);
+		float2 glyphPos = getAsciiCoordinate(timeArray[currentCharacter]);
+		// 0.1428571 = 1/7 = 1 / totalCharacters
+		float startUV = 1 / totalCharacters * currentCharacter;
+		float endUV = 1 / totalCharacters * (currentCharacter + 1);
+
+		fixed4 textTimePadding = _TextTimePadding;
+		textTimePadding *= 1 / totalCharacters;
+
+		uv = remapClamped(float2(startUV, 0), float2(endUV, 1), uv, float2(glyphPos.x + textTimePadding.x, glyphPos.y - glyphWidth + textTimePadding.y), float2(glyphPos.x + glyphWidth - textTimePadding.z, glyphPos.y - textTimePadding.w));
+		
+		if (uv.x > glyphPos.x + glyphWidth - textTimePadding.z - .001 || uv.x < glyphPos.x + textTimePadding.x + .001 || uv.y > glyphPos.y - textTimePadding.w - .001 || uv.y < glyphPos.y - glyphWidth + textTimePadding.y + .001)
+		{
+			return;
+		}
+
+		float3 samp = tex2D(_TextGlyphs, TRANSFORM_TEX(uv, _TextGlyphs)).rgb;
+		float2 msdfUnit = _TextPixelRange / _TextGlyphs_TexelSize.zw;
+		float sigDist = median(samp.r, samp.g, samp.b) - 0.5;
+		sigDist *= max(dot(msdfUnit, 0.5 / fwidth(uv)), 1);
+		float opacity = clamp(sigDist + 0.5, 0, 1);
+		poiFragData.baseColor = lerp(poiFragData.baseColor, poiThemeColor(poiMods, _TextTimeColor.rgb, _TextTimeColorThemeIndex), opacity * _TextTimeColor.a);
+		globalTextEmission += poiThemeColor(poiMods, _TextTimeColor.rgb, _TextTimeColorThemeIndex) * opacity * _TextTimeEmissionStrength;
+	}
+	
+	void ApplyFPSText(inout PoiFragData poiFragData, float2 uv, in PoiMods poiMods)
+	{
+		float smoothDeltaTime = clamp(unity_DeltaTime.w, 0, 999);
+		float totalCharacters = 7;
+		float fpsArray[7];
+		fpsArray[0] = ASCII_F;
+		fpsArray[1] = ASCII_P;
+		fpsArray[2] = ASCII_S;
+		fpsArray[3] = ASCII_SEMICOLON;
+		fpsArray[4] = floor((smoothDeltaTime * .01) % 10) + 48;
+		fpsArray[5] = floor((smoothDeltaTime * .1) % 10) + 48;
+		fpsArray[6] = floor(smoothDeltaTime % 10) + 48;
+		
+		uv = TransformUV(_TextFPSOffset, _TextFPSRotation, _TextFPSScale, uv);
+		
+		if (uv.x > 1 || uv.x < 0 || uv.y > 1 || uv.y < 0)
+		{
+			return;
+		}
+		
+		float currentCharacter = floor(uv.x * totalCharacters);
+		float2 glyphPos = getAsciiCoordinate(fpsArray[currentCharacter]);
+		// 0.1428571 = 1/7 = 1 / totalCharacters
+		float startUV = 1 / totalCharacters * currentCharacter;
+		float endUV = 1 / totalCharacters * (currentCharacter + 1);
+		
+		float4 textFPSPadding = _TextFPSPadding;
+		textFPSPadding *= 1 / totalCharacters;
+		
+		uv = remapClamped(float2(startUV, 0), float2(endUV, 1), uv, float2(glyphPos.x + textFPSPadding.x, glyphPos.y - glyphWidth + textFPSPadding.y), float2(glyphPos.x + glyphWidth - textFPSPadding.z, glyphPos.y - textFPSPadding.w));
+
+		if (uv.x > glyphPos.x + glyphWidth - textFPSPadding.z - .001 || uv.x < glyphPos.x + textFPSPadding.x + .001 || uv.y > glyphPos.y - textFPSPadding.w - .001 || uv.y < glyphPos.y - glyphWidth + textFPSPadding.y + .001)
+		{
+			return;
+		}
+		
+		float3 samp = tex2D(_TextGlyphs, TRANSFORM_TEX(uv, _TextGlyphs)).rgb;
+		float2 msdfUnit = _TextPixelRange / _TextGlyphs_TexelSize.zw;
+		float sigDist = median(samp.r, samp.g, samp.b) - 0.5;
+		sigDist *= max(dot(msdfUnit, 0.5 / fwidth(uv)), 1);
+		float opacity = clamp(sigDist + 0.5, 0, 1);
+		poiFragData.baseColor = lerp(poiFragData.baseColor, poiThemeColor(poiMods, _TextFPSColor.rgb, _TextFPSColorThemeIndex), opacity * _TextFPSColor.a);
+		globalTextEmission += poiThemeColor(poiMods, _TextFPSColor.rgb, _TextFPSColorThemeIndex) * opacity * _TextFPSEmissionStrength;
+	}
+
+	#define glsl_mod(x,y) (((x)-(y)*floor((x)/(y)))) 
+
+	void ApplyNumericText(inout PoiFragData poiFragData, float2 uv, in PoiMods poiMods)
+	{
+		// If both digits are set to zero: exit.
+		if (_TextNumericWholeDigits == 0 && _TextNumericDecimalDigits == 0)
+		{
+			return;
+		}
+
+		uint wholeNumber = 0;
+		uint decimalNumber = 0;
+		uint wholeDigits = _TextNumericWholeDigits;
+		uint decimalDigits = _TextNumericDecimalDigits;
+		float NumericArray[10];										// 10 is the max amount of characters = 1 sign + 4 max whole digits + 1 decimal mark + 4 max decimal digits
+		uint arrayIndex = 1;                                        // Start at 1 because position 0 is always the sign.
+		float totalCharacters = 1 + wholeDigits + decimalDigits; 	// Sign Character + Whole Digits + Decimal Digits
+
+		//Determine Sign
+		float charSign = ASCII_SPACE; 								//Default to positive
+		if (sign(_TextNumericValue) == -1)
+		{
+			charSign = ASCII_NEGATIVE;
+		}
+
+		NumericArray[0] = charSign;									//First character is always the sign
+
+		//Isolate whole number and fill array
+		if (wholeDigits > 0)
+		{
+			wholeNumber = uint(glsl_mod(abs(_TextNumericValue), pow(10, wholeDigits)));
+
+			int expIndex = -1 * (wholeDigits - 1);  // Exponent Index
+			bool leadingZero = true;
+			// Pouplate the Array
+			while (arrayIndex <= wholeDigits)
+			{
+				// Grab the corresponding digit from the whole number going from left to right.
+				int digit = floor(glsl_mod(wholeNumber * pow(10, expIndex), 10));
+				// Take the resulting value and add 48 to get the corresponding location in the font array.
+				NumericArray[arrayIndex] = digit + 48;
+
+				//Trim Leading Zeroes, but leave at least one.
+				if (_TextNumericTrimZeroes == true)
+				{
+					//If the digit is zero and there hasn't been any digits greater than 0 previously.
+					if (digit == 0 && leadingZero == true && arrayIndex != wholeDigits)
+					{
+						//Overwrite the leading zero.
+						NumericArray[arrayIndex] = ASCII_SPACE;
+					}
+					else
+					{
+						leadingZero = false;
+					}
+				}
+				expIndex++;
+				arrayIndex++;
+			}
+		}
+
+		// Isolate decimal number and fill array
+		if (decimalDigits > 0)
+		{
+			// Add a decimal point
+			NumericArray[arrayIndex] = ASCII_PERIOD;
+			int decimalPointer = arrayIndex;
+			arrayIndex++;
+			totalCharacters++;
+
+
+			decimalNumber = uint(frac(abs(_TextNumericValue)) * pow(10.00001, decimalDigits));    // Isolate the decimal number
+
+			int expIndex = -1 * (decimalDigits - 1);                                          // Exponent Index
+			//Populate the Array with the remaining digits
+			while (arrayIndex <= (totalCharacters))
+			{
+				// Grab the corresponding digit from the whole number going from left to right.
+				int digit = floor(glsl_mod(decimalNumber * pow(10, expIndex), 10));
+				// Take the resulting value and add 48 to get the corresponding location in the font array.
+				NumericArray[arrayIndex] = digit + 48;
+
+				expIndex++;
+				arrayIndex++;
+			}
+		}
+
+		uv = TransformUV(_TextNumericOffset, _TextNumericRotation, _TextNumericScale, uv);
+		
+		if (uv.x > 1 || uv.x < 0 || uv.y > 1 || uv.y < 0)
+		{
+			return;
+		}
+		
+		float currentCharacter = floor(uv.x * totalCharacters);
+		float2 glyphPos = getAsciiCoordinate(NumericArray[currentCharacter]);
+		float startUV = 1 / totalCharacters * currentCharacter;
+		float endUV = 1 / totalCharacters * (currentCharacter + 1);
+		
+		float4 textNumericPadding = _TextNumericPadding;
+		textNumericPadding *= 1 / totalCharacters;
+		
+		uv = remapClamped(float2(startUV, 0), float2(endUV, 1), uv, float2(glyphPos.x + textNumericPadding.x, glyphPos.y - glyphWidth + textNumericPadding.y), float2(glyphPos.x + glyphWidth - textNumericPadding.z, glyphPos.y - textNumericPadding.w));
+
+		if (uv.x > glyphPos.x + glyphWidth - textNumericPadding.z - .001 || uv.x < glyphPos.x + textNumericPadding.x + .001 || uv.y > glyphPos.y - textNumericPadding.w - .001 || uv.y < glyphPos.y - glyphWidth + textNumericPadding.y + .001)
+		{
+			return;
+		}
+		
+		float3 samp = tex2D(_TextGlyphs, TRANSFORM_TEX(uv, _TextGlyphs)).rgb;
+		float2 msdfUnit = _TextPixelRange / _TextGlyphs_TexelSize.zw;
+		float sigDist = median(samp.r, samp.g, samp.b) - 0.5;
+		sigDist *= max(dot(msdfUnit, 0.5 / fwidth(uv)), 1);
+		float opacity = clamp(sigDist + 0.5, 0, 1);
+		poiFragData.baseColor = lerp(poiFragData.baseColor, poiThemeColor(poiMods, _TextNumericColor.rgb, _TextNumericColorThemeIndex), opacity * _TextNumericColor.a);
+		globalTextEmission += poiThemeColor(poiMods, _TextNumericColor.rgb, _TextNumericColorThemeIndex) * opacity * _TextNumericEmissionStrength;
+	}
+	
+	void ApplyTextOverlayColor(inout PoiFragData poiFragData, PoiMesh poiMesh, in PoiMods poiMods)
+	{
+		globalTextEmission = 0;
+		float positionalOpacity = 0;
+
+		if (_TextFPSEnabled == 1)
+			ApplyFPSText(poiFragData, poiMesh.uv[_TextFPSUV], poiMods);
+		if (_TextPositionEnabled == 1)
+			ApplyPositionText(poiFragData, poiMesh.uv[_TextPositionUV], poiMods);
+		if (_TextTimeEnabled == 1)
+			ApplyTimeText(poiFragData, poiMesh.uv[_TextTimeUV], poiMods);
+		if (_TextNumericEnabled == 1)
+			ApplyNumericText(poiFragData, poiMesh.uv[_TextNumericUV], poiMods);
+
+		poiFragData.emission += globalTextEmission;
+	}
+#endif
+//endex
+
+#T#PoiStatsOverlayFunctionCalls
+//ifex _TextEnabled==0
+#ifdef EFFECT_BUMP
+	ApplyTextOverlayColor(poiFragData, poiMesh, poiMods);
+#endif
+//endex

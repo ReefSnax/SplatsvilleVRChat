@@ -1,0 +1,178 @@
+#T#PoiDepthProperties
+//ifex _EnableTouchGlow==0
+[HideInInspector] m_start_depthFX ("Depth FX--{reference_property:_EnableTouchGlow}", Float) = 0
+[HideInInspector][ThryToggle(GRAIN)]_EnableTouchGlow ("Enable Depth FX", Float) = 0
+[sRGBWarning]_DepthMask ("Mask--{reference_properties:[_DepthMaskPan, _DepthMaskUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_DepthMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _DepthMaskUV ("UV", Int) = 0
+[ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _DepthMaskGlobalMask ("Global Mask--{reference_property:_DepthMaskGlobalMaskBlendType}", Int) = 0
+[HideInInspector][ThryWideEnum(Replace, 0, Darken, 1, Multiply, 2, Color Burn, 3, Linear Burn, 4, Lighten, 5, Screen, 6, Color Dodge, 7, Linear Dodge(Add), 8, Overlay, 9, Soft Lighten, 10, Hard Light, 11, Vivid Light, 12, Linear Light, 13, Pin Light, 14, Hard Mix, 15, Difference, 16, Exclusion, 17, Subtract, 18, Divide, 19)]_DepthMaskGlobalMaskBlendType ("Blending", Range(0, 1)) = 2
+
+[Space(10)]
+[ThryToggleUI(true)]_DepthColorToggle ("<size=13><b>  Color & Emission</b></size>", Float) = 0
+[ThryWideEnum(Replace, 0, Multiply, 1, Add, 2)] _DepthColorBlendMode ("Blend Type--{condition_showS:(_DepthColorToggle==1)}", Int) = 0
+[sRGBWarning(true)]_DepthTexture ("Depth Texture--{reference_properties:[_DepthTexturePan, _DepthTextureUV], condition_showS:(_DepthColorToggle==1)}", 2D) = "white" { }
+[HideInInspector][Vector2]_DepthTexturePan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7, Depth Gradient, 8)] _DepthTextureUV ("UV", Int) = 0
+_DepthColor ("Color--{condition_showS:(_DepthColorToggle==1), reference_property:_DepthColorThemeIndex}", Color) = (1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _DepthColorThemeIndex ("", Int) = 0
+_DepthEmissionStrength ("Emission Strength--{condition_showS:(_DepthColorToggle==1)}", Range(0, 20)) = 0
+_DepthColorMinDepth ("Min Depth--{condition_showS:(_DepthColorToggle==1)}", Float) = 0
+_DepthColorMaxDepth ("Max Depth--{condition_showS:(_DepthColorToggle==1)}", Float) = 1
+_DepthColorMinValue ("Min Color Blend--{condition_showS:(_DepthColorToggle==1)}", Range(0, 1)) = 0
+_DepthColorMaxValue ("Max Color Blend--{condition_showS:(_DepthColorToggle==1)}", Range(0, 1)) = 1
+
+
+[Space(10)]
+[ThryToggleUI(true)]_DepthAlphaToggle ("<size=13><b>  Alpha</b></size>", Float) = 0
+_DepthAlphaMinDepth ("Min Depth--{condition_showS:(_DepthAlphaToggle==1)}", Float) = 0
+_DepthAlphaMaxDepth ("Max Depth--{condition_showS:(_DepthAlphaToggle==1)}", Float) = 1
+_DepthAlphaMinValue ("Min Alpha--{condition_showS:(_DepthAlphaToggle==1)}", Range(0, 1)) = 1
+_DepthAlphaMaxValue ("Max Alpha--{condition_showS:(_DepthAlphaToggle==1)}", Range(0, 1)) = 0
+[HideInInspector] m_end_depthFX ("Depth FX", Float) = 0
+//endex
+#T#PoiDepthKeyword
+//ifex _EnableTouchGlow==0
+#pragma shader_feature GRAIN
+//endex
+#T#PoiDepthVariables
+//ifex _EnableTouchGlow==0
+#if defined(PROP_DEPTHMASK) || !defined(OPTIMIZER_ENABLED)
+	Texture2D _DepthMask;
+#endif
+float4 _DepthMask_ST;
+float2 _DepthMaskPan;
+float _DepthMaskUV;
+float _DepthMaskGlobalMask;
+float _DepthMaskGlobalMaskBlendType;
+
+// Color
+float _DepthColorToggle;
+float _DepthColorBlendMode;
+#if defined(PROP_DEPTHTEXTURE) || !defined(OPTIMIZER_ENABLED)
+	Texture2D _DepthTexture;
+#endif
+float4 _DepthTexture_ST;
+float2 _DepthTexturePan;
+float _DepthTextureUV;
+
+float3 _DepthColor;
+float _DepthColorThemeIndex;
+float _DepthColorMinDepth;
+float _DepthColorMaxDepth;
+float _DepthColorMinValue;
+float _DepthColorMaxValue;
+float _DepthEmissionStrength;
+
+// Emission
+
+// Alpha
+float _DepthAlphaToggle;
+float _DepthAlphaMinValue;
+float _DepthAlphaMaxValue;
+float _DepthAlphaMinDepth;
+float _DepthAlphaMaxDepth;
+//endex
+#T#PoiDepthFunctions
+//ifex _EnableTouchGlow==0
+#ifdef GRAIN
+	void applyDepthFX(inout PoiFragData poiFragData, in PoiCam poiCam, in PoiMesh poiMesh, in PoiMods poiMods)
+	{
+		float3 touchEmission = 0;
+		
+		float perspectiveDivide = 1.0f / poiCam.clipPos.w;
+		float4 direction = poiCam.worldDirection * perspectiveDivide;
+		float2 screenPos = poiCam.grabPos.xy * perspectiveDivide;
+		float z = SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, screenPos);
+		
+		#if UNITY_REVERSED_Z
+			if (z == 0)
+		#else
+			if (z == 1)
+		#endif
+		return;
+		
+		float depth = CorrectedLinearEyeDepth(z, direction.w);
+		float3 worldpos = direction * depth + _WorldSpaceCameraPos.xyz;
+		/*
+		finalColor.rgb = frac(worldpos);
+		return;
+		*/
+		
+		float diff = distance(worldpos, poiMesh.worldPos);
+		//poiFragData.finalColor = diff;
+
+		#if defined(PROP_DEPTHMASK) || !defined(OPTIMIZER_ENABLED)
+			float depthMask = POI2D_SAMPLER_PAN(_DepthMask, _MainTex, poiUV(poiMesh.uv[_DepthMaskUV], _DepthMask_ST), _DepthMaskPan).r;
+		#else
+			float depthMask = 1;
+		#endif
+
+		if (_DepthMaskGlobalMask > 0)
+		{
+			depthMask = customBlend(depthMask, poiMods.globalMask[_DepthMaskGlobalMask-1], _DepthMaskGlobalMaskBlendType);
+		}
+		
+		if (_DepthColorToggle)
+		{
+			float colorBlendAlpha = lerp(_DepthColorMinValue, _DepthColorMaxValue, remapClamped(_DepthColorMinDepth, _DepthColorMaxDepth, diff));
+			
+			#if defined(PROP_DEPTHTEXTURE) || !defined(OPTIMIZER_ENABLED)
+				float2 depthTextureUV = float2(0, 0);
+				if (_DepthTextureUV == 8)
+				{
+					depthTextureUV = lerp(0, 1, remapClamped(_DepthColorMinDepth, _DepthColorMaxDepth, diff));
+				}
+				else
+				{
+					depthTextureUV = poiMesh.uv[_DepthTextureUV];
+				}
+				float3 depthColor = POI2D_SAMPLER_PAN(_DepthTexture, _MainTex, poiUV(depthTextureUV, _DepthTexture_ST), _DepthTexturePan).rgb * poiThemeColor(poiMods, _DepthColor, _DepthColorThemeIndex);
+			#else
+				float3 depthColor = poiThemeColor(poiMods, _DepthColor, _DepthColorThemeIndex);
+			#endif
+			
+			switch(_DepthColorBlendMode)
+			{
+				case 0:
+					{
+						poiFragData.finalColor = lerp(poiFragData.finalColor, depthColor, colorBlendAlpha * depthMask);
+						break;
+				}
+				case 1:
+					{
+						poiFragData.finalColor *= lerp(1, depthColor, colorBlendAlpha * depthMask);
+						break;
+				}
+				case 2:
+					{
+						poiFragData.finalColor = saturate(poiFragData.finalColor + lerp(0, depthColor, colorBlendAlpha * depthMask));
+						break;
+				}
+			}
+			poiFragData.emission += depthColor * colorBlendAlpha * _DepthEmissionStrength * depthMask;
+		}
+
+		if (_DepthAlphaToggle)
+		{
+			poiFragData.alpha *= lerp(poiFragData.alpha, saturate(lerp(_DepthAlphaMinValue, _DepthAlphaMaxValue, remapClamped(_DepthAlphaMinDepth, _DepthAlphaMaxDepth, diff))), depthMask);
+		}
+	}
+#endif
+//endex
+
+
+#T#PoiDepthFunctionCalls
+//ifex _EnableTouchGlow==0
+#ifdef GRAIN
+	applyDepthFX(poiFragData, poiCam, poiMesh, poiMods);
+#endif
+//endex
+
+#T#PoiDepthKillShadow
+//ifex _EnableTouchGlow==0
+#ifdef GRAIN
+	clip(-1);
+	return 0;
+#endif
+//endex

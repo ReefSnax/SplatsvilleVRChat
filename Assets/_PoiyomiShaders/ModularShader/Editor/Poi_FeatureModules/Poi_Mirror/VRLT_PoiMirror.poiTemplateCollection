@@ -1,0 +1,63 @@
+#T#PoiMirrorProperties
+
+//ifex _EnableMirrorOptions==0
+[HideInInspector] m_start_mirrorOptions ("Mirror--{reference_property:_EnableMirrorOptions,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/special-fx/mirror},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(POI_MIRROR)]_EnableMirrorOptions ("Enable Mirror Options", Float) = 0
+[ThryWideEnum(Show In Both, 0, Show Only In Mirror, 1, Dont Show In Mirror, 2)] _Mirror ("Show in mirror", Int) = 0
+[sRGBWarning(true)]_MirrorTexture ("Mirror Texture--{reference_properties:[_MirrorTexturePan, _MirrorTextureUV]},", 2D) = "white" { }
+[HideInInspector][Vector2]_MirrorTexturePan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _MirrorTextureUV("UV", Int) = 0
+[HideInInspector] m_end_mirrorOptions ("Mirror", Float) = 0
+//endex
+
+#T#PoiMirrorKeywords
+//ifex _EnableMirrorOptions==0
+#pragma shader_feature_local POI_MIRROR
+//endex
+
+#T#PoiMirrorVariables
+//ifex _EnableMirrorOptions==0
+#ifdef POI_MIRROR
+    float _Mirror;
+	#if defined(PROP_MIRRORTEXTURE) || !defined(OPTIMIZER_ENABLED)
+    	Texture2D _MirrorTexture;
+	#endif
+	float4 _MirrorTexture_ST;
+	float2 _MirrorTexturePan;
+	float _MirrorTextureUV;
+#endif
+//endex
+
+#T#PoiMirrorFunctions
+//ifex _EnableMirrorOptions==0
+#ifdef POI_MIRROR
+    void applyMirror(inout PoiFragData poiFragData, in PoiMesh poiMesh)
+    {
+		bool inMirror = IsInMirror();
+		
+		if (_Mirror != 0)
+		{
+			if (_Mirror == 1 && !inMirror)	discard;
+			if (_Mirror == 2 && inMirror)	discard;
+		}
+		
+		#if(defined(POI_PASS_BASE) || defined(POI_PASS_ADD))
+            #if defined(PROP_MIRRORTEXTURE) || !defined(OPTIMIZER_ENABLED)
+                if(inMirror)
+                {
+					poiFragData.baseColor = POI2D_SAMPLER_PAN(_MirrorTexture, _MainTex, poiMesh.uv[_MirrorTextureUV], _MirrorTexturePan);
+                }
+            #endif
+		#endif
+
+    }
+#endif
+//endex
+
+#T#PoiMirrorFunctionCalls
+//ifex _EnableMirrorOptions==0
+#ifdef POI_MIRROR
+    applyMirror(poiFragData, poiMesh);
+#endif
+//endex
+

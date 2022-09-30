@@ -1,0 +1,40 @@
+#T#PoiProximityColorProperties
+//ifex _FXProximityColor==0
+[HideInInspector] m_start_FXProximityColor ("Proximity Color--{reference_property:_FXProximityColor,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/special-fx/proximity-color},hover:Documentation}}", Float) = 0
+[HideInInspector][ToggleUI]_FXProximityColor ("Enable", Float) = 0
+[Enum(Object Position, 0, Pixel Position, 1)]_FXProximityColorType ("Pos To Use", Int) = 1
+_FXProximityColorMinColor ("Min Distance Alpha", Color) = (0, 0, 0)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _FXProximityColorMinColorThemeIndex ("", Int) = 0
+_FXProximityColorMaxColor ("Max Distance Alpha", Color) = (1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _FXProximityColorMaxColorThemeIndex ("", Int) = 0
+_FXProximityColorMinDistance ("Min Distance", Float) = 0
+_FXProximityColorMaxDistance ("Max Distance", Float) = 1
+[ToggleUI]_FXProximityColorBackFace ("Force BackFace Color", Float) = 0
+[HideInInspector] m_end_FXProximityColor ("", Float) = 0
+//endex
+
+#T#PoiProximityColorVariables
+//ifex _FXProximityColor==0
+float _FXProximityColor;
+float _FXProximityColorType;
+float3 _FXProximityColorMinColor;
+float3 _FXProximityColorMaxColor;
+float _FXProximityColorMinColorThemeIndex;
+float _FXProximityColorMaxColorThemeIndex;
+float _FXProximityColorMinDistance;
+float _FXProximityColorMaxDistance;
+float _FXProximityColorBackFace;
+//endex
+#T#PoiProximityColorFunctionCalls
+//ifex _FXProximityColor==0
+if (_FXProximityColor)
+{
+	float3 position = _FXProximityColorType ? poiMesh.worldPos : poiMesh.objectPosition;
+	poiFragData.finalColor *= lerp(poiThemeColor(poiMods, _FXProximityColorMinColor.rgb, _FXProximityColorMinColorThemeIndex), poiThemeColor(poiMods, _FXProximityColorMaxColor.rgb, _FXProximityColorMaxColorThemeIndex), smoothstep(_FXProximityColorMinDistance, _FXProximityColorMaxDistance, distance(position, poiCam.worldPos)));
+	
+	if (_FXProximityColorBackFace)
+	{
+		poiFragData.finalColor = lerp(poiFragData.finalColor * _FXProximityColorMinColor.rgb, poiFragData.finalColor, saturate(poiMesh.isFrontFace));
+	}
+}
+//endex

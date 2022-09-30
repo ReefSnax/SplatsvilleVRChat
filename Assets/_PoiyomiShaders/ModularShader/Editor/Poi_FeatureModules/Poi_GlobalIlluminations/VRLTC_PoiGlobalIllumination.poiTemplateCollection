@@ -1,0 +1,11 @@
+#T#PoiGIProps
+[HideInInspector] m_start_bakedLighting ("Baked Lighting", Float) = 0
+//_SpecularLMOcclusion ("Specular Occlusion", Range(0, 1)) = 0
+//_SpecLMOcclusionAdjust ("Spec Occlusion Sensitiviy", Range(0, 1)) = 0.2
+_GIEmissionMultiplier ("GI Emission Multiplier", Float) = 1
+[HideInInspector] DSGI ("DSGI", Float) = 0 //add this property for double sided illumination settings to be shown
+[HideInInspector] LightmapFlags ("Lightmap Flags", Float) = 0 //add this property for lightmap flags settings to be shown
+[HideInInspector] m_end_bakedLighting ("Baked Lighting", Float) = 0
+
+#T#PoiGIVariables
+float _GIEmissionMultiplier;

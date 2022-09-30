@@ -1,0 +1,304 @@
+#T#PoiFlipbookProperties
+//ifex _EnableFlipbook==0
+[HideInInspector] m_start_flipBook ("Flipbook--{reference_property:_EnableFlipbook,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/special-fx/flipbook},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(_SUNDISK_HIGH_QUALITY)]_EnableFlipbook ("Enable Flipbook", Float) = 0
+[ToggleUI]_FlipbookAlphaControlsFinalAlpha ("Flipbook Controls Alpha", Float) = 0
+[ToggleUI]_FlipbookIntensityControlsAlpha ("Intensity Controls Alpha", Float) = 0
+[ToggleUI]_FlipbookColorReplaces ("Color Replaces Flipbook", Float) = 0
+[TextureArray]_FlipbookTexArray ("Texture Array--{reference_properties:[_FlipbookTexArrayPan, _FlipbookTexArrayUV]}", 2DArray) = "" { }
+[HideInInspector][Vector2]_FlipbookTexArrayPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _FlipbookTexArrayUV ("UV", Int) = 0
+[sRGBWarning]_FlipbookMask ("Mask--{reference_properties:[_FlipbookMaskPan, _FlipbookMaskUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_FlipbookMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)] _FlipbookMaskUV ("UV", Int) = 0
+[ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _FlipbookMaskGlobalMask ("Global Mask--{reference_property:_FlipbookMaskGlobalMaskBlendType}", Int) = 0
+[HideInInspector][ThryWideEnum(Replace, 0, Darken, 1, Multiply, 2, Color Burn, 3, Linear Burn, 4, Lighten, 5, Screen, 6, Color Dodge, 7, Linear Dodge(Add), 8, Overlay, 9, Soft Lighten, 10, Hard Light, 11, Vivid Light, 12, Linear Light, 13, Pin Light, 14, Hard Mix, 15, Difference, 16, Exclusion, 17, Subtract, 18, Divide, 19)]_FlipbookMaskGlobalMaskBlendType ("Blending", Range(0, 1)) = 2
+_FlipbookColor ("Color & alpha--{reference_property:_FlipbookColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _FlipbookColorThemeIndex ("", Int) = 0
+// _FlipbookTotalFrames ("Total Frames", Float) = 1
+_FlipbookFPS ("FPS", Float) = 30.0
+_FlipbookFrameOffset("+Frame", Float) = 0
+[VectorLabel(sX, sY, oX, oY)]_FlipbookScaleOffset ("Scale | Offset", Vector) = (1, 1, 0, 0)
+[VectorLabel(L, R, D, U)]_FlipbookSideOffset ("Side Offset", Vector) = (0, 0, 0, 0)
+[ToggleUI]_FlipbookTiled ("Tiled", Float) = 0
+_FlipbookEmissionStrength ("Emission Strength", Range(0, 20)) = 0
+_FlipbookRotation ("Rotation", Range(0, 360)) = 0
+_FlipbookRotationSpeed ("Rotation Speed", Float) = 0
+_FlipbookReplace ("Replace", Range(0, 1)) = 1
+_FlipbookMultiply ("Multiply", Range(0, 1)) = 0
+_FlipbookAdd ("Add", Range(0, 1)) = 0
+// Flipbook Manual Control
+[ThryToggleUI(true)]_FlipbookManualFrameControl ("<size=13><b>  Manual Frame Control</b></size>", Float) = 0
+_FlipbookCurrentFrame ("Current Frame--{ condition_showS:_FlipbookManualFrameControl==1}", Float) = 0
+[ThryToggleUI(true)]_FlipbookStartAndEnd ("<size=13><b>  Start and End Frames</b></size>", Float) = 0
+_FlipbookStartFrame ("Start Frame--{ condition_showS:_FlipbookStartAndEnd==1}", Float) = 0
+_FlipbookEndFrame ("End Frame--{ condition_showS:_FlipbookStartAndEnd==1}", Float) = 0
+[ThryToggleUI(true)]_FlipbookCrossfadeEnabled ("<size=13><b>  Crossfade</b></size>", Float) = 0
+[MultiSlider]_FlipbookCrossfadeRange ("Fade Range--{ condition_showS:_FlipbookCrossfadeEnabled==1}", Vector) = (0.75, 1, 0, 1)
+[ThryToggleUI(true)]_FlipbookHueShiftEnabled ("<size=13><b>  Hue Shift</b></size>", Float) = 0
+_FlipbookHueShiftSpeed ("Shift Speed--{ condition_showS:_FlipbookHueShiftEnabled==1}", Float) = 0
+_FlipbookHueShift ("Hue Shift--{ condition_showS:_FlipbookHueShiftEnabled==1}", Range(0, 1)) = 0
+
+//Flipbook audio link
+[HideInInspector] m_start_FlipbookAudioLink ("Audio Link ♫--{ condition_showS:_EnableAudioLink==1}", Float) = 0
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _AudioLinkFlipbookScaleBand ("Scale Band", Int) = 0
+_AudioLinkFlipbookScale ("Scale Mod", Vector) = (0, 0, 0, 0)
+	[Space(7)]
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _AudioLinkFlipbookAlphaBand ("Alpha Band", Int) = 0
+[VectorLabel(Min, Max)]_AudioLinkFlipbookAlpha ("Alpha Mod", Vector) = (0, 0, 0, 0)
+	[Space(7)]
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _AudioLinkFlipbookEmissionBand ("Emission Band", Int) = 0
+[VectorLabel(Min, Max)]_AudioLinkFlipbookEmission ("Emission Mod", Vector) = (0, 0, 0, 0)
+	[Space(7)]
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _AudioLinkFlipbookFrameBand ("Frame Band", Int) = 0
+[VectorLabel(Min, Max)]_AudioLinkFlipbookFrame ("Frame control", Vector) = (0, 0, 0, 0)
+	[Space(7)]
+[ToggleUI]_FlipbookChronotensityEnabled ("Chronotensity", Float) = 0
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _FlipbookChronotensityBand ("Chrono Band--{ condition_showS:_FlipbookChronotensityEnabled==1}", Int) = 0
+[ThryWideEnum(Motion increases as intensity of band increases, 0, Above but Smooth, 1, Motion moves back and forth as a function of intensity, 2, Above but Smoooth, 3, Fixed speed increase when the band is dark Stationary when light, 4, Above but Smooooth, 5, Fixed speed increase when the band is dark Fixed speed decrease when light, 6, Above but Smoooooth, 7)]_FlipbookChronoType ("Chrono Type--{ condition_showS:_FlipbookChronotensityEnabled==1}", Int) = 0
+_FlipbookChronotensitySpeed ("Chrono Speed--{ condition_showS:_FlipbookChronotensityEnabled==1}", Float) = 0
+[HideInInspector] m_end_FlipbookAudioLink ("Audio Link", Float) = 0
+[HideInInspector] m_end_flipBook ("Flipbook", Float) = 0
+//endex
+#T#PoiFlipbookKeywords
+//ifex _EnableFlipbook==0
+#pragma shader_feature _SUNDISK_HIGH_QUALITY
+//endex
+
+#T#PoiFlipbookVariables
+//ifex _EnableFlipbook==0
+#ifdef _SUNDISK_HIGH_QUALITY
+
+	UNITY_DECLARE_TEX2DARRAY(_FlipbookTexArray);
+	float4 _FlipbookTexArray_ST;
+
+	float4 _FlipbookColor;
+	float _FlipbookColorThemeIndex;
+	float _FlipbookFPS;
+	// float _FlipbookTotalFrames;
+	float4 _FlipbookScaleOffset;
+	float4 _FlipbookSideOffset;
+	float _FlipbookTiled;
+	float _FlipbookManualFrameControl;
+	float _FlipbookCurrentFrame;
+	float _FlipbookStartAndEnd;
+	float _FlipbookStartFrame;
+	float _FlipbookEndFrame;
+	float _FlipbookEmissionStrength;
+	float _FlipbookRotation;
+	float _EnableFlipbook;
+	float _FlipbookTexArrayUV;
+	float _FlipbookAlphaControlsFinalAlpha;
+	float _FlipbookRotationSpeed;
+	float _FlipbookIntensityControlsAlpha;
+	float _FlipbookColorReplaces;
+	float2 _FlipbookTexArrayPan;
+	float _FlipbookFrameOffset;
+	// blending
+	float _FlipbookReplace;
+	float _FlipbookMultiply;
+	float _FlipbookAdd;
+
+	#if defined(PROP_FLIPBOOKMASSK) || !defined(OPTIMIZED_ENABLED)
+		Texture2D _FlipbookMask;
+	#endif
+	float4 _FlipbookMask_ST;
+	float2 _FlipbookMaskPan;
+	float _FlipbookMaskUV;
+	float _FlipbookMaskGlobalMask;
+	float _FlipbookMaskGlobalMaskBlendType;
+
+	// anim
+	float _FlipbookMovementType;
+	float4 _FlipbookStartEndOffset;
+	float _FlipbookMovementSpeed;
+
+	// Crossfade
+	float _FlipbookCrossfadeEnabled;
+	float2 _FlipbookCrossfadeRange;
+
+	// Hueshift
+	float _FlipbookHueShiftEnabled;
+	float _FlipbookHueShiftSpeed;
+	float _FlipbookHueShift;
+
+	#ifdef POI_AUDIOLINK
+		float _FlipbookChronotensityEnabled;
+		float _FlipbookChronotensityBand;
+		float _FlipbookChronotensitySpeed;
+		float _FlipbookChronoType;
+		half _AudioLinkFlipbookScaleBand;
+		half4 _AudioLinkFlipbookScale;
+		half _AudioLinkFlipbookAlphaBand;
+		half2 _AudioLinkFlipbookAlpha;
+		half _AudioLinkFlipbookEmissionBand;
+		half2 _AudioLinkFlipbookEmission;
+		half _AudioLinkFlipbookFrameBand;
+		half2 _AudioLinkFlipbookFrame;
+	#endif
+#endif
+//endex
+
+#T#PoiFlipbookFunctions
+//ifex _EnableFlipbook==0
+#ifdef _SUNDISK_HIGH_QUALITY
+
+	void applyFlipbook(inout PoiFragData poiFragData, in PoiMesh poiMesh, in PoiMods poiMods)
+	{
+		#if defined(PROP_FLIPBOOKTEXARRAY) || !defined(OPTIMIZER_ENABLED)
+			float4 flipBookPixel = float4(0, 0, 0, 0);
+			#if defined(PROP_FLIPBOOKMASK) || !defined(OPTIMIZER_ENABLED)
+				float flipBookMask = POI2D_SAMPLER_PAN(_FlipbookMask, _MainTex, poiUV(poiMesh.uv[_FlipbookMaskUV], _FlipbookMask_ST), _FlipbookMaskPan).r;
+			#else
+				float flipBookMask = 1;
+			#endif
+			if (_FlipbookMaskGlobalMask > 0)
+			{
+				flipBookMask = customBlend(flipBookMask, poiMods.globalMask[_FlipbookMaskGlobalMask-1], _FlipbookMaskGlobalMaskBlendType);
+			}
+			float4 flipbookScaleOffset = _FlipbookScaleOffset;
+
+			#ifdef POI_AUDIOLINK
+				if (poiMods.audioLinkAvailable)
+				{
+					flipbookScaleOffset.xy += lerp(_AudioLinkFlipbookScale.xy, _AudioLinkFlipbookScale.zw, poiMods.audioLink[_AudioLinkFlipbookScaleBand]);
+				}
+			#endif
+
+			flipbookScaleOffset.xy = 1 - flipbookScaleOffset.xy;
+			float2 uv = frac(poiMesh.uv[_FlipbookTexArrayUV]);
+			float theta = radians(_FlipbookRotation + _Time.z * _FlipbookRotationSpeed);
+			float cs = cos(theta);
+			float sn = sin(theta);
+			float2 spriteCenter = flipbookScaleOffset.zw + .5;
+			// 2d rotation
+			uv = float2((uv.x - spriteCenter.x) * cs - (uv.y - spriteCenter.y) * sn + spriteCenter.x, (uv.x - spriteCenter.x) * sn + (uv.y - spriteCenter.y) * cs + spriteCenter.y);
+			float4 sideOffset = float4(-_FlipbookSideOffset.x, _FlipbookSideOffset.y, -_FlipbookSideOffset.z, _FlipbookSideOffset.w);
+			float2 newUV = remap(uv, float2(0, 0) + flipbookScaleOffset.xy / 2 + flipbookScaleOffset.zw + sideOffset.xz, float2(1, 1) - flipbookScaleOffset.xy / 2 + flipbookScaleOffset.zw + sideOffset.yw, float2(0, 0), float2(1, 1));
+			
+			UNITY_BRANCH
+			if (_FlipbookTiled == 0)
+			{
+				if (max(newUV.x, newUV.y) > 1 || min(newUV.x, newUV.y) < 0)
+				{
+					return;
+				}
+			}
+			float currentFrame = 0;
+			float width;
+			float height;
+			float totalFrames;
+			_FlipbookTexArray.GetDimensions(width, height, totalFrames);
+
+			if (_FlipbookStartAndEnd)
+			{
+				totalFrames -= (totalFrames - min(max(_FlipbookStartFrame, _FlipbookEndFrame), totalFrames));
+				totalFrames -= max(0, _FlipbookStartFrame);
+			}
+			if (!_FlipbookManualFrameControl)
+			{
+				if (_FlipbookFPS != 0)
+				{
+					currentFrame = ((_Time.y / (1 / _FlipbookFPS)) + _FlipbookFrameOffset) % totalFrames;
+					if (_FlipbookStartAndEnd)
+					{
+						currentFrame += _FlipbookStartFrame;
+					}
+				}
+			}
+			else
+			{
+				currentFrame = fmod(_FlipbookCurrentFrame, totalFrames);
+			}
+			#ifdef POI_AUDIOLINK
+				if (poiMods.audioLinkAvailable)
+				{
+					if (_FlipbookChronotensityEnabled)
+					{
+						currentFrame += AudioLinkGetChronoTime(_FlipbookChronoType, _FlipbookChronotensityBand) * _FlipbookChronotensitySpeed;
+					}
+					currentFrame += lerp(_AudioLinkFlipbookFrame.x, _AudioLinkFlipbookFrame.y, poiMods.audioLink[_AudioLinkFlipbookFrameBand]);
+					float totalFramesAL = totalFrames;
+					if (_FlipbookStartAndEnd)
+					{
+						totalFramesAL += max(0, _FlipbookStartFrame);
+					}
+					currentFrame %= totalFramesAL;
+				}
+			#endif
+			flipBookPixel = UNITY_SAMPLE_TEX2DARRAY(_FlipbookTexArray, float3(TRANSFORM_TEX(newUV, _FlipbookTexArray) + _Time.x * _FlipbookTexArrayPan, floor(currentFrame)));
+			UNITY_BRANCH
+			if (_FlipbookCrossfadeEnabled)
+			{
+				float totalFramesCF = totalFrames;
+				if (_FlipbookStartAndEnd)
+				{
+					totalFramesCF += max(0, _FlipbookStartFrame);
+				}
+				float4 flipbookNextPixel = UNITY_SAMPLE_TEX2DARRAY(_FlipbookTexArray, float3(TRANSFORM_TEX(newUV, _FlipbookTexArray) + _Time.x * _FlipbookTexArrayPan, floor((currentFrame + 1) % totalFramesCF)));
+				flipBookPixel = lerp(flipBookPixel, flipbookNextPixel, smoothstep(_FlipbookCrossfadeRange.x, _FlipbookCrossfadeRange.y, frac(currentFrame)));
+			}
+			
+			UNITY_BRANCH
+			if (_FlipbookIntensityControlsAlpha)
+			{
+				flipBookPixel.a = poiMax(flipBookPixel.rgb);
+			}
+			UNITY_BRANCH
+			if (_FlipbookColorReplaces)
+			{
+				flipBookPixel.rgb = poiThemeColor(poiMods, _FlipbookColor.rgb, _FlipbookColorThemeIndex);
+			}
+			else
+			{
+				flipBookPixel.rgb *= poiThemeColor(poiMods, _FlipbookColor.rgb, _FlipbookColorThemeIndex);
+			}
+			
+			UNITY_BRANCH
+			if (_FlipbookHueShiftEnabled)
+			{
+				flipBookPixel.rgb = hueShift(flipBookPixel.rgb, _FlipbookHueShift + _Time.x * _FlipbookHueShiftSpeed);
+			}
+			half flipbookAlpha = 1;
+			#ifdef POI_AUDIOLINK
+				if (poiMods.audioLinkAvailable)
+				{
+					flipbookAlpha += saturate(lerp(_AudioLinkFlipbookAlpha.x, _AudioLinkFlipbookAlpha.y, poiMods.audioLink[_AudioLinkFlipbookAlphaBand]));
+				}
+			#endif
+
+			#if !defined(POI_PASS_OUTLINE) && !defined(UNITY_PASS_SHADOWCASTER)
+
+				poiFragData.baseColor = lerp(poiFragData.baseColor, flipBookPixel.rgb, flipBookPixel.a * _FlipbookColor.a * _FlipbookReplace * flipBookMask * flipbookAlpha);
+				poiFragData.baseColor = poiFragData.baseColor + flipBookPixel.rgb * _FlipbookAdd * flipBookMask * flipbookAlpha;
+				poiFragData.baseColor = poiFragData.baseColor * lerp(1, flipBookPixel.rgb, flipBookPixel.a * _FlipbookColor.a * flipBookMask * _FlipbookMultiply * flipbookAlpha);
+
+				float flipbookEmissionStrength = _FlipbookEmissionStrength;
+				#ifdef POI_AUDIOLINK
+					if (poiMods.audioLinkAvailable)
+					{
+						flipbookEmissionStrength += max(lerp(_AudioLinkFlipbookEmission.x, _AudioLinkFlipbookEmission.y, poiMods.audioLink[_AudioLinkFlipbookEmissionBand]), 0);
+					}
+				#endif
+
+				poiFragData.emission += lerp(0, flipBookPixel.rgb * flipbookEmissionStrength, flipBookPixel.a * _FlipbookColor.a * flipBookMask * flipbookAlpha);
+
+			#endif
+
+			UNITY_BRANCH
+			if (_FlipbookAlphaControlsFinalAlpha)
+			{
+				poiFragData.alpha = lerp(poiFragData.alpha, flipBookPixel.a * _FlipbookColor.a, flipBookMask);
+			}
+		#endif
+	}
+
+#endif
+//endex
+
+#T#PoiFlipbookFunctionCalls
+//ifex _EnableFlipbook==0
+#ifdef _SUNDISK_HIGH_QUALITY
+	applyFlipbook(poiFragData, poiMesh, poiMods);
+#endif
+//endex

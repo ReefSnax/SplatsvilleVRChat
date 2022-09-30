@@ -1,0 +1,70 @@
+#T#PoiSubsurfaceScatteringProperties
+//ifex _SubsurfaceScattering==0
+[HideInInspector] m_start_subsurfaceScattering ("Subsurface Scattering--{reference_property:_SubsurfaceScattering}}", Float) = 0
+[HideInInspector][ThryToggle(POI_SUBSURFACESCATTERING)]_SubsurfaceScattering ("Enable", Float) = 0
+
+_SSSColor ("Subsurface Color", Color) = (1, 0, 0, 1)
+[sRGBWarning]_SSSThicknessMap ("Thickness Map--{reference_properties:[_SSSThicknessMapPan, _SSSThicknessMapUV]}", 2D) = "black" { }
+[HideInInspector][Vector2]_SSSThicknessMapPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, DistortedUV1, 4)] _SSSThicknessMapUV ("UV", Int) = 0
+_SSSThicknessMod ("Thickness mod", Range(-1, 1)) = 0
+_SSSStrength ("Light Strength", Range(0, 1)) = 0.25
+_SSSSpread ("Light Spread", Range(1, 100)) = 5
+_SSSDistortion ("Light Distortion", Range(0, 1)) = 1
+
+[HideInInspector] m_end_subsurfaceScattering ("", Float) = 0
+//endex
+
+#T#PoiSubsurfaceScatteringKeywords
+//ifex _SubsurfaceScattering==0
+#pragma shader_feature_local POI_SUBSURFACESCATTERING
+//endex
+
+#T#PoiSubsurfaceScatteringVariables
+//ifex _SubsurfaceScattering==0
+#ifdef POI_SUBSURFACESCATTERING
+	float4 _SSSColor;
+	#if defined(PROP_SSSTHICKNESSMAP) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _SSSThicknessMap;
+	#endif
+	float4 _SSSThicknessMap_ST;
+	float2 _SSSThicknessMapPan;
+	float _SSSThicknessMapUV;
+
+	float _SSSThicknessMod;
+	float _SSSStrength;
+	float _SSSSpread;
+	float _SSSDistortion;
+#endif
+//endex
+
+#T#PoiSubsurfaceScatteringFunctions
+//ifex _SubsurfaceScattering==0
+#ifdef POI_SUBSURFACESCATTERING
+	void applySubsurfaceScattering(in PoiCam poiCam, inout PoiLight poiLight, in PoiMesh poiMesh)
+	{
+		#if defined(PROP_SSSTHICKNESSMAP) || !defined(OPTIMIZER_ENABLED)
+			float SSS = 1 - POI2D_SAMPLER_PAN(_SSSThicknessMap, _MainTex, poiUV(poiMesh.uv[_SSSThicknessMapUV], _SSSThicknessMap_ST), _SSSThicknessMapPan).r;
+		#else
+			float SSS = 1;
+		#endif
+		
+		float3 vLTLight = poiLight.direction + poiMesh.normals[0] * _SSSDistortion;
+		float flTDot = pow(saturate(dot(poiCam.viewDir, -vLTLight)), _SSSSpread) * _SSSStrength;
+		#ifdef UNITY_PASS_FORWARDBASE
+			float3 fLT = (flTDot) * saturate(SSS + - 1 * _SSSThicknessMod);
+		#else
+			float3 fLT = poiLight.attenuation * (flTDot) * saturate(SSS + - 1 * _SSSThicknessMod);
+		#endif
+		
+		poiLight.finalLightAdd += fLT * poiLight.directColor * _SSSColor * poiLight.attenuation;
+	}
+#endif
+//endex
+
+#T#PoiSubsurfaceScatteringFunctionCalls
+//ifex _SubsurfaceScattering==0
+#ifdef POI_SUBSURFACESCATTERING
+	applySubsurfaceScattering(poiCam, poiLight, poiMesh);
+#endif
+//endex

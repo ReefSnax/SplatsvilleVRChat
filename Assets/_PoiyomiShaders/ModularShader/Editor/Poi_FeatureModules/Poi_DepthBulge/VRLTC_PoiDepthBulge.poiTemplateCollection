@@ -1,0 +1,79 @@
+#T#PoiDepthBulgeProperties
+//ifex _EnableDepthBulge==0
+[HideInInspector] m_start_DepthBulge ("Depth Bulge--{reference_property:_EnableDepthBulge}", Float) = 0
+[HideInInspector][ThryToggle(POI_DEPTHBULGE)] _EnableDepthBulge ("Bulge", Float) = 0
+_DepthBulgeMask ("Bulge Mask--{reference_properties:[_DepthBulgeMaskUV]}", 2D) = "white" { }
+[HideInInspector][Enum(UV0, 0, UV1, 1, UV2, 2, UV3, 3)] _DepthBulgeMaskUV ("UV", Int) = 0
+_DepthBulgeFadeLength ("Touch Distance", Float) = 0.02
+_DepthBulgeHeight ("Bulge Height", Range(-0.2, 0.2)) = 0.02
+[HideInInspector] m_end_DepthBulge ("Depth Bulge", Float) = 0
+//endex
+#T#PoiDepthBulgeKeywords
+//ifex _EnableDepthBulge==0
+#pragma shader_feature POI_DEPTHBULGE
+//endex
+#T#PoiDepthBulgeVariables
+//ifex _EnableDepthBulge==0
+#ifdef POI_DEPTHBULGE
+	float _DepthBulgeFadeLength;
+	float _DepthBulgeHeight;
+	
+	#if defined(PROP_DEPTHBULGEMASK) || !defined(OPTIMIZER_ENABLED)
+		sampler2D _DepthBulgeMask;
+	#endif
+	float _DepthBulgeMaskUV;
+	float4 _DepthBulgeMask_ST;
+#endif
+//endex
+
+#T#PoiDepthBulgeFunctions
+//ifex _EnableDepthBulge==0
+#if defined(POI_DEPTHBULGE)
+	void applyDepthBulgeFX(inout VertexOut o)
+	{
+		float4 pos = UnityObjectToClipPos(o.localPos);
+		float4 grabPos = ComputeGrabScreenPos(pos);
+		float depth = SAMPLE_DEPTH_TEXTURE_LOD(_CameraDepthTexture, float4(grabPos.xy / grabPos.w, 0, 0));
+
+		#if defined(PROP_DEPTHBULGEMASK) || !defined(OPTIMIZER_ENABLED)
+			float depthBulgeMask = tex2Dlod(_DepthBulgeMask, float4(poiUV(vertexUV(o, _DepthBulgeMaskUV), _DepthBulgeMask_ST), 0, 0)).r;
+		#else
+			float depthBulgeMask = 1.0;
+		#endif
+
+		depth = Linear01Depth(depth);
+
+		float intersect = 0;
+		if (depth != 1)
+		{
+			float diff = distance(depth, Linear01Depth(pos.z / pos.w));
+			if (diff > 0)
+			{
+				intersect = 1 - smoothstep(0, _ProjectionParams.w * _DepthBulgeFadeLength, diff);
+			}
+		}
+		float4 offset = intersect * _DepthBulgeHeight * float4(o.normal, 0);
+
+		offset = IsInMirror() ? 0 : offset;
+		offset *= depthBulgeMask;
+
+		o.worldPos.xyz += offset.xyz;
+		o.localPos.xyz += mul(unity_WorldToObject, float4(offset.xyz, 0)).xyz;
+	}
+#endif
+//endex
+
+#T#PoiDepthBulgeFunctionCalls
+//ifex _EnableDepthBulge==0
+#if defined(POI_DEPTHBULGE) && (defined(POI_PASS_BASE) || defined(POI_PASS_ADD))
+	applyDepthBulgeFX(o);
+#endif
+//endex
+
+#T#PoiDepthBulgeKillShadow
+//ifex _EnableDepthBulge==0
+#ifdef POI_DEPTHBULGE
+	clip(-1);
+	return 0;
+#endif
+//endex

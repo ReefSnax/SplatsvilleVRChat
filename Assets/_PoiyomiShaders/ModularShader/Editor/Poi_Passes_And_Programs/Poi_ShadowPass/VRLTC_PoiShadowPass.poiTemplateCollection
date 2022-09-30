@@ -1,0 +1,45 @@
+#T#ShadowPassTags
+Tags { "LightMode" = "ShadowCaster" }
+
+#T#ShadowPassStencil
+#K#SHADOW_PASS_STENCIL
+
+#T#ShadowPassBlendSettings
+ZWrite [_ZWrite]
+Cull [_Cull]
+AlphaToMask Off
+ZTest [_ZTest]
+ColorMask [_ColorMask]
+Offset [_OffsetFactor], [_OffsetUnits]
+
+BlendOp [_BlendOp], [_BlendOpAlpha]
+Blend [_SrcBlend] [_DstBlend], [_SrcBlendAlpha] [_DstBlendAlpha]
+
+#T#ShadowPassOnlyKeywords
+#pragma skip_variants FOG_LINEAR FOG_EXP FOG_EXP2
+#pragma multi_compile_instancing
+#pragma multi_compile_shadowcaster
+#pragma multi_compile_fog
+#define POI_PASS_SHADOW
+
+#T#ShadowPassKeywords
+#K#SHADOW_PASS_KEYWORDS
+
+#T#ShadowPassPropertyVariables
+#K#SHADOW_PROPERTY_VARIABLES
+
+#T#ShadowPassPrograms
+#K#VERTEX_SHADOW_DATA_STRUCTURES
+#K#VERTEX_SHADOW_FUNCTIONS_EARLY
+#K#VERTEX_SHADOW_FUNCTIONS
+#K#VERTEX_SHADOW_FUNCTIONS_LATE
+#K#VERTEX_SHADOW_PROGRAM
+
+#K#HULLDOMAIN_SHADOW_PROGRAM
+#K#GEOMETRY_SHADOW_PROGRAM
+
+#K#FRAGMENT_SHADOW_DATA_STRUCTURES
+#K#FRAGMENT_SHADOW_FUNCTIONS_EARLY
+#K#FRAGMENT_SHADOW_FUNCTIONS
+#K#FRAGMENT_SHADOW_FUNCTIONS_LATE
+#K#FRAGMENT_SHADOW_PROGRAM

@@ -1,0 +1,67 @@
+#T#PoiGlobalThemesProperties
+[HideInInspector] m_start_GlobalThemes ("Global Themes--{button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/color-and-normals/global-themes},hover:Documentation}}", Float) = 0
+[HideInInspector] m_start_GlobalThemeColor0 ("Theme Color 0", Float) = 0
+    [HDR]_GlobalThemeColor0 ("Theme Color 0",       Color       ) = (1, 1, 1, 1)
+    _GlobalThemeHue0        ("Hue Adjust",          Range( 0, 1)) = 0
+    _GlobalThemeSaturation0 ("Saturation Adjust",   Range(-1, 1)) = 0
+    _GlobalThemeValue0      ("Value Adjust",        Range(-1, 1)) = 0
+[HideInInspector] m_end_GlobalThemeColor0   ("Theme Color 0", Float) = 0
+[HideInInspector] m_start_GlobalThemeColor1 ("Theme Color 1", Float) = 0
+    [HDR]_GlobalThemeColor1 ("Theme Color 1",       Color       ) = (1, 1, 1, 1)
+    _GlobalThemeHue1        ("Hue Adjust",          Range( 0, 1)) = 0
+    _GlobalThemeSaturation1 ("Saturation Adjust",   Range(-1, 1)) = 0
+    _GlobalThemeValue1      ("Value Adjust",        Range(-1, 1)) = 0
+[HideInInspector] m_end_GlobalThemeColor1   ("Theme Color 1", Float) = 0
+[HideInInspector] m_start_GlobalThemeColor2 ("Theme Color 2", Float) = 0
+    [HDR]_GlobalThemeColor2 ("Theme Color 2",       Color       ) = (1, 1, 1, 1)
+    _GlobalThemeHue2        ("Hue Adjust",          Range( 0, 1)) = 0
+    _GlobalThemeSaturation2 ("Saturation Adjust",   Range(-1, 1)) = 0
+    _GlobalThemeValue2      ("Value Adjust",        Range(-1, 1)) = 0
+[HideInInspector] m_end_GlobalThemeColor2   ("Theme Color 2", Float) = 0
+[HideInInspector] m_start_GlobalThemeColor3 ("Theme Color 3", Float) = 0
+    [HDR]_GlobalThemeColor3 ("Theme Color 3",       Color       ) = (1, 1, 1, 1)
+    _GlobalThemeHue3        ("Hue Adjust",          Range( 0, 1)) = 0
+    _GlobalThemeSaturation3 ("Saturation Adjust",   Range(-1, 1)) = 0
+    _GlobalThemeValue3      ("Value Adjust",        Range(-1, 1)) = 0
+[HideInInspector] m_end_GlobalThemeColor3   ("Theme Color 3", Float) = 0
+[HideInInspector] m_end_GlobalThemes ("Global Themes", Float ) = 0
+
+#T#PoiGlobalThemesVariables
+float4 _GlobalThemeColor0;
+float4 _GlobalThemeColor1;
+float4 _GlobalThemeColor2;
+float4 _GlobalThemeColor3;
+float _GlobalThemeHue0;
+float _GlobalThemeHue1;
+float _GlobalThemeHue2;
+float _GlobalThemeHue3;
+float _GlobalThemeSaturation0;
+float _GlobalThemeSaturation1;
+float _GlobalThemeSaturation2;
+float _GlobalThemeSaturation3;
+float _GlobalThemeValue0;
+float _GlobalThemeValue1;
+float _GlobalThemeValue2;
+float _GlobalThemeValue3;
+
+#T#PoiGlobalThemesFunctions
+void calculateGlobalThemes(inout PoiMods poiMods)
+{
+    // Theme colors are defined as HDR; convert to SDR and do the HSV adjustment, then re-apply exposure
+    float4 themeColorExposures = 0;
+    float4 themeColor0, themeColor1, themeColor2, themeColor3 = 0;
+
+    DecomposeHDRColor(_GlobalThemeColor0.rgb, themeColor0.rgb, themeColorExposures.x);
+    DecomposeHDRColor(_GlobalThemeColor1.rgb, themeColor1.rgb, themeColorExposures.y);
+    DecomposeHDRColor(_GlobalThemeColor2.rgb, themeColor2.rgb, themeColorExposures.z);
+    DecomposeHDRColor(_GlobalThemeColor3.rgb, themeColor3.rgb, themeColorExposures.w);
+
+    poiMods.globalColorTheme[0] = float4(ApplyHDRExposure(ModifyViaHSV(themeColor0.rgb, _GlobalThemeHue0, _GlobalThemeSaturation0, _GlobalThemeValue0), themeColorExposures.x), _GlobalThemeColor0.a);
+    poiMods.globalColorTheme[1] = float4(ApplyHDRExposure(ModifyViaHSV(themeColor1.rgb, _GlobalThemeHue1, _GlobalThemeSaturation1, _GlobalThemeValue1), themeColorExposures.y), _GlobalThemeColor1.a);
+    poiMods.globalColorTheme[2] = float4(ApplyHDRExposure(ModifyViaHSV(themeColor2.rgb, _GlobalThemeHue2, _GlobalThemeSaturation2, _GlobalThemeValue2), themeColorExposures.z), _GlobalThemeColor2.a);
+    poiMods.globalColorTheme[3] = float4(ApplyHDRExposure(ModifyViaHSV(themeColor3.rgb, _GlobalThemeHue3, _GlobalThemeSaturation3, _GlobalThemeValue3), themeColorExposures.w), _GlobalThemeColor3.a);
+}
+
+#T#PoiGlobalThemesFunctionCalls
+calculateGlobalThemes(poiMods);
+

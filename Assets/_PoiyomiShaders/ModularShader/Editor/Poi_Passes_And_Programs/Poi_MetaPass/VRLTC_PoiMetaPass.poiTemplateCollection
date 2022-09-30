@@ -1,0 +1,43 @@
+#T#MetaPassTags
+Tags { "LightMode" = "Meta" }
+
+#T#MetaPassStencil
+#K#META_PASS_STENCIL
+
+#T#MetaPassBlendSettings
+ZWrite [_ZWrite]
+Cull [_Cull]
+AlphaToMask [_AlphaToCoverage]
+ZTest [_ZTest]
+ColorMask [_ColorMask]
+Offset [_OffsetFactor], [_OffsetUnits]
+
+BlendOp [_BlendOp], [_BlendOpAlpha]
+Blend [_SrcBlend] [_DstBlend], [_SrcBlendAlpha] [_DstBlendAlpha]
+
+#T#MetaPassOnlyKeywords
+//#pragma multi_compile_fwdbase
+#pragma multi_compile_instancing
+#pragma multi_compile _ VERTEXLIGHT_ON
+#define POI_PASS_META
+#T#MetaPassKeywords
+#K#META_PASS_KEYWORDS
+
+#T#MetaPassPropertyVariables
+#K#META_PROPERTY_VARIABLES
+
+#T#MetaPassPrograms
+#K#VERTEX_META_DATA_STRUCTURES
+#K#VERTEX_META_FUNCTIONS_EARLY
+#K#VERTEX_META_FUNCTIONS
+#K#VERTEX_META_FUNCTIONS_LATE
+#K#VERTEX_META_PROGRAM
+
+#K#HULLDOMAIN_META_PROGRAM
+#K#GEOMETRY_META_PROGRAM
+
+#K#FRAGMENT_META_DATA_STRUCTURES
+#K#FRAGMENT_META_FUNCTIONS_EARLY
+#K#FRAGMENT_META_FUNCTIONS
+#K#FRAGMENT_META_FUNCTIONS_LATE
+#K#FRAGMENT_META_PROGRAM

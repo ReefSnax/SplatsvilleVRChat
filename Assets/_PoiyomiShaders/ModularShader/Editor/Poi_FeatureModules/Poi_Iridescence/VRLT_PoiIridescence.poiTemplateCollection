@@ -1,0 +1,149 @@
+#T#PoiIridescenceProperties
+//ifex _EnableIridescence==0
+[HideInInspector] m_start_Iridescence ("Iridescence--{reference_property:_EnableIridescence,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/special-fx/iridescence},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(POI_IRIDESCENCE)]_EnableIridescence ("Enable Iridescence", Float) = 0
+[sRGBWarning(true)][Gradient]_IridescenceRamp ("Ramp--{reference_properties:[_IridescenceRampPan]}", 2D) = "white" { }
+[HideInInspector][Vector2]_IridescenceRampPan ("Panning", Vector) = (0, 0, 0, 0)
+
+[sRGBWarning]_IridescenceMask ("Mask--{reference_properties:[_IridescenceMaskPan, _IridescenceMaskUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_IridescenceMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_IridescenceMaskUV ("Mask UV", Int) = 0
+[ThryWideEnum(Off, 0, 1R, 1, 1G, 2, 1B, 3, 1A, 4, 2R, 5, 2G, 6, 2B, 7, 2A, 8, 3R, 9, 3G, 10, 3B, 11, 3A, 12, 4R, 13, 4G, 14, 4B, 15, 4A, 16)] _IridescenceMaskGlobalMask ("Global Mask--{reference_property:_IridescenceMaskGlobalMaskBlendType}", Int) = 0
+[HideInInspector][ThryWideEnum(Replace, 0, Darken, 1, Multiply, 2, Color Burn, 3, Linear Burn, 4, Lighten, 5, Screen, 6, Color Dodge, 7, Linear Dodge(Add), 8, Overlay, 9, Soft Lighten, 10, Hard Light, 11, Vivid Light, 12, Linear Light, 13, Pin Light, 14, Hard Mix, 15, Difference, 16, Exclusion, 17, Subtract, 18, Divide, 19)]_IridescenceMaskGlobalMaskBlendType ("Blending", Range(0, 1)) = 2
+
+[ToggleUI]_IridescenceNormalToggle ("Custom Normals", Float) = 0
+[Normal]_IridescenceNormalMap ("Normal Map--{reference_properties:[_IridescenceNormalIntensity, _IridescenceNormalMapPan, _IridescenceNormalMapUV]}", 2D) = "bump" { }
+[HideInInspector]_IridescenceNormalIntensity ("Normal Intensity", Range(0, 10)) = 1
+[HideInInspector][Vector2]_IridescenceNormalMapPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_IridescenceNormalMapUV ("Normal UV", Int) = 0
+[Enum(Vertex, 0, Pixel, 1)] _IridescenceNormalSelection ("Normal Select", Int) = 1
+_IridescenceIntensity ("Intensity", Range(0, 10)) = 1
+_IridescenceAddBlend ("Blend Add", Range(0, 1)) = 0
+_IridescenceReplaceBlend ("Blend Replace", Range(0, 1)) = 0
+_IridescenceMultiplyBlend ("Blend Multiply", Range(0, 1)) = 0
+_IridescenceEmissionStrength ("Emission Strength", Range(0, 20)) = 0
+[ThryToggleUI(true)]_IridescenceHueShiftEnabled ("<size=13><b>  Hue Shift</b></size>", Float) = 0
+_IridescenceHueShiftSpeed ("Speed--{condition_showS:(_IridescenceHueShiftEnabled==1)}", Float) = 0
+_IridescenceHueShift ("Shift--{condition_showS:(_IridescenceHueShiftEnabled==1)}", Range(0, 1)) = 0
+
+// Iridescence Audio Link
+[HideInInspector] m_start_IridescenceAudioLink ("Audio Link ♫--{ condition_showS:_EnableAudioLink==1}", Float) = 0
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _IridescenceAudioLinkEmissionAddBand ("Emission Band", Int) = 0
+[VectorLabel(Min, Max)]_IridescenceAudioLinkEmissionAdd ("Emission Mod", Vector) = (0, 0, 0, 0)
+[HideInInspector] m_end_IridescenceAudioLink ("Audio Link", Float) = 0
+[HideInInspector] m_end_Iridescence ("Iridescence", Float) = 0
+//endex
+#T#PoiIridescenceKeywords
+//ifex _EnableIridescence==0
+#pragma shader_feature_local POI_IRIDESCENCE
+//endex
+
+#T#PoiIridescenceVariables
+//ifex _EnableIridescence==0
+#ifdef POI_IRIDESCENCE
+	#if defined(PROP_IRIDESCENCERAMP) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _IridescenceRamp;
+	#endif
+	float4 _IridescenceRamp_ST;
+	float2 _IridescenceRampPan;
+
+	#if defined(PROP_IRIDESCENCEMASK) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _IridescenceMask;
+	#endif
+	float4 _IridescenceMask_ST;
+	float2 _IridescenceMaskPan;
+	float _IridescenceMaskUV;
+	float _IridescenceMaskGlobalMask;
+	float _IridescenceMaskGlobalMaskBlendType;
+
+	#if defined(PROP_IRIDESCENCENORMALMAP) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _IridescenceNormalMap;
+	#endif
+	float4 _IridescenceNormalMap_ST;
+	float2 _IridescenceNormalMapPan;
+	float _IridescenceNormalMapUV;
+	
+	float _IridescenceIntensity;
+	float _IridescenceHueShiftEnabled;
+	float _IridescenceHueShiftSpeed;
+	float _IridescenceHueShift;
+
+	float _IridescenceNormalSelection;
+	float _IridescenceNormalIntensity;
+	float _IridescenceNormalToggle;
+	float _IridescenceAddBlend;
+	float _IridescenceReplaceBlend;
+	float _IridescenceMultiplyBlend;
+	float _IridescenceEmissionStrength;
+
+	#ifdef POI_AUDIOLINK
+		float _IridescenceAudioLinkEmissionAddBand;
+		float2 _IridescenceAudioLinkEmissionAdd;
+	#endif
+#endif
+//endex
+
+#T#PoiIridescenceFunctions
+//ifex _EnableIridescence==0
+#ifdef POI_IRIDESCENCE
+	float3 calculateNormal(PoiMesh poiMesh, float3 baseNormal)
+	{
+		float3 normal = baseNormal;
+		#if defined(PROP_IRIDESCENCENORMALMAP) || !defined(OPTIMIZER_ENABLED)
+			normal = UnpackScaleNormal(POI2D_SAMPLER_PAN(_IridescenceNormalMap, _MainTex, poiUV(poiMesh.uv[_IridescenceNormalMapUV], _IridescenceNormalMap_ST), _IridescenceNormalMapPan), _IridescenceNormalIntensity);
+			normal = normalize(normal.x * poiMesh.tangent + normal.y * poiMesh.binormal + normal.z * baseNormal);
+		#endif
+		return normal;
+	}
+
+	void applyIridescence(inout PoiFragData poiFragData, PoiMesh poiMesh, PoiCam poiCam, inout PoiMods poiMods)
+	{
+		float3 normal = poiMesh.normals[_IridescenceNormalSelection];
+		if (_IridescenceNormalToggle)
+		{
+			normal = calculateNormal(poiMesh, normal);
+		}
+		float ndotv = dot(normal, poiCam.viewDir);
+
+		float4 iridescenceColor = 1;
+		#if defined(PROP_IRIDESCENCERAMP) || !defined(OPTIMIZER_ENABLED)
+			iridescenceColor = UNITY_SAMPLE_TEX2D_SAMPLER(_IridescenceRamp, _MainTex, (1 - abs(ndotv)) * _IridescenceRamp_ST.xy + _IridescenceRampPan * _Time.x + _IridescenceRamp_ST.zw);
+			if (_IridescenceHueShiftEnabled == 1)
+			{
+				float hue = _IridescenceHueShift + frac(_Time.x * _IridescenceHueShiftSpeed);
+				iridescenceColor.rgb = hueShift(iridescenceColor.rgb, hue);
+			}
+		#endif
+
+		float iridescenceMask = 1;
+		#if defined(PROP_IRIDESCENCEMASK) || !defined(OPTIMIZER_ENABLED)
+			iridescenceMask = POI2D_SAMPLER_PAN(_IridescenceMask, _MainTex, poiUV(poiMesh.uv[_IridescenceMaskUV], _IridescenceMask_ST), _IridescenceMaskPan);
+		#endif
+
+		if (_IridescenceMaskGlobalMask > 0)
+		{
+			iridescenceMask = customBlend(iridescenceMask, poiMods.globalMask[_IridescenceMaskGlobalMask-1], _IridescenceMaskGlobalMaskBlendType);
+		}
+		
+		poiFragData.baseColor.rgb = lerp(poiFragData.baseColor.rgb, saturate(iridescenceColor.rgb * _IridescenceIntensity), iridescenceColor.a * _IridescenceReplaceBlend * iridescenceMask);
+		poiFragData.baseColor.rgb += saturate(iridescenceColor.rgb * _IridescenceIntensity * iridescenceColor.a * _IridescenceAddBlend * iridescenceMask);
+		poiFragData.baseColor.rgb *= saturate(lerp(1, iridescenceColor.rgb * _IridescenceIntensity, iridescenceColor.a * _IridescenceMultiplyBlend * iridescenceMask));
+
+		float emissionStrength = _IridescenceEmissionStrength;
+		#ifdef POI_AUDIOLINK
+			if (any(_IridescenceAudioLinkEmissionAdd))
+			{
+				emissionStrength += lerp(_IridescenceAudioLinkEmissionAdd.x, _IridescenceAudioLinkEmissionAdd.y, poiMods.audioLink[_IridescenceAudioLinkEmissionAddBand]);
+			}
+		#endif
+		poiFragData.emission += saturate(iridescenceColor.rgb * _IridescenceIntensity) * iridescenceColor.a * iridescenceMask * emissionStrength;
+	}
+#endif
+//endex
+
+#T#PoiIridescenceFunctionCalls
+//ifex _EnableIridescence==0
+#ifdef POI_IRIDESCENCE
+	applyIridescence(poiFragData, poiMesh, poiCam, poiMods);
+#endif
+//endex

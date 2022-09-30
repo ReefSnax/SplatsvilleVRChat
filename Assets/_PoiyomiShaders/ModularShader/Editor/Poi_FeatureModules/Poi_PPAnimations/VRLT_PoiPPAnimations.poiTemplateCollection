@@ -1,0 +1,28 @@
+#T#PoiPPAnimationProperties
+[HideInInspector] m_start_PoiLightData ("PP Animations--{button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/post-processing/pp-animations},hover:Documentation}}", Float) = 0
+[Helpbox(1)] _PPHelp ("This section meant for real time adjustments through animations and not to be changed in unity", Int) = 0
+_PPLightingMultiplier ("Lighting Mulitplier", Float) = 1
+_PPLightingAddition ("Lighting Add", Float) = 0
+_PPEmissionMultiplier ("Emission Multiplier", Float) = 1
+_PPFinalColorMultiplier ("Final Color Multiplier", Float) = 1
+[HideInInspector] m_end_PoiLightData ("PP Animations ", Float) = 0
+
+#T#PoiPPAnimationVariables
+float _PPLightingMultiplier;
+float _PPLightingAddition;
+float _PPEmissionMultiplier;
+float _PPFinalColorMultiplier;
+
+#T#PoiPPAnimationLightingMods
+#ifdef UNITY_PASS_FORWARDBASE
+    poiLight.directColor = max(poiLight.directColor * _PPLightingMultiplier, 0);
+    poiLight.directColor = max(poiLight.directColor + _PPLightingAddition, 0);
+    poiLight.indirectColor = max(poiLight.indirectColor * _PPLightingMultiplier, 0);
+    poiLight.indirectColor = max(poiLight.indirectColor + _PPLightingAddition, 0);
+#endif
+
+#T#PoiPPAnimationReturnMods
+#ifdef UNITY_PASS_FORWARDBASE
+    poiFragData.emission = max(poiFragData.emission * _PPEmissionMultiplier, 0);
+    poiFragData.finalColor = max(poiFragData.finalColor * _PPFinalColorMultiplier, 0);
+#endif

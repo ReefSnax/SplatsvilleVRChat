@@ -1,0 +1,190 @@
+#T#UVModifierProperties
+//ifex _EnableDistortion==0
+[HideInInspector] m_start_uvDistortion (" Distortion UV--{reference_property:_EnableDistortion}", Float) = 0
+[HideInInspector][ThryToggle(USER_LUT)] _EnableDistortion ("Enabled", Float) = 0
+[ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6)] _DistortionUvToDistort ("Distorted UV", Int) = 0
+[sRGBWarning]_DistortionMask ("Mask--{reference_properties:[_DistortionMaskPan, _DistortionMaskUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_DistortionMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6)] _DistortionMaskUV ("UV", Int) = 0
+[sRGBWarning]_DistortionFlowTexture ("Distortion Texture 1--{reference_properties:[_DistortionFlowTexturePan, _DistortionFlowTextureUV]}", 2D) = "black" { }
+[HideInInspector][Vector2]_DistortionFlowTexturePan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6)] _DistortionFlowTextureUV ("UV", Int) = 0
+[sRGBWarning]_DistortionFlowTexture1 ("Distortion Texture 2--{reference_properties:[_DistortionFlowTexture1Pan, _DistortionFlowTexture1UV]}", 2D) = "black" { }
+[HideInInspector][Vector2]_DistortionFlowTexture1Pan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6)] _DistortionFlowTexture1UV ("UV", Int) = 0
+_DistortionStrength ("Strength1", Float) = 0.03
+_DistortionStrength1 ("Strength2", Float) = 0.01
+[HideInInspector] m_start_DistortionAudioLink ("Audio Link ♫--{reference_property:_EnableDistortionAudioLink, condition_showS:_EnableAudioLink==1}", Float) = 0
+[HideInInspector][ToggleUI] _EnableDistortionAudioLink ("Enabled", Float) = 0
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _DistortionStrengthAudioLinkBand ("Strength 1 Band", Int) = 0
+[VectorLabel(Min, Max)]_DistortionStrengthAudioLink ("Strength 1 Offset Range", Vector) = (0, 0, 0, 0)
+	[Space(7)]
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3)] _DistortionStrength1AudioLinkBand ("Strength 2 Band", Int) = 0
+[VectorLabel(Min, Max)]_DistortionStrength1AudioLink ("Strength 2 Offset Range", Vector) = (0, 0, 0, 0)
+[HideInInspector] m_end_DistortionAudioLink ("Audio Link", Float) = 0
+[HideInInspector] m_end_uvDistortion ("Distortion UV", Float) = 0
+//endex
+
+[HideInInspector] m_start_uvPanosphere ("Panosphere UV", Float) = 0
+[ToggleUI] _StereoEnabled ("Stereo Enabled", Float) = 0
+[ToggleUI] _PanoUseBothEyes ("Perspective Correct (VR)", Float) = 1
+[HideInInspector] m_end_uvPanosphere ("Panosphere UV", Float) = 0
+
+[HideInInspector] m_start_uvPolar ("Polar UV", Float) = 0
+[ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5)] _PolarUV ("UV", Int) = 0
+[Vector2]_PolarCenter ("Center Coordinate", Vector) = (.5, .5, 0, 0)
+_PolarRadialScale ("Radial Scale", Float) = 1
+_PolarLengthScale ("Length Scale", Float) = 1
+_PolarSpiralPower ("Spiral Power", Float) = 0
+[HideInInspector] m_end_uvPolar ("Polar UV", Float) = 0
+#T#UVModifierKeywords
+//ifex _EnableDistortion==0
+#pragma shader_feature USER_LUT
+//endex
+
+#T#UVModifierVariables
+//ifex _EnableDistortion==0
+#ifdef USER_LUT
+	#if defined(PROP_DISTORTIONFLOWTEXTURE) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _DistortionFlowTexture;
+		float4 _DistortionFlowTexture_ST;
+		float2 _DistortionFlowTexturePan;
+		float _DistortionFlowTextureUV;
+	#endif
+
+	#if defined(PROP_DISTORTIONFLOWTEXTURE1) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _DistortionFlowTexture1;
+		float4 _DistortionFlowTexture1_ST;
+		float2 _DistortionFlowTexture1Pan;
+		float _DistortionFlowTexture1UV;
+	#endif
+
+	#if defined(PROP_DISTORTIONMASK) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _DistortionMask;
+		float4 _DistortionMask_ST;
+		float2 _DistortionMaskPan;
+		float _DistortionMaskUV;
+	#endif
+
+	float _DistortionUvToDistort;
+	float _DistortionStrength;
+	float _DistortionStrength1;
+
+	#ifdef POI_AUDIOLINK
+		half _EnableDistortionAudioLink;
+		half2 _DistortionStrengthAudioLink;
+		half _DistortionStrengthAudioLinkBand;
+		half2 _DistortionStrength1AudioLink;
+		half _DistortionStrength1AudioLinkBand;
+	#endif
+#endif
+//endex
+float _StereoEnabled;
+float _PolarUV;
+float2 _PolarCenter;
+float _PolarRadialScale;
+float _PolarLengthScale;
+float _PolarSpiralPower;
+float _PanoUseBothEyes;
+
+#T#UVModifierFunctions
+float2 calculatePolarCoordinate(in PoiMesh poiMesh)
+{
+	float2 delta = poiMesh.uv[_PolarUV] - _PolarCenter;
+	float radius = length(delta) * 2 * _PolarRadialScale;
+	float angle = atan2(delta.x, delta.y);
+	float phi = angle / (UNITY_PI * 2.0);
+	float phi_frac = frac(phi);
+	angle = fwidth(phi) - 0.0001 < fwidth(phi_frac) ? phi : phi_frac;
+	angle *= _PolarLengthScale;
+
+	return float2(radius, angle + distance(poiMesh.uv[_PolarUV], _PolarCenter) * _PolarSpiralPower);
+}
+
+float2 MonoPanoProjection(float3 coords)
+{
+	float3 normalizedCoords = normalize(coords);
+	float latitude = acos(normalizedCoords.y);
+	float longitude = atan2(normalizedCoords.z, normalizedCoords.x);
+	float phi = longitude / (UNITY_PI * 2.0);
+	float phi_frac = frac(phi);
+	longitude = fwidth(phi) - 0.0001 < fwidth(phi_frac) ? phi : phi_frac;
+	longitude *= 2;
+	float2 sphereCoords = float2(longitude, latitude) * float2(1.0, 1.0 / UNITY_PI);
+	sphereCoords = float2(1.0, 1.0) - sphereCoords;
+	return(sphereCoords + float4(0, 1 - unity_StereoEyeIndex, 1, 1.0).xy) * float4(0, 1 - unity_StereoEyeIndex, 1, 1.0).zw;
+}
+
+float2 StereoPanoProjection(float3 coords)
+{
+	float3 normalizedCoords = normalize(coords);
+	float latitude = acos(normalizedCoords.y);
+	float longitude = atan2(normalizedCoords.z, normalizedCoords.x);
+	float phi = longitude / (UNITY_PI * 2.0);
+	float phi_frac = frac(phi);
+	longitude = fwidth(phi) - 0.0001 < fwidth(phi_frac) ? phi : phi_frac;
+	longitude *= 2;
+	float2 sphereCoords = float2(longitude, latitude) * float2(0.5, 1.0 / UNITY_PI);
+	sphereCoords = float2(0.5, 1.0) - sphereCoords;
+	return(sphereCoords + float4(0, 1 - unity_StereoEyeIndex, 1, 0.5).xy) * float4(0, 1 - unity_StereoEyeIndex, 1, 0.5).zw;
+}
+
+float2 calculatePanosphereUV(in PoiMesh poiMesh)
+{
+	float3 viewDirection = normalize(lerp(getCameraPosition().xyz, _WorldSpaceCameraPos.xyz, _PanoUseBothEyes) - poiMesh.worldPos.xyz) * - 1;
+	return lerp(MonoPanoProjection(viewDirection), StereoPanoProjection(viewDirection), _StereoEnabled);
+}
+//ifex _EnableDistortion==0
+#ifdef USER_LUT
+	float2 distortedUV(in PoiMesh poiMesh)
+	{
+		#if defined(PROP_DISTORTIONFLOWTEXTURE) || !defined(OPTIMIZER_ENABLED)
+			float4 flowVector = POI2D_SAMPLER_PAN(_DistortionFlowTexture, _MainTex, poiUV(poiMesh.uv[_DistortionFlowTextureUV], _DistortionFlowTexture_ST), _DistortionFlowTexturePan) * 2 - 1;
+		#else
+			float4 flowVector = -1;
+		#endif
+
+		#if defined(PROP_DISTORTIONFLOWTEXTURE1) || !defined(OPTIMIZER_ENABLED)
+			float4 flowVector1 = POI2D_SAMPLER_PAN(_DistortionFlowTexture1, _MainTex, poiUV(poiMesh.uv[_DistortionFlowTexture1UV], _DistortionFlowTexture1_ST), _DistortionFlowTexture1Pan) * 2 - 1;
+		#else
+			float4 flowVector1 = -1;
+		#endif
+
+		#if defined(PROP_DISTORTIONMASK) || !defined(OPTIMIZER_ENABLED)
+			half distortionMask = POI2D_SAMPLER_PAN(_DistortionMask, _MainTex, poiMesh.uv[_DistortionMaskUV], _DistortionMaskPan).r;
+		#else
+			half distortionMask = 1;
+		#endif
+
+		half distortionStrength = _DistortionStrength;
+		half distortionStrength1 = _DistortionStrength1;
+
+		#ifdef POI_AUDIOLINK
+			UNITY_BRANCH
+			if (AudioLinkIsAvailable() && _EnableDistortionAudioLink && _AudioLinkAnimToggle)
+			{
+				distortionStrength += lerp(_DistortionStrengthAudioLink.x, _DistortionStrengthAudioLink.y, AudioLinkData(uint2(0, uint(_DistortionStrengthAudioLinkBand))).r);
+				distortionStrength1 += lerp(_DistortionStrength1AudioLink.x, _DistortionStrength1AudioLink.y, AudioLinkData(uint2(0, uint(_DistortionStrength1AudioLinkBand))).r);
+			}
+		#endif
+
+		flowVector *= distortionStrength;
+		flowVector1 *= distortionStrength1;
+		return poiMesh.uv[_DistortionUvToDistort] + ((flowVector.xy + flowVector1.xy) / 2) * distortionMask;
+	}
+#endif
+//endex
+
+#T#UVModifierFunctionCalls
+poiMesh.uv[4] = calculatePanosphereUV(poiMesh);
+poiMesh.uv[6] = calculatePolarCoordinate(poiMesh);
+//ifex _EnableDistortion==0
+#ifdef USER_LUT
+	poiMesh.uv[7] = distortedUV(poiMesh);
+#endif
+//endex
+/*
+half3 worldViewUp = normalize(half3(0, 1, 0) - poiCam.viewDir * dot(poiCam.viewDir, half3(0, 1, 0)));
+half3 worldViewRight = normalize(cross(poiCam.viewDir, worldViewUp));
+poiMesh[8] = half2(dot(worldViewRight, poiMesh.normals[_MatcapNormal]), dot(worldViewUp, poiMesh.normals[_MatcapNormal])) * _MatcapBorder + 0.5;
+*/

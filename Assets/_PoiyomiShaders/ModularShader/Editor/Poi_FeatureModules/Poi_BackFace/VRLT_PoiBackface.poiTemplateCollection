@@ -1,0 +1,105 @@
+#T#PoiBackFaceProperties
+//ifex _BackFaceEnabled!=1
+// Back Face Textures and Emission
+[HideInInspector] m_start_backFace ("Back Face--{reference_property:_BackFaceEnabled,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/color-and-normals/back-face},hover:Documentation}}", Float) = 0
+[HideInInspector][ThryToggle(POI_BACKFACE)]_BackFaceEnabled ("Backface Enabled", Float) = 0
+_BackFaceColor ("Color--{reference_property:_BackFaceColorThemeIndex}", Color) = (1, 1, 1, 1)
+[HideInInspector][ThryWideEnum(Off, 0, Theme Color 0, 1, Theme Color 1, 2, Theme Color 2, 3, Theme Color 3, 4, ColorChord 0, 5, ColorChord 1, 6, ColorChord 2, 7, ColorChord 3, 8, AL Theme 0, 9, AL Theme 1, 10, AL Theme 2, 11, AL Theme 3, 12)] _BackFaceColorThemeIndex ("", Int) = 0
+_BackFaceEmissionStrength ("Emission Strength", Range(0, 20)) = 0
+[sRGBWarning(true)]_BackFaceTexture ("Texture--{reference_properties:[_BackFaceTexturePan, _BackFaceTextureUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_BackFaceTexturePan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_BackFaceTextureUV ("UV#", Int) = 0
+[sRGBWarning]_BackFaceMask ("Mask--{reference_properties:[_BackFaceMaskPan, _BackFaceMaskUV]}", 2D) = "white" { }
+[HideInInspector][Vector2]_BackFaceMaskPan ("Panning", Vector) = (0, 0, 0, 0)
+[HideInInspector][ThryWideEnum(UV0, 0, UV1, 1, UV2, 2, UV3, 3, Panosphere, 4, World Pos XZ, 5, Polar UV, 6, Distorted UV, 7)]_BackFaceMaskUV ("UV#", Int) = 0
+_BackFaceDetailIntensity ("Detail Intensity", Range(0, 5)) = 1
+[ToggleUI]_BackFaceReplaceAlpha ("Replace Alpha", Float) = 0
+_BackFaceEmissionLimiter ("Emission Limiter", Range(0, 1)) = 1
+[Space(10)]
+[ThryToggleUI(true)]_BackFaceHueShiftEnabled ("<size=13><b>  Hue Shift</b></size>", Float) = 0
+_BackFaceHueShift ("Hue Shift--{condition_showS:(_BackFaceHueShiftEnabled==1)}", Range(0, 1)) = 0
+_BackFaceHueShiftSpeed ("Hue Shift Speed--{condition_showS:(_BackFaceHueShiftEnabled==1)}", Float) = 0
+[HideInInspector] m_end_backFace ("Back Face", Float) = 0
+//endex
+#T#PoiBackFaceKeywords
+//ifex _BackFaceEnabled!=1
+#pragma shader_feature_local POI_BACKFACE
+//endex
+
+#T#PoiBackFaceVariables
+//ifex _BackFaceEnabled!=1
+#ifdef POI_BACKFACE
+	float _BackFaceEnabled;
+	float _BackFaceDetailIntensity;
+	float _BackFaceEmissionStrength;
+	float2 _BackFacePanning;
+	float4 _BackFaceColor;
+	float _BackFaceColorThemeIndex;
+	float _BackFaceReplaceAlpha;
+
+	#if defined(PROP_BACKFACETEXTURE) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _BackFaceTexture;
+	#endif
+	float4 _BackFaceTexture_ST;
+	float2 _BackFaceTexturePan;
+	float _BackFaceTextureUV;
+
+	#if defined(PROP_BACKFACEMASK) || !defined(OPTIMIZER_ENABLED)
+		Texture2D _BackFaceMask;
+	#endif
+	float4 _BackFaceMask_ST;
+	float2 _BackFaceMaskPan;
+	float _BackFaceMaskUV;
+
+	float _BackFaceHueShiftEnabled;
+	float _BackFaceHueShift;
+	float _BackFaceHueShiftSpeed;
+	float _BackFaceEmissionLimiter;
+#endif
+
+//TODO detail strength stuff
+//endex
+#T#PoiBackFaceFunction
+//ifex _BackFaceEnabled!=1
+#ifdef POI_BACKFACE
+	void ApplyBackFaceColor(inout PoiFragData poiFragData, in PoiMesh poiMesh, inout PoiMods poiMods)
+	{
+		if (!poiMesh.isFrontFace)
+		{
+			float4 backFaceColor = _BackFaceColor;
+			backFaceColor.rgb = poiThemeColor(poiMods, backFaceColor.rgb, _BackFaceColorThemeIndex);
+			#if defined(PROP_BACKFACETEXTURE) || !defined(OPTIMIZER_ENABLED)
+				backFaceColor *= POI2D_SAMPLER_PAN(_BackFaceTexture, _MainTex, poiUV(poiMesh.uv[_BackFaceTextureUV], _BackFaceTexture_ST), _BackFaceTexturePan);
+			#endif
+			backFaceColor.rgb = hueShift(backFaceColor.rgb, frac(_BackFaceHueShift + _BackFaceHueShiftSpeed * _Time.x) * _BackFaceHueShiftEnabled);
+
+			float backFaceMask = 1;
+			#if defined(PROP_BACKFACEMASK) || !defined(OPTIMIZER_ENABLED)
+				backFaceMask *= POI2D_SAMPLER_PAN(_BackFaceMask, _MainTex, poiUV(poiMesh.uv[_BackFaceMaskUV], _BackFaceMask_ST), _BackFaceMaskPan).r;
+			#endif
+			if (!_BackFaceReplaceAlpha)
+			{
+				backFaceMask *= backFaceColor.a;
+			}
+
+			poiFragData.baseColor = lerp(poiFragData.baseColor, backFaceColor.rgb, backFaceMask);
+
+			UNITY_BRANCH
+			if (_BackFaceReplaceAlpha)
+			{
+				poiFragData.alpha = backFaceColor.a;
+			}
+
+			poiFragData.emission += backFaceColor.rgb * _BackFaceEmissionStrength * backFaceMask;
+			poiMods.globalEmission = min(poiMods.globalEmission, _BackFaceEmissionLimiter);
+		}
+	}
+#endif
+//endex
+#T#PoiBackFaceFunctionCall
+//ifex _BackFaceEnabled!=1
+#ifdef POI_BACKFACE
+	ApplyBackFaceColor(poiFragData, poiMesh, poiMods);
+#endif
+//endex
+

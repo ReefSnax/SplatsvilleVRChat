@@ -1,0 +1,37 @@
+#T#RenderOptionsProperties
+[Enum(UnityEngine.Rendering.CullMode)] _Cull ("Cull", Float) = 2
+[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("ZTest", Float) = 4
+[Enum(Off, 0, On, 1)] _ZWrite ("ZWrite", Int) = 1
+[Enum(Thry.ColorMask)] _ColorMask ("Color Mask", Int) = 15
+_OffsetFactor ("Offset Factor", Float) = 0.0
+_OffsetUnits ("Offset Units", Float) = 0.0
+[ToggleUI]_RenderingReduceClipDistance ("Reduce Clip Distance", Float) = 0
+[ToggleUI]_IgnoreFog ("Ignore Fog", Float) = 0
+[HideInInspector] Instancing ("Instancing", Float) = 0 //add this property for instancing variants settings to be shown
+
+// Blending Options
+[HideInInspector] m_start_blending ("Blending--{button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/rendering/blending},hover:Documentation}}", Float) = 0
+[Enum(Thry.BlendOp)]_BlendOp ("RGB Blend Op", Int) = 0
+[Enum(UnityEngine.Rendering.BlendMode)] _SrcBlend ("RGB Source Blend", Int) = 1
+[Enum(UnityEngine.Rendering.BlendMode)] _DstBlend ("RGB Destination Blend", Int) = 0
+[Space][ThryHeaderLabel(Additive Blending, 13)]
+[Enum(Thry.BlendOp)]_AddBlendOp ("RGB Blend Op", Int) = 0
+[Enum(UnityEngine.Rendering.BlendMode)] _AddSrcBlend ("RGB Source Blend", Int) = 1
+[Enum(UnityEngine.Rendering.BlendMode)] _AddDstBlend ("RGB Destination Blend", Int) = 1
+
+[HideInInspector] m_start_alphaBlending ("Advanced Alpha Blending", Float) = 0
+[Enum(Thry.BlendOp)]_BlendOpAlpha ("Alpha Blend Op", Int) = 0
+[Enum(UnityEngine.Rendering.BlendMode)] _SrcBlendAlpha ("Alpha Source Blend", Int) = 1
+[Enum(UnityEngine.Rendering.BlendMode)] _DstBlendAlpha ("Alpha Destination Blend", Int) = 0
+[Space][ThryHeaderLabel(Additive Blending, 13)]
+[Enum(Thry.BlendOp)]_AddBlendOpAlpha ("Alpha Blend Op", Int) = 0
+[Enum(UnityEngine.Rendering.BlendMode)] _AddSrcBlendAlpha ("Alpha Source Blend", Int) = 1
+[Enum(UnityEngine.Rendering.BlendMode)] _AddDstBlendAlpha ("Alpha Destination Blend", Int) = 1
+[HideInInspector] m_end_alphaBlending ("Advanced Alpha Blending", Float) = 0
+
+[HideInInspector] m_end_blending ("Blending", Float) = 0
+
+#T#RenderOptionsVariables
+float _IgnoreFog;
+float _RenderingReduceClipDistance;
+float _AddBlendOp;

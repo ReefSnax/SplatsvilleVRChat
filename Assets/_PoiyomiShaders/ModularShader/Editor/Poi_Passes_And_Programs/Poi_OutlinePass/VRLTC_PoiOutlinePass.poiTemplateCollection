@@ -1,0 +1,74 @@
+#T#OutlinePassTags
+Tags { "LightMode" = "ForwardBase" }
+
+#T#OutlinePassStencil
+Stencil
+{
+	Ref [_OutlineStencilRef]
+	ReadMask [_OutlineStencilReadMask]
+	WriteMask [_OutlineStencilWriteMask]
+//ifex _OutlineStencilType==1
+	Comp [_OutlineStencilCompareFunction]
+	Pass [_OutlineStencilPassOp]
+	Fail [_OutlineStencilFailOp]
+	ZFail [_OutlineStencilZFailOp]
+//endex
+
+//ifex _OutlineStencilType==0
+	CompBack [_OutlineStencilBackCompareFunction]
+	PassBack [_OutlineStencilBackPassOp]
+	FailBack [_OutlineStencilBackFailOp]
+	ZFailBack [_OutlineStencilBackZFailOp]
+
+	CompFront [_OutlineStencilFrontCompareFunction]
+	PassFront [_OutlineStencilFrontPassOp]
+	FailFront [_OutlineStencilFrontFailOp]
+	ZFailFront [_OutlineStencilFrontZFailOp]
+//endex
+}
+
+#T#OutlinePassBlendSettings
+/*
+ColorMask [_ColorMask]
+BlendOp [_BlendOp], [_BlendOpAlpha]
+Blend [_SrcBlend] [_DstBlend]
+ZWrite [_ZWrite]
+AlphaToMask [_AlphaToCoverage]
+Cull [_OutlineCull]
+*/
+AlphaToMask [_AlphaToCoverage]
+ZTest [_OutlineZTest]
+Cull [_OutlineCull]
+BlendOp [_OutlineBlendOp], [_OutlineBlendOpAlpha]
+Blend [_OutlineSrcBlend] [_OutlineDstBlend], [_OutlineSrcBlendAlpha] [_OutlineDstBlendAlpha]
+
+
+#T#OutlinePassOnlyKeywords
+#pragma multi_compile_fwdbase
+#pragma multi_compile_instancing
+#pragma multi_compile_fog
+#pragma multi_compile _ VERTEXLIGHT_ON
+#define POI_PASS_OUTLINE
+
+#T#OutlinePassKeywords
+#K#OUTLINE_PASS_KEYWORDS
+
+#T#OutlinePassPropertyVariables
+#K#OUTLINE_PROPERTY_VARIABLES
+
+#T#OutlinePassPrograms
+#K#VERTEX_OUTLINE_DATA_STRUCTURES
+#K#VERTEX_OUTLINE_FUNCTIONS_EARLY
+#K#VERTEX_OUTLINE_FUNCTIONS
+#K#VERTEX_OUTLINE_FUNCTIONS_LATE
+#K#VERTEX_OUTLINE_PROGRAM
+
+
+#K#HULLDOMAIN_SHADOW_PROGRAM
+#K#GEOMETRY_SHADOW_PROGRAM
+
+#K#FRAGMENT_OUTLINE_DATA_STRUCTURES
+#K#FRAGMENT_OUTLINE_FUNCTIONS_EARLY
+#K#FRAGMENT_OUTLINE_FUNCTIONS
+#K#FRAGMENT_OUTLINE_FUNCTIONS_LATE
+#K#FRAGMENT_OUTLINE_PROGRAM

@@ -1,0 +1,730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset />
+  <library_images>
+    <image id="ExitDoor_Alb">
+      <init_from>ExitDoor_Alb.png</init_from>
+    </image>
+    <image id="ExitDoor_Nrm">
+      <init_from>ExitDoor_Nrm.png</init_from>
+    </image>
+    <image id="ExitDoor_Rgh">
+      <init_from>ExitDoor_Rgh.png</init_from>
+    </image>
+    <image id="ExitDoor_Mtl">
+      <init_from>ExitDoor_Mtl.png</init_from>
+    </image>
+    <image id="BakeDummy00">
+      <init_from>BakeDummy00.png</init_from>
+    </image>
+    <image id="LightBakeDummy00">
+      <init_from>LightBakeDummy00.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="ExitDoor">
+      <instance_effect url="#Effect_ExitDoor" />
+    </material>
+    <material id="Glass">
+      <instance_effect url="#Effect_Glass" />
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="Effect_ExitDoor">
+      <profile_COMMON>
+        <newparam sid="surface_ExitDoor-diffuse">
+          <surface type="2D">
+            <init_from>ExitDoor_Alb</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="sampler_ExitDoor-diffuse">
+          <sampler2D>
+            <source>surface_ExitDoor-diffuse</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+          </sampler2D>
+        </newparam>
+        <newparam sid="surface_ExitDoor-bump">
+          <surface type="2D">
+            <init_from>ExitDoor_Nrm</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="sampler_ExitDoor-bump">
+          <sampler2D>
+            <source>surface_ExitDoor-bump</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <diffuse>
+              <texture texture="sampler_ExitDoor-diffuse" texcoord="CHANNEL0" />
+            </diffuse>
+            <bump>
+              <texture texture="sampler_ExitDoor-bump" texcoord="CHANNEL0" />
+            </bump>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <specular>
+              <color sid="specular">0 0 0 1</color>
+            </specular>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Effect_Glass">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <diffuse>
+              <color sid="diffuse">1 1 1 1</color>
+            </diffuse>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <specular>
+              <color sid="specular">0 0 0 1</color>
+            </specular>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="Parts8__ExitDoor-mesh" name="Parts8__ExitDoor">
+      <mesh>
+        <source id="Parts8__ExitDoor-position">
+          <float_array id="Parts8__ExitDoor-position-array" count="240">1.339682 0 -0.06399903 1.339682 0 0 1.339682 3.385304 -0.06399903 1.339682 3.385304 0 1.339682 3.385304 0 1.339682 0 0 1.419682 3.445304 0 1.419682 0 0 0.08027332 0 -0.06399903 0.08027332 3.385304 -0.06399903 0.08027332 0 0 0.08027332 3.385304 0 0.08027332 3.385304 0 0 3.445304 0 0.08027332 0 0 0 0 0 1.419682 3.445304 0 0 3.445304 0 1.339682 3.385304 0 0.08027332 3.385304 0 1.339682 3.385304 0 0.08027332 3.385304 0 1.339682 3.385304 -0.06399903 0.08027332 3.385304 -0.06399903 0 0 0 0 3.445304 0 0 0 -0.06817017 0 3.445304 -0.06817017 1.419682 3.445304 0 1.419682 0 0 1.419682 3.445304 -0.07105591 1.419682 0 -0.07105591 0 3.445304 0 1.419682 3.445304 0 0 3.445304 -0.07105591 1.419682 3.445304 -0.07105591 0.08027332 3.385304 -0.06399903 0.08027332 0 -0.06399903 0 3.445304 -0.06817017 0 0 -0.06817017 1.339682 3.385304 -0.06399903 0.08027332 3.385304 -0.06399903 1.419682 3.445304 -0.07105591 0 3.445304 -0.07105591 1.339682 0 -0.06399903 1.339682 3.385304 -0.06399903 1.419682 0 -0.07105591 1.419682 3.445304 -0.07105591 0.8683683 0.274 -0.02646484 0.8683683 3.209812 -0.02646484 0.8683683 0.274 -0.06239754 0.8683683 3.209812 -0.06239754 0.56164 0.274 -0.02646484 0.56164 0.274 -0.06239754 0.56164 3.209812 -0.02646484 0.56164 3.209812 -0.06239876 0.8683683 3.209812 -0.02646484 0.56164 3.209812 -0.02646484 0.8683683 3.209812 -0.06239754 0.56164 3.209812 -0.06239876 0.8683683 0.274 -0.06239754 0.56164 0.274 -0.06239754 0.8683683 0.274 -0.02646484 0.56164 0.274 -0.02646484 1.362577 3.388797 -0.06239754 0.8683683 3.209812 -0.06239754 0.56164 3.209812 -0.06239876 0.8683683 0.274 -0.06239754 0.06266346 3.388797 -0.06239754 1.362577 0.066 -0.06239754 0.56164 0.274 -0.06239754 0.06266346 0.066 -0.06239754 0.06266346 0.066 -0.02646484 0.56164 0.274 -0.02646484 0.06266346 3.388797 -0.02646484 1.362577 0.066 -0.02646484 0.56164 3.209812 -0.02646484 0.8683683 0.274 -0.02646484 1.362577 3.388797 -0.02646484 0.8683683 3.209812 -0.02646484</float_array>
+          <technique_common>
+            <accessor source="#Parts8__ExitDoor-position-array" count="80" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Parts8__ExitDoor-normal">
+          <float_array id="Parts8__ExitDoor-normal-array" count="240">-1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0.05283757 0 -0.9980431 0.05283757 0 -0.9980431 0.05283757 0 -0.9980431 0.05283757 0 -0.9980431 0 -0.1174168 -0.9941292 0 -0.1174168 -0.9941292 0 -0.1174168 -0.9941292 0 -0.1174168 -0.9941292 -0.08806262 0 -0.9960861 -0.08806262 0 -0.9960861 -0.08806262 0 -0.9960861 -0.08806262 0 -0.9960861 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Parts8__ExitDoor-normal-array" count="80" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Parts8__ExitDoor-texcoord">
+          <float_array id="Parts8__ExitDoor-texcoord-array" count="160">0.703125 0.920166 0.703125 0.9351807 0.1124878 0.920166 0.1124878 0.9351807 0.1876221 1.919922 0.6367188 1.919922 0.178833 1.935059 0.6367188 1.935059 0.6293945 1.935059 0.1862793 1.935059 0.6293945 1.919922 0.1862793 1.919922 0.6523438 1.919922 0.6621094 1.935059 0.1535645 1.919922 0.1535645 1.935059 1.447266 0.9302368 1.447266 0.9302368 1.447266 0.9302368 1.447266 0.9302368 0.65625 0.9351807 0.3217773 0.9351807 0.6567383 0.920166 0.3217773 0.920166 0.703125 0.9351807 0.1124878 0.9351807 0.703125 0.920166 0.1124878 0.920166 0.1124878 0.920166 0.703125 0.920166 0.1124878 0.9351807 0.703125 0.9351807 0.1124878 0.920166 0.703125 0.920166 0.1124878 0.9351807 0.703125 0.9351807 0.1862793 1.935059 0.6293945 1.935059 0.1124878 1.919922 0.703125 1.919922 0.703125 0.9351807 0.1124878 0.9351807 0.703125 0.920166 0.1124878 0.920166 0.703125 0.9351807 0.1124878 0.9351807 0.703125 0.920166 0.1124878 0.920166 0.2266846 -0.9355469 0.2266846 -0.2128906 0.2382813 -0.9365234 0.2382813 -0.2119141 0.1842041 -0.9355469 0.1726074 -0.9365234 0.1842041 -0.2128906 0.1726074 -0.2119141 0.2266846 -0.2128906 0.1842041 -0.2128906 0.2382813 -0.2119141 0.1726074 -0.2119141 0.2382813 -0.9365234 0.1726074 -0.9365234 0.2266846 -0.9355469 0.1842041 -0.9355469 0.4050293 -0.1601563 0.2382813 -0.2119141 0.1726074 -0.2119141 0.2382813 -0.9365234 0.005783081 -0.1601563 0.4050293 -0.9970703 0.1726074 -0.9365234 0.005783081 -0.9970703 0.4047852 0.00390625 0.2387695 0.06347656 0.4047852 0.8365479 0.005413055 0.00390625 0.2387695 0.7854004 0.1715088 0.06347656 0.005413055 0.8365479 0.1715088 0.7854004</float_array>
+          <technique_common>
+            <accessor source="#Parts8__ExitDoor-texcoord-array" count="80" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Parts8__ExitDoor-texcoord_1">
+          <float_array id="Parts8__ExitDoor-texcoord-array_1" count="160">0.8924544 0.2761273 0.9012741 0.2761273 0.8656901 0.4490425 0.9012741 0.5344167 0.8746166 0.2723278 0.8746166 0.008270383 0.8834363 0.2775311 0.8834363 0.008270383 0.9012741 0.005508482 0.9012741 0.2660105 0.8924544 0.005508482 0.8924544 0.2660105 0.8567635 0.01174945 0.8655833 0.005966306 0.8567635 0.3048142 0.8655833 0.3048142 0.7675135 0.3674983 0.7675135 0.3674983 0.7675135 0.3674983 0.7675135 0.3674983 0.8477302 0.3636683 0.8477302 0.4647288 0.8656901 0.4490425 0.8389105 0.4647288 0.8477302 0.006775022 0.8477302 0.3539788 0.8389105 0.006775022 0.8389105 0.3539788 0 0 1 0 0.5000076 1 1 1 0 0 1 0 0 1 0.5000076 1 0.9012741 0.2660105 0.9012741 0.005508482 0.8389105 0.3539788 0.8389105 0.006775022 0.8656901 0.4490425 0.8389105 0.4647288 0.5000076 1 0 1 0.8924544 0.2761273 0.8656901 0.4490425 1 1 0.5000076 1 0.1084611 0.04017699 0.1084611 0.4647288 0.1016403 0.03965819 0.1016403 0.4652476 0.1334096 0.04017699 0.1402304 0.03965819 0.1334096 0.4647288 0.1402304 0.4652476 0.1084611 0.4647288 0.1334096 0.4647288 0.1016403 0.4652476 0.1402304 0.4652476 0.1016403 0.03965819 0.1402304 0.03965819 0.1084611 0.04017699 0.1334096 0.04017699 0.00358587 0.4959487 0.1016403 0.4652476 0.1402304 0.4652476 0.1016403 0.03965819 0.2382849 0.4959487 0.00358587 0.003967345 0.1402304 0.03965819 0.2382849 0.003967345 0.4890822 0.006942868 0.5866331 0.04188603 0.4890822 0.4962692 0.7237659 0.006942868 0.5866331 0.4661936 0.6261234 0.04188603 0.7237659 0.4962692 0.6261234 0.4661936</float_array>
+          <technique_common>
+            <accessor source="#Parts8__ExitDoor-texcoord-array_1" count="80" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Parts8__ExitDoor-vertex">
+          <input semantic="POSITION" source="#Parts8__ExitDoor-position" />
+        </vertices>
+        <triangles material="ExitDoor" count="48">
+          <input semantic="VERTEX" source="#Parts8__ExitDoor-vertex" offset="0" />
+          <input semantic="NORMAL" source="#Parts8__ExitDoor-normal" offset="1" />
+          <input semantic="TEXCOORD" source="#Parts8__ExitDoor-texcoord" offset="2" set="0" />
+          <input semantic="TEXCOORD" source="#Parts8__ExitDoor-texcoord_1" offset="3" set="1" />
+          <p>0 0 0 0 1 1 1 1 2 2 2 2 1 1 1 1 3 3 3 3 2 2 2 2 4 4 4 4 5 5 5 5 6 6 6 6 5 5 5 5 7 7 7 7 6 6 6 6 8 8 8 8 9 9 9 9 10 10 10 10 9 9 9 9 11 11 11 11 10 10 10 10 12 12 12 12 13 13 13 13 14 14 14 14 13 13 13 13 15 15 15 15 14 14 14 14 16 16 16 16 17 17 17 17 18 18 18 18 17 17 17 17 19 19 19 19 18 18 18 18 20 20 20 20 21 21 21 21 22 22 22 22 21 21 21 21 23 23 23 23 22 22 22 22 24 24 24 24 25 25 25 25 26 26 26 26 25 25 25 25 27 27 27 27 26 26 26 26 28 28 28 28 29 29 29 29 30 30 30 30 29 29 29 29 31 31 31 31 30 30 30 30 32 32 32 32 33 33 33 33 34 34 34 34 33 33 33 33 35 35 35 35 34 34 34 34 36 36 36 36 37 37 37 37 38 38 38 38 37 37 37 37 39 39 39 39 38 38 38 38 40 40 40 40 41 41 41 41 42 42 42 42 41 41 41 41 43 43 43 43 42 42 42 42 44 44 44 44 45 45 45 45 46 46 46 46 45 45 45 45 47 47 47 47 46 46 46 46 48 48 48 48 49 49 49 49 50 50 50 50 49 49 49 49 51 51 51 51 50 50 50 50 52 52 52 52 53 53 53 53 54 54 54 54 53 53 53 53 55 55 55 55 54 54 54 54 56 56 56 56 57 57 57 57 58 58 58 58 57 57 57 57 59 59 59 59 58 58 58 58 60 60 60 60 61 61 61 61 62 62 62 62 61 61 61 61 63 63 63 63 62 62 62 62 64 64 64 64 65 65 65 65 66 66 66 66 67 67 67 67 65 65 65 65 64 64 64 64 68 68 68 68 64 64 64 64 66 66 66 66 69 69 69 69 67 67 67 67 64 64 64 64 68 68 68 68 66 66 66 66 70 70 70 70 70 70 70 70 67 67 67 67 69 69 69 69 71 71 71 71 68 68 68 68 70 70 70 70 71 71 71 71 70 70 70 70 69 69 69 69 72 72 72 72 73 73 73 73 74 74 74 74 72 72 72 72 75 75 75 75 73 73 73 73 73 73 73 73 76 76 76 76 74 74 74 74 75 75 75 75 77 77 77 77 73 73 73 73 74 74 74 74 76 76 76 76 78 78 78 78 75 75 75 75 78 78 78 78 77 77 77 77 76 76 76 76 79 79 79 79 78 78 78 78 78 78 78 78 79 79 79 79 77 77 77 77 </p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="pPlane1738__ExitDoor-mesh" name="pPlane1738__ExitDoor">
+      <mesh>
+        <source id="pPlane1738__ExitDoor-position">
+          <float_array id="pPlane1738__ExitDoor-position-array" count="81">0.1055567 1.281578 0 0.1186047 1.265411 0 0.4367061 1.265411 0 0.4497541 1.281578 0 0.1095359 1.301307 0 0.4457749 1.301307 0 0.2805082 1.568029 0 0.2979303 1.55917 0 0.2630863 1.55917 0 0.1114664 1.156844 -0.02143315 0.1114664 1.093462 -0.02143315 0.4267852 1.093462 -0.02143315 0.4761578 1.156844 -0.02143315 0.4267852 1.220748 -0.02143315 0.1114664 1.220748 -0.02143315 1.008914 1.213497 -0.02143315 1.008914 1.229923 -0.02143315 0.9902292 1.213497 -0.02143315 1.269665 1.229923 -0.02143315 0.9902292 0.8392877 -0.02143315 1.269665 1.213497 -0.02143315 1.285471 1.213497 -0.02143315 1.285471 0.8392877 -0.02143315 1.008914 0.8336352 -0.02143315 1.008914 0.8186516 -0.02143315 1.269665 0.8336352 -0.02143315 1.269665 0.8186516 -0.02143315</float_array>
+          <technique_common>
+            <accessor source="#pPlane1738__ExitDoor-position-array" count="27" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane1738__ExitDoor-normal">
+          <float_array id="pPlane1738__ExitDoor-normal-array" count="81">0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#pPlane1738__ExitDoor-normal-array" count="27" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane1738__ExitDoor-texcoord">
+          <float_array id="pPlane1738__ExitDoor-texcoord-array" count="54">0.7853819 0.6116273 0.7971618 0.6211337 0.7971618 0.8528725 0.7853819 0.8623789 0.7710078 0.6145266 0.7710078 0.8594797 0.5766995 0.739086 0.583154 0.7517815 0.583154 0.7263905 0.7944457 0.06971848 0.7944457 0.1253681 0.5176166 0.1253681 0.4742809 0.06971848 0.5176166 0.01361102 0.7944457 0.01361102 0.583627 0.5757229 0.583627 0.5883573 0.5692531 0.5757229 0.7842832 0.5883573 0.5692531 0.2877547 0.7842832 0.5757229 0.7964447 0.5757229 0.7964447 0.2877547 0.583627 0.2834058 0.583627 0.2718853 0.7842832 0.2834058 0.7842832 0.2718853</float_array>
+          <technique_common>
+            <accessor source="#pPlane1738__ExitDoor-texcoord-array" count="27" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pPlane1738__ExitDoor-vertex">
+          <input semantic="POSITION" source="#pPlane1738__ExitDoor-position" />
+        </vertices>
+        <triangles material="ExitDoor" count="25">
+          <input semantic="VERTEX" source="#pPlane1738__ExitDoor-vertex" offset="0" />
+          <input semantic="NORMAL" source="#pPlane1738__ExitDoor-normal" offset="1" />
+          <input semantic="TEXCOORD" source="#pPlane1738__ExitDoor-texcoord" offset="2" set="0" />
+          <p>0 0 0 1 1 1 2 2 2 3 3 3 0 0 0 2 2 2 4 4 4 0 0 0 3 3 3 5 5 5 4 4 4 3 3 3 6 6 6 4 4 4 5 5 5 6 6 6 5 5 5 7 7 7 8 8 8 4 4 4 6 6 6 9 9 9 10 10 10 11 11 11 12 12 12 9 9 9 11 11 11 9 9 9 12 12 12 13 13 13 14 14 14 9 9 9 13 13 13 15 15 15 16 16 16 17 17 17 18 18 18 16 16 16 15 15 15 15 15 15 17 17 17 19 19 19 20 20 20 18 18 18 15 15 15 21 21 21 18 18 18 20 20 20 21 21 21 20 20 20 22 22 22 23 23 23 15 15 15 19 19 19 20 20 20 15 15 15 23 23 23 24 24 24 23 23 23 19 19 19 20 20 20 25 25 25 22 22 22 25 25 25 20 20 20 23 23 23 25 25 25 23 23 23 24 24 24 26 26 26 22 22 22 25 25 25 26 26 26 25 25 25 24 24 24 </p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="polySurface13367__Glass-mesh" name="polySurface13367__Glass">
+      <mesh>
+        <source id="polySurface13367__Glass-position">
+          <float_array id="polySurface13367__Glass-position-array" count="12">0.9467758 0.26 -0.03817017 0.9467758 3.24462 -0.03817017 0.5399998 0.26 -0.03817017 0.5399998 3.24462 -0.03817017</float_array>
+          <technique_common>
+            <accessor source="#polySurface13367__Glass-position-array" count="4" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="polySurface13367__Glass-normal">
+          <float_array id="polySurface13367__Glass-normal-array" count="12">0 0 1 0 0 1 0 0 1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#polySurface13367__Glass-normal-array" count="4" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="polySurface13367__Glass-texcoord">
+          <float_array id="polySurface13367__Glass-texcoord-array" count="8">-0.01574803 0.04724407 -0.01574803 0.9527559 -0.3385827 0.04724407 -0.3385827 0.9527559</float_array>
+          <technique_common>
+            <accessor source="#polySurface13367__Glass-texcoord-array" count="4" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="polySurface13367__Glass-texcoord_1">
+          <float_array id="polySurface13367__Glass-texcoord-array_1" count="8">0.357351 0.003967345 0.357351 0.9960327 0.002883955 0.003967345 0.002883955 0.9960327</float_array>
+          <technique_common>
+            <accessor source="#polySurface13367__Glass-texcoord-array_1" count="4" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="polySurface13367__Glass-vertex">
+          <input semantic="POSITION" source="#polySurface13367__Glass-position" />
+        </vertices>
+        <triangles material="Glass" count="2">
+          <input semantic="VERTEX" source="#polySurface13367__Glass-vertex" offset="0" />
+          <input semantic="NORMAL" source="#polySurface13367__Glass-normal" offset="1" />
+          <input semantic="TEXCOORD" source="#polySurface13367__Glass-texcoord" offset="2" set="0" />
+          <input semantic="TEXCOORD" source="#polySurface13367__Glass-texcoord_1" offset="3" set="1" />
+          <p>0 0 0 0 1 1 1 1 2 2 2 2 1 1 1 1 3 3 3 3 2 2 2 2 </p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Parts8_1__ExitDoor-mesh" name="Parts8_1__ExitDoor">
+      <mesh>
+        <source id="Parts8_1__ExitDoor-position">
+          <float_array id="Parts8_1__ExitDoor-position-array" count="240">-0.08546433 0 -0.06399781 -0.08546433 0 0 -0.08546433 3.385304 -0.06399781 -0.08546433 3.385304 0 -0.08546433 0 0 0 0 0 -0.08546433 3.385304 0 0 3.445304 0 0 3.445304 -0.06399781 0 0 -0.06399781 -0.08546433 3.385304 -0.06399781 -0.08546433 0 -0.06399781 -1.343479 0 -0.06399781 -1.343479 3.385304 -0.06399781 -1.343479 0 0 -1.343479 3.385304 0 -1.343479 3.385304 0 -1.423479 3.445304 0 -1.343479 0 0 -1.423479 0 0 0 3.445304 0 -1.423479 3.445304 0 -0.08546433 3.385304 0 -1.343479 3.385304 0 -0.08546433 3.385304 0 -1.343479 3.385304 0 -0.08546433 3.385304 -0.06399781 -1.343479 3.385304 -0.06399781 0 0 -0.06399781 0 3.445304 -0.06399781 0 0 0 0 3.445304 0 -1.423479 0 0 -1.423479 3.445304 0 -1.423479 0 -0.06574097 -1.423479 3.445304 -0.06574097 -1.423479 3.445304 0 0 3.445304 0 -1.423479 3.445304 -0.06574097 0 3.445304 -0.06574097 -0.08546433 3.385304 -0.06399781 -1.343479 3.385304 -0.06399781 0 3.445304 -0.06574097 -1.423479 3.445304 -0.06574097 -1.343479 3.385304 -0.06399781 -1.343479 0 -0.06399781 -1.423479 3.445304 -0.06574097 -1.423479 0 -0.06574097 -0.5567783 0.274 -0.02646362 -0.5567783 3.209812 -0.02646362 -0.5567783 0.274 -0.06213396 -0.5567783 3.209812 -0.06213396 -0.8621119 0.274 -0.02646362 -0.8621119 0.274 -0.06213396 -0.8621119 3.209812 -0.02646362 -0.8621119 3.209812 -0.06213519 -0.5567783 3.209812 -0.02646362 -0.8621119 3.209812 -0.02646362 -0.5567783 3.209812 -0.06213396 -0.8621119 3.209812 -0.06213519 -0.5567783 0.274 -0.06213396 -0.8621119 0.274 -0.06213396 -0.5567783 0.274 -0.02646362 -0.8621119 0.274 -0.02646362 -0.06256912 3.388797 -0.06213396 -0.5567783 3.209812 -0.06213396 -0.8621119 3.209812 -0.06213519 -0.5567783 0.274 -0.06213396 -1.361089 3.388797 -0.06213396 -0.06256912 0.06599999 -0.06213396 -0.8621119 0.274 -0.06213396 -1.361089 0.06599999 -0.06213396 -1.361089 0.066 -0.02646362 -0.8621119 0.274 -0.02646362 -1.361089 3.388797 -0.02646362 -0.06256912 0.066 -0.02646362 -0.8621119 3.209812 -0.02646362 -0.5567783 0.274 -0.02646362 -0.06256912 3.388797 -0.02646362 -0.5567783 3.209812 -0.02646362</float_array>
+          <technique_common>
+            <accessor source="#Parts8_1__ExitDoor-position-array" count="80" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Parts8_1__ExitDoor-normal">
+          <float_array id="Parts8_1__ExitDoor-normal-array" count="240">-1 0 0 -1 0 0 -1 0 0 -1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 -1 0 0 -1 0 0 -1 0 0 -1 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 -0.02935421 -1 0 -0.02935421 -1 0 -0.02935421 -1 0 -0.02935421 -1 0.02152642 0 -1 0.02152642 0 -1 0.02152642 0 -1 0.02152642 0 -1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Parts8_1__ExitDoor-normal-array" count="80" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Parts8_1__ExitDoor-texcoord">
+          <float_array id="Parts8_1__ExitDoor-texcoord-array" count="160">0.6958008 0.9205933 0.6958008 0.93573 0.09509277 0.9205933 0.09509277 0.93573 0.6958008 0.9205933 0.6958008 0.93573 0.09509277 0.9205933 0.09509277 0.93573 0.09509277 0.9205933 0.6958008 0.9205933 0.09509277 0.93573 0.6958008 0.93573 -2.244141 0.93573 -2.966797 0.9327393 -2.244141 0.9205933 -2.966797 0.9205933 0.03210449 0.93573 0.03210449 0.9205933 0.7553711 0.93573 0.7553711 0.9205933 0.5488281 0.93573 0.2386475 0.93573 0.5302734 0.9205933 0.2573242 0.9205933 -0.4694824 0.93573 -0.8442383 0.93573 -0.4694824 0.9205933 -0.8481445 0.9210205 0.6958008 0.93573 0.09509277 0.93573 0.6958008 0.9205933 0.09509277 0.9205933 0.0357666 0.9459839 0.1408691 1.199707 0.7558594 0.9517822 0.5522461 1.086182 -0.8442383 0.93573 -0.8481445 0.9210205 -0.4694824 0.93573 -0.4694824 0.9205933 -1.244141 0.93573 -1.908203 0.9341431 -1.243164 0.9517822 -1.924805 0.9513855 -1.908203 0.9341431 -1.244141 0.93573 -1.924805 0.9513855 -1.243164 0.9517822 0.2266846 -0.9355469 0.2266846 -0.2128906 0.2382813 -0.9365234 0.2382813 -0.2119141 0.1842041 -0.9355469 0.1726074 -0.9365234 0.1842041 -0.2128906 0.1726074 -0.2119141 0.2266846 -0.2128906 0.1842041 -0.2128906 0.2382813 -0.2119141 0.1726074 -0.2119141 0.2382813 -0.9365234 0.1726074 -0.9365234 0.2266846 -0.9355469 0.1842041 -0.9355469 0.4050293 -0.1601563 0.2382813 -0.2119141 0.1726074 -0.2119141 0.2382813 -0.9365234 0.005783081 -0.1601563 0.4050293 -0.9970703 0.1726074 -0.9365234 0.005783081 -0.9970703 0.4047852 0.00390625 0.2387695 0.06347656 0.4047852 0.8365479 0.005413055 0.00390625 0.2387695 0.7854004 0.1715088 0.06347656 0.005413055 0.8365479 0.1715088 0.7854004</float_array>
+          <technique_common>
+            <accessor source="#Parts8_1__ExitDoor-texcoord-array" count="80" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Parts8_1__ExitDoor-texcoord_1">
+          <float_array id="Parts8_1__ExitDoor-texcoord-array_1" count="160">0.7675135 0.005874753 0.7764248 0.005874753 0.7675135 0.3589838 0.7764248 0.3589838 0.7853666 0.005874753 0.7942778 0.005874753 0.7853666 0.3589838 0.7942778 0.3589838 0.8032197 0.3589838 0.8032197 0.005874753 0.8121157 0.3589838 0.8121157 0.005874753 0.740734 0.007354856 0.7987487 0.4496223 0.7318227 0.007354856 0.7318227 0.4324712 0.7585717 0.4324712 0.7496758 0.4324712 0.7585717 0.007354856 0.7496758 0.007354856 0.8835126 0.2858015 0.8835126 0.4681621 0.8746166 0.2968185 0.8746166 0.457145 0.8656749 0.3146563 0.8656749 0.4749981 0.8567635 0.3146563 0.7987487 0.4496223 0.8299687 0.005874753 0.8299687 0.3589838 0.8210727 0.005874753 0.8210727 0.3589838 0 0 1 0 0 1 0.5000076 1 0 0 1 0 0.5000076 1 1 1 0.8567635 0.3146563 0.7987487 0.4496223 1 1 0.5000076 1 0.7987487 0.4496223 0.740734 0.007354856 0.5000076 1 0 1 0.3512017 0.04017699 0.3512017 0.4647288 0.3443809 0.03965819 0.3443809 0.4652476 0.3761502 0.04017699 0.3829709 0.03965819 0.3761502 0.4647288 0.3829709 0.4652476 0.3512017 0.4647288 0.3761502 0.4647288 0.3443809 0.4652476 0.3829709 0.4652476 0.3443809 0.03965819 0.3829709 0.03965819 0.3512017 0.04017699 0.3761502 0.04017699 0.2463416 0.4959487 0.3443809 0.4652476 0.3829709 0.4652476 0.3443809 0.03965819 0.4810254 0.4959487 0.2463416 0.003967345 0.3829709 0.03965819 0.4810254 0.003967345 0.4890822 0.5067216 0.5866331 0.5416647 0.4890822 0.9960327 0.7237659 0.5067216 0.5866331 0.9659571 0.6261234 0.5416647 0.7237659 0.9960327 0.6261234 0.9659571</float_array>
+          <technique_common>
+            <accessor source="#Parts8_1__ExitDoor-texcoord-array_1" count="80" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Parts8_1__ExitDoor-vertex">
+          <input semantic="POSITION" source="#Parts8_1__ExitDoor-position" />
+        </vertices>
+        <triangles material="ExitDoor" count="48">
+          <input semantic="VERTEX" source="#Parts8_1__ExitDoor-vertex" offset="0" />
+          <input semantic="NORMAL" source="#Parts8_1__ExitDoor-normal" offset="1" />
+          <input semantic="TEXCOORD" source="#Parts8_1__ExitDoor-texcoord" offset="2" set="0" />
+          <input semantic="TEXCOORD" source="#Parts8_1__ExitDoor-texcoord_1" offset="3" set="1" />
+          <p>0 0 0 0 1 1 1 1 2 2 2 2 1 1 1 1 3 3 3 3 2 2 2 2 4 4 4 4 5 5 5 5 6 6 6 6 5 5 5 5 7 7 7 7 6 6 6 6 8 8 8 8 9 9 9 9 10 10 10 10 9 9 9 9 11 11 11 11 10 10 10 10 12 12 12 12 13 13 13 13 14 14 14 14 13 13 13 13 15 15 15 15 14 14 14 14 16 16 16 16 17 17 17 17 18 18 18 18 17 17 17 17 19 19 19 19 18 18 18 18 20 20 20 20 21 21 21 21 22 22 22 22 21 21 21 21 23 23 23 23 22 22 22 22 24 24 24 24 25 25 25 25 26 26 26 26 25 25 25 25 27 27 27 27 26 26 26 26 28 28 28 28 29 29 29 29 30 30 30 30 29 29 29 29 31 31 31 31 30 30 30 30 32 32 32 32 33 33 33 33 34 34 34 34 33 33 33 33 35 35 35 35 34 34 34 34 36 36 36 36 37 37 37 37 38 38 38 38 37 37 37 37 39 39 39 39 38 38 38 38 40 40 40 40 41 41 41 41 42 42 42 42 41 41 41 41 43 43 43 43 42 42 42 42 44 44 44 44 45 45 45 45 46 46 46 46 45 45 45 45 47 47 47 47 46 46 46 46 48 48 48 48 49 49 49 49 50 50 50 50 49 49 49 49 51 51 51 51 50 50 50 50 52 52 52 52 53 53 53 53 54 54 54 54 53 53 53 53 55 55 55 55 54 54 54 54 56 56 56 56 57 57 57 57 58 58 58 58 57 57 57 57 59 59 59 59 58 58 58 58 60 60 60 60 61 61 61 61 62 62 62 62 61 61 61 61 63 63 63 63 62 62 62 62 64 64 64 64 65 65 65 65 66 66 66 66 67 67 67 67 65 65 65 65 64 64 64 64 68 68 68 68 64 64 64 64 66 66 66 66 69 69 69 69 67 67 67 67 64 64 64 64 68 68 68 68 66 66 66 66 70 70 70 70 70 70 70 70 67 67 67 67 69 69 69 69 71 71 71 71 68 68 68 68 70 70 70 70 71 71 71 71 70 70 70 70 69 69 69 69 72 72 72 72 73 73 73 73 74 74 74 74 72 72 72 72 75 75 75 75 73 73 73 73 73 73 73 73 76 76 76 76 74 74 74 74 75 75 75 75 77 77 77 77 73 73 73 73 74 74 74 74 76 76 76 76 78 78 78 78 75 75 75 75 78 78 78 78 77 77 77 77 76 76 76 76 79 79 79 79 78 78 78 78 78 78 78 78 79 79 79 79 77 77 77 77 </p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="pPlane1736__ExitDoor-mesh" name="pPlane1736__ExitDoor">
+      <mesh>
+        <source id="pPlane1736__ExitDoor-position">
+          <float_array id="pPlane1736__ExitDoor-position-array" count="81">-0.4502893 1.281578 0 -0.4372413 1.265411 0 -0.1191399 1.265411 0 -0.1060919 1.281578 0 -0.4463101 1.301307 0 -0.1100711 1.301307 0 -0.2753377 1.568029 0 -0.2579157 1.55917 0 -0.2927597 1.55917 0 -0.1240812 1.155436 -0.02143315 -0.1240812 1.22197 -0.02143315 -0.4359844 1.22197 -0.02143315 -0.485357 1.155436 -0.02143315 -0.4359844 1.093025 -0.02143315 -0.1240812 1.093025 -0.02143315 -1.235808 1.213497 -0.02143315 -1.235808 1.229923 -0.02143315 -1.254492 1.213497 -0.02143315 -0.9750568 1.229923 -0.02143315 -1.254492 0.8392877 -0.02143315 -0.9750568 1.213497 -0.02143315 -0.9592499 1.213497 -0.02143315 -0.9592499 0.8392877 -0.02143315 -1.235808 0.8336352 -0.02143315 -1.235808 0.8186516 -0.02143315 -0.9750568 0.8336352 -0.02143315 -0.9750568 0.8186516 -0.02143315</float_array>
+          <technique_common>
+            <accessor source="#pPlane1736__ExitDoor-position-array" count="27" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane1736__ExitDoor-normal">
+          <float_array id="pPlane1736__ExitDoor-normal-array" count="81">0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#pPlane1736__ExitDoor-normal-array" count="27" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane1736__ExitDoor-texcoord">
+          <float_array id="pPlane1736__ExitDoor-texcoord-array" count="54">0.7853819 0.6116273 0.7971618 0.6211337 0.7971618 0.8528725 0.7853819 0.8623789 0.7710078 0.6145266 0.7710078 0.8594797 0.5766995 0.739086 0.583154 0.7517815 0.583154 0.7263905 0.79617 0.2023957 0.79617 0.2608072 0.5223469 0.2608072 0.4789959 0.2023957 0.5223469 0.1476005 0.79617 0.1476005 0.583627 0.5757229 0.583627 0.5883573 0.5692531 0.5757229 0.7842832 0.5883573 0.5692531 0.2877547 0.7842832 0.5757229 0.7964447 0.5757229 0.7964447 0.2877547 0.583627 0.2834058 0.583627 0.2718853 0.7842832 0.2834058 0.7842832 0.2718853</float_array>
+          <technique_common>
+            <accessor source="#pPlane1736__ExitDoor-texcoord-array" count="27" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pPlane1736__ExitDoor-vertex">
+          <input semantic="POSITION" source="#pPlane1736__ExitDoor-position" />
+        </vertices>
+        <triangles material="ExitDoor" count="25">
+          <input semantic="VERTEX" source="#pPlane1736__ExitDoor-vertex" offset="0" />
+          <input semantic="NORMAL" source="#pPlane1736__ExitDoor-normal" offset="1" />
+          <input semantic="TEXCOORD" source="#pPlane1736__ExitDoor-texcoord" offset="2" set="0" />
+          <p>0 0 0 1 1 1 2 2 2 3 3 3 0 0 0 2 2 2 4 4 4 0 0 0 3 3 3 5 5 5 4 4 4 3 3 3 6 6 6 4 4 4 5 5 5 6 6 6 5 5 5 7 7 7 8 8 8 4 4 4 6 6 6 9 9 9 10 10 10 11 11 11 12 12 12 9 9 9 11 11 11 9 9 9 12 12 12 13 13 13 14 14 14 9 9 9 13 13 13 15 15 15 16 16 16 17 17 17 18 18 18 16 16 16 15 15 15 15 15 15 17 17 17 19 19 19 20 20 20 18 18 18 15 15 15 21 21 21 18 18 18 20 20 20 21 21 21 20 20 20 22 22 22 23 23 23 15 15 15 19 19 19 20 20 20 15 15 15 23 23 23 24 24 24 23 23 23 19 19 19 20 20 20 25 25 25 22 22 22 25 25 25 20 20 20 23 23 23 25 25 25 23 23 23 24 24 24 26 26 26 22 22 22 25 25 25 26 26 26 25 25 25 24 24 24 </p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="polySurface13369__Glass-mesh" name="polySurface13369__Glass">
+      <mesh>
+        <source id="polySurface13369__Glass-position">
+          <float_array id="polySurface13369__Glass-position-array" count="12">-0.55 0.21 -0.03817017 -0.55 3.227962 -0.03817017 -0.8962376 0.21 -0.03817017 -0.8962376 3.227962 -0.03817017</float_array>
+          <technique_common>
+            <accessor source="#polySurface13369__Glass-position-array" count="4" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="polySurface13369__Glass-normal">
+          <float_array id="polySurface13369__Glass-normal-array" count="12">0 0 1 0 0 1 0 0 1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#polySurface13369__Glass-normal-array" count="4" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="polySurface13369__Glass-texcoord">
+          <float_array id="polySurface13369__Glass-texcoord-array" count="8">-0.01574803 0.04724407 -0.01574803 0.9527559 -0.3385827 0.04724407 -0.3385827 0.9527559</float_array>
+          <technique_common>
+            <accessor source="#polySurface13369__Glass-texcoord-array" count="4" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="polySurface13369__Glass-texcoord_1">
+          <float_array id="polySurface13369__Glass-texcoord-array_1" count="8">0.7215686 0.003921568 0.7215686 0.9960784 0.3686275 0.003921568 0.3686275 0.9960784</float_array>
+          <technique_common>
+            <accessor source="#polySurface13369__Glass-texcoord-array_1" count="4" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="polySurface13369__Glass-vertex">
+          <input semantic="POSITION" source="#polySurface13369__Glass-position" />
+        </vertices>
+        <triangles material="Glass" count="2">
+          <input semantic="VERTEX" source="#polySurface13369__Glass-vertex" offset="0" />
+          <input semantic="NORMAL" source="#polySurface13369__Glass-normal" offset="1" />
+          <input semantic="TEXCOORD" source="#polySurface13369__Glass-texcoord" offset="2" set="0" />
+          <input semantic="TEXCOORD" source="#polySurface13369__Glass-texcoord_1" offset="3" set="1" />
+          <p>0 0 0 0 1 1 1 1 2 2 2 2 1 1 1 1 3 3 3 3 2 2 2 2 </p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers>
+    <controller id="Armature_Parts8__ExitDoor-mesh">
+      <skin source="#Parts8__ExitDoor-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="Parts8__ExitDoor-mesh-joint">
+          <Name_array id="Parts8__ExitDoor-mesh-joint-array" count="1">DoolR</Name_array>
+          <technique_common>
+            <accessor source="#Parts8__ExitDoor-mesh-joint-array" count="1" stride="1">
+              <param name="JOINT" type="name" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Parts8__ExitDoor-mesh-inv_bind_matrix">
+          <float_array id="Parts8__ExitDoor-mesh-inv_bind_matrix-array" count="16">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Parts8__ExitDoor-mesh-inv_bind_matrix-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Parts8__ExitDoor-mesh-weight">
+          <float_array id="Parts8__ExitDoor-mesh-weight-array" count="1">1</float_array>
+          <technique_common>
+            <accessor source="#Parts8__ExitDoor-mesh-weight-array" count="1" stride="1">
+              <param name="WEIGHT" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#Parts8__ExitDoor-mesh-joint" />
+          <input semantic="INV_BIND_MATRIX" source="#Parts8__ExitDoor-mesh-inv_bind_matrix" />
+        </joints>
+        <vertex_weights count="80">
+          <input semantic="JOINT" source="#Parts8__ExitDoor-mesh-joint" offset="0" />
+          <input semantic="WEIGHT" source="#Parts8__ExitDoor-mesh-weight" offset="1" />
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="Armature_pPlane1738__ExitDoor-mesh">
+      <skin source="#pPlane1738__ExitDoor-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="pPlane1738__ExitDoor-mesh-joint">
+          <Name_array id="pPlane1738__ExitDoor-mesh-joint-array" count="1">DoolR</Name_array>
+          <technique_common>
+            <accessor source="#pPlane1738__ExitDoor-mesh-joint-array" count="1" stride="1">
+              <param name="JOINT" type="name" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane1738__ExitDoor-mesh-inv_bind_matrix">
+          <float_array id="pPlane1738__ExitDoor-mesh-inv_bind_matrix-array" count="16">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#pPlane1738__ExitDoor-mesh-inv_bind_matrix-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane1738__ExitDoor-mesh-weight">
+          <float_array id="pPlane1738__ExitDoor-mesh-weight-array" count="1">1</float_array>
+          <technique_common>
+            <accessor source="#pPlane1738__ExitDoor-mesh-weight-array" count="1" stride="1">
+              <param name="WEIGHT" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#pPlane1738__ExitDoor-mesh-joint" />
+          <input semantic="INV_BIND_MATRIX" source="#pPlane1738__ExitDoor-mesh-inv_bind_matrix" />
+        </joints>
+        <vertex_weights count="27">
+          <input semantic="JOINT" source="#pPlane1738__ExitDoor-mesh-joint" offset="0" />
+          <input semantic="WEIGHT" source="#pPlane1738__ExitDoor-mesh-weight" offset="1" />
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="Armature_polySurface13367__Glass-mesh">
+      <skin source="#polySurface13367__Glass-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="polySurface13367__Glass-mesh-joint">
+          <Name_array id="polySurface13367__Glass-mesh-joint-array" count="1">DoolR</Name_array>
+          <technique_common>
+            <accessor source="#polySurface13367__Glass-mesh-joint-array" count="1" stride="1">
+              <param name="JOINT" type="name" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="polySurface13367__Glass-mesh-inv_bind_matrix">
+          <float_array id="polySurface13367__Glass-mesh-inv_bind_matrix-array" count="16">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#polySurface13367__Glass-mesh-inv_bind_matrix-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="polySurface13367__Glass-mesh-weight">
+          <float_array id="polySurface13367__Glass-mesh-weight-array" count="1">1</float_array>
+          <technique_common>
+            <accessor source="#polySurface13367__Glass-mesh-weight-array" count="1" stride="1">
+              <param name="WEIGHT" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#polySurface13367__Glass-mesh-joint" />
+          <input semantic="INV_BIND_MATRIX" source="#polySurface13367__Glass-mesh-inv_bind_matrix" />
+        </joints>
+        <vertex_weights count="4">
+          <input semantic="JOINT" source="#polySurface13367__Glass-mesh-joint" offset="0" />
+          <input semantic="WEIGHT" source="#polySurface13367__Glass-mesh-weight" offset="1" />
+          <vcount>1 1 1 1 </vcount>
+          <v>0 0 0 0 0 0 0 0 </v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="Armature_Parts8_1__ExitDoor-mesh">
+      <skin source="#Parts8_1__ExitDoor-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="Parts8_1__ExitDoor-mesh-joint">
+          <Name_array id="Parts8_1__ExitDoor-mesh-joint-array" count="1">DoorL</Name_array>
+          <technique_common>
+            <accessor source="#Parts8_1__ExitDoor-mesh-joint-array" count="1" stride="1">
+              <param name="JOINT" type="name" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Parts8_1__ExitDoor-mesh-inv_bind_matrix">
+          <float_array id="Parts8_1__ExitDoor-mesh-inv_bind_matrix-array" count="16">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Parts8_1__ExitDoor-mesh-inv_bind_matrix-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Parts8_1__ExitDoor-mesh-weight">
+          <float_array id="Parts8_1__ExitDoor-mesh-weight-array" count="1">1</float_array>
+          <technique_common>
+            <accessor source="#Parts8_1__ExitDoor-mesh-weight-array" count="1" stride="1">
+              <param name="WEIGHT" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#Parts8_1__ExitDoor-mesh-joint" />
+          <input semantic="INV_BIND_MATRIX" source="#Parts8_1__ExitDoor-mesh-inv_bind_matrix" />
+        </joints>
+        <vertex_weights count="80">
+          <input semantic="JOINT" source="#Parts8_1__ExitDoor-mesh-joint" offset="0" />
+          <input semantic="WEIGHT" source="#Parts8_1__ExitDoor-mesh-weight" offset="1" />
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="Armature_pPlane1736__ExitDoor-mesh">
+      <skin source="#pPlane1736__ExitDoor-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="pPlane1736__ExitDoor-mesh-joint">
+          <Name_array id="pPlane1736__ExitDoor-mesh-joint-array" count="1">DoorL</Name_array>
+          <technique_common>
+            <accessor source="#pPlane1736__ExitDoor-mesh-joint-array" count="1" stride="1">
+              <param name="JOINT" type="name" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane1736__ExitDoor-mesh-inv_bind_matrix">
+          <float_array id="pPlane1736__ExitDoor-mesh-inv_bind_matrix-array" count="16">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#pPlane1736__ExitDoor-mesh-inv_bind_matrix-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane1736__ExitDoor-mesh-weight">
+          <float_array id="pPlane1736__ExitDoor-mesh-weight-array" count="1">1</float_array>
+          <technique_common>
+            <accessor source="#pPlane1736__ExitDoor-mesh-weight-array" count="1" stride="1">
+              <param name="WEIGHT" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#pPlane1736__ExitDoor-mesh-joint" />
+          <input semantic="INV_BIND_MATRIX" source="#pPlane1736__ExitDoor-mesh-inv_bind_matrix" />
+        </joints>
+        <vertex_weights count="27">
+          <input semantic="JOINT" source="#pPlane1736__ExitDoor-mesh-joint" offset="0" />
+          <input semantic="WEIGHT" source="#pPlane1736__ExitDoor-mesh-weight" offset="1" />
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 </v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="Armature_polySurface13369__Glass-mesh">
+      <skin source="#polySurface13369__Glass-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="polySurface13369__Glass-mesh-joint">
+          <Name_array id="polySurface13369__Glass-mesh-joint-array" count="1">DoorL</Name_array>
+          <technique_common>
+            <accessor source="#polySurface13369__Glass-mesh-joint-array" count="1" stride="1">
+              <param name="JOINT" type="name" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="polySurface13369__Glass-mesh-inv_bind_matrix">
+          <float_array id="polySurface13369__Glass-mesh-inv_bind_matrix-array" count="16">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#polySurface13369__Glass-mesh-inv_bind_matrix-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="polySurface13369__Glass-mesh-weight">
+          <float_array id="polySurface13369__Glass-mesh-weight-array" count="1">1</float_array>
+          <technique_common>
+            <accessor source="#polySurface13369__Glass-mesh-weight-array" count="1" stride="1">
+              <param name="WEIGHT" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#polySurface13369__Glass-mesh-joint" />
+          <input semantic="INV_BIND_MATRIX" source="#polySurface13369__Glass-mesh-inv_bind_matrix" />
+        </joints>
+        <vertex_weights count="4">
+          <input semantic="JOINT" source="#polySurface13369__Glass-mesh-joint" offset="0" />
+          <input semantic="WEIGHT" source="#polySurface13369__Glass-mesh-weight" offset="1" />
+          <vcount>1 1 1 1 </vcount>
+          <v>0 0 0 0 0 0 0 0 </v>
+        </vertex_weights>
+      </skin>
+    </controller>
+  </library_controllers>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Armature" name="Armature" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <node id="Armature_FldObj_DoorLobby" name="FldObj_DoorLobby" sid="FldObj_DoorLobby" type="JOINT">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <node id="Armature_DoolR" name="DoolR" sid="DoolR" type="JOINT">
+            <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+            <node id="Armature_Col_0" name="Col_0" sid="Col_0" type="JOINT">
+              <matrix sid="transform">1 0 0 0.6622677 0 1 0 1.51 0 0 1 -0.03508606 0 0 0 1</matrix>
+            </node>
+          </node>
+          <node id="Armature_DoorL" name="DoorL" sid="DoorL" type="JOINT">
+            <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+            <node id="Armature_Col_1" name="Col_1" sid="Col_1" type="JOINT">
+              <matrix sid="transform">1 0 0 -0.6648633 0 1 0 1.51 0 0 1 -0.03508606 0 0 0 1</matrix>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node id="Parts8__ExitDoor" name="Parts8__ExitDoor" type="NODE">
+        <instance_controller url="#Armature_Parts8__ExitDoor-mesh">
+          <skeleton>#Armature_FldObj_DoorLobby</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="ExitDoor" target="#ExitDoor" />
+              <bind_vertex_input semantic="CHANNEL0" input_semantic="TEXCOORD" input_set="0" />
+              <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1" />
+              <bind_vertex_input semantic="CHANNEL2" input_semantic="TEXCOORD" input_set="2" />
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+      </node>
+      <node id="pPlane1738__ExitDoor" name="pPlane1738__ExitDoor" type="NODE">
+        <instance_controller url="#Armature_pPlane1738__ExitDoor-mesh">
+          <skeleton>#Armature_FldObj_DoorLobby</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="ExitDoor" target="#ExitDoor" />
+              <bind_vertex_input semantic="CHANNEL0" input_semantic="TEXCOORD" input_set="0" />
+              <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1" />
+              <bind_vertex_input semantic="CHANNEL2" input_semantic="TEXCOORD" input_set="2" />
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+      </node>
+      <node id="polySurface13367__Glass" name="polySurface13367__Glass" type="NODE">
+        <instance_controller url="#Armature_polySurface13367__Glass-mesh">
+          <skeleton>#Armature_FldObj_DoorLobby</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Glass" target="#Glass" />
+              <bind_vertex_input semantic="CHANNEL0" input_semantic="TEXCOORD" input_set="0" />
+              <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1" />
+              <bind_vertex_input semantic="CHANNEL2" input_semantic="TEXCOORD" input_set="2" />
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+      </node>
+      <node id="Parts8_1__ExitDoor" name="Parts8_1__ExitDoor" type="NODE">
+        <instance_controller url="#Armature_Parts8_1__ExitDoor-mesh">
+          <skeleton>#Armature_FldObj_DoorLobby</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="ExitDoor" target="#ExitDoor" />
+              <bind_vertex_input semantic="CHANNEL0" input_semantic="TEXCOORD" input_set="0" />
+              <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1" />
+              <bind_vertex_input semantic="CHANNEL2" input_semantic="TEXCOORD" input_set="2" />
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+      </node>
+      <node id="pPlane1736__ExitDoor" name="pPlane1736__ExitDoor" type="NODE">
+        <instance_controller url="#Armature_pPlane1736__ExitDoor-mesh">
+          <skeleton>#Armature_FldObj_DoorLobby</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="ExitDoor" target="#ExitDoor" />
+              <bind_vertex_input semantic="CHANNEL0" input_semantic="TEXCOORD" input_set="0" />
+              <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1" />
+              <bind_vertex_input semantic="CHANNEL2" input_semantic="TEXCOORD" input_set="2" />
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+      </node>
+      <node id="polySurface13369__Glass" name="polySurface13369__Glass" type="NODE">
+        <instance_controller url="#Armature_polySurface13369__Glass-mesh">
+          <skeleton>#Armature_FldObj_DoorLobby</skeleton>
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Glass" target="#Glass" />
+              <bind_vertex_input semantic="CHANNEL0" input_semantic="TEXCOORD" input_set="0" />
+              <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1" />
+              <bind_vertex_input semantic="CHANNEL2" input_semantic="TEXCOORD" input_set="2" />
+            </technique_common>
+          </bind_material>
+        </instance_controller>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene" />
+  </scene>
+</COLLADA>

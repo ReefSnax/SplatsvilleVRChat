@@ -1,0 +1,137 @@
+#T#PoiVertexGlitchingProperties
+//ifex _VertexGlitchingEnabled==0
+[HideInInspector] m_start_vertexGlitching ("Vertex Glitching--{reference_property:_VertexGlitchingEnabled}", Float) = 0
+[HideInInspector][ThryToggle(POI_VERTEX_GLITCHING)]_VertexGlitchingEnabled ("Enabled", Float) = 0
+// _VertexGlitchMap ("Glitch Map", 2D) = "white" { }
+[ThryToggle(POI_VERTEX_GLITCHING_TEXTURE, true)]_VertexGlitchingUseTexture ("<size=13><b>  Use Texture</b></size>", Float) = 0
+// [ThryToggleUI(true)]_VertexGlitchingUseTexture ("Use Texture", Float) = 0
+[sRGBWarning][ThryRGBAPacker(R Both, G Right, B Left, A unused)]_VertexGlitchMap ("Glitch Map [Expand]--{condition_showS:(_VertexGlitchingUseTexture==1)}", 2D) = "white" { }
+_VertexGlitchDensity ("Glitch Density--{condition_showS:(_VertexGlitchingUseTexture==1)}", Range(0, 50)) = 10
+_VertexGlitchMapPanSpeed ("Glitch Map Pan Speed--{condition_showS:(_VertexGlitchingUseTexture==1)}", Range(0, 100)) = 10
+[Space(10)]
+_VertexGlitchFrequency ("Glitch Interval", Float) = 1
+_VertexGlitchThreshold ("Glitch Threshold", Range(0, 1)) = 1
+_VertexGlitchStrength ("Glitch Strength", Range(0, 10)) = 1
+[Space(10)]
+[ThryToggleUI(true)]_VertexGlitchMirrorEnable ("<size=13><b>Mirror</b></size>", Float) = 0
+[ThryWideEnum(Show In Both, 0, Show Only In Mirror, 1, Dont Show In Mirror, 2)] _VertexGlitchMirror ("Show in mirror--{condition_showS:(_VertexGlitchMirrorEnable==1)}", Int) = 0
+
+[ThryToggleUI(true)]_VertexGlitchingAudioLinkEnabled ("<size=13><b>  Audio Link</b></size>--{condition_showS:(_EnableAudioLink==1)}", Float) = 0
+[Enum(Bass, 0, Low Mid, 1, High Mid, 2, Treble, 3, VU Intensity, 4)] _VertexGlitchingAudioLinkBand ("Glitch Band--{condition_showS:(_EnableAudioLink==1)}", Int) = 0
+[ThryToggleUI(true)]_VertexGlitchingAudiolinkOverride ("Override Glitch Intensity with Audiolink--{condition_showS:(_EnableAudioLink==1)}", Float) = 1
+
+[HideInInspector] m_end_vertexGlitching ("Vertex Glitching", Float) = 0
+//endex
+
+#T#PoiVertexGlitchingKeywords
+//ifex _VertexGlitchingEnabled==0
+#pragma shader_feature_local POI_VERTEX_GLITCHING
+#pragma shader_feature_local POI_VERTEX_GLITCHING_TEXTURE
+//endex
+
+#T#PoiVertexGlitchingVariables
+//ifex _VertexGlitchingEnabled==0
+#ifdef POI_VERTEX_GLITCHING
+	//Vertex Glitching
+	#if defined(POI_VERTEX_GLITCHING_TEXTURE)
+		float _VertexGlitchingUseTexture;
+		sampler2D _VertexGlitchMap;
+		float4 _VertexGlitchMap_ST;
+	#endif
+	float _VertexGlitchThreshold;
+	float _VertexGlitchFrequency;
+	float _VertexGlitchStrength;
+	float _VertexGlitchDensity;
+
+	float _VertexGlitchMirrorEnable;
+	float _VertexGlitchMirror;
+
+	float _VertexGlitchMapPanSpeed;
+	float _VertexGlitchingAudioLinkEnabled;
+	float _VertexGlitchingAudioLinkBand;
+	float _VertexGlitchingAudiolinkOverride;
+#endif
+//endex
+
+#T#PoiVertexGlitchingFunctionCalls
+//ifex _VertexGlitchingEnabled==0
+#if defined(POI_VERTEX_GLITCHING)
+
+	bool canGlitch = true;
+	if (_VertexGlitchMirrorEnable && _VertexGlitchMirror > 0)
+	{
+		bool inMirror = IsInMirror();
+		if (_VertexGlitchMirror == 1 && !inMirror)	canGlitch = false;
+		if (_VertexGlitchMirror == 2 && inMirror)	canGlitch = false;
+	}
+	if (canGlitch)
+	{
+		float3 forward = getCameraPosition() - mul(unity_ObjectToWorld, float4(0, 0, 0, 1)).xyz;
+		forward.y = 0;
+		forward = normalize(forward);
+		float3 glitchDirection = normalize(cross(float3(0, 1, 0), forward));
+		
+		float glitchAmount = 0;
+
+		#if defined(POI_VERTEX_GLITCHING_TEXTURE)
+		// if(_VertexGlitchingUseTexture)
+		// {
+			float uvl = o.worldPos.y * _VertexGlitchDensity + _Time.x * _VertexGlitchMapPanSpeed;
+			float uvr = o.worldPos.y * _VertexGlitchDensity - _Time.x * _VertexGlitchMapPanSpeed;
+			
+			float3 glitchTextureL = 1;
+			float3 glitchTextureR = 1;
+
+			#if defined(POI_VERTEX_GLITCHING_TEXTURE) || !defined(OPTIMIZER_ENABLED)
+				glitchTextureL = tex2Dlod(_VertexGlitchMap, float4(uvl, uvl, 0, 0)).rgb;
+				glitchTextureR = tex2Dlod(_VertexGlitchMap, float4(uvr, uvr, 0, 0)).rgb;
+			#endif
+
+			glitchAmount += (glitchTextureL.r - 0.5) * 2;
+			glitchAmount += - (glitchTextureR.r - 0.5) * 2;
+
+			glitchAmount += (glitchTextureL.g - 0.5) * 2;
+			glitchAmount += - (glitchTextureR.b - 0.5) * 2;
+		// } else {
+		#else
+			glitchAmount += frac(sin(dot(_Time.xy + o.worldPos.y, float2(12.9898, 78.233))) * 43758.5453123) * 2 - 1;
+		// }
+		#endif
+		
+		float time = _Time.y * _VertexGlitchFrequency;
+
+		float randomGlitch = (sin(time) + sin(2.2 * time + 5.52) + sin(2.9 * time + 0.93) + sin(4.6 * time + 8.94)) / 4;
+		float3 glitchOffset = 0;
+
+		#ifdef POI_AUDIOLINK
+			if (AudioLinkIsAvailable() && _VertexGlitchingAudioLinkEnabled)
+			{
+				// float4 audioLinkData = AudioLinkData(ALPASS_AUDIOBASS);
+
+				float audioIntensity = 
+						AudioLinkData(ALPASS_AUDIOBASS).r 		* (_VertexGlitchingAudioLinkBand == 0) +
+						AudioLinkData(ALPASS_AUDIOLOWMIDS).r 	* (_VertexGlitchingAudioLinkBand == 1) +
+						AudioLinkData(ALPASS_AUDIOHIGHMIDS).r	* (_VertexGlitchingAudioLinkBand == 2) +
+						AudioLinkData(ALPASS_AUDIOTREBLE).r 	* (_VertexGlitchingAudioLinkBand == 3) +
+						AudioLinkData(ALPASS_FILTEREDVU_INTENSITY).r * (_VertexGlitchingAudioLinkBand == 4);
+
+				if(_VertexGlitchingAudiolinkOverride)
+				{
+					glitchOffset = glitchAmount * glitchDirection * (_VertexGlitchStrength * .01) * audioIntensity;
+					// glitchOffset += glitchAmount * glitchDirection * (_VertexGlitchStrength * .01) * audioIntensity;
+				} else {
+					glitchOffset = glitchAmount * glitchDirection * (_VertexGlitchStrength * .01) * step(_VertexGlitchThreshold, randomGlitch);
+					glitchOffset += glitchAmount * glitchDirection * (_VertexGlitchStrength * .01) * audioIntensity;
+				}
+			} else {
+				glitchOffset = glitchAmount * glitchDirection * (_VertexGlitchStrength * .01) * step(_VertexGlitchThreshold, randomGlitch);
+			}
+		#else
+			glitchOffset = glitchAmount * glitchDirection * (_VertexGlitchStrength * .01) * step(_VertexGlitchThreshold, randomGlitch);
+		#endif
+
+		localOffset += glitchOffset;
+		worldOffset += mul(unity_ObjectToWorld, glitchOffset);
+	}
+#endif
+//endex

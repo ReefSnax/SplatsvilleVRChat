@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1039f25740a92fc4292bb1d94d07ad19, type: 3}
+  m_Name: VRLM_PoiToonMetallic
+  m_EditorClassIdentifier: 
+  Id: PoiToonMetallic
+  Name: 
+  Version: 1.0
+  Author: Poiyomi
+  Description: 
+  EnableProperties: []
+  Properties: []
+  ModuleDependencies: []
+  IncompatibleWith: []
+  Templates:
+  - Template: {fileID: -1063318242215010060, guid: 682a43eec08f9c9458cdb535e2ea1e33,
+      type: 3}
+    Keywords:
+    - LIGHTING_PROPERTIES
+    NeedsVariant: 0
+    Queue: 100
+  - Template: {fileID: 8930507753313870376, guid: 682a43eec08f9c9458cdb535e2ea1e33,
+      type: 3}
+    Keywords:
+    - SHADER_KEYWORDS
+    NeedsVariant: 0
+    Queue: 100
+  - Template: {fileID: -1533124688360234162, guid: 682a43eec08f9c9458cdb535e2ea1e33,
+      type: 3}
+    Keywords:
+    - BASE_PROPERTY_VARIABLES
+    - ADD_PROPERTY_VARIABLES
+    NeedsVariant: 0
+    Queue: 100
+  - Template: {fileID: 4811149539233333048, guid: 682a43eec08f9c9458cdb535e2ea1e33,
+      type: 3}
+    Keywords:
+    - FRAGMENT_BASE_FUNCTIONS
+    - FRAGMENT_ADD_FUNCTIONS
+    NeedsVariant: 0
+    Queue: 100
+  - Template: {fileID: 5493699298304492315, guid: 682a43eec08f9c9458cdb535e2ea1e33,
+      type: 3}
+    Keywords:
+    - FRAGMENT_BASE_LIGHTING
+    - FRAGMENT_ADD_LIGHTING
+    NeedsVariant: 0
+    Queue: 100
+  Functions: []
+  AdditionalSerializedData: 

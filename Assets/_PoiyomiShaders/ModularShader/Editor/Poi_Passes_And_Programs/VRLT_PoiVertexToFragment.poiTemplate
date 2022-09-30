@@ -1,0 +1,22 @@
+struct VertexOut
+{
+	float4 pos : SV_POSITION;
+	float2 uv[4] : TEXCOORD0;
+	float3 objNormal : TEXCOORD4;
+	float3 normal : TEXCOORD5;
+	float3 tangent : TEXCOORD6;
+	float3 binormal : TEXCOORD7;
+	float4 worldPos : TEXCOORD8;
+	float4 localPos : TEXCOORD9;
+	float3 objectPos : TEXCOORD10;
+	float4 vertexColor : TEXCOORD11;
+	float4 lightmapUV : TEXCOORD12;
+	float4 grabPos: TEXCOORD13;
+	float4 worldDirection: TEXCOORD14;
+	float4 extra: TEXCOORD15;
+	UNITY_SHADOW_COORDS(16)
+	UNITY_FOG_COORDS(17)
+	#K#vertexOutData
+	UNITY_VERTEX_INPUT_INSTANCE_ID
+	UNITY_VERTEX_OUTPUT_STEREO
+};

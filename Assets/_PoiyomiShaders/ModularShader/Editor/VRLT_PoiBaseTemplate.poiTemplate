@@ -1,0 +1,17 @@
+Tags { "RenderType" = "Opaque" "Queue" = "Geometry" "VRCFallback" = "Standard" }
+
+#K#GRAB_PASS
+
+#K#EARLY_Z_PASS
+
+#K#EARLY_OUTLINE_PASS
+
+#K#BASE_PASS
+
+#K#OUTLINE_PASS
+
+#K#ADD_PASS
+
+#K#SHADOW_PASS
+
+#K#META_PASS

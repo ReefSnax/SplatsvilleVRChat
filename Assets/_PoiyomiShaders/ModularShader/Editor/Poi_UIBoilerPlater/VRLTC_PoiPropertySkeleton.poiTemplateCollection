@@ -1,0 +1,48 @@
+#T#MAIN_PROPERTIES
+// Main
+[HideInInspector] m_mainCategory ("Color & Normals--{button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/color-and-normals/main},hover:Documentation}}", Float) = 0
+#K#MAIN_PROPERTIES
+
+#T#OUTLINE_PROPERTIES
+// Outlines
+[HideInInspector] m_OutlineCategory (" Outlines--{reference_property:_EnableOutlines,button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/outlines/main},hover:Documentation}}", Float) = 0
+#K#OUTLINE_PROPERTIES
+
+#T#LIGHTING_PROPERTIES
+// Lighting
+[HideInInspector] m_lightingCategory ("Shading", Float) = 0
+#K#LIGHTING_PROPERTIES
+ 
+#T#SPECIALFX_PROPERTIES
+// Rendering Options
+[HideInInspector] m_specialFXCategory ("Special FX", Float) = 0
+#K#SPECIALFX_PROPERTIES
+
+#T#GRABPASS_PROPERTIES
+// Rendering Options
+[HideInInspector] m_grabPassCategory ("Grab Pass--{button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/grab-pass/grabpass},hover:Documentation}", Float) = 0
+#K#GRABPASS_PROPERTIES
+
+#T#MODIFIER_PROPERTIES
+// Rendering Options
+[HideInInspector] m_modifierCategory ("Modifiers", Float) = 0
+#K#MODIFIER_PROPERTIES
+
+#T#EXTRAS_PROPERTIES
+// Poi Extras
+#K#EXTRAS_PROPERTIES
+
+#T#THIRDPARTY_PROPERTIES
+//Third party
+[HideInInspector] m_thirdpartyCategory ("Third Party", Float) = 0
+#K#THIRDPARTY_PROPERTIES
+
+#T#POSTPROCESSING_PROPERTIES
+// Rendering Options
+[HideInInspector] m_postprocessing ("Post Processing", Float) = 0
+#K#POSTPROCESSING_PROPERTIES
+
+#T#RENDERING_PROPERTIES
+// Rendering Options
+[HideInInspector] m_renderingCategory ("Rendering--{button_help:{text:Tutorial,action:{type:URL,data:https://www.poiyomi.com/rendering/main},hover:Documentation}}", Float) = 0
+#K#RENDERING_PROPERTIES
