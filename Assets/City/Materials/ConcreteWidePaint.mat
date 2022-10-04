@@ -8,9 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ConcreteWidePaint
-  m_Shader: {fileID: 4800000, guid: 5c478ab3467c71f4daa1f96e9e86bdb8, type: 3}
-  m_ShaderKeywords: MOCHIE_PBR POI_LIGHT_DATA_ADDITIVE_DIRECTIONAL_ENABLE POI_LIGHT_DATA_ADDITIVE_ENABLE
-    POI_VERTEXLIGHT_ON VIGNETTE_MASKED
+  m_Shader: {fileID: 4800000, guid: e6ec71298e5702e42937085c6ac2de44, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0

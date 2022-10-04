@@ -9,7 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Body
   m_Shader: {fileID: 4800000, guid: a31eb8ec933083b409092cb80ad87a7c, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: COLOR_GRADING_HDR_3D POI_LIGHT_DATA_ADDITIVE_DIRECTIONAL_ENABLE
+    POI_LIGHT_DATA_ADDITIVE_ENABLE POI_MATCAP0 POI_VERTEXLIGHT_ON VIGNETTE_MASKED
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0

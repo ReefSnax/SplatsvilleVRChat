@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolution: 4096
   bitmask: -1
-  id: 14
-  sortingID: 12
+  id: 13
+  sortingID: 13
   isImplicit: 0
   area: 0
   totalVertexCount: 0
