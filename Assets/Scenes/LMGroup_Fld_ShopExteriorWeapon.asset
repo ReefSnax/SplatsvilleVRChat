@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0b4dd729a12d046982652f834580a2, type: 3}
   m_Name: LMGroup_Fld_ShopExteriorWeapon
   m_EditorClassIdentifier: 
-  resolution: 8192
+  resolution: 2048
   bitmask: -1
   id: 10
   sortingID: 15

@@ -9,7 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: fps controlled camera
   m_Shader: {fileID: 4800000, guid: 791767cfa939a6c4d924f3fa3a39c894, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: POI_LIGHT_DATA_ADDITIVE_DIRECTIONAL_ENABLE POI_LIGHT_DATA_ADDITIVE_ENABLE
+    POI_VERTEXLIGHT_ON VIGNETTE_MASKED
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
