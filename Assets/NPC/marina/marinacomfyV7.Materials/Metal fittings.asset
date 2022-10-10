@@ -8,14 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Metal fittings
-  m_Shader: {fileID: 4800000, guid: c933bce24d9d90747a5def016febd042, type: 3}
-  m_ShaderKeywords: MOCHIE_PBR POI_LIGHT_DATA_ADDITIVE_DIRECTIONAL_ENABLE POI_LIGHT_DATA_ADDITIVE_ENABLE
-    POI_VERTEXLIGHT_ON VIGNETTE_MASKED _LIGHTINGMODE_REALISTIC _RIMSTYLE_POIYOMI
+  m_Shader: {fileID: 4800000, guid: 5e7344effa071b9448df13d3febd9d98, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 6
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
-  stringTagMap: {}
+  stringTagMap:
+    OriginalShader: .poiyomi/Poiyomi 8.0/Poiyomi World
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -1255,12 +1256,12 @@ Material:
     - _MochieMetallicMapInvert: 0
     - _MochieMetallicMapsUV: 0
     - _MochieMetallicMasksUV: 0
-    - _MochieMetallicMultiplier: 0
+    - _MochieMetallicMultiplier: 1
     - _MochieReflectionMaskInvert: 0
     - _MochieReflectionStrength: 1
     - _MochieReflectionTintThemeIndex: 0
     - _MochieRoughnessMapInvert: 0
-    - _MochieRoughnessMultiplier: 0.076
+    - _MochieRoughnessMultiplier: 0.279
     - _MochieRoughnessMultiplier2: 1
     - _MochieSpecularMaskInvert: 0
     - _MochieSpecularStrength: 1
@@ -1415,7 +1416,7 @@ Material:
     - _ShadeColor_Step: 0
     - _ShadeShift: 0
     - _ShadeToony: 0.9
-    - _ShaderOptimizerEnabled: 0
+    - _ShaderOptimizerEnabled: 1
     - _ShadingEnabled: 1
     - _ShadingGradeRate: 1
     - _ShadingShadeMapBlendType: 0
@@ -1719,7 +1720,7 @@ Material:
     - m_start_uvPolar: 0
     - m_start_vertexManipulation: 0
     - m_thirdpartyCategory: 0
-    - shader_is_using_thry_editor: 0
+    - shader_is_using_thry_editor: 69
     - shader_master_label: 0
     m_Colors:
     - _1st_ShadeColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1801,7 +1802,7 @@ Material:
     - _ClearCoatSpecularTint: {r: 1, g: 1, b: 1, a: 1}
     - _ClippingMaskPan: {r: 0, g: 0, b: 0, a: 0}
     - _ClothMetallicSmoothnessMapPan: {r: 0, g: 0, b: 0, a: 0}
-    - _Color: {r: 0.22641498, g: 0.22321096, b: 0.22321096, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CubeMapColor: {r: 1, g: 1, b: 1, a: 1}
     - _CubeMapMaskPan: {r: 0, g: 0, b: 0, a: 0}
     - _CubeMapRotation: {r: 0, g: 0, b: 0, a: 0}

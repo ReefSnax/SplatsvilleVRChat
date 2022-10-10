@@ -2516,7 +2516,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.0/Poiyomi World/29014bc65259c2f44a068d9
 			#ifdef MOCHIE_PBR
 			void MochieBRDF(inout PoiFragData poiFragData, in PoiCam poiCam, inout PoiLight poiLight, in PoiMesh poiMesh, in PoiMods poiMods)
 			{
-				float smoothness = float(1);
+				float smoothness = float(0.885);
 				float smoothness2 = float(1);
 				float metallic = float(0);
 				float specularMask = 1;
@@ -2638,7 +2638,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.0/Poiyomi World/29014bc65259c2f44a068d9
 			void poiClearCoat(inout PoiFragData poiFragData, in PoiCam poiCam, inout PoiLight poiLight, in PoiMesh poiMesh, in PoiMods poiMods)
 			{
 				float clearCoatMask = float(1);
-				float smoothness = float(1);
+				float smoothness = float(0.912);
 				float reflectionMask = 1;
 				float specularMask = 1;
 				#if defined(PROP_CLEARCOATMAPS) || !defined(OPTIMIZER_ENABLED)
@@ -2649,7 +2649,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.0/Poiyomi World/29014bc65259c2f44a068d9
 				specularMask *= PRBMaps.a;
 				#endif
 				specularMask *= float(1);
-				reflectionMask *= float(1);
+				reflectionMask *= float(0.712);
 				if (float(0))
 				{
 					clearCoatMask = 1 - clearCoatMask;
@@ -5306,7 +5306,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.0/Poiyomi World/29014bc65259c2f44a068d9
 			#ifdef MOCHIE_PBR
 			void MochieBRDF(inout PoiFragData poiFragData, in PoiCam poiCam, inout PoiLight poiLight, in PoiMesh poiMesh, in PoiMods poiMods)
 			{
-				float smoothness = float(1);
+				float smoothness = float(0.885);
 				float smoothness2 = float(1);
 				float metallic = float(0);
 				float specularMask = 1;
@@ -5428,7 +5428,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.0/Poiyomi World/29014bc65259c2f44a068d9
 			void poiClearCoat(inout PoiFragData poiFragData, in PoiCam poiCam, inout PoiLight poiLight, in PoiMesh poiMesh, in PoiMods poiMods)
 			{
 				float clearCoatMask = float(1);
-				float smoothness = float(1);
+				float smoothness = float(0.912);
 				float reflectionMask = 1;
 				float specularMask = 1;
 				#if defined(PROP_CLEARCOATMAPS) || !defined(OPTIMIZER_ENABLED)
@@ -5439,7 +5439,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.0/Poiyomi World/29014bc65259c2f44a068d9
 				specularMask *= PRBMaps.a;
 				#endif
 				specularMask *= float(1);
-				reflectionMask *= float(1);
+				reflectionMask *= float(0.712);
 				if (float(0))
 				{
 					clearCoatMask = 1 - clearCoatMask;

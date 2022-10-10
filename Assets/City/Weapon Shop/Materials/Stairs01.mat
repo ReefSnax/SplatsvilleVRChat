@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Stairs01
-  m_Shader: {fileID: 4800000, guid: c35b44d802e4fa54e81603971ba7f046, type: 3}
+  m_Shader: {fileID: 4800000, guid: 002c7cdbd7b9d96428a331533dd88857, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -675,7 +675,7 @@ Material:
     - _CubeMapNormal: 1
     - _CubeMapReplace: 1
     - _CubeMapUVMode: 1
-    - _Cull: 2
+    - _Cull: 0
     - _CurvFix: 1
     - _CurvatureU: 0
     - _CurvatureV: 0
@@ -1633,7 +1633,7 @@ Material:
     - m_mainCategory: 1
     - m_modifierCategory: 0
     - m_postprocessing: 0
-    - m_renderingCategory: 0
+    - m_renderingCategory: 1
     - m_specialFXCategory: 0
     - m_start_ALDecalSpectrum: 0
     - m_start_Alpha: 0

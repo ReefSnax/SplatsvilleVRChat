@@ -2348,7 +2348,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.1/Poiyomi Pro World/3077a4c0bc203cd4fa5
 				light.color = saturate(_LightColor0.rgb * lerp(1, poiLight.attenuation, poiLight.attenuationStrength) * poiLight.detailShadow);
 				light.ndotl = poiLight.nDotLSaturated;
 				poiLight.rampedLightMap = poiLight.nDotLSaturated;
-				poiLight.finalLighting = max(UNITY_BRDF_PBS(1, 0, 0, 0, poiMesh.normals[1], poiCam.viewDir, light, CreateIndirectLight(poiMesh, poiCam, poiLight)).xyz, float(0));
+				poiLight.finalLighting = max(UNITY_BRDF_PBS(1, 0, 0, 0, poiMesh.normals[1], poiCam.viewDir, light, CreateIndirectLight(poiMesh, poiCam, poiLight)).xyz, float(0.609));
 				#endif
 				#ifdef _LIGHTINGMODE_CLOTH
 				#if defined(PROP_MOCHIEMETALLICMAP) || !defined(OPTIMIZER_ENABLED)
@@ -2399,11 +2399,11 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.1/Poiyomi Pro World/3077a4c0bc203cd4fa5
 				float3 finalWrap = directColor + indirectColor;
 				if (float(1))
 				{
-					finalWrap = clamp(finalWrap, float(0), float(1));
+					finalWrap = clamp(finalWrap, float(0.609), float(1));
 				}
 				else
 				{
-					finalWrap = max(finalWrap, float(0));
+					finalWrap = max(finalWrap, float(0.609));
 				}
 				poiLight.finalLighting = finalWrap * saturate(mathRamp + 1 - float(1));
 				#endif
@@ -3007,13 +3007,13 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.1/Poiyomi Pro World/3077a4c0bc203cd4fa5
 				poiLight.indirectColor = max(poiLight.indirectColor, 0.0001);
 				if (float(0) == 3)
 				{
-					poiLight.directColor = max(poiLight.directColor, float(0));
-					poiLight.indirectColor = max(poiLight.indirectColor, float(0));
+					poiLight.directColor = max(poiLight.directColor, float(0.609));
+					poiLight.indirectColor = max(poiLight.indirectColor, float(0.609));
 				}
 				else
 				{
-					poiLight.directColor = max(poiLight.directColor, poiLight.directColor / max(0.0001, (calculateluminance(poiLight.directColor) / float(0))));
-					poiLight.indirectColor = max(poiLight.indirectColor, poiLight.indirectColor / max(0.0001, (calculateluminance(poiLight.indirectColor) / float(0))));
+					poiLight.directColor = max(poiLight.directColor, poiLight.directColor / max(0.0001, (calculateluminance(poiLight.directColor) / float(0.609))));
+					poiLight.indirectColor = max(poiLight.indirectColor, poiLight.indirectColor / max(0.0001, (calculateluminance(poiLight.indirectColor) / float(0.609))));
 				}
 				poiLight.directColor = lerp(poiLight.directColor, dot(poiLight.directColor, float3(0.299, 0.587, 0.114)), float(0));
 				poiLight.indirectColor = lerp(poiLight.indirectColor, dot(poiLight.indirectColor, float3(0.299, 0.587, 0.114)), float(0));
@@ -3076,8 +3076,8 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.1/Poiyomi Pro World/3077a4c0bc203cd4fa5
 				poiLight.vertexNDotH = max(0.00001, dot(poiMesh.normals[0], poiLight.halfDir));
 				poiLight.lightMap = 1;
 				#endif
-				poiFragData.baseColor = mainTexture.rgb * poiThemeColor(poiMods, float4(0.02353481,0.1746682,0.5754442,1).rgb, float(0));
-				poiFragData.alpha = mainTexture.a * float4(0.02353481,0.1746682,0.5754442,1).a;
+				poiFragData.baseColor = mainTexture.rgb * poiThemeColor(poiMods, float4(0.07773234,0.2492411,0.5007474,1).rgb, float(0));
+				poiFragData.alpha = mainTexture.a * float4(0.07773234,0.2492411,0.5007474,1).a;
 				#if defined(PROP_CLIPPINGMASK) || !defined(OPTIMIZER_ENABLED)
 				float alphaMask = POI2D_SAMPLER_PAN(_ClippingMask, _MainTex, poiUV(poiMesh.uv[float(0)], float4(1,1,0,0)), float4(0,0,0,0)).r;
 				if (float(0))
@@ -5135,7 +5135,7 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.1/Poiyomi Pro World/3077a4c0bc203cd4fa5
 				light.color = saturate(_LightColor0.rgb * lerp(1, poiLight.attenuation, poiLight.attenuationStrength) * poiLight.detailShadow);
 				light.ndotl = poiLight.nDotLSaturated;
 				poiLight.rampedLightMap = poiLight.nDotLSaturated;
-				poiLight.finalLighting = max(UNITY_BRDF_PBS(1, 0, 0, 0, poiMesh.normals[1], poiCam.viewDir, light, CreateIndirectLight(poiMesh, poiCam, poiLight)).xyz, float(0));
+				poiLight.finalLighting = max(UNITY_BRDF_PBS(1, 0, 0, 0, poiMesh.normals[1], poiCam.viewDir, light, CreateIndirectLight(poiMesh, poiCam, poiLight)).xyz, float(0.609));
 				#endif
 				#ifdef _LIGHTINGMODE_CLOTH
 				#if defined(PROP_MOCHIEMETALLICMAP) || !defined(OPTIMIZER_ENABLED)
@@ -5186,11 +5186,11 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.1/Poiyomi Pro World/3077a4c0bc203cd4fa5
 				float3 finalWrap = directColor + indirectColor;
 				if (float(1))
 				{
-					finalWrap = clamp(finalWrap, float(0), float(1));
+					finalWrap = clamp(finalWrap, float(0.609), float(1));
 				}
 				else
 				{
-					finalWrap = max(finalWrap, float(0));
+					finalWrap = max(finalWrap, float(0.609));
 				}
 				poiLight.finalLighting = finalWrap * saturate(mathRamp + 1 - float(1));
 				#endif
@@ -5794,13 +5794,13 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.1/Poiyomi Pro World/3077a4c0bc203cd4fa5
 				poiLight.indirectColor = max(poiLight.indirectColor, 0.0001);
 				if (float(0) == 3)
 				{
-					poiLight.directColor = max(poiLight.directColor, float(0));
-					poiLight.indirectColor = max(poiLight.indirectColor, float(0));
+					poiLight.directColor = max(poiLight.directColor, float(0.609));
+					poiLight.indirectColor = max(poiLight.indirectColor, float(0.609));
 				}
 				else
 				{
-					poiLight.directColor = max(poiLight.directColor, poiLight.directColor / max(0.0001, (calculateluminance(poiLight.directColor) / float(0))));
-					poiLight.indirectColor = max(poiLight.indirectColor, poiLight.indirectColor / max(0.0001, (calculateluminance(poiLight.indirectColor) / float(0))));
+					poiLight.directColor = max(poiLight.directColor, poiLight.directColor / max(0.0001, (calculateluminance(poiLight.directColor) / float(0.609))));
+					poiLight.indirectColor = max(poiLight.indirectColor, poiLight.indirectColor / max(0.0001, (calculateluminance(poiLight.indirectColor) / float(0.609))));
 				}
 				poiLight.directColor = lerp(poiLight.directColor, dot(poiLight.directColor, float3(0.299, 0.587, 0.114)), float(0));
 				poiLight.indirectColor = lerp(poiLight.indirectColor, dot(poiLight.indirectColor, float3(0.299, 0.587, 0.114)), float(0));
@@ -5863,8 +5863,8 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.1/Poiyomi Pro World/3077a4c0bc203cd4fa5
 				poiLight.vertexNDotH = max(0.00001, dot(poiMesh.normals[0], poiLight.halfDir));
 				poiLight.lightMap = 1;
 				#endif
-				poiFragData.baseColor = mainTexture.rgb * poiThemeColor(poiMods, float4(0.02353481,0.1746682,0.5754442,1).rgb, float(0));
-				poiFragData.alpha = mainTexture.a * float4(0.02353481,0.1746682,0.5754442,1).a;
+				poiFragData.baseColor = mainTexture.rgb * poiThemeColor(poiMods, float4(0.07773234,0.2492411,0.5007474,1).rgb, float(0));
+				poiFragData.alpha = mainTexture.a * float4(0.07773234,0.2492411,0.5007474,1).a;
 				#if defined(PROP_CLIPPINGMASK) || !defined(OPTIMIZER_ENABLED)
 				float alphaMask = POI2D_SAMPLER_PAN(_ClippingMask, _MainTex, poiUV(poiMesh.uv[float(0)], float4(1,1,0,0)), float4(0,0,0,0)).r;
 				if (float(0))
@@ -7304,8 +7304,8 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.1/Poiyomi Pro World/3077a4c0bc203cd4fa5
 				poiCam.vDotN = abs(dot(poiCam.viewDir, poiMesh.normals[1]));
 				poiCam.clipPos = i.pos;
 				poiCam.worldDirection = i.worldDirection;
-				poiFragData.baseColor = mainTexture.rgb * poiThemeColor(poiMods, float4(0.02353481,0.1746682,0.5754442,1).rgb, float(0));
-				poiFragData.alpha = mainTexture.a * float4(0.02353481,0.1746682,0.5754442,1).a;
+				poiFragData.baseColor = mainTexture.rgb * poiThemeColor(poiMods, float4(0.07773234,0.2492411,0.5007474,1).rgb, float(0));
+				poiFragData.alpha = mainTexture.a * float4(0.07773234,0.2492411,0.5007474,1).a;
 				#if defined(PROP_CLIPPINGMASK) || !defined(OPTIMIZER_ENABLED)
 				float alphaMask = POI2D_SAMPLER_PAN(_ClippingMask, _MainTex, poiUV(poiMesh.uv[float(0)], float4(1,1,0,0)), float4(0,0,0,0)).r;
 				if (float(0))
@@ -8780,8 +8780,8 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.1/Poiyomi Pro World/3077a4c0bc203cd4fa5
 				poiCam.clipPos = i.pos;
 				poiCam.worldDirection = i.worldDirection;
 				calculateGlobalThemes(poiMods);
-				poiFragData.baseColor = mainTexture.rgb * poiThemeColor(poiMods, float4(0.02353481,0.1746682,0.5754442,1).rgb, float(0));
-				poiFragData.alpha = mainTexture.a * float4(0.02353481,0.1746682,0.5754442,1).a;
+				poiFragData.baseColor = mainTexture.rgb * poiThemeColor(poiMods, float4(0.07773234,0.2492411,0.5007474,1).rgb, float(0));
+				poiFragData.alpha = mainTexture.a * float4(0.07773234,0.2492411,0.5007474,1).a;
 				#if defined(PROP_CLIPPINGMASK) || !defined(OPTIMIZER_ENABLED)
 				float alphaMask = POI2D_SAMPLER_PAN(_ClippingMask, _MainTex, poiUV(poiMesh.uv[float(0)], float4(1,1,0,0)), float4(0,0,0,0)).r;
 				if (float(0))

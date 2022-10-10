@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Red
-  m_Shader: {fileID: 4800000, guid: 8f657e6003d98824e983fe446ea26452, type: 3}
+  m_Shader: {fileID: 4800000, guid: 9daadf269cb25ac4dae8d769b43d4304, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -1276,7 +1276,7 @@ Material:
     - _LightingIgnoreAmbientColor: 1
     - _LightingIndirectUsesNormals: 1
     - _LightingMapMode: 0
-    - _LightingMinLightBrightness: 0
+    - _LightingMinLightBrightness: 0.609
     - _LightingMode: 6
     - _LightingMonochromatic: 0
     - _LightingMulitlayerNonLinear: 1

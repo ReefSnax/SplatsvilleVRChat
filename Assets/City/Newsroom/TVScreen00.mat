@@ -1423,7 +1423,7 @@ Material:
     - _NormalCorrect: 0
     - _NormalCorrectAmount: 0.9
     - _OcclusionStrength: 1
-    - _OffsetFactor: 0
+    - _OffsetFactor: 0.06
     - _OffsetUnits: 0
     - _PBRSplitMaskSample: 0
     - _PPBrightness: 1
@@ -1897,7 +1897,7 @@ Material:
     - m_mainCategory: 1
     - m_modifierCategory: 0
     - m_postprocessing: 0
-    - m_renderingCategory: 0
+    - m_renderingCategory: 1
     - m_specialFXCategory: 1
     - m_start_ALDecalSpectrum: 0
     - m_start_Alpha: 0

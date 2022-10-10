@@ -1270,12 +1270,12 @@ Material:
     - _MochieMetallicMapInvert: 0
     - _MochieMetallicMapsUV: 0
     - _MochieMetallicMasksUV: 0
-    - _MochieMetallicMultiplier: 0.881
+    - _MochieMetallicMultiplier: 1
     - _MochieReflectionMaskInvert: 0
     - _MochieReflectionStrength: 1
     - _MochieReflectionTintThemeIndex: 0
     - _MochieRoughnessMapInvert: 0
-    - _MochieRoughnessMultiplier: 0.362
+    - _MochieRoughnessMultiplier: 0.31
     - _MochieRoughnessMultiplier2: 1
     - _MochieSpecularMaskInvert: 0
     - _MochieSpecularStrength: 1

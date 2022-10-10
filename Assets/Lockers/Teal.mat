@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Teal
-  m_Shader: {fileID: 4800000, guid: 26d1d8be990526c45a389e46f2d57bf7, type: 3}
+  m_Shader: {fileID: 4800000, guid: 67ee017476e13c74299fe9b078e344a9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -1276,7 +1276,7 @@ Material:
     - _LightingIgnoreAmbientColor: 1
     - _LightingIndirectUsesNormals: 1
     - _LightingMapMode: 0
-    - _LightingMinLightBrightness: 0
+    - _LightingMinLightBrightness: 0.609
     - _LightingMode: 6
     - _LightingMonochromatic: 0
     - _LightingMulitlayerNonLinear: 1

@@ -2599,9 +2599,9 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.0/Poiyomi World/6700e170cb5b8144ab23769
 			#ifdef MOCHIE_PBR
 			void MochieBRDF(inout PoiFragData poiFragData, in PoiCam poiCam, inout PoiLight poiLight, in PoiMesh poiMesh, in PoiMods poiMods)
 			{
-				float smoothness = float(0.362);
+				float smoothness = float(0.31);
 				float smoothness2 = float(1);
-				float metallic = float(0.881);
+				float metallic = float(1);
 				float specularMask = 1;
 				float reflectionMask = 1;
 				#if defined(PROP_MOCHIEMETALLICMAPS) || !defined(OPTIMIZER_ENABLED)
@@ -5511,9 +5511,9 @@ Shader "Hidden/Locked/.poiyomi/Poiyomi 8.0/Poiyomi World/6700e170cb5b8144ab23769
 			#ifdef MOCHIE_PBR
 			void MochieBRDF(inout PoiFragData poiFragData, in PoiCam poiCam, inout PoiLight poiLight, in PoiMesh poiMesh, in PoiMods poiMods)
 			{
-				float smoothness = float(0.362);
+				float smoothness = float(0.31);
 				float smoothness2 = float(1);
-				float metallic = float(0.881);
+				float metallic = float(1);
 				float specularMask = 1;
 				float reflectionMask = 1;
 				#if defined(PROP_MOCHIEMETALLICMAPS) || !defined(OPTIMIZER_ENABLED)

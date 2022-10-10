@@ -660,7 +660,7 @@ Material:
     - _CubeMapNormal: 1
     - _CubeMapReplace: 1
     - _CubeMapUVMode: 1
-    - _Cull: 0
+    - _Cull: 2
     - _CurvFix: 1
     - _CurvatureU: 0
     - _CurvatureV: 0

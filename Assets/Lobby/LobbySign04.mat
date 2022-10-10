@@ -9,7 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: LobbySign04
   m_Shader: {fileID: 4800000, guid: 1f9f83273cd8c8d4d9a3ced00a562e5b, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: MOCHIE_PBR POI_LIGHT_DATA_ADDITIVE_DIRECTIONAL_ENABLE POI_LIGHT_DATA_ADDITIVE_ENABLE
+    POI_VERTEXLIGHT_ON VIGNETTE_MASKED
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0

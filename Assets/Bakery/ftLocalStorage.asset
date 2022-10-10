@@ -82,4 +82,95 @@ MonoBehaviour:
   - Assets/City/Decorations/FldObj_BankaraCityFestSecond.dae
   - Assets/City/FES/fanscreen.fbx
   - Assets/NPC/Fishhead/Npc_FishHead.dae
-  modifiedAssetPaddingHash: aaf8cc2ecfc3a693e1c4d890f595d37200b309cecec1249129391cbda9cdb82a91abf057953ea0db7e9e85b18109ecc0173d5196af67e2a81f08071f80c5d890c1ab134968227aa550f2b8d9323fd3d9f83d35eafed0ac3fccae27c1fddc895301144511dca88b8aada767e0dbd42030f595d372cec1249100b309ce5dcd7aa63f3fd3d9716fde4f11757f58e1dfc5d8d2de8190b7f23a06b31bf8be46cfaff3c8a242d03826f7fcc28b2f4be493391ca6da2658c2c4d89034075c238200dccb9979f50a885031ee4f7759cb2866134e4b54097b8a92976f577a19649a8f1ac28e31e5c0726ea96ab7f23a063c4efff009a3ddde20104e9289c7418ad98f4c73d7c12491c052f26d21c04f88fa4dfff078c6d890
+  - Assets/Game Room/Fld_LocalLobby.dae
+  - Assets/Game Room/missingparts.dae
+  - Assets/City/Tower TV/FldObj_VSLobbyExteriorFesLight.dae
+  - Assets/Shoal/Fld_LocalLobby.dae
+  - Assets/Shoal/missingparts.dae
+  - Assets/Lockers/Stringer/Wmn_Stringer_Normal.dae
+  - Assets/Lockers/Tuna/Fig_Tuna.dae
+  - Assets/Lockers/Fig_CarMegapolis.dae
+  - Assets/Lockers/Loc_Hook00.dae
+  - Assets/Lockers/Sunglasses/Hed_EYE003.dae
+  - Assets/Lockers/Leather Jacket/Clt_JKT006.dae
+  - Assets/Lockers/DancingFlower/Fig_DancingFlower.dae
+  - Assets/Lockers/BlkShirt1/Clt_TES073_M.dae
+  - Assets/Lockers/Game 1/Fig_VideoGame00.dae
+  - Assets/Lockers/TriSlosher/Wmn_Slosher_Diffusion.dae
+  - Assets/Lockers/Slosher/Wmn_Slosher_StrongT.dae
+  - Assets/Lockers/Loc_Hanger00.dae
+  - Assets/Lockers/Fig_SquidDoll00.dae
+  - Assets/Lockers/Splatana Stamper/Wmn_Saber_Normal.dae
+  - Assets/Lockers/Loc_Shelf00.dae
+  - Assets/Lockers/Fig_Book_01.dae
+  - Assets/Lockers/Fig_SighterTarget.dae
+  - Assets/Lockers/Game2/Fig_VideoGame01.dae
+  - Assets/Lockers/Game3/Fig_VideoGame02.dae
+  - Assets/Lockers/Comic1/Fig_Comic00_00.dae
+  - Assets/Lockers/Aerospray/Wmn_Shooter_Blaze.dae
+  - Assets/Lockers/NZap/Wmn_Shooter_QuickMiddle.dae
+  - Assets/Lockers/TornShirt/Clt_TES063.dae
+  - Assets/Lockers/Maoi/Fig_Moai.dae
+  - Assets/Lockers/Locker Parts/Loc_Door04.dae
+  - Assets/Lockers/Locker Parts/Loc_Case04.dae
+  - Assets/Lockers/Locker Parts/Loc_Case02.dae
+  - Assets/Lockers/Locker Parts/Loc_Door02.dae
+  - Assets/Lockers/Locker Parts/Loc_Door00.dae
+  - Assets/Lockers/Locker Parts/Loc_Case00.dae
+  - Assets/NPC/Shiver/Npc_BankaraIdolA.dae
+  - Assets/NPC/Frye/Npc_BankaraIdolB.dae
+  - Assets/City/Vending/FldObj_VendingMachine.dae
+  - Assets/Alterna/Pipelines/Pipeline.dae
+  - Assets/Alterna/RocketFar/Fld_BigWorldRocketAndLaunchPad.dae
+  - Assets/Alterna/Area6Far/Fld_BigWorld_Area06_Far.dae
+  - Assets/Alterna/Area6Far/Fld_AreaObj06_Far.dae
+  - Assets/Alterna/Area5Far/Fld_BigWorld_Area05_Far.dae
+  - Assets/Alterna/Area5Far/Fld_AreaObj05_Far.dae
+  - Assets/Alterna/Area4Far/Fld_BigWorld_Area04_Far.dae
+  - Assets/Alterna/Area4Far/Fld_AreaObj04_Far.dae
+  - Assets/Alterna/Area3Far/Fld_BigWorld_Area03_Far.dae
+  - Assets/Alterna/Area3Far/Fld_AreaObj03_Far.dae
+  - Assets/Alterna/Area2Far/Fld_BigWorld_Area02_Far.dae
+  - Assets/Alterna/Background/FldBG_Obj11.dae
+  - Assets/Alterna/Background/FldBG_Obj10.dae
+  - Assets/Alterna/Background/FldBG_Obj09.dae
+  - Assets/Alterna/Background/FldBG_Obj08.dae
+  - Assets/Alterna/Background/FldBG_Obj07.dae
+  - Assets/Alterna/Background/FldBG_Obj06.dae
+  - Assets/Alterna/Background/FldBG_Obj05.dae
+  - Assets/Alterna/Background/FldBG_Obj04.dae
+  - Assets/Alterna/Background/FldBG_Obj03.dae
+  - Assets/Alterna/Background/FldBG_Obj02.dae
+  - Assets/Alterna/Background/FldBG_Obj01.dae
+  - Assets/Alterna/Pipelines/FldObj_PipelineBase00.dae
+  - Assets/Alterna/Pipelines/FldObj_PipelineArea07.dae
+  - Assets/Alterna/Pipelines/FldObj_PipelineArea06.dae
+  - Assets/Alterna/Pipelines/FldObj_PipelineArea05.dae
+  - Assets/Alterna/Pipelines/FldObj_PipelineArea04.dae
+  - Assets/Alterna/Pipelines/FldObj_PipelineArea03.dae
+  - Assets/Alterna/Pipelines/FldObj_PipelineArea02.dae
+  - Assets/Alterna/Pipelines/FldObj_PipelineArea01.dae
+  - Assets/Alterna/Area2Far/Fld_AreaObj02_Far.dae
+  - Assets/Alterna/Area1/Fld_BigWorld_Area01.dae
+  - Assets/Alterna/Area1/Fld_AreaObj01.dae
+  - Assets/Alterna/Skybox/Sky_MsnBigWorld.dae
+  - Assets/NPC/Jerry/Npc_JerryFest_Shop00.dae
+  - Assets/NPC/Jerry/Npc_JerryFest_Shop01.dae
+  - Assets/NPC/Jerry/Npc_Jerry00_LongHead.dae
+  - Assets/NPC/Hat Shop Buddy/Npc_HeadGearShop_B.dae
+  - Assets/NPC/Jerry/Npc_Jerry00.dae
+  - Assets/NPC/Goldie/Npc_ShopAunty_Lobby.dae
+  - Assets/NPC/Harmony/Npc_KnickKnacksShop.dae
+  - Assets/NPC/Coco/Npc_ShoesShop.dae
+  - Assets/NPC/Jerry/Npc_JerryDJ00.dae
+  - Assets/Stechun Splatoon 3 Npcs/Small Fry/Npc_SalmonBaby_Hair00.dae
+  - Assets/NPC/Jerry/Npc_JerryFest_Glowstick.dae
+  - Assets/Stechun Splatoon 3 Npcs/Small Fry/Npc_SalmonBaby.dae
+  - Assets/NPC/Jerry/Npc_JerryLobbyCafe.dae
+  - Assets/Megapolis/Nostalgia/Sky_MsnNostalgia.dae
+  - Assets/Megapolis/TrainWorld/Fld_Alterna4c09.dae
+  - Assets/Megapolis/Box/Obj_Box00LHard.dae
+  - Assets/Megapolis/Namazu Dummy/Obj_NamazuDummy.dae
+  - Assets/Lobby/Locker/Loc_Case04.dae
+  - Assets/Lobby/Locker/Loc_Case02.dae
+  modifiedAssetPaddingHash: aaf8cc2ef537ed04cdd15080f595d37200b309cecec12491c7251cf8a9cdb82a97671976eb3919cf7e9e85b18109ecc0173d519680c5d890461496c3cfc3a69339c599aa68227aa59a7e368823c5d890d57bd03b25d33423ccae27c1fddc89533e9e08a08f190a1ddc70b693a96febbcc7270fcb1528c1152128c11599b93e6d3f3fd3d9f278da00584073e511718e4fd2de8190b7f23a068c8a49b8fec6c59c49f85e6c3826f7fcfefcc196e493391ca6da2658ecc1249134075c238200dccb490e6090885031ee5e52950aefe056a4bc171a0be0f3496b577a1964a2799748b6a5a969726ea96ac34608c83c4efff02128c1157422dc23f059a9945f736e84ecc12491c052f26db491d609fa4dfff0d6318883b7eaefbe24208725ecc12491eed54cc62f3250bdfe4945beecc12491ecb4d8acecc12491fe4945beecc12491fe4945beecc12491ecc12491ecc12491ecc12491fe4945beecb4d8acfe4945beecc12491ecc12491ecc12491ecc12491ecc12491ecc12491ecc12491ecc12491ecc12491ecc124913843deb3a768e2a8f727c115fe4945befe4945beb84608c8ec8d7d4bec8d7d4b30f7e70dd90504370313e1d90913d07eccc85f4d1b5cb74997183ed02f28e75de131eb15096438690a4b94c93f3fd3d940a5eff57c5ed37ce8fb727afcc5a16a582bb3994118ac7c3f71abe0f6e5d985ace3b474755dc42298136fe20ba0b55355374b7b5d4f8993eb04da516265f8ca8c111a0d754eb3975e74a0df78b677ecc76f7541e0608811f4987dfffe2f60f4fe150172ecb4d8acfe4945beecb4d8acfe2f60f4fee2df8b9932e9bffefcc196ecc12491fefcc196ecb4d8acec274e97fe9472fc96a3c7e2dd98ed73ecc12491b35634b709a3ddde

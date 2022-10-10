@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0b4dd729a12d046982652f834580a2, type: 3}
   m_Name: LMGroup_Fld_BankaraCityTownHouse
   m_EditorClassIdentifier: 
-  resolution: 4096
+  resolution: 2048
   bitmask: -1
-  id: 5
+  id: 64
   sortingID: 20
   isImplicit: 0
   area: 0
@@ -34,10 +34,10 @@ MonoBehaviour:
   sssColor: {r: 1, g: 1, b: 1, a: 1}
   sssScale: 1
   fakeShadowBias: 0
-  transparentSelfShadow: 0
+  transparentSelfShadow: 1
   flipNormal: 0
   parentName: 
   overridePath: 
   fixPos3D: 0
   voxelSize: {x: 1, y: 1, z: 1}
-  passedFilter: 1
+  passedFilter: 0

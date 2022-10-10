@@ -15,33 +15,56 @@ MonoBehaviour:
   serializedUdonProgramAsset: {fileID: 11400000, guid: f19dc9faee6cbc54989f5a49f9b037f2,
     type: 2}
   udonAssembly: ".data_start\r\n  .export _this_gameobject\r\n  .export _this_transform\r\n 
-    .export _this_udonbehaviour\r\n  .export brightness\r\n  .export __8_ref_UnityEngineUISlider\r\n 
-    .export __9_ref_UnityEngineAnimator\r\n  .export __10_ref_SystemString\r\n  .export
-    __12_ref_SystemString\r\n  uint_return_address: %SystemUInt32, null\r\n  uint_int_end_address:
+    .export _this_udonbehaviour\r\n  .export __17_ref_UnityEngineAnimator\r\n  .export
+    __18_ref_SystemString\r\n  .export __22_ref_UnityEngineAnimator\r\n  .export
+    __23_ref_SystemString\r\n  uint_return_address: %SystemUInt32, null\r\n  uint_int_end_address:
     %SystemUInt32, null\r\n  _this_gameobject: %UnityEngineGameObject, this\r\n 
     _this_transform: %UnityEngineTransform, this\r\n  _this_udonbehaviour: %VRCUdonCommonInterfacesIUdonEventReceiver,
-    null\r\n  _this_local_player: %VRCSDKBaseVRCPlayerApi, null\r\n  brightness:
-    %SystemSingle, null\r\n  __7_jump_return_0_SystemUInt32: %SystemUInt32, null\r\n 
-    __8_ref_UnityEngineUISlider: %UnityEngineUISlider, null\r\n  __9_ref_UnityEngineAnimator:
-    %UnityEngineAnimator, null\r\n  __10_ref_SystemString: %SystemString, null\r\n 
-    __11_jump_return_1_SystemUInt32: %SystemUInt32, null\r\n  __12_ref_SystemString:
-    %SystemString, null\r\n  __13_jump_return_2_SystemUInt32: %SystemUInt32, null\r\n.data_end\r\n\n.code_start\r\n 
-    .export _start\r\n  _start:\r\n    PUSH, uint_int_end_address\r\n    PUSH, _this_local_player\r\n   
-    EXTERN, \"VRCSDKBaseNetworking.__get_LocalPlayer__VRCSDKBaseVRCPlayerApi\"\r\n   
-    PUSH, __11_jump_return_1_SystemUInt32\r\n    JUMP, 0x000000C4\r\n    PUSH, uint_return_address\r\n   
-    COPY\r\n    JUMP_INDIRECT, uint_return_address\r\n\r\n  .export _SliderAdjust\r\n 
-    _SliderAdjust:\r\n    PUSH, uint_int_end_address\r\n    PUSH, __7_jump_return_0_SystemUInt32\r\n   
-    JUMP, 0x00000070\r\n    PUSH, uint_return_address\r\n    COPY\r\n    JUMP_INDIRECT,
-    uint_return_address\r\n\r\n  __intern_event_0_actions:\r\n    PUSH, uint_int_end_address\r\n   
-    PUSH, __8_ref_UnityEngineUISlider\r\n    PUSH, brightness\r\n    EXTERN, \"UnityEngineUISlider.__get_value__SystemSingle\"\r\n   
-    PUSH, __9_ref_UnityEngineAnimator\r\n    PUSH, __10_ref_SystemString\r\n    PUSH,
-    brightness\r\n    EXTERN, \"UnityEngineAnimator.__SetFloat__SystemString_SystemSingle__SystemVoid\"\r\n   
+    null\r\n  _this_local_player: %VRCSDKBaseVRCPlayerApi, null\r\n  __action_group_0_Parameter:
+    %SystemString, null\r\n  __action_group_0_Animator: %UnityEngineAnimator, null\r\n 
+    __action_group_0___name_0: %SystemString, null\r\n  __action_group_0___instance_1:
+    %UnityEngineAnimator, null\r\n  __action_group_0___Boolean_0: %SystemBoolean,
+    null\r\n  __action_group_0___name_1: %SystemString, null\r\n  __action_group_0___instance_0:
+    %UnityEngineAnimator, null\r\n  __action_group_0___value_0: %SystemBoolean, null\r\n 
+    __action_group_0_uint_action_jump_address: %SystemUInt32, null\r\n  onPlayerTriggerEnterPlayer:
+    %VRCSDKBaseVRCPlayerApi, null\r\n  __16_jump_return_0_SystemUInt32: %SystemUInt32,
+    null\r\n  __17_ref_UnityEngineAnimator: %UnityEngineAnimator, null\r\n  __18_ref_SystemString:
+    %SystemString, null\r\n  __19_jump_return_1_SystemUInt32: %SystemUInt32, null\r\n 
+    onPlayerTriggerExitPlayer: %VRCSDKBaseVRCPlayerApi, null\r\n  __21_jump_return_2_SystemUInt32:
+    %SystemUInt32, null\r\n  __22_ref_UnityEngineAnimator: %UnityEngineAnimator,
+    null\r\n  __23_ref_SystemString: %SystemString, null\r\n  __24_jump_return_3_SystemUInt32:
+    %SystemUInt32, null\r\n.data_end\r\n\n.code_start\r\n  .export _start\r\n  _start:\r\n   
+    PUSH, uint_int_end_address\r\n    PUSH, _this_local_player\r\n    EXTERN, \"VRCSDKBaseNetworking.__get_LocalPlayer__VRCSDKBaseVRCPlayerApi\"\r\n   
     PUSH, uint_return_address\r\n    COPY\r\n    JUMP_INDIRECT, uint_return_address\r\n\r\n 
-    __intern_event_1_actions:\r\n    PUSH, uint_int_end_address\r\n    PUSH, __13_jump_return_2_SystemUInt32\r\n   
-    JUMP, 0x00000044\r\n    PUSH, uint_return_address\r\n    COPY\r\n    JUMP_INDIRECT,
-    uint_return_address\r\n\r\n.code_end\r\n"
+    __action_group_0_AnimatorBool:\r\n    PUSH, uint_int_end_address\r\n    PUSH,
+    __action_group_0_Animator\r\n    PUSH, __action_group_0___instance_0\r\n    COPY\r\n   
+    PUSH, __action_group_0_Parameter\r\n    PUSH, __action_group_0___name_0\r\n   
+    COPY\r\n    PUSH, __action_group_0_Animator\r\n    PUSH, __action_group_0___instance_1\r\n   
+    COPY\r\n    PUSH, __action_group_0_Parameter\r\n    PUSH, __action_group_0___name_1\r\n   
+    COPY\r\n    PUSH, __action_group_0___instance_1\r\n    PUSH, __action_group_0___name_1\r\n   
+    PUSH, __action_group_0___Boolean_0\r\n    EXTERN, \"UnityEngineAnimator.__GetBool__SystemString__SystemBoolean\"\r\n   
+    PUSH, __action_group_0___Boolean_0\r\n    PUSH, __action_group_0___value_0\r\n   
+    EXTERN, \"SystemBoolean.__op_UnaryNegation__SystemBoolean__SystemBoolean\"\r\n   
+    PUSH, __action_group_0___instance_0\r\n    PUSH, __action_group_0___name_0\r\n   
+    PUSH, __action_group_0___value_0\r\n    EXTERN, \"UnityEngineAnimator.__SetBool__SystemString_SystemBoolean__SystemVoid\"\r\n   
+    PUSH, uint_return_address\r\n    COPY\r\n    JUMP_INDIRECT, uint_return_address\r\n\r\n 
+    .export _onPlayerTriggerEnter\r\n  _onPlayerTriggerEnter:\r\n    PUSH, uint_int_end_address\r\n   
+    PUSH, __16_jump_return_0_SystemUInt32\r\n    JUMP, 0x00000124\r\n    PUSH, uint_return_address\r\n   
+    COPY\r\n    JUMP_INDIRECT, uint_return_address\r\n\r\n  __intern_event_0_actions:\r\n   
+    PUSH, uint_int_end_address\r\n    PUSH, __17_ref_UnityEngineAnimator\r\n    PUSH,
+    __action_group_0_Animator\r\n    COPY\r\n    PUSH, __18_ref_SystemString\r\n   
+    PUSH, __action_group_0_Parameter\r\n    COPY\r\n    PUSH, __19_jump_return_1_SystemUInt32\r\n   
+    JUMP, 0x00000034\r\n    PUSH, uint_return_address\r\n    COPY\r\n    JUMP_INDIRECT,
+    uint_return_address\r\n\r\n  .export _onPlayerTriggerExit\r\n  _onPlayerTriggerExit:\r\n   
+    PUSH, uint_int_end_address\r\n    PUSH, __21_jump_return_2_SystemUInt32\r\n   
+    JUMP, 0x000001A4\r\n    PUSH, uint_return_address\r\n    COPY\r\n    JUMP_INDIRECT,
+    uint_return_address\r\n\r\n  __intern_event_1_actions:\r\n    PUSH, uint_int_end_address\r\n   
+    PUSH, __22_ref_UnityEngineAnimator\r\n    PUSH, __action_group_0_Animator\r\n   
+    COPY\r\n    PUSH, __23_ref_SystemString\r\n    PUSH, __action_group_0_Parameter\r\n   
+    COPY\r\n    PUSH, __24_jump_return_3_SystemUInt32\r\n    JUMP, 0x00000034\r\n   
+    PUSH, uint_return_address\r\n    COPY\r\n    JUMP_INDIRECT, uint_return_address\r\n\r\n.code_end\r\n"
   assemblyError: 
-  triggerHash: 4CC594F7CCB6D5DCAD6A95B06A43DCDB
+  triggerHash: E82744E69D697136F0F7E49C549E7266
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -98,7 +121,7 @@ MonoBehaviour:
       Data: 4|CyanTrigger.CyanTriggerEvent, Assembly-CSharp
     - Name: name
       Entry: 1
-      Data: _SliderAdjust
+      Data: _Unnamed
     - Name: eventInstance
       Entry: 7
       Data: 5|CyanTrigger.CyanTriggerActionInstance, Assembly-CSharp
@@ -107,7 +130,7 @@ MonoBehaviour:
       Data: 6|CyanTrigger.CyanTriggerActionType, Assembly-CSharp
     - Name: directEvent
       Entry: 1
-      Data: Event_Custom
+      Data: Event_OnPlayerTriggerEnter
     - Name: guid
       Entry: 1
       Data: 
@@ -152,7 +175,7 @@ MonoBehaviour:
       Data: 9|CyanTrigger.CyanTriggerActionInstance[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 10|CyanTrigger.CyanTriggerActionInstance, Assembly-CSharp
@@ -161,10 +184,10 @@ MonoBehaviour:
       Data: 11|CyanTrigger.CyanTriggerActionType, Assembly-CSharp
     - Name: directEvent
       Entry: 1
-      Data: UnityEngineUISlider.__get_value__SystemSingle
+      Data: 
     - Name: guid
       Entry: 1
-      Data: 
+      Data: 4d341da3-b2f3-4607-8c27-5426906fc8f5
     - Name: 
       Entry: 8
       Data: 
@@ -197,19 +220,19 @@ MonoBehaviour:
       Data: 14|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
     - Name: isVariable
       Entry: 5
-      Data: true
+      Data: false
     - Name: name
       Entry: 1
-      Data: brightness
+      Data: 
     - Name: variableID
       Entry: 1
-      Data: d33137d3-3c27-4d77-b228-66f59e79da78
+      Data: 
     - Name: data
       Entry: 7
       Data: 15|CyanTrigger.CyanTriggerSerializableObject, Assembly-CSharp
     - Name: objEncoded
       Entry: 1
-      Data: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
+      Data: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBCwAAAEQAbwBvAHIAIABDAGwAbwBzAGUAZAAF
     - Name: unityObjects
       Entry: 7
       Data: 16|System.Collections.Generic.List`1[[UnityEngine.Object, UnityEngine.CoreModule]],
@@ -240,150 +263,10 @@ MonoBehaviour:
       Data: 17|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: expanded
-      Entry: 5
-      Data: false
-    - Name: comment
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 18|CyanTrigger.CyanTriggerActionInstance, Assembly-CSharp
-    - Name: actionType
-      Entry: 7
-      Data: 19|CyanTrigger.CyanTriggerActionType, Assembly-CSharp
-    - Name: directEvent
-      Entry: 1
-      Data: UnityEngineAnimator.__SetFloat__SystemString_SystemSingle__SystemVoid
-    - Name: guid
-      Entry: 1
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: inputs
-      Entry: 7
-      Data: 20|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 7
-      Data: 21|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
-    - Name: isVariable
-      Entry: 5
-      Data: false
-    - Name: name
-      Entry: 1
-      Data: 
-    - Name: variableID
-      Entry: 1
-      Data: 
-    - Name: data
-      Entry: 6
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 22|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
-    - Name: isVariable
-      Entry: 5
-      Data: false
-    - Name: name
-      Entry: 1
-      Data: 
-    - Name: variableID
-      Entry: 1
-      Data: 
-    - Name: data
-      Entry: 7
-      Data: 23|CyanTrigger.CyanTriggerSerializableObject, Assembly-CSharp
-    - Name: objEncoded
-      Entry: 1
-      Data: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBCgAAAEIAcgBpAGcAaAB0AG4AZQBzAHMABQ==
-    - Name: unityObjects
-      Entry: 7
-      Data: 24|System.Collections.Generic.List`1[[UnityEngine.Object, UnityEngine.CoreModule]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 25|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
-    - Name: isVariable
-      Entry: 5
-      Data: true
-    - Name: name
-      Entry: 1
-      Data: brightness
-    - Name: variableID
-      Entry: 1
-      Data: d33137d3-3c27-4d77-b228-66f59e79da78
-    - Name: data
-      Entry: 7
-      Data: 26|CyanTrigger.CyanTriggerSerializableObject, Assembly-CSharp
-    - Name: objEncoded
-      Entry: 1
-      Data: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAaQBuAGcAbABlACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACAAAAAABQ==
-    - Name: unityObjects
-      Entry: 7
-      Data: 27|System.Collections.Generic.List`1[[UnityEngine.Object, UnityEngine.CoreModule]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: multiInput
-      Entry: 7
-      Data: 28|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
-    - Name: 
-      Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 29|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
+      Data: 18|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
     - Name: isVariable
       Entry: 5
       Data: false
@@ -422,13 +305,13 @@ MonoBehaviour:
       Data: 
     - Name: eventOptions
       Entry: 7
-      Data: 30|CyanTrigger.CyanTriggerEventOptions, Assembly-CSharp
+      Data: 19|CyanTrigger.CyanTriggerEventOptions, Assembly-CSharp
     - Name: userGate
       Entry: 3
       Data: 0
     - Name: userGateExtraData
       Entry: 7
-      Data: 31|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
+      Data: 20|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 0
@@ -455,19 +338,19 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 32|CyanTrigger.CyanTriggerEvent, Assembly-CSharp
+      Data: 21|CyanTrigger.CyanTriggerEvent, Assembly-CSharp
     - Name: name
       Entry: 1
       Data: _Unnamed
     - Name: eventInstance
       Entry: 7
-      Data: 33|CyanTrigger.CyanTriggerActionInstance, Assembly-CSharp
+      Data: 22|CyanTrigger.CyanTriggerActionInstance, Assembly-CSharp
     - Name: actionType
       Entry: 7
-      Data: 34|CyanTrigger.CyanTriggerActionType, Assembly-CSharp
+      Data: 23|CyanTrigger.CyanTriggerActionType, Assembly-CSharp
     - Name: directEvent
       Entry: 1
-      Data: Event_Start
+      Data: Event_OnPlayerTriggerExit
     - Name: guid
       Entry: 1
       Data: 
@@ -476,7 +359,7 @@ MonoBehaviour:
       Data: 
     - Name: inputs
       Entry: 7
-      Data: 35|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
+      Data: 24|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 0
@@ -488,7 +371,7 @@ MonoBehaviour:
       Data: 
     - Name: multiInput
       Entry: 7
-      Data: 36|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
+      Data: 25|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 0
@@ -509,34 +392,34 @@ MonoBehaviour:
       Data: 
     - Name: actionInstances
       Entry: 7
-      Data: 37|CyanTrigger.CyanTriggerActionInstance[], Assembly-CSharp
+      Data: 26|CyanTrigger.CyanTriggerActionInstance[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 38|CyanTrigger.CyanTriggerActionInstance, Assembly-CSharp
+      Data: 27|CyanTrigger.CyanTriggerActionInstance, Assembly-CSharp
     - Name: actionType
       Entry: 7
-      Data: 39|CyanTrigger.CyanTriggerActionType, Assembly-CSharp
+      Data: 28|CyanTrigger.CyanTriggerActionType, Assembly-CSharp
     - Name: directEvent
       Entry: 1
-      Data: CyanTrigger.__SendCustomEvent__CyanTrigger__SystemString
+      Data: 
     - Name: guid
       Entry: 1
-      Data: 
+      Data: 4d341da3-b2f3-4607-8c27-5426906fc8f5
     - Name: 
       Entry: 8
       Data: 
     - Name: inputs
       Entry: 7
-      Data: 40|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
+      Data: 29|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 2
     - Name: 
       Entry: 7
-      Data: 41|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
+      Data: 30|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
     - Name: isVariable
       Entry: 5
       Data: false
@@ -554,7 +437,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 42|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
+      Data: 31|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
     - Name: isVariable
       Entry: 5
       Data: false
@@ -566,13 +449,13 @@ MonoBehaviour:
       Data: 
     - Name: data
       Entry: 7
-      Data: 43|CyanTrigger.CyanTriggerSerializableObject, Assembly-CSharp
+      Data: 32|CyanTrigger.CyanTriggerSerializableObject, Assembly-CSharp
     - Name: objEncoded
       Entry: 1
-      Data: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBDQAAAF8AUwBsAGkAZABlAHIAQQBkAGoAdQBzAHQABQ==
+      Data: Ai8AAAAAARcAAABTAHkAcwB0AGUAbQAuAFMAdAByAGkAbgBnACwAIABtAHMAYwBvAHIAbABpAGIAAAAAACgBCwAAAEQAbwBvAHIAIABDAGwAbwBzAGUAZAAF
     - Name: unityObjects
       Entry: 7
-      Data: 44|System.Collections.Generic.List`1[[UnityEngine.Object, UnityEngine.CoreModule]],
+      Data: 33|System.Collections.Generic.List`1[[UnityEngine.Object, UnityEngine.CoreModule]],
         mscorlib
     - Name: 
       Entry: 12
@@ -597,22 +480,22 @@ MonoBehaviour:
       Data: 
     - Name: multiInput
       Entry: 7
-      Data: 45|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
+      Data: 34|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 46|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
+      Data: 35|CyanTrigger.CyanTriggerActionVariableInstance, Assembly-CSharp
     - Name: isVariable
       Entry: 5
-      Data: true
+      Data: false
     - Name: name
       Entry: 1
-      Data: This CyanTrigger
+      Data: 
     - Name: variableID
       Entry: 1
-      Data: _this_cyantrigger
+      Data: 
     - Name: data
       Entry: 6
       Data: 
@@ -642,13 +525,13 @@ MonoBehaviour:
       Data: 
     - Name: eventOptions
       Entry: 7
-      Data: 47|CyanTrigger.CyanTriggerEventOptions, Assembly-CSharp
+      Data: 36|CyanTrigger.CyanTriggerEventOptions, Assembly-CSharp
     - Name: userGate
       Entry: 3
       Data: 0
     - Name: userGateExtraData
       Entry: 7
-      Data: 48|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
+      Data: 37|CyanTrigger.CyanTriggerActionVariableInstance[], Assembly-CSharp
     - Name: 
       Entry: 12
       Data: 0
@@ -681,40 +564,10 @@ MonoBehaviour:
       Data: 
     - Name: variables
       Entry: 7
-      Data: 49|CyanTrigger.CyanTriggerVariable[], Assembly-CSharp
+      Data: 38|CyanTrigger.CyanTriggerVariable[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 50|CyanTrigger.CyanTriggerVariable, Assembly-CSharp
-    - Name: isVariable
-      Entry: 5
-      Data: false
-    - Name: name
-      Entry: 1
-      Data: brightness
-    - Name: variableID
-      Entry: 1
-      Data: d33137d3-3c27-4d77-b228-66f59e79da78
-    - Name: data
-      Entry: 6
-      Data: 
-    - Name: type
-      Entry: 7
-      Data: 51|CyanTrigger.CyanTriggerSerializableType, Assembly-CSharp
-    - Name: typeDef
-      Entry: 1
-      Data: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: sync
-      Entry: 3
       Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: 
       Entry: 13
       Data: 
@@ -729,53 +582,23 @@ MonoBehaviour:
       Data: 
     - Name: variableReferences
       Entry: 7
-      Data: 52|CyanTrigger.CyanTriggerDataReferences, Assembly-CSharp-Editor
+      Data: 39|CyanTrigger.CyanTriggerDataReferences, Assembly-CSharp-Editor
     - Name: ActionDataIndices
       Entry: 7
-      Data: 53|System.Collections.Generic.List`1[[CyanTrigger.CyanTriggerActionDataReferenceIndex,
+      Data: 40|System.Collections.Generic.List`1[[CyanTrigger.CyanTriggerActionDataReferenceIndex,
         Assembly-CSharp-Editor]], mscorlib
     - Name: 
       Entry: 12
       Data: 4
     - Name: 
       Entry: 7
-      Data: 54|CyanTrigger.CyanTriggerActionDataReferenceIndex, Assembly-CSharp-Editor
+      Data: 41|CyanTrigger.CyanTriggerActionDataReferenceIndex, Assembly-CSharp-Editor
     - Name: symbolName
       Entry: 1
-      Data: __8_ref_UnityEngineUISlider
+      Data: __17_ref_UnityEngineAnimator
     - Name: symbolType
       Entry: 7
-      Data: 55|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: UnityEngine.UI.Slider, UnityEngine.UI
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: eventIndex
-      Entry: 3
-      Data: 0
-    - Name: actionIndex
-      Entry: 3
-      Data: 0
-    - Name: variableIndex
-      Entry: 3
-      Data: 0
-    - Name: multiVariableIndex
-      Entry: 3
-      Data: -1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 56|CyanTrigger.CyanTriggerActionDataReferenceIndex, Assembly-CSharp-Editor
-    - Name: symbolName
-      Entry: 1
-      Data: __9_ref_UnityEngineAnimator
-    - Name: symbolType
-      Entry: 7
-      Data: 57|System.RuntimeType, mscorlib
+      Data: 42|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
       Data: UnityEngine.Animator, UnityEngine.AnimationModule
@@ -787,7 +610,7 @@ MonoBehaviour:
       Data: 0
     - Name: actionIndex
       Entry: 3
-      Data: 1
+      Data: 0
     - Name: variableIndex
       Entry: 3
       Data: 0
@@ -799,13 +622,13 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 58|CyanTrigger.CyanTriggerActionDataReferenceIndex, Assembly-CSharp-Editor
+      Data: 43|CyanTrigger.CyanTriggerActionDataReferenceIndex, Assembly-CSharp-Editor
     - Name: symbolName
       Entry: 1
-      Data: __10_ref_SystemString
+      Data: __18_ref_SystemString
     - Name: symbolType
       Entry: 7
-      Data: 59|System.RuntimeType, mscorlib
+      Data: 44|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
       Data: System.String, mscorlib
@@ -817,7 +640,7 @@ MonoBehaviour:
       Data: 0
     - Name: actionIndex
       Entry: 3
-      Data: 1
+      Data: 0
     - Name: variableIndex
       Entry: 3
       Data: 1
@@ -829,13 +652,37 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 60|CyanTrigger.CyanTriggerActionDataReferenceIndex, Assembly-CSharp-Editor
+      Data: 45|CyanTrigger.CyanTriggerActionDataReferenceIndex, Assembly-CSharp-Editor
     - Name: symbolName
       Entry: 1
-      Data: __12_ref_SystemString
+      Data: __22_ref_UnityEngineAnimator
     - Name: symbolType
       Entry: 9
-      Data: 59
+      Data: 42
+    - Name: eventIndex
+      Entry: 3
+      Data: 1
+    - Name: actionIndex
+      Entry: 3
+      Data: 0
+    - Name: variableIndex
+      Entry: 3
+      Data: 0
+    - Name: multiVariableIndex
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 46|CyanTrigger.CyanTriggerActionDataReferenceIndex, Assembly-CSharp-Editor
+    - Name: symbolName
+      Entry: 1
+      Data: __23_ref_SystemString
+    - Name: symbolType
+      Entry: 9
+      Data: 44
     - Name: eventIndex
       Entry: 3
       Data: 1
@@ -862,36 +709,18 @@ MonoBehaviour:
       Data: 
     - Name: userVariables
       Entry: 7
-      Data: 61|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Type,
+      Data: 47|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Type,
         mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 62|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 48|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: brightness
-    - Name: $v
-      Entry: 7
-      Data: 63|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: System.Single, mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
+      Data: 0
     - Name: 
       Entry: 13
       Data: 
@@ -903,18 +732,18 @@ MonoBehaviour:
       Data: 
     - Name: heapDefaultValues
       Entry: 7
-      Data: 64|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.ValueTuple`2[[System.Object,
+      Data: 49|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.ValueTuple`2[[System.Object,
         mscorlib],[System.Type, mscorlib]], mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 65|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+      Data: 50|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
         mscorlib]], mscorlib
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 12
-      Data: 14
+      Data: 25
     - Name: 
       Entry: 7
       Data: 
@@ -930,7 +759,7 @@ MonoBehaviour:
       Data: 
     - Name: Item2
       Entry: 7
-      Data: 66|System.RuntimeType, mscorlib
+      Data: 51|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
       Data: System.UInt32, mscorlib
@@ -955,7 +784,7 @@ MonoBehaviour:
         mscorlib
     - Name: Item1
       Entry: 7
-      Data: 67|System.UInt32, mscorlib
+      Data: 52|System.UInt32, mscorlib
     - Name: 
       Entry: 3
       Data: 16777200
@@ -964,7 +793,7 @@ MonoBehaviour:
       Data: 
     - Name: Item2
       Entry: 9
-      Data: 66
+      Data: 51
     - Name: 
       Entry: 8
       Data: 
@@ -986,7 +815,7 @@ MonoBehaviour:
       Data: 
     - Name: Item2
       Entry: 7
-      Data: 68|System.RuntimeType, mscorlib
+      Data: 53|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
       Data: UnityEngine.GameObject, UnityEngine.CoreModule
@@ -1014,7 +843,7 @@ MonoBehaviour:
       Data: 
     - Name: Item2
       Entry: 7
-      Data: 69|System.RuntimeType, mscorlib
+      Data: 54|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
       Data: UnityEngine.Transform, UnityEngine.CoreModule
@@ -1042,7 +871,7 @@ MonoBehaviour:
       Data: 
     - Name: Item2
       Entry: 7
-      Data: 70|System.RuntimeType, mscorlib
+      Data: 55|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
       Data: VRC.Udon.Common.Interfaces.IUdonEventReceiver, VRC.Udon.Common
@@ -1070,7 +899,7 @@ MonoBehaviour:
       Data: 
     - Name: Item2
       Entry: 7
-      Data: 71|System.RuntimeType, mscorlib
+      Data: 56|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
       Data: VRC.SDKBase.VRCPlayerApi, VRCSDKBase
@@ -1088,7 +917,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: brightness
+      Data: __action_group_0_Parameter
     - Name: $v
       Entry: 7
       Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
@@ -1098,7 +927,7 @@ MonoBehaviour:
       Data: 
     - Name: Item2
       Entry: 9
-      Data: 63
+      Data: 44
     - Name: 
       Entry: 8
       Data: 
@@ -1110,23 +939,239 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: __7_jump_return_0_SystemUInt32
+      Data: __action_group_0_Animator
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 6
+      Data: 
+    - Name: Item2
+      Entry: 9
+      Data: 42
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: __action_group_0___name_0
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 6
+      Data: 
+    - Name: Item2
+      Entry: 9
+      Data: 44
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: __action_group_0___instance_1
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 6
+      Data: 
+    - Name: Item2
+      Entry: 9
+      Data: 42
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: __action_group_0___Boolean_0
     - Name: $v
       Entry: 7
       Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
         mscorlib
     - Name: Item1
       Entry: 7
-      Data: 72|System.UInt32, mscorlib
+      Data: 57|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Item2
+      Entry: 7
+      Data: 58|System.RuntimeType, mscorlib
+    - Name: 
+      Entry: 1
+      Data: System.Boolean, mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: __action_group_0___name_1
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 6
+      Data: 
+    - Name: Item2
+      Entry: 9
+      Data: 44
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: __action_group_0___instance_0
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 6
+      Data: 
+    - Name: Item2
+      Entry: 9
+      Data: 42
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: __action_group_0___value_0
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 7
+      Data: 59|System.Boolean, mscorlib
+    - Name: 
+      Entry: 5
+      Data: false
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Item2
+      Entry: 9
+      Data: 58
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: __action_group_0_uint_action_jump_address
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 6
+      Data: 
+    - Name: Item2
+      Entry: 9
+      Data: 51
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: onPlayerTriggerEnterPlayer
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 6
+      Data: 
+    - Name: Item2
+      Entry: 9
+      Data: 56
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: __16_jump_return_0_SystemUInt32
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 7
+      Data: 60|System.UInt32, mscorlib
     - Name: 
       Entry: 3
-      Data: 84
+      Data: 264
     - Name: 
       Entry: 8
       Data: 
     - Name: Item2
       Entry: 9
-      Data: 66
+      Data: 51
     - Name: 
       Entry: 8
       Data: 
@@ -1138,7 +1183,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: __8_ref_UnityEngineUISlider
+      Data: __17_ref_UnityEngineAnimator
     - Name: $v
       Entry: 7
       Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
@@ -1148,7 +1193,7 @@ MonoBehaviour:
       Data: 
     - Name: Item2
       Entry: 9
-      Data: 55
+      Data: 42
     - Name: 
       Entry: 8
       Data: 
@@ -1160,7 +1205,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: __9_ref_UnityEngineAnimator
+      Data: __18_ref_SystemString
     - Name: $v
       Entry: 7
       Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
@@ -1170,7 +1215,7 @@ MonoBehaviour:
       Data: 
     - Name: Item2
       Entry: 9
-      Data: 57
+      Data: 44
     - Name: 
       Entry: 8
       Data: 
@@ -1182,45 +1227,23 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: __10_ref_SystemString
-    - Name: $v
-      Entry: 7
-      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
-        mscorlib
-    - Name: Item1
-      Entry: 6
-      Data: 
-    - Name: Item2
-      Entry: 9
-      Data: 59
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 1
-      Data: __11_jump_return_1_SystemUInt32
+      Data: __19_jump_return_1_SystemUInt32
     - Name: $v
       Entry: 7
       Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
         mscorlib
     - Name: Item1
       Entry: 7
-      Data: 73|System.UInt32, mscorlib
+      Data: 61|System.UInt32, mscorlib
     - Name: 
       Entry: 3
-      Data: 40
+      Data: 348
     - Name: 
       Entry: 8
       Data: 
     - Name: Item2
       Entry: 9
-      Data: 66
+      Data: 51
     - Name: 
       Entry: 8
       Data: 
@@ -1232,7 +1255,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: __12_ref_SystemString
+      Data: onPlayerTriggerExitPlayer
     - Name: $v
       Entry: 7
       Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
@@ -1242,7 +1265,7 @@ MonoBehaviour:
       Data: 
     - Name: Item2
       Entry: 9
-      Data: 59
+      Data: 56
     - Name: 
       Entry: 8
       Data: 
@@ -1254,23 +1277,95 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: __13_jump_return_2_SystemUInt32
+      Data: __21_jump_return_2_SystemUInt32
     - Name: $v
       Entry: 7
       Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
         mscorlib
     - Name: Item1
       Entry: 7
-      Data: 74|System.UInt32, mscorlib
+      Data: 62|System.UInt32, mscorlib
     - Name: 
       Entry: 3
-      Data: 212
+      Data: 392
     - Name: 
       Entry: 8
       Data: 
     - Name: Item2
       Entry: 9
-      Data: 66
+      Data: 51
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: __22_ref_UnityEngineAnimator
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 6
+      Data: 
+    - Name: Item2
+      Entry: 9
+      Data: 42
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: __23_ref_SystemString
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 6
+      Data: 
+    - Name: Item2
+      Entry: 9
+      Data: 44
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: __24_jump_return_3_SystemUInt32
+    - Name: $v
+      Entry: 7
+      Data: System.ValueTuple`2[[System.Object, mscorlib],[System.Type, mscorlib]],
+        mscorlib
+    - Name: Item1
+      Entry: 7
+      Data: 63|System.UInt32, mscorlib
+    - Name: 
+      Entry: 3
+      Data: 476
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: Item2
+      Entry: 9
+      Data: 51
     - Name: 
       Entry: 8
       Data: 

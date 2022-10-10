@@ -645,9 +645,9 @@ Material:
     - _ClearCoatMapsUV: 0
     - _ClearCoatMaskInvert: 0
     - _ClearCoatReflectionMaskInvert: 0
-    - _ClearCoatReflectionStrength: 1
+    - _ClearCoatReflectionStrength: 0.712
     - _ClearCoatReflectionTintThemeIndex: 0
-    - _ClearCoatSmoothness: 1
+    - _ClearCoatSmoothness: 0.912
     - _ClearCoatSmoothnessMapInvert: 0
     - _ClearCoatSpecularMaskInvert: 0
     - _ClearCoatSpecularStrength: 1
@@ -1264,7 +1264,7 @@ Material:
     - _MochieReflectionStrength: 1
     - _MochieReflectionTintThemeIndex: 0
     - _MochieRoughnessMapInvert: 0
-    - _MochieRoughnessMultiplier: 1
+    - _MochieRoughnessMultiplier: 0.885
     - _MochieRoughnessMultiplier2: 1
     - _MochieSpecularMaskInvert: 0
     - _MochieSpecularStrength: 1

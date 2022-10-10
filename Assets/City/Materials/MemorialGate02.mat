@@ -984,15 +984,15 @@ Material:
     - _EmissionColor2ThemeIndex: 0
     - _EmissionColor3ThemeIndex: 0
     - _EmissionColorThemeIndex: 0
-    - _EmissionHueShift: 0
+    - _EmissionHueShift: 1
     - _EmissionHueShift1: 0
     - _EmissionHueShift2: 0
     - _EmissionHueShift3: 0
-    - _EmissionHueShiftEnabled: 0
+    - _EmissionHueShiftEnabled: 1
     - _EmissionHueShiftEnabled1: 0
     - _EmissionHueShiftEnabled2: 0
     - _EmissionHueShiftEnabled3: 0
-    - _EmissionHueShiftSpeed: 0
+    - _EmissionHueShiftSpeed: 5
     - _EmissionHueShiftSpeed1: 0
     - _EmissionHueShiftSpeed2: 0
     - _EmissionHueShiftSpeed3: 0
@@ -1032,7 +1032,7 @@ Material:
     - _EmissionScrollingVertexColor1: 0
     - _EmissionScrollingVertexColor2: 0
     - _EmissionScrollingVertexColor3: 0
-    - _EmissionStrength: 0
+    - _EmissionStrength: 1
     - _EmissionStrength1: 0
     - _EmissionStrength2: 0
     - _EmissionStrength3: 0
@@ -1056,7 +1056,7 @@ Material:
     - _EmissiveScroll_Velocity1: 10
     - _EmissiveScroll_Velocity2: 10
     - _EmissiveScroll_Velocity3: 10
-    - _EmissiveScroll_Width: 10
+    - _EmissiveScroll_Width: 0
     - _EmissiveScroll_Width1: 10
     - _EmissiveScroll_Width2: 10
     - _EmissiveScroll_Width3: 10
@@ -1069,7 +1069,7 @@ Material:
     - _EnableDissolveAudioLink: 0
     - _EnableDistortion: 0
     - _EnableDistortionAudioLink: 0
-    - _EnableEmission: 0
+    - _EnableEmission: 1
     - _EnableEmission1: 0
     - _EnableEmission2: 0
     - _EnableEmission3: 0
@@ -1610,7 +1610,7 @@ Material:
     - _SSSThicknessMapUV: 0
     - _SSSThicknessMod: 0
     - _Saturation: 0
-    - _ScrollingEmission: 0
+    - _ScrollingEmission: 1
     - _ScrollingEmission1: 0
     - _ScrollingEmission2: 0
     - _ScrollingEmission3: 0
@@ -1914,7 +1914,7 @@ Material:
     - m_modifierCategory: 0
     - m_postprocessing: 0
     - m_renderingCategory: 0
-    - m_specialFXCategory: 0
+    - m_specialFXCategory: 1
     - m_start_ALDecalSpectrum: 0
     - m_start_Alpha: 0
     - m_start_Aniso: 0
@@ -1983,7 +1983,7 @@ Material:
     - m_start_emission1Options: 0
     - m_start_emission2Options: 0
     - m_start_emission3Options: 0
-    - m_start_emissionOptions: 0
+    - m_start_emissionOptions: 1
     - m_start_flipBook: 0
     - m_start_glitter: 0
     - m_start_internalparallax: 0
@@ -2154,7 +2154,7 @@ Material:
     - _EmissionAL2StrengthMod: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionAL3Multipliers: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionAL3StrengthMod: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 1, g: 0, b: 0, a: 1}
     - _EmissionColor1: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor2: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor3: {r: 1, g: 1, b: 1, a: 1}
@@ -2166,7 +2166,7 @@ Material:
     - _EmissionMask2Pan: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionMask3Pan: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionMaskPan: {r: 0, g: 0, b: 0, a: 0}
-    - _EmissiveScroll_Direction: {r: 0, g: -10, b: 0, a: 0}
+    - _EmissiveScroll_Direction: {r: 0, g: 20, b: 0, a: 0}
     - _EmissiveScroll_Direction1: {r: 0, g: -10, b: 0, a: 0}
     - _EmissiveScroll_Direction2: {r: 0, g: -10, b: 0, a: 0}
     - _EmissiveScroll_Direction3: {r: 0, g: -10, b: 0, a: 0}

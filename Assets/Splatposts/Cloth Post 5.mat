@@ -9,7 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Cloth Post 5
   m_Shader: {fileID: 4800000, guid: a90c512c6a3e6b5489f77ee6a4820769, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: POI_AUDIOLINK POI_LIGHT_DATA_ADDITIVE_DIRECTIONAL_ENABLE POI_LIGHT_DATA_ADDITIVE_ENABLE
+    POI_VERTEXLIGHT_ON VIGNETTE_MASKED _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
