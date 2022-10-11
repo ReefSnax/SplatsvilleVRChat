@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8231249205614019786}
   - component: {fileID: 8135958949089756996}
   - component: {fileID: 8137861865816912392}
-  - component: {fileID: 5527424806062753162}
   m_Layer: 0
   m_Name: Fireworks rainbow 1
   m_TagString: Untagged
@@ -4767,40 +4766,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &5527424806062753162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8226273995874150380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a959a1b0b8414d4fb8a68bdc12d69ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolReturnTimer: 1.5
-  explosionMinVolume: 0.5
-  explosionMaxVolume: 1
-  explosionPitchMin: 0.75
-  explosionPitchMax: 1.25
-  shootMinVolume: 0
-  shootMaxVolume: 0.04
-  shootPitchMin: 0.75
-  shootPitchMax: 1.25
-  audioExplosion:
-  - {fileID: 8300000, guid: d7966ea28bad5e14c9f48cc606bb88b2, type: 3}
-  audioShot:
-  - {fileID: 8300000, guid: d7966ea28bad5e14c9f48cc606bb88b2, type: 3}
-  pools:
-  - tag: AudioExplosion
-    prefab: {fileID: 7299434773172973222, guid: 3516dd09952a289409f042cc6bada428,
-      type: 3}
-    size: 20
-  - tag: AudioShot
-    prefab: {fileID: 7299434773172973222, guid: 3516dd09952a289409f042cc6bada428,
-      type: 3}
-    size: 20
 --- !u!1 &8227879515497437892
 GameObject:
   m_ObjectHideFlags: 0

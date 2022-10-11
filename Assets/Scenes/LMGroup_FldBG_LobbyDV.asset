@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resolution: 1024
   bitmask: -1
-  id: 82
+  id: 27
   sortingID: 2
   isImplicit: 0
   area: 0
@@ -40,4 +40,4 @@ MonoBehaviour:
   overridePath: 
   fixPos3D: 0
   voxelSize: {x: 1, y: 1, z: 1}
-  passedFilter: 0
+  passedFilter: 1
